@@ -1,5 +1,7 @@
 node_modules/
 bundle.js
+bundle.js*
 bundle.js.map
+/public/assets
 # Ignore master key for decrypting credentials and more.
 /config/master.key
