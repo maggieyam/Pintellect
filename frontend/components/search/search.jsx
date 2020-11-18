@@ -2,7 +2,7 @@ import React from "react";
 
 
 const Search = () => (
-        <div >
+        <div id='get-idea'>
             Get your next Idea!!!
         </div>
 )
