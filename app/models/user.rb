@@ -14,12 +14,13 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-    validates :email, :username, :session_token, uniqueness: true, presence: true
+    validates :email, :session_token, uniqueness: true, presence: true
     validates :password_digest, presence: true
     validates :password, length: { minimum: 6 }, allow_nil: true
 
-    after_initialize :ensure_session_token, :set_username, :set_first_name
-    attr_reader :password
+    after_initialize :ensure_session_token, :set_username, :set_first_name 
+   
+    attr_reader :password, 
     
   def self.find_by_credentials(email, password)
 		user = User.find_by(email: email)
@@ -44,7 +45,14 @@ class User < ApplicationRecord
 	self.session_token
   end
 	
+  def set_username
+      self.username = self.email.split("@")[0]
+  end
   
+  def set_first_name
+    self.first_name ||= self.username;
+  end
+
   private
 
   def ensure_session_token
@@ -55,13 +63,4 @@ class User < ApplicationRecord
 	SecureRandom::urlsafe_base64
   end
 
-  def set_username
-    name = self.email.split("@")
-    self.username ||= name[1];
-  end
-
-  def set_first_name
-    name = self.email.split("@")
-    self.username ||= name[1];
-  end
 end

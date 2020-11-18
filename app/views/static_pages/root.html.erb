@@ -1,1 +1,8 @@
-<main id="root">Thanks to Dave and Sergio, i finally can print something!!! LOLLL</main>
+<% if logged_in? %>
+  <script id="bootstrap-current-user" type="text/javascript">
+  	window.currentUser = <%= render("api/users/user.json.jbuilder",
+  		user: current_user).html_safe %>
+  </script>
+<% end %>
+
+<main id="root">Back to root.html.erb Mehhhhhhh</main>
