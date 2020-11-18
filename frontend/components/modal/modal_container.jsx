@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import React from "react";
 import Modal from './modal';
-import { closeModal } from "../../actions/modal_action";
+import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state) => {
+  debugger
   return {
     modal: state.ui.modal,
   };

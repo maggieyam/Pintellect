@@ -1,11 +1,13 @@
 import React from "react";
 import LoginFormContainer from "../session/login_container";
-import SignupFormContainer from "../session/session_form";
+import SignupFormContainer from "../session/signup_container";
 
 export default function Modal({ modal, closeModal }) {
+  
   if (!modal) {
     return null;
   }
+  
   let component;
   switch (modal) {
     case "login":
