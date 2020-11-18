@@ -8,7 +8,8 @@ import { openModal, closeModal } from '../../actions/modal_action'
 const mSTP = ({errors}) => {
 
   return {
-    age: "Age",
+    // user: {}
+    // age: "Age",
     errors: errors.session,
     submitButton: "signup",
     navLink: <Link to="/login">Already a member? Log in</Link>,
@@ -19,12 +20,12 @@ const mSTP = ({errors}) => {
 const mDTP = dispatch => {
     return {
     processForm: user => dispatch(signup(user)),
-    otherForm: (
-      <button onClick={() => dispatch(openModal('login'))}>
-        Login
-      </button>
-    ),
-    closeModal: () => dispatch(closeModal())
+    // otherForm: (
+    //   <button onClick={() => dispatch(openModal('login'))}>
+    //     Login
+    //   </button>
+    // ),
+    // closeModal: () => dispatch(closeModal())
   };
 };
 
