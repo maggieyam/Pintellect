@@ -23,7 +23,6 @@ document.addEventListener ('DOMContentLoaded', () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
-  window.errors = errors;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
