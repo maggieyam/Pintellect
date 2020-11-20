@@ -18,6 +18,8 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :password, length: { minimum: 6 }, allow_nil: true
 
+    has_many :boards, dependent: :destroy
+
     after_initialize :ensure_session_token, :set_username, :set_first_name 
    
     attr_reader :password, 
@@ -28,21 +30,20 @@ class User < ApplicationRecord
 		user
   end
   
-
   def password=(password)
     @password = password    
-	self.password_digest = BCrypt::Password.create(password)
+	  self.password_digest = BCrypt::Password.create(password)
   end
 
   def is_password?(password)
-	bc_password = BCrypt::Password.new(self.password_digest)
-	bc_password.is_password?(password) 
+    bc_password = BCrypt::Password.new(self.password_digest)
+    bc_password.is_password?(password) 
   end
   
   def reset_session_token!
-	self.session_token = self.class.generate_session_token
+    self.session_token = self.class.generate_session_token
     self.save! 
-	self.session_token
+    self.session_token
   end
 	
   def set_username
@@ -60,7 +61,7 @@ class User < ApplicationRecord
   end
 
   def self.generate_session_token
-	SecureRandom::urlsafe_base64
+	  SecureRandom::urlsafe_base64
   end
 
 end

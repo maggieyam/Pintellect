@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import { signup, login, logout } from './utils/session_api_util'
-
+import {fetchBoards} from './actions/boards_actions'
 
 document.addEventListener ('DOMContentLoaded', () => {
   let store;
@@ -25,6 +25,10 @@ document.addEventListener ('DOMContentLoaded', () => {
   window.logout = logout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.fetchBoardes = fetchBoards;
+
+  // now we can test our code from the console
+
 
   
   const root = document.getElementById ('root');

@@ -60,6 +60,20 @@ input:hover {
     margin-top: 20px;
 }
 
-// span {
-//     font-size: 12px;   
-// }
+.form {
+    display: flex;
+    justify-content: space-around;
+  
+}
+
+
+
+
+span {
+    font-size: 14px;
+    font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";   
+    .error-message {
+        color: red;
+        padding: 15px;
+    }
+}

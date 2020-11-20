@@ -1,8 +1,8 @@
 import React from "react";
 import { Link }from "react-router-dom";
-import {a1} from "../../../app/assets/images/architecture/a1.jpg"
+import { login } from "../../utils/session_api_util";
 
-const Greeting = ({ openModal }) => {
+const Greeting = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <header className="group">
       <div className="main-nav">
@@ -109,17 +109,14 @@ const Greeting = ({ openModal }) => {
   );
 
   
+  const personalGreeting = () => (
+    <hgroup className="header-group">
+      <h2 className="header-name">Hi, {currentUser.username}!</h2>
+      <button className="header-button" onClick={logout}>Log Out</button>
+    </hgroup>
+  );
 
-
-//   const personalGreeting = () => (
-//     <hgroup className="header-group">
-//       <h2 className="header-name">Hi, {currentUser.username}!</h2>
-//       <button className="header-button" onClick={logout}>Log Out</button>
-//     </hgroup>
-//   );
-
-//   return currentUser ? personalGreeting(currentUser, logout) : sessionLinks();
-    return sessionLinks();
+  return currentUser ? personalGreeting(currentUser, logout) : sessionLinks();
 };
 
 export default Greeting;

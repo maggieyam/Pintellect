@@ -3,10 +3,6 @@ export const signup = user => {
         url: '/api/user',
         method: 'POST',
         data: { user },
-        error: error => {
-            
-            console.log(error)
-        }
     })
 }
 

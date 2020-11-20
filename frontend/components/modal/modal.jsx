@@ -2,6 +2,7 @@ import React from "react";
 import LoginFormContainer from "../session/login_container";
 import SignupFormContainer from "../session/signup_container";
 
+
 export default function Modal({ modal, closeModal }) {
   
   if (!modal) {
