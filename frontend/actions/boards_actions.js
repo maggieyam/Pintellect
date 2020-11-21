@@ -20,22 +20,43 @@ const removeBoard = (boardId) => ({
 });
 
 
-export const createBoard = board => dispatch =>
-    APIUtil.createBoard(board)
-    .then(board => dispatch(receiveBoard(board)));
-
+export const createBoard = board => dispatch =>{
+      
+   return APIUtil.createBoard(board)
+    .then(board => { 
+      // 
+      return dispatch(receiveBoard(board))
+    });
+}
 export const deleteBoard = (boardId) => dispatch =>
   APIUtil.deleteBoard(boardId)
   .then(() => dispatch(removeBoard(boardId)));
 
 export const fetchBoards = () => dispatch =>
     APIUtil.fetchBoards()
-    .then(boards => dispatch(receiveBoards(boards)));
+    .then(boards => {
+      
+       return dispatch(receiveBoards(boards))
+    });
 
-export const fetchBoard = boardId => dispatch =>
-    APIUtil.fetchBoard(boardId)
-    .then(board => dispatch(receiveBoard(board)));
+// export const fetchBoard = boardId => dispatch =>{
+// export const requestBoard2 = boardId => dispatch =>{
+//     return APIUtil.fetchBoard(boardId)
+//     .then(board => {
+//       
+//       return dispatch(receiveBoard(board))
+//     })
+// };
 
-export const updateBoard = (board) => (dispatch) =>
-  APIUtil.updateBoard(board)
-  .then(board => dispatch(receiveBoard(board)));
+export const requestBoard = (boardId) => dispatch => {
+  return APIUtil.fetchBoard(boardId)
+  .then(board => dispatch(receiveBoard(board)))
+}
+
+export const updateBoard = (board) => (dispatch) => {
+  return APIUtil.updateBoard(board)
+  .then(board =>{
+    // 
+  return dispatch(receiveBoard(board))
+  })
+}

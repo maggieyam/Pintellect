@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Show from './show'
+import ShowBoard from './show'
 import React from "react";
 
 
-const mapStateToProps = ({ user }) => {
-  return {
-    name: "maggie"
+const mapStateToProps = (state, ownProps) => {
+  
+  return {   
+    user: [ownProps.match.params.authorId],
+    board: state.entities.boards[ownProps.match.params.boardId] 
   };
 };
 
-export default connect(mapStateToProps, null)(Show);
+export default connect(mapStateToProps, null)(ShowBoard);

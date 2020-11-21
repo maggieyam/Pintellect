@@ -1,5 +1,4 @@
-json.board do
-  json.partial! '/api/boards/board', board: @board
+json.partial! '/api/boards/board', board: @board
 #   json.pinIds @board.pins.pluck(:id)
-end
+
 

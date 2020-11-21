@@ -13,11 +13,12 @@
 #  updated_at  :datetime         not null
 #
 class Board < ApplicationRecord
-    validates :author_id, :title, presence: true
+    validates :title, presence: true
     # validate :valid_date_period, availability: true
     # after_initialize : set_status, :
     # def status
-    belongs_to :author
+    belongs_to :author,
+        class_name: :User
     
     # def valid_date_period
     #     return false if !self.start_date ^ !self.end_date

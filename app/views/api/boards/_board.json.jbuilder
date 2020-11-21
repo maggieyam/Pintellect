@@ -1,1 +1,2 @@
-json.extract! @board, :id, :title, :description, :private, :starDate, :endDate
+
+json.extract! board, :id, :title, :description, :private, :start_date, :end_date

@@ -4,11 +4,11 @@ export const fetchBoards = () => {
     method: "GET",
   });
 };
+
 export const fetchBoard = (boardId) => {
   return $.ajax({
     url: `/api/boards/${boardId}`,
     method: "GET",
-    data: { board },
     error: (err) => console.log(err)
   });
 };

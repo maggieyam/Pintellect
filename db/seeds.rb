@@ -5,15 +5,34 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.delete_all
-Boards.delete_all
 
-demo = User.create(
-    email: "einstein@gmail.com",
-    password: "123456"
-)
+ActiveRecord::Base.transaction do 
 
-board1 = Board.create!(
-    title: 'Space',
-    private: true
-)
+    User.destroy_all
+    Board.destroy_all
+
+    demo1 = User.create!(
+        email: "einstein@gmail.com",
+        age: "141",
+        password: "123456"
+    )
+
+    demo2 = User.create!(
+        email: "picasso@gmail.com",
+        age: "139",
+        password: "123456"
+    )
+
+    board1 = Board.create!(
+        title: 'Space',
+        description: 'This project is about exploring the space',
+        private: false,
+        author_id: demo1.id,
+    )
+    board2 = Board.create!(
+        title: 'Cubism',
+        description: 'This is about Cubism',
+        private: true,
+        author_id: demo2.id,
+    )
+end

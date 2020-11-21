@@ -53,7 +53,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     
     const user = { email: "einstein@gmail.com", password: "123456" };
-    this.props.login(user);
+    this.props.login(user).then(() => this.props.closeModal());
   }
 
   render() {

@@ -1,23 +1,30 @@
 class Api::BoardsController < ApplicationController
-    # before_action :logged_in?
+    before_action :logged_in?
+
     def create
-        @board = Board.create(board_params)
+        @board = Board.new(board_params)
+        @board.author_id = current_user.id
         if @board.save 
-            render "api/boards/show"
+            # 
+            render :show
+        else
+            render json: @board.errors.full_messages, status: 422
         end
     end
 
-    def index
-        @boards = Boards.all
+    def index     
+        @boards = current_user.boards
         render :index
     end
 
     def show
        @board = Board.find_by(id: params[:id])
+       render :show
     end
 
     def update
-        @board = Board.find_by(id: params[:id])
+        @board = current_user.boards.find_by(id: params[:id])
+           
         if @board # && @board.valid_date_period
             @board.update(board_params)
             render :show
@@ -25,7 +32,7 @@ class Api::BoardsController < ApplicationController
     end
 
     def destroy
-        @board = Board.find_by(id: params[:id])
+        @board = current_user.boards.find_by(id: params[:id])
         if @board
             @board.destroy
         end
@@ -37,4 +44,5 @@ class Api::BoardsController < ApplicationController
     def board_params
         params.require(:board).permit(:title, :private, :start_date, :end_date, :description)
     end
+
 end

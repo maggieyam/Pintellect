@@ -1,12 +1,12 @@
 import React from "react";
 
-class Show extends React.Component {
-
+class ShowBoard extends React.Component {
     render(){
+        {}
         return(
-            <div>Hello {this.props.name} </div>
+            <div>{this.props.board.title}</div>
         )
     }
 }
 
-export default Show;
+export default ShowBoard;

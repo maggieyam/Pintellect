@@ -8,10 +8,26 @@ import {fetchBoards} from './actions/boards_actions'
 document.addEventListener ('DOMContentLoaded', () => {
   let store;
   
+  
+  
+  
   if (window.currentUser) {
+    
+    let userBoards = {}
+    
+    const currUserBoardsArr = [];
+    if (window.currentUser.boards){
+        currUserBoardsArr = window.currentUser.boards;
+        
+        currUserBoardsArr.map((board) => {
+          userBoards[board.id] = board;
+        })
+    }
+    
     const preloadedState = {
       entities: {
         users: {[window.currentUser.id]: window.currentUser},
+        boards: userBoards
       },
       session: {id: window.currentUser.id},
     };
@@ -25,7 +41,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   window.logout = logout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchBoardes = fetchBoards;
+  window.fetchBoards = fetchBoards;
 
   // now we can test our code from the console
 
