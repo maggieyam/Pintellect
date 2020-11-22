@@ -11,7 +11,7 @@ export default function Modal({ modal, closeModal }) {
   }
   
   let component;
-  switch (modal) {
+  switch (modal) { // 1
     case 'login':
       component = <LoginFormContainer />;
       break;
@@ -22,8 +22,8 @@ export default function Modal({ modal, closeModal }) {
       component = <CreateBoardFormContainer />;
       break;
     case 'update':
-      
-      component = <EditBoardFormContainer />;
+      debugger
+      component = <EditBoardFormContainer/>;
       break;
     default:
       return null;

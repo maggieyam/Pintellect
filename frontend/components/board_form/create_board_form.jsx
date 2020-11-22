@@ -33,21 +33,21 @@ class CreateBoardForm extends React.Component{
             <form onSubmit={this.handleSubmit} className="input-create">
               <h1 className="form-header">Create board</h1>
               {/* <div id="input-field"> */}
-              <span id="form-label">
-                Name <br />
-              </span>
+              <label class="form-label">
+                Name
+              </label>
               <input
                 type="text"
-                id="input-form"
+                className="input-form"
                 value={title}
                 placeholder={`  Like "Place to Go" or "Recipe to Make"`}
                 onChange={this.update('title')}
               />
 
-              <br/><span id="form-label">Dates</span>
+              <br/><label class="form-label">Dates</label>
               <input
                 type="date"
-                id="input-form"
+                className="input-form"
                 onChange={this.update('start_date')}
               />
               {/* </div> */}

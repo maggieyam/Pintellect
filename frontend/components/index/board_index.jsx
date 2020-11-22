@@ -30,7 +30,11 @@ class BoardIndex extends React.Component {
             <div>
               {boards.map((board) => {
                 return (
-                  <BoardIndexItem board={board} openModal={openModal} key={board.id} />
+                  <BoardIndexItem 
+                  board={board} 
+                  authorId = {user.id}
+                  openModal={openModal} 
+                  key={board.id} />
                 );
               })}
             </div>

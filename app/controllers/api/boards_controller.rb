@@ -24,7 +24,7 @@ class Api::BoardsController < ApplicationController
 
     def update
         @board = current_user.boards.find_by(id: params[:id])
-           
+           debugger
         if @board # && @board.valid_date_period
             @board.update(board_params)
             render :show

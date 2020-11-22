@@ -33,8 +33,12 @@
     border-color: #d3d3d3;
 }
 
-#form-header, #form-label {
+#form-header  {
     margin-bottom: 4px;
+}
+
+.form-label {
+    margin-bottom: 6px;
 }
 
 // #input-field {
@@ -74,19 +78,37 @@
 //     content: "";
 //   }
 
-input {
-    -webkit-writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    display: inline-block;
-    appearance: textfield;
-    -webkit-rtl-ordering: logical;
-    margin: 0em;
-    font: 400 13.3333px Arial;
-    padding: 1px 2px;
-    border-width: 2px;
-    border-image: initial;
-    font-size: 16px;
-}
+// .input {
+//     -webkit-writing-mode: horizontal-tb !important;
+//     text-rendering: auto;
+//     display: inline-block;
+//     appearance: textfield;
+//     -webkit-rtl-ordering: logical;
+//     margin: 0em;
+//     font: 400 13.3333px Arial;
+//     padding: 1px 2px;
+//     border-width: 2px;
+//     border-image: initial;
+//     font-size: 16px;
+
+//     font: 400 13.3333px Arial;
+//     font-style: normal;
+//     font-variant-ligatures: normal;
+//     font-variant-caps: normal;
+//     font-variant-numeric: normal;
+//     font-variant-east-asian: normal;
+//     font-weight: 400;
+//     font-stretch: normal;
+//     -webkit-rtl-ordering: logical;
+//     letter-spacing: normal;
+//     word-spacing: normal;
+//     text-transform: none;
+//     text-indent: 0px;
+//     text-shadow: none;
+//     display: inline-block;
+//     webkit-writing-mode: horizontal-tb !important;
+//     border-image: initial;
+// }
 
 .input-create{
     display: flex;
@@ -99,14 +121,32 @@ input {
 // .right-index-nav{
 //     position: fixed;
 // }
-   
-#input-form {
-    width: 476px;
-    height: 48px;
+// .input-form:hover{
+//     border-top: #d0d0d0;
+//     border-left: #d0d0d0;
+// }
+.input-form {
+    width: 444px;
+    height: 32px;
     align-items: center;
-    cursor: pointer;
+    cursor: input;
     border-radius: 16px;
+    font-size: 16px;
+    text-indent: 0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 16px;
+    border-left-color: #ddd;
+    border-top-color: #ddd;
+    // border-right-color: #ddd;
+    // border-bottom-color: #ddd;
 }
+
+
 
 #secret-toggle {
     font-size: 20px;
@@ -137,7 +177,9 @@ input {
     color: #767676;
     font-size: 12px;
     text-align: start;
+    padding-left: 8px;
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .index {
@@ -296,6 +338,8 @@ input {
 .drop-down-icon {
     margin-top: 5px;
     margin-left: 25px;
+    color: #767676;
+    cursor: pointer;
 }
 // .board-nav-header {
 
@@ -306,21 +350,29 @@ input {
 
 .search-icon{
     z-index: 2;
- 
 }
 
 .icon {
    padding: 25px, 25px;
    margin-left: 25px;
-   color: #767676;
+//    color: #767676;
+   cursor: pointer;
 }
 
-.icon #bell:hover {
-    background-color: #efefef;
-    margin-left: 20px;
+#edit-board {
+    cursor: pointer;
+
 }
-#bell, #log-out{
+
+// #bell:hover {
+//     // background-color: #efefef;
+//     // color: #767676;
+//     margin-left: 20px;
+// }
+#bell, #log-out, #comment{
     margin-left: 20px;
+    color: #767676;
+    // cursor: pointer;
 }
 
 #initial {
@@ -330,6 +382,8 @@ input {
     height: 30px;
     padding: 20px, 20px;
 }
+
+
 
 
 
@@ -360,7 +414,109 @@ input {
     background-color: white;
 }
 
-.modal-create {
+#modal-create {
    position: absolute; right: 20px; top: 400px;
+   color: black;
+//    cursor: pointer;
 //    object-position: 100%,;
 }
+
+#board-edit-form {
+    height: 897px;
+    width: 540px;
+    // height: 100%;
+    // position: relative;
+    display: flex;
+    border-radius: 34px;
+    // vertical-align: super;
+    align-items: center;
+    // justify-content: space-around;
+    margin-bottom: 40px;
+    // flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    // width: 540px;
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#form-header {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+#form-body {
+    flex-direction: column;
+    height: 655px;
+    border: 1px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+// input 
+
+input #input-name {
+    color: red;
+}
+
+ textarea.textarea {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 444px;
+    height: 60px;
+    border-radius: 16px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    border-color: #ddd;
+    // border-top-color: #efefef;
+    border-width: 2px;
+    // -webkit-writing-mode: horizontal-tb !important;
+    // text-rendering: auto;
+    // letter-spacing: normal;
+    // word-spacing: normal;
+    // text-transform: none;
+    // text-indent: 0px;
+    // text-shadow: none;
+    // display: inline-block;
+    // text-align: start;
+    // -webkit-rtl-ordering: logical;
+    // flex-direction: column;
+    // cursor: text;
+    // white-space: pre-wrap;
+    // overflow-wrap: break-word;
+    // font-style: normal;
+    // font-variant-ligatures: normal;
+    // font-variant-caps: normal;
+    // font-variant-numeric: normal;
+    // font-variant-east-asian: normal;
+    
+    // font-stretch: normal;
+}
+
+.description {
+    margin-top: 25px;
+    margin-bottom: 4px;
+}
+
+#settings{
+    font-size: 12px;
+}
+
+.done-btn {
+    position: absolute; right: 42px; bottom: 70px;
+    background-color: #E60023;
+    // justify-content: flex-end;
+    height: 56px;
+    width: 91.87px;
+    box-sizing: border-box;
+    color: #767676;
+    background-color: #efefef;
+    font-size: 16px;
+    border-radius: 34px;
+}
+

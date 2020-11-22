@@ -20,7 +20,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
 
         <nav className="right-nav">
           <div className="login-signup">
-            <button onClick={() => openModal('login')} id="login">
+            <button onClick={() => openModal({type: 'login'})} id="login">
               Log in
             </button>
             <button onClick={() => openModal('signup')} id="signup">
@@ -150,21 +150,28 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
           </input> */}
       {/* <div className="right-index-nav"> */}
       {/* <section className="right-nav-index"> */}
-      <FontAwesomeIcon icon={faBell} id="bell" size="2x" />
-      <FontAwesomeIcon icon={faCommentDots} className="icon" size="2x" />
+      <FontAwesomeIcon icon={faBell} id="bell" className="icon" size="2x" />
+      <FontAwesomeIcon icon={faCommentDots} className="icon" id="comment" size="2x" />
       <FontAwesomeIcon
         icon={faChevronCircleDown}
         className="drop-down-icon"
         size="2x"
       />
-        <FontAwesomeIcon
-          icon={faPlusCircle}
-          className="modal-create"
-          size="2x"
-          onClick={() => openModal('create')} className="modal-create" size="2x"
-        />
+      <FontAwesomeIcon
+        icon={faPlusCircle}
+        className="icon"
+        id="modal-create"
+        size="2x"
+        onClick={() => openModal('create')}
+      />
 
-      <FontAwesomeIcon icon={faSignOutAlt} id="log-out" onClick={logout} size="2x"/>
+      <FontAwesomeIcon
+        icon={faSignOutAlt}
+        id="log-out"
+        className="icon"
+        onClick={logout}
+        size="2x"
+      />
       {/* </div> */}
       {/* <div class="dropdown">
         <button class="dropbtn"></button> */}
