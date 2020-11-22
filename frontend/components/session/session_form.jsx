@@ -67,34 +67,40 @@ class SessionForm extends React.Component {
             <input
               type="email"
               value={email}
-              placeholder="Email"
-              onChange={this.handleInput("email")}
+              placeholder="    Email"
+              onChange={this.handleInput('email')}
+              className="input-session"
             />
             <br />
 
             <input
               type="password"
               value={password}
-              placeholder="Password"
-              onChange={this.handleInput("password")}
+              placeholder="    Password"
+              onChange={this.handleInput('password')}
+              className="input-session"
             />
             <br />
-            {this.props.submitButton === "Continue" ? this.renderAge() : null}
+            <p id="error">{this.props.errors ? this.renderErrors() : null}</p>  
+            {this.props.submitButton === 'Continue' ? this.renderAge() : null}
             <button id="modal-button">{this.props.submitButton}</button>
-            {this.props.errors ? this.renderErrors() : null}
-            <br />
-          
-            <span>
-              <p id="agreement">By continuing, you agree to Pinterest's</p>
-              <strong id="terms-of-service">
-                Terms of Service, Privacypolicy.
-              </strong>
-            </span>
-            <div onClick={() => this.props.openModal()}>
+            <div id="bottom-session>">
+              <br />
+
+              <span>
+                <p id="agreement">By continuing, you agree to Pinterest's</p>
+                <strong id="terms-of-service">
+                  Terms of Service, Privacypolicy.
+                </strong>
+              </span>
+              <div onClick={() => this.props.openModal()}>
               {this.props.navLinkText}
-            </div>
+             </div>
+           </div>           
           </form>
-            <button id='demo-button' onClick={(e) => this.handleDemo(e)}>Demo</button>
+          <button id="demo-button" onClick={(e) => this.handleDemo(e)}>
+            Demo
+          </button>
         </div>
       );
     }

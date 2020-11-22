@@ -2,21 +2,20 @@ import React from 'react';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
+       { }
         super(props);
         
         this.state = this.props.board;
         // this.state = {title: "test1", description: "test2"}
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.requestBoard = this.props.requestBoard.bind(this);
 
 
         // But this.props is read-only; you cannot modify it.
 
     }
 
-    componentDidMount(){
-        
-        this.props.requestBoard(this.props.id);
+    componentDidMount(){     
+        this.props.requestBoard(this.state.id);
         // this.requestBoard(53).then(board =>{
         //  
         //     this.setState(board)
@@ -60,9 +59,9 @@ class EditBoardForm extends React.Component {
                     </label>
                     <p className="notes">Add a date to keep your recommendations
                     relevant and get reminders about <br />planning</p>
-                    <label for="switch" class="toggle">
+                    {/* <label for="switch" class="toggle">
                         <input type="checkbox" id="switch" class="checkbox" />
-                    </label>
+                    </label> */}
                     <h3 id="secret">Keep this board screte</h3>
                     <button>Done</button>
                 </form >

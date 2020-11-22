@@ -1,7 +1,8 @@
 import React from "react";
 import LoginFormContainer from "../session/login_container";
 import SignupFormContainer from "../session/signup_container";
-
+import CreateBoardFormContainer from '../board_form/create_board_container';
+import EditBoardFormContainer from '../board_form/edit_board_container';
 
 export default function Modal({ modal, closeModal }) {
   
@@ -11,11 +12,18 @@ export default function Modal({ modal, closeModal }) {
   
   let component;
   switch (modal) {
-    case "login":
+    case 'login':
       component = <LoginFormContainer />;
       break;
-    case "signup":
+    case 'signup':
       component = <SignupFormContainer />;
+      break;
+    case 'create':
+      component = <CreateBoardFormContainer />;
+      break;
+    case 'update':
+      
+      component = <EditBoardFormContainer />;
       break;
     default:
       return null;

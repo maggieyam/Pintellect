@@ -5,24 +5,36 @@ import BoardIndexItem from './board_index_item';
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
-        // this.state = {boards: this.props.boards};
     }
     componentDidMount() {
         this.setState(this.props.fetchBoards());
-        // this.props.fetchBoards()
     }
 
     render() {
-        const { boards } = this.props;
-
+        const { boards, user, openModal} = this.props;
+        
         return (
-          <div>
+          <div className="index">
+            {/* <button id="index-initial"></button> */}
+            <p id="initial-logo">{user.username[0]}</p>
+            <p id="index-header">{user.username}</p>
+            <button
+              className="modal-index"
+              id="initial"
+              onClick={() => this.propsopenModal('create')}
+            >
+              {user.username[0].toUpperCase()}
+            </button>
+            <p className="index-name">@{user.first_name}</p>
+            <p>0 followers * 0 following</p>
             <div>
               {boards.map((board) => {
-                return <BoardIndexItem board={board} key={board.id} />;
+                return (
+                  <BoardIndexItem board={board} openModal={openModal} key={board.id} />
+                );
               })}
             </div>
-            <CreateBoardFormContainer />
+            {/* <CreateBoardFormContainer /> */}
           </div>
         );
     }

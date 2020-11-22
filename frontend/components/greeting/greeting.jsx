@@ -1,25 +1,34 @@
 import React from "react";
 import { Link }from "react-router-dom";
 import { login } from "../../utils/session_api_util";
-
-const Greeting = ({ currentUser, logout, openModal }) => {
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSearch, faBell, faCommentDots, faChevronCircleDown, faRocket, faPlusCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import { fetchBoards } from "../../actions/boards_actions";
+const Greeting = ({ currentUser, logout, openModal, }) => {
+  // const action = (e) => {
+  //   e.preventDefault();
+  //     const user = {email: 'einstein@gmail.com', password: '123456'};
+  //     this.props.login(user).then(() => closeModal());
+  // }
   const sessionLinks = () => (
     <header className="group">
       <div className="main-nav">
         <nav className="left-nav">
-          <Link to="/">
-            <ul>home</ul>
-          </Link>
+          {/* <FontAwesomeIcon icon={faRocket} className="bounce" size="lg" /> */}
+          <h3 id="board-nav-header">Pintellect</h3>
         </nav>
 
         <nav className="right-nav">
           <div className="login-signup">
-            <button onClick={() => openModal("login")} id="login">
+            <button onClick={() => openModal('login')} id="login">
               Log in
             </button>
-            <button onClick={() => openModal("signup")} id="signup">
+            <button onClick={() => openModal('signup')} id="signup">
               Sign up
             </button>
+            {/* <button onClick={e => action(e)} id="signin">
+              Demo User
+            </button> */}
           </div>
         </nav>
       </div>
@@ -110,13 +119,69 @@ const Greeting = ({ currentUser, logout, openModal }) => {
 
   
   const personalGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
+    <hgroup className="header-group" width="100%">
+      {/* <section className="left-nav-index"> */}
+      <FontAwesomeIcon icon={faRocket} spin className="logo" size="2x" />
+      <button className="board-nav-button" id="home-button">
+        <Link to="/" id="home-link">
+          Home
+        </Link>
+      </button>
+
+      <button className="board-nav-button" id="today">
+        <Link to="/" id="nav-link">
+          Today
+        </Link>
+      </button>
+
+      <button className="board-nav-button" id="following">
+        <Link to="/" id="nav-link">
+          Following
+        </Link>
+      </button>
+      {/* </section> */}
+      {/* <div> */}
+      <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
+      <input type="text" placeholder="      Search" id="search" />
+      {/* </div> */}
+
+      {/* <i class="fa fa-user icon">
+          </i>
+          </input> */}
+      {/* <div className="right-index-nav"> */}
+      {/* <section className="right-nav-index"> */}
+      <FontAwesomeIcon icon={faBell} id="bell" size="2x" />
+      <FontAwesomeIcon icon={faCommentDots} className="icon" size="2x" />
+      <FontAwesomeIcon
+        icon={faChevronCircleDown}
+        className="drop-down-icon"
+        size="2x"
+      />
+        <FontAwesomeIcon
+          icon={faPlusCircle}
+          className="modal-create"
+          size="2x"
+          onClick={() => openModal('create')} className="modal-create" size="2x"
+        />
+
+      <FontAwesomeIcon icon={faSignOutAlt} id="log-out" onClick={logout} size="2x"/>
+      {/* </div> */}
+      {/* <div class="dropdown">
+        <button class="dropbtn"></button> */}
+      {/* <select class="dropdown-content">
+        <option></option>
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </select> */}
+      {/* </section> */}
     </hgroup>
   );
+      // BoardShow
+
 
   return currentUser ? personalGreeting(currentUser, logout) : sessionLinks();
+
 };
 
 export default Greeting;

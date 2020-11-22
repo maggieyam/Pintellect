@@ -49,6 +49,7 @@ export const fetchBoards = () => dispatch =>
 // };
 
 export const requestBoard = (boardId) => dispatch => {
+  
   return APIUtil.fetchBoard(boardId)
   .then(board => dispatch(receiveBoard(board)))
 }
