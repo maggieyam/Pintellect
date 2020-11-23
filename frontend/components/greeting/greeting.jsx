@@ -167,7 +167,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
           id="bell"
           className="icon"
           size="2x"
-          onClick={redirect}
+          // onClick={redirect}
         />
         <FontAwesomeIcon
           icon={faCommentDots}
