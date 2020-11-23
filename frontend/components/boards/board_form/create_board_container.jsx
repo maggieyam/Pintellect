@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import CreateBoardForm from './create_board_form';
-import {createBoard, closeModal} from '../../../actions/boards_actions';
+import {createBoard } from '../../../actions/boards_actions';
+import {closeModal } from '../../../actions/modal_actions'
 
 const mapDispatchToProps = dispatch => {
     return{

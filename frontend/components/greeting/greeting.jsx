@@ -1,8 +1,9 @@
 import React from "react";
-import { Link }from "react-router-dom";
+import { Link, useNavigate, }from "react-router-dom";
 import { login } from "../../utils/session_api_util";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch, faPen, faBell, faCommentDots, faChevronCircleDown, faRocket, faPlusCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import {faSearch, faPen, faBell, faCommentDots, faChevronCircleDown, 
+  faRocket, faPlusCircle, faSignOutAlt, faBorderAll} from '@fortawesome/free-solid-svg-icons';
 import { fetchBoards } from "../../actions/boards_actions";
 import BoardIndexItem from "../boards/index/board_index_item";
 const Greeting = ({ currentUser, logout, openModal, }) => {
@@ -13,7 +14,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
   // }
   const sessionLinks = () => {
     const signup = {type: 'signup'};
-    const login = ({type: 'login'})
+    const login = ({type: 'login'});
     return (
     <header className="group">
       <div className="main-nav">
@@ -123,8 +124,12 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
 
   
   const personalGreeting = () => {
-    const modal = {type: 'create'};
+    const create = {type: 'create'};
     const update = {type: 'update', item: {title: 'Space', id:'64'}};
+    // const redirect = () => {
+    //   // return <Redirect to={`/${currentUser.id}`} />;
+    //   return useNavigate(`/${currentUser.id}`);
+    // }
     return (
       <hgroup className="header-group" width="100%">
         {/* <section className="left-nav-index"> */}
@@ -157,7 +162,13 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
           </input> */}
         {/* <div className="right-index-nav"> */}
         {/* <section className="right-nav-index"> */}
-        <FontAwesomeIcon icon={faBell} id="bell" className="icon" size="2x" />
+        <FontAwesomeIcon
+          icon={faBell}
+          id="bell"
+          className="icon"
+          size="2x"
+          onClick={redirect}
+        />
         <FontAwesomeIcon
           icon={faCommentDots}
           className="icon"
@@ -174,7 +185,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
           className="icon"
           id="modal-create"
           size="2x"
-          onClick={() => openModal(modal)}
+          onClick={() => openModal(create)}
         />
 
         <FontAwesomeIcon

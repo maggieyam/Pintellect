@@ -33,7 +33,7 @@ class CreateBoardForm extends React.Component{
             <form onSubmit={this.handleSubmit} className="input-create">
               <h1 className="form-header">Create board</h1>
               {/* <div id="input-field"> */}
-              <label class="form-label">
+              <label className="form-label">
                 Name
               </label>
               <input

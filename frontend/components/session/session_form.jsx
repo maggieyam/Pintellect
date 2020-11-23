@@ -34,14 +34,13 @@ class SessionForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
       .then(() => this.props.closeModal())
-      .then(this.componentDidUpdate())
       .then(() => this.props.history.push(`/${this.props.session.id}`));
   }
 
   componentDidUpdate(prevProps){ 
-  // Typical usage (don't forget to compare props):
-    if (this.props.userID !== prevProps.userID) {
-    this.fetchData(this.props.userID);
+  // Typical usage (don't forget to compare props): 
+    if (this.props.userId !== prevProps.userId) {
+    this.fetchData(this.props.userId);
     console.log(this.props);
   }
 
@@ -81,7 +80,7 @@ class SessionForm extends React.Component {
     return (
       <div className="session-forms">
         <h3 className="greeting">Welcome to Pintellect</h3>
-        <h3 className="find-subject">find new subject to explore</h3>
+        <h3 className="find-subject">Find new subject to explore</h3>
         <form onSubmit={this.handleSubmit} className="forms">
           <input
             type="email"
@@ -100,8 +99,12 @@ class SessionForm extends React.Component {
             className="input-session"
           />
           <br />
-          <p id="error">{this.props.errors ? this.renderErrors() : null}</p>
-          {this.props.submitButton === 'Continue' ? this.renderAge() : null}
+
+          <div id="error">{this.props.errors ? this.renderErrors() : null}</div>
+
+          <div>
+            {this.props.submitButton === 'Continue' ? this.renderAge() : null}
+          </div>
           <button id="modal-button">{this.props.submitButton}</button>
           <div id="bottom-session>">
             <br />
@@ -117,7 +120,7 @@ class SessionForm extends React.Component {
             </div>
           </div>
         </form>
-        { this.props.submitButton === "Log in" ? this.showDemoButton() : null }
+        {this.props.submitButton === 'Log in' ? this.showDemoButton() : null}
       </div>
     );
   }
