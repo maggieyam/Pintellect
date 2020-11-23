@@ -14,7 +14,10 @@
 class Pin < ApplicationRecord
     belongs_to :author,
         class_name: :User
-
+    has_many :board_pins
+    has_many :boards,
+        through: :board_pins,
+        source: :board
     # after_initalization :set_author
 
 end
