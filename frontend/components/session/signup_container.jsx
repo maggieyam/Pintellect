@@ -19,7 +19,7 @@ const mDTP = dispatch => {
     return {
     processForm: user => dispatch(signup(user)),
     closeModal: () => dispatch(closeModal()),
-    openModal: () => dispatch(openModal('login')),
+    openModal: () => dispatch(openModal({type: 'login'})),
   };
 };
 

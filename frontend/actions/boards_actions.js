@@ -1,4 +1,5 @@
 import * as APIUtil from "../utils/boards_api_util";
+import { closeModal } from "./modal_actions";
 
 export const RECEIVE_BOARDS = "RECEIVE_BOARDS";
 export const RECEIVE_BOARD = "RECEIVE_BOARD";
@@ -30,7 +31,8 @@ export const createBoard = board => dispatch =>{
 }
 export const deleteBoard = (boardId) => dispatch =>
   APIUtil.deleteBoard(boardId)
-  .then(() => dispatch(removeBoard(boardId)));
+  .then(() => dispatch(removeBoard(boardId)))
+  ;
 
 export const fetchBoards = () => dispatch =>
     APIUtil.fetchBoards()
@@ -49,14 +51,13 @@ export const fetchBoards = () => dispatch =>
 // };
 
 export const requestBoard = (boardId) => dispatch => {
+  
   return APIUtil.fetchBoard(boardId)
   .then(board => dispatch(receiveBoard(board)))
 }
 
 export const updateBoard = (board) => (dispatch) => {
-  return APIUtil.updateBoard(board)
-  .then(board =>{
-    // 
-  return dispatch(receiveBoard(board))
-  })
+  return APIUtil.updateBoard(board).then((board) =>
+    dispatch(receiveBoard(board)))
+    // .then(() => closeModal());
 }

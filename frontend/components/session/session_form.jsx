@@ -1,14 +1,20 @@
 import React from "react";
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {
+  faFacebook,
+  faGoogle
+} from '@fortawesome/free-brands-svg-icons';
+import { Redirect } from "react-router-dom";
+import { fetchBoards } from "../../utils/boards_api_util";
 
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
-      age: ""
+      email: '',
+      password: '',
+      age: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderAge = this.renderAge.bind(this);
@@ -18,72 +24,88 @@ class SessionForm extends React.Component {
 
   handleInput(field) {
     return (e) => {
-      this.setState({ [field]: e.currentTarget.value });
+      this.setState({[field]: e.currentTarget.value});
     };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    
+
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(() => this.props.closeModal());
-    // .then(() => this.props.history.push('/pins'));
+    this.props.processForm(user)
+      .then(() => this.props.closeModal())
+      .then(this.componentDidUpdate())
+      .then(() => this.props.history.push(`/${this.props.session.id}`));
   }
 
-  // demoUser(e){
-  //   e.preventDefault();
-  //   const user = {
-  //                 email: "einstein@gmail.com", 
-  //                 password: "123456",
-  //                 }
-  //   this.props.login(user).then(() => this.props.closeModal());
-  // }
-
-
-  renderAge() {      
-      return (
-        <input type='text' 
-        value={this.state.age} 
-        placeholder='Age'
-        onChange={this.handleInput('age')}/>
-      )                                 
+  componentDidUpdate(prevProps){ 
+  // Typical usage (don't forget to compare props):
+    if (this.props.userID !== prevProps.userID) {
+    this.fetchData(this.props.userID);
+    console.log(this.props);
   }
 
-  handleDemo(e) {
+  }
+
+  renderAge() {
+    return (
+      <input
+        type="text"
+        value={this.state.age}
+        placeholder="Age"
+        onChange={this.handleInput('age')}
+        className="input-session"
+      />
+    );
+  }
+
+
+
+  handleDemo(e, num) {
     e.preventDefault();
-    
-    const user = { email: "einstein@gmail.com", password: "123456" };
-    this.props.login(user).then(() => this.props.closeModal());
+    let user = {};
+    if (num === 1){
+      user = {email: 'einstein@gmail.com', password: '123456'};
+    } else {
+      user = {email: 'picasso@gmail.com', password: '123456'};
+    }    
+    this.props.login(user)
+    .then(() => this.props.closeModal())
+    // .then(this.componentDidUpdate())
+    // .then(() => this.props.history.push('/'));
   }
 
   render() {
-      const { email, password} = this.state;
+    const {email, password} = this.state;
 
-      return (
-        <div className="session-forms">
-          <h3 className="greeting">Welcome to Pintellect</h3>
-          <h3 className="find-subject">find new subject to explore</h3>
-          <form onSubmit={this.handleSubmit} className="forms">
-            <input
-              type="email"
-              value={email}
-              placeholder="Email"
-              onChange={this.handleInput("email")}
-            />
+    return (
+      <div className="session-forms">
+        <h3 className="greeting">Welcome to Pintellect</h3>
+        <h3 className="find-subject">find new subject to explore</h3>
+        <form onSubmit={this.handleSubmit} className="forms">
+          <input
+            type="email"
+            value={email}
+            placeholder="    Email"
+            onChange={this.handleInput('email')}
+            className="input-session"
+          />
+          <br />
+
+          <input
+            type="password"
+            value={password}
+            placeholder="    Password"
+            onChange={this.handleInput('password')}
+            className="input-session"
+          />
+          <br />
+          <p id="error">{this.props.errors ? this.renderErrors() : null}</p>
+          {this.props.submitButton === 'Continue' ? this.renderAge() : null}
+          <button id="modal-button">{this.props.submitButton}</button>
+          <div id="bottom-session>">
             <br />
 
-            <input
-              type="password"
-              value={password}
-              placeholder="Password"
-              onChange={this.handleInput("password")}
-            />
-            <br />
-            {this.props.submitButton === "Continue" ? this.renderAge() : null}
-            <button id="modal-button">{this.props.submitButton}</button>
-            {this.props.errors ? this.renderErrors() : null}
-            <br />
-          
             <span>
               <p id="agreement">By continuing, you agree to Pinterest's</p>
               <strong id="terms-of-service">
@@ -93,21 +115,39 @@ class SessionForm extends React.Component {
             <div onClick={() => this.props.openModal()}>
               {this.props.navLinkText}
             </div>
-          </form>
-            <button id='demo-button' onClick={(e) => this.handleDemo(e)}>Demo</button>
-        </div>
-      );
-    }
+          </div>
+        </form>
+        { this.props.submitButton === "Log in" ? this.showDemoButton() : null }
+      </div>
+    );
+  }
+
+  showDemoButton() {
+    return (
+      <div>
+        <h3>OR</h3>
+        <button id="demo-button1" onClick={(e) => this.handleDemo(e, 1)}>
+          <FontAwesomeIcon icon={faFacebook} id="facebook" size="lg" />
+          Continue with Facebook
+        </button>
+        <button id="demo-button2" onClick={(e) => this.handleDemo(e, 2)}>
+          Continue with Google
+        </button>
+      </div>
+    );
+  }
 
   renderErrors() {
     return (
       <div>
-          {this.props.errors.map((error, i) => (
-            <div>
-              <span key={`error-${i}`} className="error-message">{error}</span>
-              <br/>
-            </div>
-          ))}
+        {this.props.errors.map((error, i) => (
+          <div>
+            <span key={`error-${i}`} className="error-message">
+              {error}
+            </span>
+            <br />
+          </div>
+        ))}
       </div>
     );
   }
