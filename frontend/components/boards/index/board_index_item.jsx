@@ -7,15 +7,6 @@ const BoardIndexItem = ({board, openModal}) => {
     return (
       <div id="index-item">
         <h3 id="boards">{board.title}</h3>
-        {/* <button onClick={this.update()}></button> */}
-        {/* <FontAwesomeIcon
-          icon={faPen}
-          id="edit-board"
-          className="icon"
-            value={board.id}
-          size="lg"
-          onClick={() => openModal('update')}
-        /> */}
         <FontAwesomeIcon
           icon={faPen}
           id="edit-board"
@@ -23,11 +14,6 @@ const BoardIndexItem = ({board, openModal}) => {
           size="2x"
           onClick={() => openModal(modal)}
         />
-
-        {/* <Link to={`/${props.authorId}/${props.board.id}`}>{props.board.title}</Link> */}
-        {/* <button className="edit" onClick={redirect}>
-                <i className="edit-icon"></i>
-            </button> */}
       </div>
     );
   
