@@ -10,6 +10,7 @@ ActiveRecord::Base.transaction do
 
     User.destroy_all
     Board.destroy_all
+    Pin.destroy_all
 
     demo1 = User.create!(
         email: "einstein@gmail.com",
@@ -34,5 +35,18 @@ ActiveRecord::Base.transaction do
         description: 'This is about Cubism',
         private: true,
         author_id: demo2.id,
+    )
+
+    pin1 = Pin.create!(
+        title: 'Black hole',
+        description: 'This is the first photo of black hole.',
+        author_id: demo1.id
+    )
+
+
+    pin2 = Pin.create!(
+        title: 'Pintura por Laurent Folco',
+        description: 'This is from someone else.',
+        author_id: demo1.id
     )
 end

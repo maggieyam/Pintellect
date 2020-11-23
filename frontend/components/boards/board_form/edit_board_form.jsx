@@ -1,5 +1,5 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../../actions/modal_actions';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
@@ -14,13 +14,6 @@ class EditBoardForm extends React.Component {
 
     }
 
-    // componentDidMount(){     
-    //     this.props.requestBoard(this.state.id);
-    //     // this.requestBoard(53).then(board =>{
-    //     //  
-    //     //     this.setState(board)
-    //     // })    
-    // }
 
     handleSubmit(e) {
         e.preventDefault();       

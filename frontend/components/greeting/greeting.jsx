@@ -4,6 +4,7 @@ import { login } from "../../utils/session_api_util";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch, faPen, faBell, faCommentDots, faChevronCircleDown, faRocket, faPlusCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import { fetchBoards } from "../../actions/boards_actions";
+import BoardIndexItem from "../boards/index/board_index_item";
 const Greeting = ({ currentUser, logout, openModal, }) => {
   // const action = (e) => {
   //   e.preventDefault();
@@ -201,6 +202,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
         <a href="#">Link 3</a>
       </select> */}
         {/* </section> */}
+        {/* <BoardIndexItem /> */}
       </hgroup>
     );};
       // BoardShow

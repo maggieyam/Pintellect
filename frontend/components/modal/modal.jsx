@@ -1,8 +1,8 @@
 import React from "react";
 import LoginFormContainer from "../session/login_container";
 import SignupFormContainer from "../session/signup_container";
-import CreateBoardFormContainer from '../board_form/create_board_container';
-import EditBoardFormContainer from '../board_form/edit_board_container';
+import CreateBoardFormContainer from '../boards/board_form/create_board_container';
+import EditBoardFormContainer from '../boards/board_form/edit_board_container';
 
 export default function Modal({ modal, closeModal }) {
   

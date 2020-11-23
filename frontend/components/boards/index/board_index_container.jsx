@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import BoardIndex from './board_index';
-import { fetchBoards } from '../../actions/boards_actions';
-import { openModal } from '../../actions/modal_actions';
+import { fetchBoards } from '../../../actions/boards_actions';
+import { openModal } from '../../../actions/modal_actions';
 const mapStateToProps = ({entities}, ownProps) => {
     const id = ownProps.location.pathname.split('/').join('');
     return {

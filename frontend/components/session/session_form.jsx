@@ -4,6 +4,8 @@ import {
   faFacebook,
   faGoogle
 } from '@fortawesome/free-brands-svg-icons';
+import { Redirect } from "react-router-dom";
+import { fetchBoards } from "../../utils/boards_api_util";
 
 
 class SessionForm extends React.Component {
@@ -30,18 +32,20 @@ class SessionForm extends React.Component {
     e.preventDefault();
 
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(() => this.props.closeModal());
-    // .then(() => this.props.history.push('/pins'));
+    this.props.processForm(user)
+      .then(() => this.props.closeModal())
+      .then(this.componentDidUpdate())
+      .then(() => this.props.history.push(`/${this.props.session.id}`));
   }
 
-  // demoUser(e){
-  //   e.preventDefault();
-  //   const user = {
-  //                 email: "einstein@gmail.com",
-  //                 password: "123456",
-  //                 }
-  //   this.props.login(user).then(() => this.props.closeModal());
-  // }
+  componentDidUpdate(prevProps){ 
+  // Typical usage (don't forget to compare props):
+    if (this.props.userID !== prevProps.userID) {
+    this.fetchData(this.props.userID);
+    console.log(this.props);
+  }
+
+  }
 
   renderAge() {
     return (
@@ -55,6 +59,8 @@ class SessionForm extends React.Component {
     );
   }
 
+
+
   handleDemo(e, num) {
     e.preventDefault();
     let user = {};
@@ -63,7 +69,10 @@ class SessionForm extends React.Component {
     } else {
       user = {email: 'picasso@gmail.com', password: '123456'};
     }    
-    this.props.login(user).then(() => this.props.closeModal());
+    this.props.login(user)
+    .then(() => this.props.closeModal())
+    // .then(this.componentDidUpdate())
+    // .then(() => this.props.history.push('/'));
   }
 
   render() {

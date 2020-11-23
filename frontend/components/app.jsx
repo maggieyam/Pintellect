@@ -5,11 +5,11 @@ import SignUpFormContainer from './session/signup_container';
 import LogInFormContainer from './session/login_container.jsx';
 import GreetingContainer from "./greeting/greeting_container";
 import ModalContainer from "./modal/modal_container";
-import CreateBoardContainer from "./board_form/create_board_container";
-import EditBoardContainer from "./board_form/edit_board_container";
-import BoardShowContainer from './show/board_show_container';
+import CreateBoardContainer from "./boards/board_form/create_board_container";
+import EditBoardContainer from "./boards/board_form/create_board_container";
+import BoardShowContainer from './boards/show/board_show_container';
 // import BoardShowContainer from "./show/board_show_container";
-import BoardIndexContainer from "./index/board_index_container";
+import BoardIndexContainer from "./boards/index/board_index_container";
 import {AuthRoute, ProtectedRoute} from '../utils/route_util';
 
 const App = () => (

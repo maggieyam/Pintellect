@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 // import { fetchBoard, updateBoard } from '../../actions/boards_actions';
-import { requestBoard, updateBoard } from '../../actions/boards_actions';
+import { requestBoard, updateBoard } from '../../../actions/boards_actions';
 import EditBoardForm from './edit_board_form';
-import { openModal, closeModal } from "../../actions/modal_actions";
+import { openModal, closeModal } from "../../../actions/modal_actions";
 import React from 'react';
 
 const mapStateToProps = ({ui}) => {

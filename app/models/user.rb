@@ -22,7 +22,11 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     dependent: :destroy
 
-    after_initialize :ensure_session_token, :set_username, :set_first_name 
+    has_many :pins,
+    foreign_key: :author_id,
+    dependent: :destroy
+
+    after_initialize :ensure_session_token, :set_username, :set_first_name, :set_last_name 
    
     attr_reader :password, 
     
@@ -49,11 +53,18 @@ class User < ApplicationRecord
   end
 	
   def set_username
-      self.username = self.email.split("@")[0]
+      self.username = self.email.split("@")[0].capitalize()
   end
   
   def set_first_name
-    self.first_name ||= self.username;
+    self.first_name ||= self.username.split("_")[0];
+  end
+
+  def set_last_name
+    name = self.username.split("_")[1];
+    if name 
+      self.last_name = name.capitalize();
+    end
   end
 
   private
