@@ -18,13 +18,13 @@ class BoardIndex extends React.Component {
             {/* <button id="index-initial"></button> */}
             <p id="initial-logo">{user.username[0]}</p>
             <p id="index-header">{user.username}</p>
-            <button
+            {/* <button
               className="modal-index"
               id="initial"
-              onClick={() => this.propsopenModal('create')}
-            >
-              {user.username[0].toUpperCase()}
-            </button>
+              onClick={() => this.props.openModal('create')}
+            > */}
+              {/* {user.username[0].toUpperCase()}
+            </button> */}
             <p className="index-name">@{user.first_name}</p>
             <p>0 followers * 0 following</p>
             <div>
@@ -32,7 +32,6 @@ class BoardIndex extends React.Component {
                 return (
                   <BoardIndexItem 
                   board={board} 
-                  authorId = {user.id}
                   openModal={openModal} 
                   key={board.id} />
                 );

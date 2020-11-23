@@ -1,12 +1,11 @@
 import React from 'react';
+import { closeModal } from '../../actions/modal_actions';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
         super(props);
-        debugger
-        this.state = {
-            title: "LOL",
-        };
+        
+        this.state = this.props.board;
         // this.state = {title: "test1", description: "test2"}
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -15,29 +14,24 @@ class EditBoardForm extends React.Component {
 
     }
 
-    componentDidMount(){     
-        this.props.requestBoard(this.state.id);
-        // this.requestBoard(53).then(board =>{
-        //  
-        //     this.setState(board)
-        // })    
-    }
+    // componentDidMount(){     
+    //     this.props.requestBoard(this.state.id);
+    //     // this.requestBoard(53).then(board =>{
+    //     //  
+    //     //     this.setState(board)
+    //     // })    
+    // }
 
     handleSubmit(e) {
-        e.preventDefault();
-        console.log("create button clicked")
-        debugger
-        this.props.updateBoard(this.state);
+        e.preventDefault();       
+        this.props.updateBoard(this.state).then(() => this.props.closeModal());
     }
 
-    update(field) {
-        debugger
+    update(field) {     
         return e => this.setState({ [field]: e.currentTarget.value });
     }
 
     render(){
-        debugger
-
         const { title, description } = this.state;
         return (
           <div id="board-edit-form">

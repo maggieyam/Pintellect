@@ -6,7 +6,7 @@ import EditBoardFormContainer from '../board_form/edit_board_container';
 import EditBoardForm from '../board_form/edit_board_form';
 import { openModal } from '../../actions/modal_actions';
 
-const BoardIndexItem = ({board}) => {
+const BoardIndexItem = ({board, openModal}) => {
   // const redirect = <Redirect to={`/${props.board.authorId}/${props.board.id}/edit`}/>
   // {props.board}
 //   constructor(props) {
@@ -29,19 +29,26 @@ const BoardIndexItem = ({board}) => {
     
 //     <Redirect to={`/${authorid}/${board.ids}`}/>
 //   }
-//   debugger
+//   
+    const modal = {type: 'update', item: board}
     return (
       <div id="index-item">
         <h3 id="boards">{board.title}</h3>
         {/* <button onClick={this.update()}></button> */}
+        {/* <FontAwesomeIcon
+          icon={faPen}
+          id="edit-board"
+          className="icon"
+            value={board.id}
+          size="lg"
+          onClick={() => openModal('update')}
+        /> */}
         <FontAwesomeIcon
           icon={faPen}
           id="edit-board"
           className="icon"
-        //   value={board.id}
-          size="lg"
-          onClick={() => openModal()}
-    
+          size="2x"
+          onClick={() => openModal(modal)}
         />
 
         {/* <Link to={`/${props.authorId}/${props.board.id}`}>{props.board.title}</Link> */}

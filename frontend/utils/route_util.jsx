@@ -29,11 +29,10 @@ const Edit = ({component: Component, path, loggedIn, exact}) => (
 );
 
 const mapStateToProps = state => ({loggedIn: Boolean (state.session.id)});
-
 export const AuthRoute = withRouter (connect (mapStateToProps) (Auth));
 
 export const ProtectedRoute = withRouter (
   connect (mapStateToProps) (Protected)
 );
 
-export const EditRoute = withRouter (connect(mapStateToProps)(Edit))
+// export const EditRoute = withRouter (connect(mapStateToProps)(Edit))

@@ -5,10 +5,11 @@ import EditBoardForm from './edit_board_form';
 import { openModal, closeModal } from "../../actions/modal_actions";
 import React from 'react';
 
-const mapStateToProps = (board) => {
+const mapStateToProps = ({ui}) => {
+  
     return {
         // board: state.entities.boards,
-        board
+        board: ui.modal.item
     // board: state.session.id,
 }};
 
@@ -16,8 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
   requestBoard: (boardId) => dispatch(requestBoard(boardId)),
   updateBoard: (board) => dispatch(updateBoard(board)),
   closeModal: () => dispatch(closeModal()),
-  openModal: () => dispatch(openModal('create')),
-  openModal: () => dispatch(openModal('update')),
+  openModal: () => dispatch(openModal({type:'create'})),
+  openModal: (modal) => dispatch(openModal(modal)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditBoardForm);

@@ -2,7 +2,7 @@ import React from "react";
 import { Link }from "react-router-dom";
 import { login } from "../../utils/session_api_util";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch, faBell, faCommentDots, faChevronCircleDown, faRocket, faPlusCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import {faSearch, faPen, faBell, faCommentDots, faChevronCircleDown, faRocket, faPlusCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import { fetchBoards } from "../../actions/boards_actions";
 const Greeting = ({ currentUser, logout, openModal, }) => {
   // const action = (e) => {
@@ -10,7 +10,10 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
   //     const user = {email: 'einstein@gmail.com', password: '123456'};
   //     this.props.login(user).then(() => closeModal());
   // }
-  const sessionLinks = () => (
+  const sessionLinks = () => {
+    const signup = {type: 'signup'};
+    const login = ({type: 'login'})
+    return (
     <header className="group">
       <div className="main-nav">
         <nav className="left-nav">
@@ -20,10 +23,10 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
 
         <nav className="right-nav">
           <div className="login-signup">
-            <button onClick={() => openModal({type: 'login'})} id="login">
+            <button onClick={() => openModal(login)} id="login">
               Log in
             </button>
-            <button onClick={() => openModal('signup')} id="signup">
+            <button onClick={() => openModal(signup)} id="signup">
               Sign up
             </button>
             {/* <button onClick={e => action(e)} id="signin">
@@ -115,75 +118,91 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
         </div> */}
       </section>
     </header>
-  );
+  )};
 
   
-  const personalGreeting = () => (
-    <hgroup className="header-group" width="100%">
-      {/* <section className="left-nav-index"> */}
-      <FontAwesomeIcon icon={faRocket} spin className="logo" size="2x" />
-      <button className="board-nav-button" id="home-button">
-        <Link to="/" id="home-link">
-          Home
-        </Link>
-      </button>
+  const personalGreeting = () => {
+    const modal = {type: 'create'};
+    const update = {type: 'update', item: {title: 'Space', id:'64'}};
+    return (
+      <hgroup className="header-group" width="100%">
+        {/* <section className="left-nav-index"> */}
+        <FontAwesomeIcon icon={faRocket} spin className="logo" size="2x" />
+        <button className="board-nav-button" id="home-button">
+          <Link to="/" id="home-link">
+            Home
+          </Link>
+        </button>
 
-      <button className="board-nav-button" id="today">
-        <Link to="/" id="nav-link">
-          Today
-        </Link>
-      </button>
+        <button className="board-nav-button" id="today">
+          <Link to="/" id="nav-link">
+            Today
+          </Link>
+        </button>
 
-      <button className="board-nav-button" id="following">
-        <Link to="/" id="nav-link">
-          Following
-        </Link>
-      </button>
-      {/* </section> */}
-      {/* <div> */}
-      <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
-      <input type="text" placeholder="      Search" id="search" />
-      {/* </div> */}
+        <button className="board-nav-button" id="following">
+          <Link to="/" id="nav-link">
+            Following
+          </Link>
+        </button>
+        {/* </section> */}
+        {/* <div> */}
+        <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
+        <input type="text" placeholder="      Search" id="search" />
+        {/* </div> */}
 
-      {/* <i class="fa fa-user icon">
+        {/* <i class="fa fa-user icon">
           </i>
           </input> */}
-      {/* <div className="right-index-nav"> */}
-      {/* <section className="right-nav-index"> */}
-      <FontAwesomeIcon icon={faBell} id="bell" className="icon" size="2x" />
-      <FontAwesomeIcon icon={faCommentDots} className="icon" id="comment" size="2x" />
-      <FontAwesomeIcon
-        icon={faChevronCircleDown}
-        className="drop-down-icon"
-        size="2x"
-      />
-      <FontAwesomeIcon
-        icon={faPlusCircle}
-        className="icon"
-        id="modal-create"
-        size="2x"
-        onClick={() => openModal('create')}
-      />
+        {/* <div className="right-index-nav"> */}
+        {/* <section className="right-nav-index"> */}
+        <FontAwesomeIcon icon={faBell} id="bell" className="icon" size="2x" />
+        <FontAwesomeIcon
+          icon={faCommentDots}
+          className="icon"
+          id="comment"
+          size="2x"
+        />
+        <FontAwesomeIcon
+          icon={faChevronCircleDown}
+          className="drop-down-icon"
+          size="2x"
+        />
+        <FontAwesomeIcon
+          icon={faPlusCircle}
+          className="icon"
+          id="modal-create"
+          size="2x"
+          onClick={() => openModal(modal)}
+        />
 
-      <FontAwesomeIcon
-        icon={faSignOutAlt}
-        id="log-out"
-        className="icon"
-        onClick={logout}
-        size="2x"
-      />
-      {/* </div> */}
-      {/* <div class="dropdown">
+        <FontAwesomeIcon
+          icon={faPen}
+          id="edit-board"
+          className="icon"
+          size="2x"
+          onClick={() => openModal(update)}
+        />
+
+        <FontAwesomeIcon
+          icon={faSignOutAlt}
+          id="log-out"
+          className="icon"
+          onClick={logout}
+          size="2x"
+        />
+        {/* </div> */}
+        {/* <div class="dropdown">
         <button class="dropbtn"></button> */}
-      {/* <select class="dropdown-content">
+        {/* <select class="dropdown-content">
         <option></option>
         <a href="#">Link 1</a>
         <a href="#">Link 2</a>
         <a href="#">Link 3</a>
       </select> */}
-      {/* </section> */}
-    </hgroup>
-  );
+        {/* </section> */}
+      </hgroup>
+    );};
       // BoardShow
 
 
