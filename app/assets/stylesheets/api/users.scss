@@ -2,23 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//  main nav
-
 
 .main-nav {
-	display:flex;
+    display:flex;
+    height: 68px;
     justify-content: space-between;
     margin-left: 25px;
     padding: 0px 20px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.left-nav,
+
 .right-nav > ul{
-    display: flex;
-    align-items: center;
-    padding: 0, 20px;
+    justify-content: flex-end;;
     flex-direction: row;
+    width: 496.3px;
+    height: 56px;
+
 }
 
 .left-nav {
@@ -27,44 +27,24 @@
 
 // .left-nav 
 .login-signup {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px 10px;
+    padding: 20px 20px;
 }
 
-button{
-    
+button{   
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
     text-align: center;
     cursor: pointer;
-    // align-items: flex-start;
     padding: 8px 12px;
     border-radius: 20px;
     margin-left: 15px;
     vertical-align: middle;
-    // min-width: 60px;
     width: 77.66px;
     height: 48px;
     font-size: 12px;
     height: 40px;
-    // font-family: 'Poppins', sans-serif;
     font-weight: 700;
     border: none;
     font-size: 16px;
-}
-
-#login {    
-    background-color: #e60023;
-    color: white;  
-}
-
-#signup {
-    background-color: #efefef;;
-    color: black;
-    width: 82.13px;
-}
-
-button {
     -webkit-writing-mode: horizontal-tb !important;
     text-rendering: auto;
     letter-spacing: normal;
@@ -80,10 +60,20 @@ button {
     font-variant-east-asian: normal;
     font-stretch: normal;
     line-height: normal;
-    --g-switch-height: 24px;
-    --g-switch-width: 40px;
-    --g-switch-border: 1px;
+
 }
+
+#login {    
+    background-color: #e60023;
+    color: white;  
+}
+
+#signup {
+    background-color: #efefef;;
+    color: black;
+    width: 82.13px;
+}
+
 
 
 
@@ -130,11 +120,9 @@ button#demo-button2 {
 }
 
 .main-content {
-    max-height: 322.5px;
-    display: block;
-    align-content: center;
+    height: 298.5px;
     padding: 0px;
-    margin: 130px;
+    margin-top: 73.5px;
     margin-bottom: 0px;
     font-size: 60px;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
@@ -156,50 +144,61 @@ button#demo-button2 {
 }
 
 .seeds-container {
+    z-index: -1;
     position: relative;
     display: flex;
-    grid-column-gap: 50px;
+    flex-direction: row;
+    width: 100%;
+    
+    grid-column-gap: 20px;
+    margin-top: -120px;
+    margin-right: 0px;
+    overflow: hidden;
     img {
         border-radius: 12px;
-        max-width: 236px;
+        max-width: 230px;
         max-height: 350px;
         position: relative;
-    }
-    h1 {
-        margin-top: 70px;
-    }
-
-    h2 {
-        margin-top: 140px;
+        margin-bottom: 15px;
+        
     }
     
 }
 
+.placeholder1 {
+    width: 230px;
+    height: 100px;
+}
+.placeholder2 {
+    width: 230px;
+    height: 200px;
+}
+.placeholder3 {
+    width: 230px;
+    height: 300px;
+}
 
+.column1, .column2, .column3, .column4
+.column5, .column6, .column7{
+       margin-bottom: 25px;
+        
+}
 
-.column1{
-        flex: 1;
-        
-    }
-    .column2 #desend-30{
-        flex: 1;
-        margin:50px;
-        
-    }
-    .column3{
-        flex: 1;
-    }
-    .column4{
-        flex: 1;
-    }
-    .column5{
-        flex: 1;
-    }
-    .column6{
-        flex: 1;
-    }
-    .column7{
-        flex: 1;
-    }
+.column2, .column6 {
+    padding-top: 50px;
+}
+
+.faStroopwafel1 {
+    margin-right: 15px;
+    color: #C28B00;
+}
+.faStroopwafel2 {
+    color: #E60023;
+    margin-right: 15px;
+}
+.faStroopwafel3 {
+    color: #618C7B;
+}
+
 
    

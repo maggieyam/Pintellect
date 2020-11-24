@@ -8,9 +8,9 @@ end
 #   json.pinIds @board.pins.pluck(:id)
 @board.pins.includes(:author).each do |pin|
   json.pins do
-    debugger
+    
     json.set! pin.id do
-      debugger
+      
       json.partial! 'api/pins/pin', pin: pin
     end
   end

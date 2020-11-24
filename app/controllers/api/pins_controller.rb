@@ -1,6 +1,6 @@
 class Api::PinsController < ApplicationController
     def create
-        debugger
+        
         @pin = Pin.new(pin_params)
         @pin.author_id = current_user.id
 

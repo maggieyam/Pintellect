@@ -33,7 +33,7 @@ class CreatePinForm extends React.Component{
         e.preventDefault;
 
         const pin = Object.assign({}, this.state);
-        debugger
+        
         this.props.createPin(pin);
         console.log(pin);
     }
@@ -58,7 +58,7 @@ class CreatePinForm extends React.Component{
     render(){
         const { title, description, link } = this.state;
         const { first_name, last_name } = this.props.user;
-        debugger
+        
         return (
           <div id="body-container">
             <div id="body-section">

@@ -41,6 +41,7 @@ ActiveRecord::Base.transaction do
         title: 'Black hole',
         description: 'This is the first photo of black hole.',
         author_id: demo1.id
+        link: "https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg"
     )
 
 
@@ -49,4 +50,28 @@ ActiveRecord::Base.transaction do
         description: 'This is from someone else.',
         author_id: demo1.id
     )
+
+    pin-archi1 = Pin.create!(
+        title: '25 Best Examples of Modern Architecture Buildings - Vintagetopia',
+        description: 'Remote work could have been on the rise for the previous decades, but the majority of people still prefer to do their job at the office',
+        author_id: demo1.id
+        link: "https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg"
+    )
+    pin-archi2 = Pin.create!(
+        title: 'Doris Arts',
+        description: 'BIG Architects, Seoul Korea, architecture, architectural design, 
+        buildings, architecture design idea and inspiration #ArchitecturalArts',
+        author_id: demo1.id
+        link: "https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg"
+    )
+
+    pin-archi3 = Pin.create!(
+        title: 'Doris Arts',
+        description: 'BIG Architects, Seoul Korea, architecture, architectural design, 
+        buildings, architecture design idea and inspiration #ArchitecturalArts',
+        author_id: demo1.id
+        link: "https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg"
+    )
+
+    
 end

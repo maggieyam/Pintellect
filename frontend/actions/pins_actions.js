@@ -22,7 +22,7 @@ const removePin = (pinId) => ({
 });
 
 export const createPin = (pin) => (dispatch) => {
-    debugger
+    
   return APIUtil.createPin(pin).then((pin) => {
     return dispatch(receivePin(pin));
   });
