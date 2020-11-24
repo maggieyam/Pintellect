@@ -16,6 +16,27 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
   const sessionLinks = () => {
     const signup = {type: 'signup'};
     const login = ({type: 'login'});
+    const img1 = "https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg";
+    const img2 = "https://static.boredpanda.com/blog/wp-content/uploads/2017/11/Bbgp4UGnZ3P-png__880.jpg";
+    const img3 = "https://images.dwell.com/photos-6063391372700811264/6623408749045575680-large/the-ground-floor-of-the-a-frame-structure-houses-an-open-plan-dining-area.jpg";
+    const img4 = "https://i2-prod.mirror.co.uk/incoming/article11406005.ece/ALTERNATES/s1227b/PAY-Giant-Birds-Nest-In-Kenya-Lets-Safari-Guests-Sleep-Luxuriously-Above-The-Trees.jpg"
+    const img5 = "https://media.paperblog.fr/i/641/6412623/performing-arts-center-high-line-new-york-L-ug4PGA.jpeg";
+    const img6 = "https://cdn.ebaumsworld.com/2018/12/13/103716/85835653/00bcc44797594895f122fe26e4a1b204.jpg";
+    const img7 = "https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png";
+    const img8 = "http://images.huffingtonpost.com/2014-02-14-TschuggenBergoase_SPA3.jpg";
+    const img9 = "https://media.architecturaldigest.com/photos/56a026f0f62777972f2fdf6c/master/w_1600%2Cc_limit/architectural-landmarks-los-angeles-02.jpg";
+    const img10 = "https://www.totallandscapecare.com/wp-content/uploads/sites/5/2015/08/rolex-building2.jpg";
+    const img11 = "https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png";
+    const img12 = "https://i.dailymail.co.uk/i/pix/2017/04/28/08/3FAB39F800000578-0-The_Heal_Berg_Reverse_Climate_Changing_Machine_was_designed_by_L-a-51_1493363861216.jpg";
+    const img13 = "https://mymodernmet.com/wp/wp-content/uploads/archive/muY1Q3B4kIodjYWvqT2l_1082106231.jpeg";
+    const img14 = "https://i.pinimg.com/originals/a1/60/5b/a1605b70ffab15fff3abaae2d8d57ab8.jpg"
+    const img15 = "https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/enlightenment-john-galbo.jpg";
+    const img16 = "https://farm4.static.flickr.com/3394/3191097011_460ded47de.jpg";
+    const img17 = "https://media.architecturaldigest.com/photos/56a0270a883e5aaf0648d1f2/master/w_1600%2Cc_limit/architectural-landmarks-los-angeles-23.jpg";
+    const img18 = "https://i.pinimg.com/originals/58/a7/07/58a707abd66f1149b93577d0e615b766.jpg";
+    const img19 = "https://images.adsttc.com/media/images/5343/2876/c07a/8091/a000/01bf/large_jpg/952-04_05_sc_v2com.jpg?1396910188";
+    const img20 = "https://images.adsttc.com/media/images/591d/a084/e58e/cef3/1700/0039/slideshow/Edoardo_Tresoldi_-_Abu_Dhabi_%C2%A9Roberto_Conte_1.jpg?1495113855";
+    const img21 = "https://media.architecturaldigest.com/photos/56a02704883e5aaf0648d1ee/master/w_1600%2Cc_limit/architectural-landmarks-los-angeles-17.jpg";
     // window.addEventListener('scroll', () => openModal(signup));
     
     return (
@@ -40,7 +61,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
             </div>
           </nav>
         </div>
-        <section className="main-content">
+        <div className="main-content">
           <div>Get Your Next</div>
           <br />
           <p>
@@ -68,139 +89,54 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
               size="xs"
             />
           </p>
-        </section>
+        </div>
 
         <section className="seeds-container">
-          <div className="coloumn1">
-            <img
-              src="https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg"
-              alt="modern"
-            />
-            <img
-              src="https://static.boredpanda.com/blog/wp-content/uploads/2017/11/Bbgp4UGnZ3P-png__880.jpg"
-              alt="modern"
-            />
-            <img
-              src="https://images.dwell.com/photos-6063391372700811264/6623408749045575680-large/the-ground-floor-of-the-a-frame-structure-houses-an-open-plan-dining-area.jpg"
-              alt="modern"
-            />
-          </div>
-          <div className="coloumn2">
-            <img
-              src="https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png"
-              alt="modern"
-              className="placeholder1"
-            />
-            <img
-              src="https://i2-prod.mirror.co.uk/incoming/article11406005.ece/ALTERNATES/s1227b/PAY-Giant-Birds-Nest-In-Kenya-Lets-Safari-Guests-Sleep-Luxuriously-Above-The-Trees.jpg"
-              alt="modern"
-              id="descend-30"
-            />
-            <img
-              src="https://media.paperblog.fr/i/641/6412623/performing-arts-center-high-line-new-york-L-ug4PGA.jpeg"
-              alt="modern"
-              id="descend-30"
-            />
-            <img
-              src="https://cdn.ebaumsworld.com/2018/12/13/103716/85835653/00bcc44797594895f122fe26e4a1b204.jpg"
-              alt="modern"
-              id="descend-30"
-            />
-          </div>
-          <div className="coloumn3">
-            <img
-              src="https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png"
-              alt="modern"
-              className="placeholder2"
-            />
-
-            <img
-              src="http://images.huffingtonpost.com/2014-02-14-TschuggenBergoase_SPA3.jpg"
-              alt="modern"
-            />
-
-            <img
-              src="https://media.architecturaldigest.com/photos/56a026f0f62777972f2fdf6c/master/w_1600%2Cc_limit/architectural-landmarks-los-angeles-02.jpg"
-              alt="modern"
-            />
-
-            <img
-              src="https://www.totallandscapecare.com/wp-content/uploads/sites/5/2015/08/rolex-building2.jpg"
-              alt="modern"
-            />
+          <div className="column1 column">
+            <img src={img1} alt="modern" />
+            <img src={img2} alt="modern" />
+            <img src={img3} alt="modern" />
           </div>
 
-          <div className="coloumn4">
-            {/* <img
-              src="https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png"
-              alt="modern"
-              className="placeholder1"
-            /> */}
-
-            <img
-              src="https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png"
-              alt="modern"
-              className="placeholder3"
-            />
-
-            <img
-              src="https://i.dailymail.co.uk/i/pix/2017/04/28/08/3FAB39F800000578-0-The_Heal_Berg_Reverse_Climate_Changing_Machine_was_designed_by_L-a-51_1493363861216.jpg"
-              alt="modern"
-            />
-            <img
-              src="https://mymodernmet.com/wp/wp-content/uploads/archive/muY1Q3B4kIodjYWvqT2l_1082106231.jpeg"
-              alt="modern"
-            />
+          <div className="column2 column">
+            <img src={img7} alt="modern" className="placeholder1" />
+            <img src={img4} alt="modern" />
+            <img src={img5} alt="modern" />
+            <img src={img6} alt="modern"/>
           </div>
-          <div className="coloumn5">
-            <img
-              src="https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png"
-              alt="modern"
-              className="placeholder2"
-            />
-            <img
-              src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/enlightenment-john-galbo.jpg"
-              alt="modern"
-            />
-            <img
-              src="https://farm4.static.flickr.com/3394/3191097011_460ded47de.jpg"
-              alt="modern"
-            />
-          </div>
-          <div className="coloumn6">
-            <img
-              src="https://nsc.edu/wp-content/uploads/2018/02/blank-image-placeholder.png"
-              alt="modern"
-              className="placeholder1"
-            />
-            <img
-              src="https://i.pinimg.com/originals/a1/60/5b/a1605b70ffab15fff3abaae2d8d57ab8.jpg"
-              alt="modern"
-            />
 
-            <img
-              src="https://media.architecturaldigest.com/photos/56a0270a883e5aaf0648d1f2/master/w_1600%2Cc_limit/architectural-landmarks-los-angeles-23.jpg"
-              alt="modern"
-            />
-
-            <img
-              src="https://i.pinimg.com/originals/58/a7/07/58a707abd66f1149b93577d0e615b766.jpg"
-              alt="modern"
-            />
+          <div className="column3 column">
+            <img src={img7} alt="modern" className="placeholder2" />
+            <img src={img8} alt="modern" />
+            <img src={img9} alt="modern" />
+            <img src={img10} alt="modern" />
           </div>
-          <div className="coloumn7">
-            <img
-              src="https://images.adsttc.com/media/images/5343/2876/c07a/8091/a000/01bf/large_jpg/952-04_05_sc_v2com.jpg?1396910188"
-              alt="modern"
-            />
-            <img
-              src="https://images.adsttc.com/media/images/591d/a084/e58e/cef3/1700/0039/slideshow/Edoardo_Tresoldi_-_Abu_Dhabi_%C2%A9Roberto_Conte_1.jpg?1495113855"
-              alt="modern"
-            />
-            <img
-              src="https://media.architecturaldigest.com/photos/56a02704883e5aaf0648d1ee/master/w_1600%2Cc_limit/architectural-landmarks-los-angeles-17.jpg"
-              alt="modern"
-            />
+
+          <div className="column4 column">
+            <img src={img11} alt="modern" className="placeholder3"/>
+            <img src={img12} alt="modern" />
+            <img src={img13} alt="modern"/>
+          </div>
+
+          <div className="column5 column">
+            <img src={img7} alt="modern" className="placeholder2"/>
+            <img src={img15} alt="modern"/>
+            <img src={img16} alt="modern"/>
+          </div>
+
+          <div className="column6 column">
+            <img src={img7} alt="modern" className="placeholder1"/>
+            <img src={img14} alt="modern"/>
+
+            <img src={img17} alt="modern"/>
+
+            <img src={img18} alt="modern" />
+          </div>
+
+          <div className="column7 column">
+            <img src={img19} alt="modern" />
+            <img src={img20} alt="modern" />
+            <img src={img21} alt="modern"/>
           </div>
         </section>
       </header>
@@ -215,7 +151,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
     //   return useNavigate(`/${currentUser.id}`);
     // }
     return (
-      <hgroup className="header-group" width="100%">
+      <hgroup className="header-group">
         {/* <section className="left-nav-index"> */}
         <FontAwesomeIcon icon={faRocket} spin className="logo" size="2x" />
         <button className="board-nav-button" id="home-button">
@@ -300,7 +236,6 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
         {/* <BoardIndexItem /> */}
       </hgroup>
     );};
-      // BoardShow
 
 
   return currentUser ? personalGreeting(currentUser, logout) : sessionLinks();
