@@ -1,1 +1,2 @@
-son.extract! pins, :id, :title, :description, :board_id, :author_id, :link, :comment
+debugger
+json.extract! pin, :id, :title, :description, :author_id, :link, :comments

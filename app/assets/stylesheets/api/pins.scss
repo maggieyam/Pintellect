@@ -1,3 +1,208 @@
 // Place all the styles related to the api/pins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#body-container {
+    width: 100%;
+    height: 849px;
+    background-color: #efefef;
+}
+
+#body-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 674px;
+    margin-right: 0px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    transform-origin: center top; 
+    box-sizing: border-box;
+}
+
+#pin-create-form {
+    background-color: #FFFFFF;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 840px;
+    height: 610px;
+    border-radius: 16px;
+    // display: flex;
+    flex-direction: column;
+}
+
+#top-bar {
+    display: flex;
+    width: 800px;
+    height: 40px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-right: 0px;
+    justify-content: space-between;
+}
+
+#nav-right-pin-reset {
+    margin-right: 0px;
+}
+
+#nav-right-pin-form {
+    margin-right: 0px;
+    position: absolute; right: 110px;
+}
+
+#dots-pin-form {
+    width: 40px;
+    height: 40px;   
+    padding-left: 12px;
+    padding-right: 12px;
+    text-align: center;
+    // background-color: #E60023;
+
+    // vertical-align: center;
+    // justify-content: center;
+}
+
+.save {
+    background-color: #E60023;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 65.23px;
+    height: 40px;
+    margin-left: 0px;
+    color: #FFFFFF;
+}
+
+#svg-pin-drop-down {
+    margin-left: 81px;
+}
+
+#svg-pin-form-dot {
+    color: #878787;
+    width: 18px;
+    height: 18px;
+    padding-top: 10px;
+    // padding-top;
+}
+
+#pin-form-body{
+    display: flex;
+    justify-content: space-between;
+}
+
+#select {
+    width: 170.77px;
+    height: 40px;
+    text-align: left;
+    color: #111111;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-weight: 400;
+}
+
+
+#create-pin-left {
+    width: 340px;
+    height: 510px;
+    margin-right: 0px;
+    margin-left: 20px;
+}
+#create-pin-right {
+    width: 380px;
+    height: 446px;
+    margin-right:25px;
+    flex-direction: column;
+    
+}
+
+#upload-img {
+    width: 340px;
+    height: 454px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefef;
+    border-radius: 16px;
+}
+
+#save-from-site {
+    width: 340px;
+    height: 48px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 0px;
+    margin-top: 10px;
+    color: #111111;
+}
+
+#input-form-pins {
+    // padding-left: 0px;
+    // padding-right: 0px;
+    // padding-top: 0px;
+    // padding-bottom: 0px;
+    border: none;
+    border-bottom: 2px solid #efefef;
+    width: 380px;
+    height: 43px;
+    // padding-top: 20px;
+    padding-bottom: 0px;
+    margin-top: 20px;
+    // border-left: none;
+    // border-right: none;
+    // border-top: none;
+    // border-radius: 0;
+    // text-decoration: underline;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-rtl-ordering: logical;
+    align-items: center;
+    font-weight: 700;
+    font-size: 36px;
+
+}
+
+
+#add-title {
+    flex-direction: column;
+    margin-top: 25px;
+    margin-right: 15px;
+    font-size: 16px;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+#choose-link, #input-pin {
+ width: 380px;
+ font-size: 18px;
+ border: none;
+border-bottom: 2px solid #efefef;
+ margin-top: 20px;
+}
+
+#choose-link:focus, #input-pin:focus, #input-form-pins:focus{
+    outline: none;
+}
+#choose-link {
+    margin-top: 140px;
+}
+
+#names{
+    flex-direction: row;
+}
+#pin-initial {
+    width: 32px;
+     height: 32px;
+}

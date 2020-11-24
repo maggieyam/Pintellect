@@ -44,7 +44,7 @@ class CreateBoardForm extends React.Component{
                 onChange={this.update('title')}
               />
 
-              <br/><label class="form-label">Dates</label>
+              <br/><label className="form-label">Dates</label>
               <input
                 type="date"
                 className="input-form"
