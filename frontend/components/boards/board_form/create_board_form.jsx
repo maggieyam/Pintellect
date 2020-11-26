@@ -1,5 +1,4 @@
 import React from 'react';
-import BoardShowContainer from '../show/board_show_container';
 
 class CreateBoardForm extends React.Component{
     constructor(props) {
@@ -18,7 +17,8 @@ class CreateBoardForm extends React.Component{
         e.preventDefault;
         // this.props.createBoard(this.state);
         const board = Object.assign({}, this.state);
-        this.props.createBoard(board).then(() => this.props.closeModal());
+        this.props.createBoard(board).then(() => this.props.closeModal())
+        // .then(this.props.history(`/${this.props.author_id}`));
         // <BoardShowContainer />
     }
 

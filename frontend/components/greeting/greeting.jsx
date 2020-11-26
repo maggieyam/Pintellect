@@ -55,9 +55,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
               <button onClick={() => openModal(signup)} id="signup">
                 Sign up
               </button>
-              {/* <button onClick={e => action(e)} id="signin">
-              Demo User
-            </button> */}
+
             </div>
           </nav>
         </div>
@@ -146,10 +144,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
   const personalGreeting = () => {
     const create = {type: 'create'};
     const update = {type: 'update', item: {title: 'Space', id:'64'}};
-    // const redirect = () => {
-    //   // return <Redirect to={`/${currentUser.id}`} />;
-    //   return useNavigate(`/${currentUser.id}`);
-    // }
+
     return (
       <hgroup className="header-group">
         {/* <section className="left-nav-index"> */}
@@ -175,13 +170,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
         {/* <div> */}
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
         <input type="text" placeholder="      Search" id="search" />
-        {/* </div> */}
-
-        {/* <i class="fa fa-user icon">
-          </i>
-          </input> */}
-        {/* <div className="right-index-nav"> */}
-        {/* <section className="right-nav-index"> */}
+       
         <FontAwesomeIcon
           icon={faBell}
           id="bell"
@@ -200,13 +189,13 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
           className="drop-down-icon"
           size="2x"
         />
-        <FontAwesomeIcon
+        {/* <FontAwesomeIcon
           icon={faPlusCircle}
           className="icon"
           id="modal-create"
           size="2x"
           onClick={() => openModal(create)}
-        />
+        /> */}
 
         <FontAwesomeIcon
           icon={faPen}

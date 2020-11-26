@@ -10,6 +10,7 @@ const mSTP = ({errors}) => {
   return {
     errors: errors.session,
     submitButton: "Continue",
+    url: "/login",
     navLinkText: 'Already a member? Log in'
   };
 };

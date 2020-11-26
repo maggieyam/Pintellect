@@ -1,12 +1,9 @@
 import React from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {
-  faFacebook,
-  faGoogle
-} from '@fortawesome/free-brands-svg-icons';
+import {faSearch, faPen, faBell, faCommentDots, faChevronCircleDown, 
+  faRocket, faPlusCircle, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import { Redirect } from "react-router-dom";
 import { fetchBoards } from "../../utils/boards_api_util";
-
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -30,11 +27,14 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+  
     const user = Object.assign({}, this.state);
+    const props = this.props;
     this.props.processForm(user)
       .then(() => this.props.closeModal())
-      .then(() => this.props.history.push(`/${this.props.session.id}`));
+      .then(() => { 
+        
+        props.history.push(`/${props.session.id}`)});
   }
 
   componentDidUpdate(prevProps){ 
@@ -79,13 +79,14 @@ class SessionForm extends React.Component {
 
     return (
       <div className="session-forms">
-        <h3 className="greeting">Welcome to Pintellect</h3>
+        <FontAwesomeIcon icon={faStroopwafel} spin className="session-logo" size="2x" />
+        <div className="greeting">Welcome to Pintellect</div>
         <h3 className="find-subject">Find new subject to explore</h3>
         <form onSubmit={this.handleSubmit} className="forms">
           <input
             type="email"
             value={email}
-            placeholder="    Email"
+            placeholder="Email"
             onChange={this.handleInput('email')}
             className="input-session"
           />
@@ -94,7 +95,7 @@ class SessionForm extends React.Component {
           <input
             type="password"
             value={password}
-            placeholder="    Password"
+            placeholder="Password"
             onChange={this.handleInput('password')}
             className="input-session"
           />
@@ -102,42 +103,48 @@ class SessionForm extends React.Component {
 
           <div id="error">{this.props.errors ? this.renderErrors() : null}</div>
 
-          <div>
+          <div >
             {this.props.submitButton === 'Continue' ? this.renderAge() : null}
           </div>
           <button id="modal-button">{this.props.submitButton}</button>
-          <div id="bottom-session>">
-            <br />
-
-            <span>
-              <p id="agreement">By continuing, you agree to Pinterest's</p>
-              <strong id="terms-of-service">
-                Terms of Service, Privacypolicy.
-              </strong>
-            </span>
-            <div onClick={() => this.props.openModal()}>
-              {this.props.navLinkText}
-            </div>
-          </div>
+          {/* <button id="modal-button">{this.props.submitButton}</button> */}
         </form>
         {this.props.submitButton === 'Log in' ? this.showDemoButton() : null}
+        {this.showText()}
       </div>
     );
   }
 
   showDemoButton() {
     return (
-      <div>
-        <h3>OR</h3>
-        <button id="demo-button1" onClick={(e) => this.handleDemo(e, 1)}>
-          <FontAwesomeIcon icon={faFacebook} id="facebook" size="lg" />
-          Continue with Facebook
-        </button>
-        <button id="demo-button2" onClick={(e) => this.handleDemo(e, 2)}>
-          Continue with Google
-        </button>
-      </div>
+      <>
+        <div className="demo-btns">
+          <h3>OR</h3>
+          <button id="demo-button1" onClick={(e) => this.handleDemo(e, 1)}>
+            {/* <FontAwesomeIcon icon={faFacebook} id="facebook" size="lg" /> */}
+            Demo Einsten
+          </button>
+          <button id="demo-button2" onClick={(e) => this.handleDemo(e, 2)}>
+            Demo Picasso
+          </button>
+        </div>      
+      </>
     );
+  }
+
+  showText() {
+    return( 
+    <div id="session-form-text">
+      <span>
+        <p id="agreement">By continuing, you agree to Pinterest's</p>
+        <strong id="terms-of-service">Terms of Service, Privacypolicy.</strong>
+      </span>
+
+      <div onClick={() => this.props.openModal()} id="session-link">
+        {this.props.navLinkText}
+      </div>
+    </div>
+    )
   }
 
   renderErrors() {

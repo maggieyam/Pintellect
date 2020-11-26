@@ -1,20 +1,21 @@
-// html, body, header, nav, h1, a,
-// ul, li, strong, main, button, i,
-// section, img, div, h2, p, form,
-// fieldset, label, input, textarea,
-// span, article, footer, time, small {
-//   margin: 0;
-//   padding: 0;
-//   border: 0;
-//   outline: 0;
-//   font: inherit;
-//   color: inherit;
-//   text-align: inherit;
-//   text-decoration: inherit;
-//   vertical-align: inherit;
-//   box-sizing: inherit;
-//   background: transparent;
-// }
+html, body, header, nav, h1, a,
+ul, li, strong, main, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
 
 // ul {
 //   list-style: none;
@@ -40,10 +41,11 @@
 //   appearance: none;
 // }
 
-// button,
-// input[type="submit"] {
-//   cursor: pointer;
-// }
+button,
+input[type="submit"] {
+  cursor: pointer;
+  border-radius: 34px;
+}
 
 // .group:after {
 //   content: "";

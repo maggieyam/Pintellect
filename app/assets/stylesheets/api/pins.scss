@@ -50,7 +50,9 @@
 
 #nav-right-pin-form {
     margin-right: 0px;
-    position: absolute; right: 480px;
+    width: 296px;
+    
+    position: absolute; right: 450px;
 }
 
 #dots-pin-form {
@@ -63,6 +65,13 @@
 
     // vertical-align: center;
     // justify-content: center;
+}
+
+#nav-right-btns {
+    display: flex;
+    justify-content: space-between;
+    width: 236px;
+    margin-left: 30px;
 }
 
 .save {
@@ -78,7 +87,10 @@
 }
 
 #svg-pin-drop-down {
-    margin-left: 81px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    margin-left: 115px;
 }
 
 #svg-pin-form-dot {
@@ -95,16 +107,18 @@
 }
 
 #select {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    padding-left: 13px;;
     width: 170.77px;
     height: 40px;
-    text-align: left;
     color: #111111;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-radius: 6px 6px 0px 0px;
+    // border-bottom-left-radius: 8px;
+    // border-top-right-radius: 0px;
+    // border-bottom-right-radius: 0px;
     background-color: #efefef;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
     font-weight: 400;
 }
 
@@ -116,8 +130,11 @@
     margin-left: 20px;
 }
 #create-pin-right {
+    display: flex;
+    justify-content: space-between;
     width: 380px;
     height: 446px;
+    padding-left: 25px;
     margin-right:25px;
     flex-direction: column;
     
@@ -146,6 +163,15 @@
     color: #111111;
 }
 
+#all-boards {
+    font-weight: 400;;
+    font-size: 14px;
+    position: absolute;
+    top: 130px;
+    margin-left: 15px;
+    text-align: start;
+}
+
 #input-form-pins {
     // padding-left: 0px;
     // padding-right: 0px;
@@ -154,36 +180,24 @@
     border: none;
     border-bottom: 2px solid #efefef;
     width: 380px;
-    height: 43px;
-    // padding-top: 20px;
+    height: 60px;
     padding-bottom: 0px;
     margin-top: 20px;
-    // border-left: none;
-    // border-right: none;
-    // border-top: none;
-    // border-radius: 0;
-    // text-decoration: underline;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    -webkit-rtl-ordering: logical;
-    align-items: center;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 36px;
 
 }
 
 
 #add-title {
+    display: flex;
     flex-direction: column;
-    margin-top: 25px;
-    margin-right: 15px;
+    justify-content: space-between;
+    margin: 25px 15px 15px 0px;
+
+    height: 250px;
+    // align-items: end;
     font-size: 16px;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
 
 #choose-link, #input-pin {
@@ -208,3 +222,116 @@ border-bottom: 2px solid #efefef;
     width: 32px;
      height: 32px;
 }
+
+#dropDown-content {
+    width: 296px;
+    height: 439px;
+    display: none;
+    // visibility: none;
+    text-align: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+    stroke: rgb(239, 239, 239);
+    // display: none;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 10px 10px 8px 10px #888888;
+    
+}
+
+#wrapper-dropdown {   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // vertical-align: center;    
+}
+
+.dropDown-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: center;
+    font-weight: 700;
+    margin-top: 40px;
+    
+}
+
+.select-board {
+
+    width: 272px;
+    height:48px;
+    display: flex;
+    text-align: left;
+    padding-left: 40px;
+    // justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    margin: 4px 12px 4px 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.select-board:hover {
+    background: #efefef;
+    border-radius: 16px;
+}
+
+#svg-pin-create-board {
+    color: #e60023;
+    margin-left: 18px;
+    margin-top: 5px;
+}
+
+input#search-pins {
+    width: 272px;
+    height: 48px;
+    border-radius: 24px;
+    padding: 8px 40px 8px 50px;
+    border: 2px solid #ddd; 
+    text-align: start;
+    font-size: 18px;
+}
+
+#search-pins:focus {
+    // outline: 3px solid ;
+    box-shadow: 0 0 4pt 4pt #4a8ad4;
+}
+
+#svg-pin-form-search {
+    position: absolute;
+    top:76px;
+    left: 30px;
+    color: #767676;
+    z-index: 1;
+}
+
+#top-pin-select {
+    width: 320px;
+    height: 60px;
+    padding: 12px;
+    text-align: center;
+    vertical-align: center;
+}
+
+#create-board-btn{
+    display: flex;
+    justify-content: start;
+    width: 304px;
+    height: 36px;
+    padding: 8px;
+
+}
+
+#text-create-board {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+// #0, #1, #2, #3, #4 {
+//     text-align: left;
+// }
+

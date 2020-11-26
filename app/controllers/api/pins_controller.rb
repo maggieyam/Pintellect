@@ -5,6 +5,8 @@ class Api::PinsController < ApplicationController
         @pin.author_id = current_user.id
 
         if @pin.save 
+            BoardPin.create({board_id: params[:pin][:boardId], pin_id: @pin.id})
+            @board = current_user.boards.find(params[:pin][:boardId])
             render :show
         else
             render json: @pin.errors.full_messages, status: 422

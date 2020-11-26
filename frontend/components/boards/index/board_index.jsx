@@ -1,17 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CreateBoardFormContainer from '../board_form/create_board_container';
 import BoardIndexItem from './board_index_item';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPen, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
     }
     componentDidMount() {
-        this.setState(this.props.fetchBoards());
+        this.props.fetchBoards();
     }
+
+    // redirect() {
+    //   this.setState(this.props.fetchBoards);
+    //   this.props.history("/pin-builder");
+    // }
 
     render() {
         const { boards, user, openModal} = this.props;
+        const create = {type: 'create'};
         
         return (
           <div className="index">
@@ -23,19 +31,33 @@ class BoardIndex extends React.Component {
               id="initial"
               onClick={() => this.props.openModal('create')}
             > */}
-              {/* {user.username[0].toUpperCase()}
+            {/* {user.username[0].toUpperCase()}
             </button> */}
             <p className="index-name">@{user.first_name}</p>
             <p>0 followers * 0 following</p>
             <div>
               {boards.map((board) => {
                 return (
-                  <BoardIndexItem 
-                  board={board} 
-                  openModal={openModal} 
-                  key={board.id} />
+                  <BoardIndexItem
+                    board={board}
+                    openModal={openModal}
+                    key={board.id}
+                  />
                 );
               })}
+            </div>
+            <FontAwesomeIcon
+              icon={faPlusCircle}
+              className="icon"
+              id="modal-create"
+              size="2x"
+              onClick={() => openModal(create)}
+            />
+
+            <div className="dropDown-content">
+              <div>Create a</div>
+              <Link to={'/pin-builder'}>pin</Link>
+              <div>board</div>
             </div>
             {/* <CreateBoardFormContainer /> */}
           </div>

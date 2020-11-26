@@ -7,10 +7,7 @@ import {fetchBoards} from './actions/boards_actions'
 
 document.addEventListener ('DOMContentLoaded', () => {
   let store;
-  
-  
-  
-  
+
   if (window.currentUser) {
     
     let userBoards = {}

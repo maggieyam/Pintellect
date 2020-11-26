@@ -25,7 +25,7 @@ export const createPin = (pin) => (dispatch) => {
     
   return APIUtil.createPin(pin).then((pin) => {
     return dispatch(receivePin(pin));
-  });
+  })
 };
 export const deletePin = (pinId) => (dispatch) =>
   APIUtil.deletepin(pinId).then(() => dispatch(removePin(pinId)));

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import BoardIndex from './board_index';
 import { fetchBoards } from '../../../actions/boards_actions';
 import { openModal } from '../../../actions/modal_actions';
-const mapStateToProps = ({entities, session}, ownProps) => {
+const mapStateToProps = ({entities, session} ) => {
     // const id = ownProps.location.pathname.split('/').join('');
     const id = session.id;
     return {
