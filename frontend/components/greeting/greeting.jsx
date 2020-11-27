@@ -2,9 +2,10 @@ import React from "react";
 import { Link, useNavigate, }from "react-router-dom";
 import { login } from "../../utils/session_api_util";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch, faPen, faBell, faCommentDots, faChevronCircleDown, 
-  faRocket, faPlusCircle, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
+import {faSearch,  faBell, faCommentDots, faChevronCircleDown, 
+  faRocket, faPlusCircle, faSignOutAlt, faStroopwafel, faCircleNotch} from '@fortawesome/free-solid-svg-icons';
 import * as IMGUtil from '../../utils/image_util';
+// import { FaRegCircle } from "react-icons/fa";
 // import { space } from '../../../app/assets/images/arch/index'
 
 const Greeting = ({ currentUser, logout, openModal, }) => {
@@ -204,27 +205,20 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
           id="comment"
           size="2x"
         />
+
+        <Link to={`/${currentUser.id}`}>
+          <button id="go-to-board" >
+            {currentUser.username[0]}
+          </button>
+        </Link>
+        
         <FontAwesomeIcon
           icon={faChevronCircleDown}
           className="drop-down-icon"
           size="2x"
         />
-        {/* <FontAwesomeIcon
-          icon={faPlusCircle}
-          className="icon"
-          id="modal-create"
-          size="2x"
-          onClick={() => openModal(create)}
-        /> */}
 
-        <FontAwesomeIcon
-          icon={faPen}
-          id="edit-board"
-          className="icon"
-          size="2x"
-          onClick={() => openModal(update)}
-        />
-
+        
         <FontAwesomeIcon
           icon={faSignOutAlt}
           id="log-out"

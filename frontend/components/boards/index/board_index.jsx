@@ -4,38 +4,51 @@ import CreateBoardFormContainer from '../board_form/create_board_container';
 import BoardIndexItem from './board_index_item';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { requestPins } from '../../../actions/pins_actions';
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
     }
     componentDidMount() {
         this.props.fetchBoards();
+        // this.props.requestPins();
     }
 
-    // redirect() {
-    //   this.setState(this.props.fetchBoards);
-    //   this.props.history("/pin-builder");
-    // }
 
     render() {
-        const { boards, user, openModal} = this.props;
-        const create = {type: 'create'};
-        
+      const create = {type: 'create'};
+      const { boards, user, openModal } = this.props;
+      // if (!boards) re
+
         return (
-          <div className="index">
-            {/* <button id="index-initial"></button> */}
-            <p id="initial-logo">{user.username[0]}</p>
-            <p id="index-header">{user.username}</p>
-            {/* <button
-              className="modal-index"
-              id="initial"
-              onClick={() => this.props.openModal('create')}
-            > */}
-            {/* {user.username[0].toUpperCase()}
-            </button> */}
-            <p className="index-name">@{user.first_name}</p>
+          <div className="board-index-main-container">
+  
+            <button id="initial-logo" >
+              {user.username[0]}
+            </button>
+            <p id="index-header">{user.first_name}  {user.last_name}</p>
+         
             <p>0 followers * 0 following</p>
-            <div>
+            <div className="icon-row">
+              <FontAwesomeIcon
+                icon={faPlusCircle}
+                className="icon"
+                id="modal-create"
+                size="2x"
+                
+              />
+
+            <div className="dropDown-board">
+              <div id="create-board-index">Create</div>
+              <button className="dropDown-text-board">
+                <Link to={'/pin-builder'} >pin</Link>
+              </button>
+              <button className="dropDown-text-board" onClick={() => openModal(create)}>
+                board
+              </button>
+            </div>
+            </div>
+            <div className="board-item-container">
               {boards.map((board) => {
                 return (
                   <BoardIndexItem
@@ -46,20 +59,6 @@ class BoardIndex extends React.Component {
                 );
               })}
             </div>
-            <FontAwesomeIcon
-              icon={faPlusCircle}
-              className="icon"
-              id="modal-create"
-              size="2x"
-              onClick={() => openModal(create)}
-            />
-
-            <div className="dropDown-content">
-              <div>Create a</div>
-              <Link to={'/pin-builder'}>pin</Link>
-              <div>board</div>
-            </div>
-            {/* <CreateBoardFormContainer /> */}
           </div>
         );
     }

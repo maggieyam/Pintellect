@@ -4,7 +4,7 @@ import {requestPins} from '../../../actions/pins_actions';
 // import { fetchBoards } from '../../../actions/boards_actions';
 // / import {openModal} from '../../../actions/modal_actions';
 const mapStateToProps = ({ entities }) => {
-  // debugger
+  // 
   return {
     pins: Object.values(entities.pins),
     

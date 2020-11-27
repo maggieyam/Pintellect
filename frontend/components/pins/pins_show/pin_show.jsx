@@ -16,12 +16,15 @@ class PinShow extends React.Component {
 
     renderInfo() {
         if (!this.props.pin) return null;
-        
+
         const {title, description} = this.props.pin;
         return(
             <div className="main-content-pin">
-                <h3>{title}</h3>
-                <p>{description}</p>
+                <div>
+                   <h3>{title}</h3>
+                   <span>{description}</span> 
+                </div>
+                
             </div>
 
         )
@@ -37,40 +40,48 @@ class PinShow extends React.Component {
         } else {
           dropDown.style.display = 'none';
         }
-  })
- }
+    })
+    }
 
-boardSelectBtn(boards) {
-    return(
-        <div id="nav-right-pin-form">
+    boardSelectBtn(boards) {
+      return(
+
             <div id="nav-right-btns">
             <div id="select" onClick={this.toggle.bind(this)}>
-                {boards[0] ? `${boards[0].title}` : 'Select'}
+                {boards && boards[0] ? `${boards[0].title}` : 'Select'}
                 <FontAwesomeIcon
                 icon={faChevronCircleDown}
-                id="svg-pin-drop-down"
+                id="drop-down-pin-show"
                 size="lg"
                 onClick={this.toggle.bind(this)}
                 />
             </div>
             <button className="save" >Save</button>
             </div>
-        </div>
     )}
+
+    // redirect() {
+    //     let mainContainerClick = document.querySelector('.main-container-pin-show');
+    //     let centerContainerClick = document.querySelector('.center-container-pin-show');
+    //     document.addEventListener()
+    // }
 
     render() {
         const {pin, id, fetchBoards} = this.props;
         const boards = Object.values(fetchBoards());
         return(
-            <div className="main-container">
-                <div className="center-container" >
+            <div className="main-container-pin-show">
+                <div className="center-container-pin-show" >
                     <div className="left-container-pin-show">
                         {pin ? <img src={pin.link} alt="pins"/> : null}
                     </div>
 
                     <div className="right-container-pin-show">
+                        <div className="right-top-nav">
+                            {this.boardSelectBtn(boards)}
+                        </div>
                         {this.renderInfo()}
-                        {this.boardSelectBtn(boards)}
+                        
                     </div>
                 </div>
             </div>
