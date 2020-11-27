@@ -331,7 +331,66 @@ input#search-pins {
     font-weight: 700;
 }
 
-// #0, #1, #2, #3, #4 {
-//     text-align: left;
+.pins-seeds-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;   
+    align-items: start;
+    
+    .column {
+        width: 230px;
+        margin-right: 17px;
+    }
+    .column7{
+        margin-right: 0px;
+    }
+}
+
+.pins {
+    // width: 236px;
+    position: relative;
+    height: auto;
+    // max-height: 500px;
+
+}
+
+.pin-columns {
+    width: 235px;
+}
+
+// .pins-div-wrapper {
+//     padding: 8px 6px 16px;
+//     height: auto;
 // }
+
+// Show CSS
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.center-container {
+    width: 508px;
+    height: 760px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.left-container-pin-show {
+    display: flex;
+    align-items: start;
+    width: 508px;
+}
+
+.right-container-pin-show {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
 

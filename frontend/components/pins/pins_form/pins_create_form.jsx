@@ -38,7 +38,7 @@ class CreatePinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault;
-    debugger
+    
     // delete this.state['board'];
     // delete this.state['empty'];
     

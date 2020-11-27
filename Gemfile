@@ -29,6 +29,8 @@ gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'annotate'
 gem 'jquery-rails'
+gem 'aws-sdk-s3'
+gem 'figaro'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

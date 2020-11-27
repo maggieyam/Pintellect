@@ -6,8 +6,6 @@ class CreateBoardForm extends React.Component{
         this.state = {
             title: "",
             private: false
-            // startDate: "",
-            // endDate: "",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
 

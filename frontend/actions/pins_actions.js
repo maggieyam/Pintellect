@@ -28,21 +28,21 @@ export const createPin = (pin) => (dispatch) => {
   })
 };
 export const deletePin = (pinId) => (dispatch) =>
-  APIUtil.deletepin(pinId).then(() => dispatch(removePin(pinId)));
+  APIUtil.deletePin(pinId).then(() => dispatch(removePin(pinId)));
 
 export const requestPins = () => (dispatch) =>
-  APIUtil.fetchpins().then((pins) => {
+  APIUtil.fetchPins().then((pins) => {
     return dispatch(receivePins(pins));
   });
 
 export const requestPin = (pinId) => (dispatch) => {
-  return APIUtil.fetchpin(pinId).then((pin) =>
+  return APIUtil.fetchPin(pinId).then((pin) =>
     dispatch(receivePin(pin))
   );
 };
 
 export const updatePin = (pin) => (dispatch) => {
-  return APIUtil.updatepin(pin).then((pin) =>
+  return APIUtil.updatePin(pin).then((pin) =>
     dispatch(receivePin(pin))
   );
   // .then(() => closeModal());

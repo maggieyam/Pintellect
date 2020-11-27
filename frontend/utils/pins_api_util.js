@@ -1,4 +1,5 @@
 export const fetchPins = () => {
+  
   return $.ajax({
     url: '/api/pins',
     method: 'GET',

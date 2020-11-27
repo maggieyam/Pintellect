@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
       .then(() => this.props.closeModal())
       .then(() => { 
         
-        props.history.push(`/${props.session.id}`)});
+        props.history.push(`/`)});
   }
 
   componentDidUpdate(prevProps){ 
@@ -80,7 +80,7 @@ class SessionForm extends React.Component {
     return (
       <div className="session-forms">
         <FontAwesomeIcon icon={faStroopwafel} spin className="session-logo" size="2x" />
-        <div className="greeting">Welcome to Pintellect</div>
+        <h3 className="greeting">Welcome to Pintellect</h3>
         <h3 className="find-subject">Find new subject to explore</h3>
         <form onSubmit={this.handleSubmit} className="forms">
           <input

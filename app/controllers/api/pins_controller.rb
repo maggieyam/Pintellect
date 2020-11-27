@@ -13,13 +13,14 @@ class Api::PinsController < ApplicationController
         end
     end
 
-    def index     
-        @pins = current_user.pins
+    def index   
+        @pins = Pin.all  
         render :index
     end
 
     def show     
         @pin = Pin.find_by(id: params[:id])
+        
         render :show if @pin
             
     end

@@ -26,6 +26,8 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     dependent: :destroy
 
+    has_one_attached :photo
+
     after_initialize :ensure_session_token, :set_username, :set_first_name, :set_last_name 
    
     attr_reader :password, 
