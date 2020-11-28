@@ -8,12 +8,27 @@ import { requestPins } from '../../../actions/pins_actions';
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
+        this.toggele = this.toggle.bind(this);
     }
+    
+    
     componentDidMount() {
-        this.props.fetchBoards();
+        this.props.fetchBoards();        
         // this.props.requestPins();
     }
 
+    toggle() {
+      let button = document.querySelector(".pin-board-create");
+      let dropDown = document.querySelector('.dropDown-board');
+      
+      button.addEventListener('click', () => {
+        if (dropDown.style.display === "none") {
+          dropDown.style.display = 'block';
+        } else {
+          dropDown.style.display = 'none';
+        }
+    })
+    }
 
     render() {
       const create = {type: 'create'};
@@ -32,10 +47,10 @@ class BoardIndex extends React.Component {
             <div className="icon-row">
               <FontAwesomeIcon
                 icon={faPlusCircle}
-                className="icon"
+                className="icon pin-board-create"
                 id="modal-create"
                 size="2x"
-                
+                onClick={this.toggle}
               />
 
             <div className="dropDown-board">

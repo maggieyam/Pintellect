@@ -588,6 +588,7 @@ input #input-name {
     align-items: flex-start;
     padding: 20px;
     text-indent: 4px;
+    display: none;
     .dropDown-text-board {
         width: 164px;
         height: 35px;
@@ -612,4 +613,26 @@ input #input-name {
     color: #111111;
     font-size: 12px;
     font-weight: 400px;
+}
+
+#images-main-container {
+    width: 235px;
+    height: 157px;
+    border-radius: 16px;
+    background-color: #efefef;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#edit-board {
+    margin: 15px;
+    padding: 15px;
+    border-radius: 50%;
+    color: transparent;
+}
+
+#edit-board:hover {
+    color: #111111;
+     background-color: #FFF;
 }

@@ -45,12 +45,12 @@ class PinIndex extends React.Component {
             <div className="pins-seeds-container">               
               {pins.map((colPins, i) => 
                   <div key={i} className={`column column${i} pin-columns`}>
-                  {colPins.map((pin, j) => 
+                  {colPins.map((pin) => 
                     <Link to={`/pin/${pin.id}`}>
                       <img 
                       src={pin.link} 
                       alt="pins" 
-                      key={j} 
+                      key={pin.id} 
                       id={`pin${pin.id}`} 
                       />
                     </Link>

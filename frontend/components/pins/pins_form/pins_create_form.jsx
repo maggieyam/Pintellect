@@ -16,6 +16,7 @@ import {
   faArrowAltCircleUp,
   faEllipsisH,
 } from '@fortawesome/free-solid-svg-icons';
+import { initial } from 'lodash';
 
 class CreatePinForm extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class CreatePinForm extends React.Component {
       this.props
         .createPin(pin)
         // .then(this.add_pins(this.state.board, pin))
-        .then(this.props.history.push(`/${this.props.author_id}`));
+        .then(this.props.history.push(`/`));
   
       // this.props.history();
       console.log(pin);
@@ -60,7 +61,9 @@ class CreatePinForm extends React.Component {
   }
 
   update(field) {
-    return (e) => this.setState({[field]: e.currentTarget.value});
+    return (e) => {
+      this.setState({[field]: e.currentTarget.value});
+    }
   }
 
   reset() {
@@ -79,7 +82,6 @@ class CreatePinForm extends React.Component {
   }
 
  toggle() {
-      event.stopPropagation();
       let button = document.querySelector("#select");
       let dropDown = document.querySelector('#dropDown-content');
       
@@ -95,7 +97,6 @@ class CreatePinForm extends React.Component {
  addBoard(boardId) {
     return () => {
       this.setState({boardId: boardId});
-      event.stopPropagation();
       let option = document.querySelector(`#board${boardId}`).innerText;
       document.querySelector('#select').innerHTML = option;
       document.querySelector('#dropDown-content').style.display = 'none';
@@ -110,6 +111,17 @@ class CreatePinForm extends React.Component {
     
  }
 
+ updateImg() {
+   if (this.state.link === "") return null;
+   let img = document.createElement('img')
+    let container = document.getElementById('create-pin-left').childNodes[0];
+    img.src = this.state.link;
+    if (img) {
+      img.classList.add('create-pin-img')
+      return container.replaceChild(img, container.childNodes[0]);
+    }
+    return null;
+ }
 //  selectBoard(){
 //    this.setState({})
 //  }
@@ -125,11 +137,8 @@ class CreatePinForm extends React.Component {
     const { first_name, last_name } = this.props.user;
     const boards = this.props.boards;
     // const addBtn = <button onClick={this.addBoard()}>`${boards[0].title}`</button>;
-    const select = (boards) => {     
-      
+    const select = (boards) => {          
       return boards.slice(0, 5).map((board) => {
-        
-        // let id = board.id;
         return (
           <div className="select-board"
           key={board.id}
@@ -163,7 +172,9 @@ class CreatePinForm extends React.Component {
                 <div id="nav-right-pin-form">
                   <div id="nav-right-btns">
                     <div id="select" onClick={this.toggle.bind(this)}>
-                      {boards && boards[0] ? `${boards[0].title}` : 'Select'}
+                      
+                        { boards && boards[0] ? `${boards[0].title}`: 'Select'}
+          
                       <FontAwesomeIcon
                         icon={faChevronCircleDown}
                         id="svg-pin-drop-down"
@@ -221,7 +232,7 @@ class CreatePinForm extends React.Component {
                     />
                   </div>
 
-                  <button type="button" id="save-from-site">
+                  <button type="button" id="save-from-site" onClick={this.updateImg()}>
                     Save from Site
                   </button>
                 </div>
@@ -236,10 +247,15 @@ class CreatePinForm extends React.Component {
                       onChange={this.update('title')}
                     />
                     <div id="names">
-                      <p id="pin-inital">{first_name[0]}</p>
-                      <p>
-                        {first_name} {last_name}
-                      </p>
+                      <button className="user-initial">
+                        {first_name[0]}
+                      </button>
+                      <div id="display-names">
+                        <strong>
+                          {first_name} {last_name}
+                        </strong>
+                      <p>0 follower</p>
+                      </div>
                     </div>
 
                     <input

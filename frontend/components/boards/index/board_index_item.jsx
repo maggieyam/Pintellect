@@ -44,9 +44,6 @@ import { fetchPin, fetchPins} from '../../../utils/pins_api_util';
 class BoardIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    // this.state{
-    //   pin:
-    // }
     this.getPins = this.getPins.bind(this);
 
   }
@@ -66,9 +63,7 @@ class BoardIndexItem extends React.Component {
       console.log(newPins[id].title)
       
 
-       return(
-         <div>Hello{this.props.pin.title}</div>
-       )
+
       const pin = this.props.requestPin(id).then(() => {
         return(
           <div>Hello
@@ -81,18 +76,19 @@ class BoardIndexItem extends React.Component {
     })
   }
 
+
+
   render (){  // const create = {type: 'create', item: board}
     const modal = {type: 'update', item: this.props.board}
     const { board, openModal } = this.props;
     return (
       <div id="index-item">
         <div id="images-main-container">
-        {/* {board.pinIds.length > 1 ? this.getPins() : null} */}
         <FontAwesomeIcon
                       icon={faPen}  
                       id="edit-board"
-                      className="icon"
-                      size="2x"
+                      className="icon edit-board"
+                      size="lg"
                       onClick={() => openModal(modal)}
                   />
         </div>

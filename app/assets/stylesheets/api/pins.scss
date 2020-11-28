@@ -449,4 +449,25 @@ input#search-pins {
     }
 }
     
+#names {
+    display: flex;
+    justify-content: flex-starts;
+    flex-direction: row;
+    align-items: center;
+}
 
+#display-names {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.create-pin-img {
+    // position: absolute;
+    // top: 240px;
+    // left: 175px;
+    order: -1;
+    width: 340px;
+    max-height: 454px;
+    height: auto;
+}
