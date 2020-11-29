@@ -5,7 +5,6 @@ import BoardIndexItem from './board_index_item';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faPlus} from '@fortawesome/free-solid-svg-icons';
 // import { requestPins } from '../../../actions/pins_actions';
-import uuid from "uuid/v4";
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);

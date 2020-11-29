@@ -1,11 +1,5 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
-// import {reorganizePins, mapPinsToCols} from '../../../utils/pins_positioning_utils';
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-// import {faPen, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-
-// import PinIndexItem from './pin_index_item';
-// import BoardIndexContianer from '../../boards/index/board_index_container';
 import {reorganizePins, mapPinsToCols} from '../../../utils/pins_positioning_utils';
 class PinIndex extends React.Component {
     constructor(props){
