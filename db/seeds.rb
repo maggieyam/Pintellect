@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # require './images.rb'
+require 'open-uri'
 ActiveRecord::Base.transaction do 
 
     User.destroy_all
