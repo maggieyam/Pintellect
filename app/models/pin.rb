@@ -18,7 +18,7 @@ class Pin < ApplicationRecord
     has_many :boards,
         through: :board_pins,
         source: :board
-    has_many_attached :photos
+    # has_many_attached :photos
     # after_initalization :set_author
 
 end
