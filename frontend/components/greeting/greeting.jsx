@@ -1,10 +1,11 @@
 import React from "react";
-import { Link, useNavigate, }from "react-router-dom";
+import { Link, NavLink, Redirect}from "react-router-dom";
 import { login } from "../../utils/session_api_util";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch,  faBell, faCommentDots, faChevronCircleDown, 
   faRocket, faPlusCircle, faSignOutAlt, faStroopwafel, faCircleNotch} from '@fortawesome/free-solid-svg-icons';
 import * as IMGUtil from '../../utils/image_util';
+import BoardIndexContainer from '../boards/index/board_index_container';
 // import { FaRegCircle } from "react-icons/fa";
 // import { space } from '../../../app/assets/images/arch/index'
 
@@ -169,63 +170,64 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
     return (
       <hgroup className="header-group">
         {/* <section className="left-nav-index"> */}
-        <FontAwesomeIcon icon={faRocket} spin className="logo" size="2x" />
-        <button className="board-nav-button" id="home-button">
+        <div className="left-nav-icons">
+        <FontAwesomeIcon icon={faStroopwafel} spin className="logo" size="2x" />
           <Link to="/" id="home-link">
-            Home
+            <button className="board-nav-button" id="home-button">
+                Home
+            </button>
           </Link>
-        </button>
 
-        <button className="board-nav-button" id="today">
           <Link to="/" id="nav-link">
-            Today
+            <button className="board-nav-button" id="today">
+                Today
+            </button>
           </Link>
-        </button>
 
-        <button className="board-nav-button" id="following">
           <Link to="/" id="nav-link">
-            Following
+            <button className="board-nav-button" id="following">
+                Following
+            </button>
           </Link>
-        </button>
-        {/* </section> */}
-        {/* <div> */}
+      </div>
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
-        <input type="text" placeholder="      Search" id="search" />
-       
-        <FontAwesomeIcon
-          icon={faBell}
-          id="bell"
-          className="icon"
-          size="2x"
-          // onClick={redirect}
-        />
-        <FontAwesomeIcon
-          icon={faCommentDots}
-          className="icon"
-          id="comment"
-          size="2x"
-        />
+        <input type="text" placeholder="Search" id="search" />
+       <div className="right-nav-icons">
+          {/* <FontAwesomeIcon
+            icon={faBell}
+            id="bell"
+            className="icon"
+            size="2x"
+            // onClick={redirect}
+          /> */}
+          <FontAwesomeIcon
+            icon={faCommentDots}
+            className="icon"
+            id="comment"
+            size="2x"
+          />
+          
+          <Link to={`/${currentUser.id}`}>
+            <button id="go-to-board" >
+                  {currentUser.username[0]}
+            </button>
+          </Link>
 
-        <Link to={`/${currentUser.id}`}>
-          <button id="go-to-board" >
-            {currentUser.username[0]}
-          </button>
-        </Link>
-        
-        <FontAwesomeIcon
-          icon={faChevronCircleDown}
-          className="drop-down-icon"
-          size="2x"
-        />
+          {/* <FontAwesomeIcon
+            icon={faChevronCircleDown}
+            className="drop-down-icon"
+            size="2x"
+          /> */}
 
-        
-        <FontAwesomeIcon
-          icon={faSignOutAlt}
-          id="log-out"
-          className="icon"
-          onClick={logout}
-          size="2x"
-        />
+          
+          <FontAwesomeIcon
+            icon={faSignOutAlt}
+            id="log-out"
+            className="icon"
+            onClick={logout}
+            size="2x"
+          />
+        </div>
         {/* </div> */}
         {/* <div class="dropdown">
         <button class="dropbtn"></button> */}

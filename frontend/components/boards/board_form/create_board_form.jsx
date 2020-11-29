@@ -1,4 +1,6 @@
 import React from 'react';
+import BoardIndex from '../index/board_index';
+import board_index_container from '../index/board_index_container';
 
 class CreateBoardForm extends React.Component{
     constructor(props) {
@@ -15,7 +17,10 @@ class CreateBoardForm extends React.Component{
         e.preventDefault;
         // this.props.createBoard(this.state);
         const board = Object.assign({}, this.state);
-        this.props.createBoard(board).then(() => this.props.closeModal())
+        this.props.createBoard(board)
+        .then(() => this.props.closeModal())
+        // .then(() => this.props.history(`/`))
+
         // .then(this.props.history(`/${this.props.author_id}`));
         // <BoardShowContainer />
     }

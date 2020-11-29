@@ -1,8 +1,9 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPen, faPlusCircle, faChevronCircleDown} from '@fortawesome/free-solid-svg-icons';
+import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import pin_show_container from './pin_show_container';
+import { deletePin } from '../../../utils/pins_api_util';
 
 
 class PinShow extends React.Component {
@@ -30,45 +31,40 @@ class PinShow extends React.Component {
         )
     }
 
- toggle() {
-      let button = document.querySelector("#select");
-      let dropDown = document.querySelector('#dropDown-content');
+//  toggle() {
+//     //   let button = document.querySelector("#select");
+//       let dropDown = document.querySelector('#dropDown-content-show');
       
-      button.addEventListener('click', () => {
-        if (dropDown.style.display === "none") {
-          dropDown.style.display = 'block';
-        } else {
-          dropDown.style.display = 'none';
-        }
-    })
-    }
+//     //   button.addEventListener('click', () => {
+//         if (dropDown.style.display === "none") {
+//           dropDown.style.display = 'block';
+//         } else {
+//           dropDown.style.display = 'none';
+//         }
+//     // })
+//     }
 
-    boardSelectBtn(boards) {
-      return(
-
-            <div id="nav-right-btns">
-            <div id="select" onClick={this.toggle.bind(this)}>
-                {boards && boards[0] ? `${boards[0].title}` : 'Select'}
-                <FontAwesomeIcon
-                icon={faChevronCircleDown}
-                id="drop-down-pin-show"
-                size="lg"
-                onClick={this.toggle.bind(this)}
-                />
-            </div>
-            <button className="save" >Save</button>
-            </div>
-    )}
-
-    // redirect() {
-    //     let mainContainerClick = document.querySelector('.main-container-pin-show');
-    //     let centerContainerClick = document.querySelector('.center-container-pin-show');
-    //     document.addEventListener()
-    // }
+    // boardSelectBtn(boards) {
+    //   return(
+    //         <div id="nav-right-btns">
+    //         <div id="select" onClick={this.toggle.bind(this)}>
+    //             {boards && boards[0] ? `${boards[0].title}` : 'Select'}
+    //             <FontAwesomeIcon
+    //             icon={faChevronCircleDown}
+    //             id="drop-down-pin-show"
+    //             size="lg"
+    //             onClick={this.toggle.bind(this)}
+    //             />
+    //         </div>
+    //         <button className="save" >Save</button>
+    //         </div>
+    // )}
 
     render() {
-        const {pin, id, fetchBoards} = this.props;
-        const boards = Object.values(fetchBoards());
+        const {pin, deletePin, id} = this.props;
+        if (!pin) return null;
+        
+        // const boards = Object.values(fetchBoards());
         return(
             <div className="main-container-pin-show">
                 <div className="center-container-pin-show" >
@@ -78,10 +74,15 @@ class PinShow extends React.Component {
 
                     <div className="right-container-pin-show">
                         <div className="right-top-nav">
-                            {this.boardSelectBtn(boards)}
+                            <FontAwesomeIcon
+                                icon={faTrashAlt}
+                                id="svg-pin-drop-down"
+                                size="2x"
+                                onClick={() => deletePin(id)}
+                            />
+                            {/* {this.boardSelectBtn(boards)} */}
                         </div>
-                        {this.renderInfo()}
-                        
+                        {this.renderInfo()}                  
                     </div>
                 </div>
             </div>

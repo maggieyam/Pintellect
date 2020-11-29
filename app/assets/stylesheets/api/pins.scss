@@ -52,7 +52,7 @@
     margin-right: 0px;
     width: 296px;
     
-    position: absolute; right: 450px;
+    position: relative; right: 1vw;
 }
 
 #dots-pin-form {
@@ -79,7 +79,10 @@
         display: flex;
         justify-content: space-between;
         padding-right: 3px;
+        cursor: pointer;
     }
+    
+
 }
 
 .save {
@@ -201,7 +204,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 25px 15px 15px 0px;
+    margin: 30px 15px 15px 0px;
 
     height: 250px;
     // align-items: end;
@@ -241,13 +244,20 @@ border-bottom: 2px solid #efefef;
     padding-right: 12px;
     box-sizing: border-box;
     stroke: rgb(239, 239, 239);
-    // display: none;
+    display: none;
     margin-top: 10px;
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 10px 10px 8px 10px #888888;
     
 }
+
+// #dropDown-content-on {
+//     display: block;
+// }
+// #dropDown-content-off{
+//     display: none;
+// }
 
 #wrapper-dropdown {   
     display: flex;
@@ -343,19 +353,41 @@ input#search-pins {
     position: relative;
     display: flex;
     flex-direction: row;
-    margin-left: 15px;
+    // margin-left: px;
     margin-top: 10px;
     width: 100%;
     justify-content: center;   
     align-items: start;
-    
     .column {
-        width: 230px;
+        width: 235px;
         margin-right: 17px;
     }
-    .column7{
-        margin-right: 0px;
+      .column1 {
+        width: 235px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
+    // .column7{
+    //     margin-right: 0px;
+    //     .stretch {
+    //     width: 235px;
+    //     display: flex;
+    //     align-content: stretch;
+    //     }
+    // }
+
+    // .column {
+    //     width: 230px;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: flex-start;
+        // margin-left: 9px;
+        // margin-right: 9px;
+    // }
+    // .column7{
+    //     margin-right: 0px;
+    // }
 }
 
 .pins {
@@ -366,9 +398,11 @@ input#search-pins {
 
 }
 
-.pin-columns {
-    width: 235px;
-}
+// .pin-columns {
+//     width: 235px;
+//     margin-left: 8px;
+//     margin-right: 8px;
+// }
 
 // .pins-div-wrapper {
 //     padding: 8px 6px 16px;
@@ -463,11 +497,9 @@ input#search-pins {
 }
 
 .create-pin-img {
-    // position: absolute;
-    // top: 240px;
-    // left: 175px;
     order: -1;
     width: 340px;
     max-height: 454px;
     height: auto;
 }
+

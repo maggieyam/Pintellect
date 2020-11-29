@@ -1,10 +1,12 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPen, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+// import {reorganizePins, mapPinsToCols} from '../../../utils/pins_positioning_utils';
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import {faPen, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
-import PinIndexItem from './pin_index_item';
-
+// import PinIndexItem from './pin_index_item';
+// import BoardIndexContianer from '../../boards/index/board_index_container';
+import {reorganizePins, mapPinsToCols} from '../../../utils/pins_positioning_utils';
 class PinIndex extends React.Component {
     constructor(props){
         super(props);
@@ -14,36 +16,13 @@ class PinIndex extends React.Component {
         this.props.requestPins();
     }
 
-    shuffle_pins(){
-        const { pins } = this.props;
-        let used = [];
-        let shuffled = [];
-        const len = pins.length;
-        for (let i = 1; i <= 7; i++) {
-            let inner = [];
-            for (let j = 0; j < Math.floor(len / 7); j++){
-                let rand = 0;
-                while(used.includes(rand)){
-                    rand = Math.floor(Math.random() * len);
-                }
-                inner.push(pins[rand]);
-                used.push(rand)               
-            }
-            shuffled.push(inner);
-        }
-        return shuffled;
-       
-    }
-
-    // toShowPage(pinId) {
-    //     this.props.fetchPin(pinId).then(this.props.history(`/pin/${pinId}`));
-    // }
-
     render() {       
-        const pins = this.shuffle_pins();
-        return(
-            <div className="pins-seeds-container">               
-              {pins.map((colPins, i) => 
+        const pins = reorganizePins(this.props.pins, true);
+        // if (!pins) return null;
+        return (
+            <div className="pins-seeds-container">
+                {mapPinsToCols(pins)}           
+                {/* {pins.map((colPins, i) => 
                   <div key={i} className={`column column${i} pin-columns`}>
                   {colPins.map((pin) => 
                     <Link to={`/pin/${pin.id}`}>
@@ -56,9 +35,9 @@ class PinIndex extends React.Component {
                     </Link>
                 )}
                 </div>
-              )}
-           </div> 
-        )
+              )} */}
+            </div>
+        );
     }
 }
 

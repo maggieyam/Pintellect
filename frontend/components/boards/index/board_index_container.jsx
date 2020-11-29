@@ -11,13 +11,13 @@ const mapStateToProps = ({entities, session}, {match} ) => {
         boards: Object.values(entities.boards),
         // pin: entities.pins[id],
         user: entities.users[id],
-        // pins: entities.pins,
+        pins: Object.values(entities.pins),
 }};
 
 const mapDispatchToProps = (dispatch) => ({
   fetchBoards: () => dispatch(fetchBoards()),
-  requestPin: (pinId) => dispatch(requestPin(pinId)),
-  requestPins: () => dispatch(requestPins()),
+  // requestPin: (pinId) => dispatch(requestPin(pinId)),
+  // requestPins: () => dispatch(requestPins()),
   openModal: (modal) => dispatch(openModal(modal)),
 });
 

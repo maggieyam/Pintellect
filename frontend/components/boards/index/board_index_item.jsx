@@ -2,97 +2,54 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import { fetchPin, fetchPins} from '../../../utils/pins_api_util';
+import {Link} from 'react-router-dom';
 
-
-
-// const BoardIndexItem = ({board, openModal, requestPin}) => {
-  // const getPins = () => {
-  //   return board.pinIds.slice(0,3).map((id, idx) => {
-  //     const pin = requestPin(id);
-  //     console.log(pin.title);
-  //     
-  //   return(
-  //     <img src={pin.link} alt="pins" className={`board-index-img${idx}`}/>
-  //   )
-  //   })
-  // }
-  // const modal = {type: 'update', item: board}
-  //   // const create = {type: 'create', item: board}
-  // return (
-  //   <div id="index-item">
-  //     <div id="images-main-container">
-  //     {board.pinIds.length > 1 ? getPins() : null}
-  //     <FontAwesomeIcon
-  //                   icon={faPen}  
-  //                   id="edit-board"
-  //                   className="icon"
-  //                   size="2x"
-  //                   onClick={() => openModal(modal)}
-  //               />
-  //     </div>
-  //     <div className="labels-board-index">
-  //       <h3 id="boards">{board.title}</h3>
-          
-  //     </div>
-      
-  //   </div>
-  // );   
-  
-// } 
-
-// const modal = `update ${board.id}`
 class BoardIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.getPins = this.getPins.bind(this);
-
-  }
-
-//  componentDidMount() {
-   
-//   this.props.board ? this.getPins() : null;
   
-  // }
-
-  getPins() {
-    
-    const ids = this.props.board.pinIds.slice(0, 3);
-    const newPins = this.props.pins;
-    return ids.map((id) => {
-      
-      console.log(newPins[id].title)
-      
-
-
-      const pin = this.props.requestPin(id).then(() => {
-        return(
-          <div>Hello
-          <img src={pin.link} alt="pins" className={`board-index-img${idx}`}/>{pin.title}
-          </div>
-        )
-      }
-    );
-    
-    })
+  addImg(obj, name){
+    if(obj) { 
+      return (
+        <Link to={`/board/${this.props.board.id}`}>
+          <img src={ obj["url"] } 
+          alt='img' 
+          id={name}
+          />
+        </Link>
+     ) 
+    }
   }
-
-
 
   render (){  // const create = {type: 'create', item: board}
     const modal = {type: 'update', item: this.props.board}
     const { board, openModal } = this.props;
+    const urls = board.allUrls.slice(0, 3);
+    if (!board) return null;
+// 
     return (
-      <div id="index-item">
+      <div id="index-item"key={board.id}>
         <div id="images-main-container">
-        <FontAwesomeIcon
-                      icon={faPen}  
-                      id="edit-board"
-                      className="icon edit-board"
-                      size="lg"
-                      onClick={() => openModal(modal)}
-                  />
+          <div className="board-image-left">
+            {this.addImg(urls[0], "left-img")}     
+          </div>
+
+          <div id="board-image-right">
+            <div>
+              {this.addImg(urls[1], 'right-img1')}             
+            </div>
+            <div >
+              {this.addImg(urls[2], 'right-img2')}
+            </div>
+          </div>
+          
+          <FontAwesomeIcon
+            icon={faPen}  
+            id="edit-board"
+            className="icon edit-board"
+            size="sm"
+            onClick={() => openModal(modal)}
+          />
         </div>
-        <div className="labels-board-index">
+        <div className="labels-board-index"key={board.id}>
           <h3 id="boards">{board.title}</h3>
             
         </div>

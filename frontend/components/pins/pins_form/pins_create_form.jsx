@@ -7,7 +7,7 @@ import {
   faPlus,
   faCommentDots,
   faTrashAlt,
-  faChevronCircleDown,
+  faChevronDown,
   faRocket,
   faPlusCircle,
   faSignOutAlt,
@@ -17,6 +17,8 @@ import {
   faEllipsisH,
 } from '@fortawesome/free-solid-svg-icons';
 import { initial } from 'lodash';
+import { openModal } from "../../../actions/modal_actions";
+import { dropDownBtns, toggle } from "../../../utils/drop_down_util"
 
 class CreatePinForm extends React.Component {
   constructor(props) {
@@ -28,11 +30,11 @@ class CreatePinForm extends React.Component {
       description: '',
       link: '',
       boardId: boardId,
-      // empty: false,
-      // board: []
+      selectBoards: [],
 
     };
     this.baseState = this.state;
+    this.boards = this.state.boards
     this.handleSubmit = this.handleSubmit.bind(this);
     // this.dropDown = this.dropDown.bind(this);
   }
@@ -40,21 +42,11 @@ class CreatePinForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault;
     
-    // delete this.state['board'];
-    // delete this.state['empty'];
-    
     const pin = Object.assign({}, this.state);
-      // delete this.state.saved
-      this.props
-        .createPin(pin)
-        // .then(this.add_pins(this.state.board, pin))
-        .then(this.props.history.push(`/`));
-  
-      // this.props.history();
-      console.log(pin);
     
+    this.props.createPin(pin)
+        .then(this.props.history.push(`/`));   
   }
-
 
   componentDidMount() {
     this.props.fetchBoards();
@@ -63,6 +55,7 @@ class CreatePinForm extends React.Component {
   update(field) {
     return (e) => {
       this.setState({[field]: e.currentTarget.value});
+      this.updateImg();
     }
   }
 
@@ -70,75 +63,42 @@ class CreatePinForm extends React.Component {
     return () => this.setState(this.baseState);
   }
 
-  search(boards) {
-    return e => {
-      
-      for (let i = 0; i < boards.length; i++) {
-        if (!boards[i].title.includes(e.currentTarget.value)){
-          return <div>{boards[i]}</div>
-        }     
-      }
-    }
-  }
+  // search(boards) {
+  //   return e => {     
+  //     let res = boards.filter(board => 
+  //           !board.title.includes(e.currentTarget.value));
+             
+  //       this.select(res);
+    
+  //   }
+  // }
 
- toggle() {
-      let button = document.querySelector("#select");
-      let dropDown = document.querySelector('#dropDown-content');
-      
-      button.addEventListener('click', () => {
-        if (dropDown.style.display === "none") {
-          dropDown.style.display = 'block';
-        } else {
-          dropDown.style.display = 'none';
-        }
-  })
- }
 
  addBoard(boardId) {
     return () => {
-      this.setState({boardId: boardId});
+      this.setState({boardId: boardId});    
       let option = document.querySelector(`#board${boardId}`).innerText;
       document.querySelector('#select').innerHTML = option;
       document.querySelector('#dropDown-content').style.display = 'none';
-      // 
-      // option.addEventListener('click', () => {
-      //   
-        // return text.innerHTML("Test");
 
-//         return text.style.display('none');
-//       })
     };
     
  }
 
  updateImg() {
+   
    if (this.state.link === "") return null;
    let img = document.createElement('img')
-    let container = document.getElementById('create-pin-left').childNodes[0];
+   let container = document.getElementById('create-pin-left').childNodes[0];
     img.src = this.state.link;
     if (img) {
-      img.classList.add('create-pin-img')
-      return container.replaceChild(img, container.childNodes[0]);
+      img.classList.add('create-pin-img')    
+      container.replaceChild(img, container.childNodes[0]);
     }
-    return null;
  }
-//  selectBoard(){
-//    this.setState({})
-//  }
 
-  // componentDidUpdate(prevProps){
-  //   if (!this.props.boards !== prevProps.boards) {
-  //     this.setState({saved: true, board: this.props.board[0]});
-  //   }
-  // }
-
-  render() {
-    const { title, description, link, boardId } = this.state;
-    const { first_name, last_name } = this.props.user;
-    const boards = this.props.boards;
-    // const addBtn = <button onClick={this.addBoard()}>`${boards[0].title}`</button>;
-    const select = (boards) => {          
-      return boards.slice(0, 5).map((board) => {
+ select(boards) {
+    return boards.slice(0, 5).map((board) => {
         return (
           <div className="select-board"
           key={board.id}
@@ -148,15 +108,21 @@ class CreatePinForm extends React.Component {
           </div>
         );
       })
-    }
-    // const {boards} = this.props;
-    
+ }
+
+
+  render() {
+    const { title, description, link } = this.state;
+    const { user, boards, openModal } = this.props;
+    const { first_name, last_name } = user;
+
+    const modal = {type: 'create'};
     return (
       <div id="body-container">
         <div id="body-section">
           <div>
             <form
-              onSubmit={this.handleSubmit}
+              onSubmit={this.state.link !== "" ? this.handleSubmit : null}
               id="pin-create-form"
             >
               <div id="top-bar">
@@ -171,15 +137,16 @@ class CreatePinForm extends React.Component {
 
                 <div id="nav-right-pin-form">
                   <div id="nav-right-btns">
-                    <div id="select" onClick={this.toggle.bind(this)}>
+                    {/* {dropDownBtns(this.props.boards)} */}
+                    <div id="select" onClick={() => toggle('#dropDown-content')}>
                       
                         { boards && boards[0] ? `${boards[0].title}`: 'Select'}
           
                       <FontAwesomeIcon
-                        icon={faChevronCircleDown}
+                        icon={faChevronDown}
                         id="svg-pin-drop-down"
                         size="lg"
-                        onClick={this.toggle.bind(this)}
+                        onClick={() => toggle('#dropDown-content')}
                       />
                     </div>
                     <button className="save" >Save</button>
@@ -190,7 +157,7 @@ class CreatePinForm extends React.Component {
                     <div id="wrapper-dropdown">
                       <div id="top-pin-select">
                         <input
-                          onChange={this.search(boards)}
+                          // onChange={this.search(boards)}
                           id="search-pins"
                         />
                         <FontAwesomeIcon
@@ -202,17 +169,14 @@ class CreatePinForm extends React.Component {
 
                       <div className="dropDown-options">
                         <div id="all-boards">All boards</div>
-                        {boards ? select(boards) : Null}
+                        {boards ? this.select(boards) : Null}
                       </div>
-                      <div
-                        id="create-board-btn"
-                        onClick={() => this.props.history('/id')}
-                      >
+                      <div id="create-board-btn">
                         <FontAwesomeIcon
                           icon={faPlusCircle}
                           size="2x"
                           id="svg-pin-create-board"
-                          onClick={this.reset()}
+                          onClick={() => openModal(modal)}
                         />
                         <div id="text-create-board">Create a board</div>
                       </div>

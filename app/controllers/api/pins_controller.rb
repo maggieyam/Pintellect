@@ -35,10 +35,12 @@ class Api::PinsController < ApplicationController
 
     def destroy
         @pin = current_user.pins.find_by(id: params[:id])
+        @pins = current_user.pins
         if @pin
+            
             @pin.destroy
         end
-        render :show
+        render :index
     end
 
      private

@@ -5,7 +5,7 @@ import CreateBoardFormContainer from '../boards/board_form/create_board_containe
 import EditBoardFormContainer from '../boards/board_form/edit_board_container';
 
 export default function Modal({ modal, closeModal }) {
-  
+  // 
   if (!modal) {
     return null;
   }

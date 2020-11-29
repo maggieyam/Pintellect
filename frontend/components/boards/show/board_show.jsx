@@ -1,76 +1,65 @@
-// // import React from "react";
-// // // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-// // // import {faDotCircle} from '@fortawesome/free-solid-svg-icons';
-// // class BoardShow extends React.Component {
-// // BoardShow
-// // render(){
-// //     return(
-// //         <div>{this.props.board.title}
-// //         {/* <FontAwesomeIcon icon={faDotCircle} id="etc" size="2x" onClick={() => openModal('update')} id="udpate"/> */}
-// //         </div>
-// //     )
-// //     }
-// // }
-// // export default BoardShow;
-
-// import React from 'react';
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-// import { faEllipsisH, faPlusCircle,faStar } from '@fortawesome/free-solid-svg-icons';
-
-// class BoardShow extends React.Component{
-//     constructor(props){
-//         super(props);
-        
-//     }
-
-//     componentDidMount(){
-//         const boardId = this.props.match.params.boardId;
-//         // const board = requestBoard(boardId);
-//         this.props.requestBoard(boardId);
-//     }
-
-//     render () {
-      
-
-//         return (
-//           <div>
-//             <div id="show-1">
-//                 {console.log(board.title)}
-//               <h1>{board.title}</h1>
-//               <FontAwesomeIcon
-//                 icon={faEllipsisH}
-//                 id="etc"
-//                 size="2x"
-//                 onClick={() => openModal('update')}
-//                 id="udpate"
-//               />
-//             </div>
-
-//             <div id="show-2">
-//               <button>{user.username[0]}</button>
-//               <FontAwesomeIcon
-//                 icon={faPlusCircle}
-//                 className=""
-//                 size="2x"
-//                 onClick={() => openModal('create')}
-//               />
-//             </div>
-
-//             <div id="show-3">
-//               <FontAwesomeIcon
-//                 icon={faPlusCircle}
-//                 size="2x"
-//               />
-//               <FontAwesomeIcon
-//                 icon={faStar}
-//                 size="2x"
-//               />
-//             </div>
+import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
+import { reorganizePins, mapPinsToCols } from '../../../utils/pins_positioning_utils';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPenCircle} from '@fortawesome/free-solid-svg-icons';
+import { Link, Redirect } from 'react-router-dom';
 
 
-//           </div>
-//         );
-//     }
-// }
+class BoardShow extends React.Component {
 
-// export default BoardShow;
+    componentDidMount() {
+        this.props.requestBoard(this.props.match.params.boardId);
+    }
+
+    mapSingleRowPins() {
+        let pins = this.props.board.allPins;
+        return( 
+            pins.map((pin, i) => 
+            <div className={`column column${i} pin-columns`}>
+                <Link to={`/pin/${pin.id}`}>
+                    <img 
+                    src={pin.link} 
+                    alt="pins" 
+                    key={pin.id} 
+                    id={`pin${pin.id}`} 
+                    />
+                </Link>
+            </div>
+        ))
+    }
+
+    renderPins(){
+        let pins = this.props.board.allPins;
+        if (pins.length > 7) {
+            pins = reorganizePins(pins, false);
+            return mapPinsToCols(pins)
+        } else {
+            
+            return this.mapSingleRowPins(pins)             
+        }      
+    }
+
+    render(){
+        const {board} = this.props;
+        if (!board) return null;
+
+        return(
+            <div id="board-show"> 
+                <div id="board-show-top">
+                    <h1 id="board-title">{board.title}
+                    <FontAwesomeIcon
+                        icon={faPencilAlt}
+                        className="edit-pen"
+                        size="sm"
+                    /></h1>
+                    <span id="board-description">{board.description}</span>
+                </div>
+                <div id="board-show-pins" className="pins-seeds-container">
+                    {this.renderPins()}
+                </div>
+            </div>
+        )
+    }
+}
+export default BoardShow;

@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import CreateBoardFormContainer from '../board_form/create_board_container';
 import BoardIndexItem from './board_index_item';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPen, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-import { requestPins } from '../../../actions/pins_actions';
+import {faPen, faPlus} from '@fortawesome/free-solid-svg-icons';
+// import { requestPins } from '../../../actions/pins_actions';
+import uuid from "uuid/v4";
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
@@ -13,8 +14,7 @@ class BoardIndex extends React.Component {
     
     
     componentDidMount() {
-        this.props.fetchBoards();        
-        // this.props.requestPins();
+        this.props.fetchBoards(); 
     }
 
     toggle() {
@@ -30,10 +30,28 @@ class BoardIndex extends React.Component {
     })
     }
 
+    mapBoards() {
+      return (
+        <div className="wrapper">
+              <div className="board-item-container">
+      
+              {this.props.boards.map((board) =>          
+                <BoardIndexItem
+                  board={board}
+                  key={board.id}
+                  openModal={this.props.openModal}
+                  />
+                )}
+
+        </div>
+      </div> 
+      )
+         
+    }
+
     render() {
       const create = {type: 'create'};
-      const { boards, user, openModal } = this.props;
-      // if (!boards) re
+      const { user, openModal } = this.props;
 
         return (
           <div className="board-index-main-container">
@@ -44,36 +62,28 @@ class BoardIndex extends React.Component {
             <p id="index-header">{user.first_name}  {user.last_name}</p>
          
             <p>0 followers * 0 following</p>
-            <div className="icon-row">
-              <FontAwesomeIcon
-                icon={faPlusCircle}
-                className="icon pin-board-create"
-                id="modal-create"
-                size="2x"
-                onClick={this.toggle}
-              />
-
+            <div className="icon-row" onClick={this.toggle}>
+              <div className="icon pin-board-create">
+                <FontAwesomeIcon
+                  icon={faPlus}           
+                  id="modal-create"
+                  size="2x"
+                  onClick={this.toggle}
+                />
+              </div>
             <div className="dropDown-board">
               <div id="create-board-index">Create</div>
-              <button className="dropDown-text-board">
-                <Link to={'/pin-builder'} >pin</Link>
-              </button>
+              <Link to={'/pin-builder' } >
+                <button className="dropDown-text-board">
+                  pin
+                </button>
+              </Link>
               <button className="dropDown-text-board" onClick={() => openModal(create)}>
                 board
               </button>
             </div>
             </div>
-            <div className="board-item-container">
-              {boards.map((board) => {
-                return (
-                  <BoardIndexItem
-                    board={board}
-                    openModal={openModal}
-                    key={board.id}
-                  />
-                );
-              })}
-            </div>
+               {this.mapBoards()}   
           </div>
         );
     }

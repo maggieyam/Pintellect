@@ -5,7 +5,6 @@ class Api::BoardsController < ApplicationController
         @board = Board.new(board_params)
         @board.author_id = current_user.id
         if @board.save 
-            # 
             render :show
         else
             render json: @board.errors.full_messages, status: 422
@@ -13,12 +12,14 @@ class Api::BoardsController < ApplicationController
     end
 
     def index     
-        @boards = current_user.boards
+        @boards = current_user.boards.includes(:pins)
         render :index
     end
 
     def show
        @board = Board.find_by(id: params[:id])
+       
+    #    BoardPin.create({board_id: @board.id, pin_id: @pin.id})
        render :show
     end
 
