@@ -2,17 +2,9 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faSearch,
-  faPen,
-  faBell,
-  faPlus,
-  faCommentDots,
   faTrashAlt,
   faChevronDown,
-  faRocket,
   faPlusCircle,
-  faSignOutAlt,
-  faBorderAll,
-  faDotCircle,
   faArrowAltCircleUp,
   faEllipsisH,
 } from '@fortawesome/free-solid-svg-icons';
@@ -23,14 +15,14 @@ import { dropDownBtns, toggle } from "../../../utils/drop_down_util"
 class CreatePinForm extends React.Component {
   constructor(props) {
     super(props);
-    let boardId = () => props.boards.length > 0 ? 0 : -1;
+    // boardId = () => props.boards.length > 0 ? 0 : -1;
 
     this.state = {
       title: '',
       description: '',
       link: '',
-      boardId: boardId,
-      selectBoards: [],
+      boardId: 0,
+      // selectBoards: [],
 
     };
     this.baseState = this.state;
@@ -41,7 +33,7 @@ class CreatePinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault;
-    
+    if (this.state.link === "" || !this.state.boardId) return null;
     const pin = Object.assign({}, this.state);
     
     this.props.createPin(pin)
@@ -98,12 +90,15 @@ class CreatePinForm extends React.Component {
  }
 
  select(boards) {
-    return boards.slice(0, 5).map((board) => {
+// deb/ugger
+    return boards.map((board) => {
         return (
           <div className="select-board"
           key={board.id}
           id={`board${board.id}`}
           onClick={this.addBoard(board.id)}>
+
+            <img src={board.allUrls[0] ? board.allPins[0].link : null} className="mini-img"/>
             {board.title}
           </div>
         );
@@ -112,7 +107,7 @@ class CreatePinForm extends React.Component {
 
 
   render() {
-    const { title, description, link } = this.state;
+    const { title, description, link, } = this.state;
     const { user, boards, openModal } = this.props;
     const { first_name, last_name } = user;
 
@@ -122,7 +117,7 @@ class CreatePinForm extends React.Component {
         <div id="body-section">
           <div>
             <form
-              onSubmit={this.state.link !== "" ? this.handleSubmit : null}
+              onSubmit={this.handleSubmit}
               id="pin-create-form"
             >
               <div id="top-bar">
@@ -140,7 +135,7 @@ class CreatePinForm extends React.Component {
                     {/* {dropDownBtns(this.props.boards)} */}
                     <div id="select" onClick={() => toggle('#dropDown-content')}>
                       
-                        { boards && boards[0] ? `${boards[0].title}`: 'Select'}
+                         Select
           
                       <FontAwesomeIcon
                         icon={faChevronDown}

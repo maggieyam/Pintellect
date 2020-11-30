@@ -12,10 +12,12 @@ class PinShow extends React.Component {
 
     }
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.props.requestPin(this.props.id);
     }
 
     renderInfo() {
+        
         if (!this.props.pin) return null;
 
         const {title, description} = this.props.pin;
@@ -77,6 +79,7 @@ class PinShow extends React.Component {
                             <FontAwesomeIcon
                                 icon={faTrashAlt}
                                 id="svg-pin-drop-down"
+                                className="pin-show-delete"
                                 size="2x"
                                 onClick={() => deletePin(id)}
                             />

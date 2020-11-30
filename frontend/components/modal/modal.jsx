@@ -24,6 +24,12 @@ export default function Modal({ modal, closeModal }) {
     case 'update':
       component = <EditBoardFormContainer/>;
       break;
+    // case 'createPin':
+    //   component = <CreatePinFormContainer />;
+    //   break;
+    // case 'updatePin':
+    //   component = <CreatePinFormContainer />;
+    //   break;
     default:
       return null;
   }

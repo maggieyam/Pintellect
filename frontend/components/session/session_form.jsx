@@ -78,7 +78,7 @@ class SessionForm extends React.Component {
 
     return (
       <div className="session-forms">
-        <FontAwesomeIcon icon={faStroopwafel} spin className="session-logo" size="2x" />
+        <FontAwesomeIcon icon={faStroopwafel} spin className="logo" size="2x" />
         <h3 className="greeting">Welcome to Pintellect</h3>
         <h3 className="find-subject">Find new subject to explore</h3>
         <form onSubmit={this.handleSubmit} className="forms">
@@ -108,7 +108,8 @@ class SessionForm extends React.Component {
           <button id="modal-button">{this.props.submitButton}</button>
           {/* <button id="modal-button">{this.props.submitButton}</button> */}
         </form>
-        {this.props.submitButton === 'Log in' ? this.showDemoButton() : null}
+        {/* {this.props.submitButton === 'Log in' ? this.showDemoButton() : null} */}
+        {this.showDemoButton()}
         {this.showText()}
       </div>
     );
@@ -118,7 +119,7 @@ class SessionForm extends React.Component {
     return (
       <>
         <div className="demo-btns">
-          <h3>OR</h3>
+          {this.props.submitButton === 'Log in' ? <h3>OR</h3> : null}
           <button id="demo-button1" onClick={(e) => this.handleDemo(e, 1)}>
             {/* <FontAwesomeIcon icon={faFacebook} id="facebook" size="lg" /> */}
             Demo Einsten

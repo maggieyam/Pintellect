@@ -4,6 +4,7 @@ import { reorganizePins, mapPinsToCols } from '../../../utils/pins_positioning_u
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPenCircle} from '@fortawesome/free-solid-svg-icons';
 import { Link, Redirect } from 'react-router-dom';
+import { openModal } from "../../../actions/modal_actions";
 
 
 class BoardShow extends React.Component {
@@ -41,18 +42,23 @@ class BoardShow extends React.Component {
     }
 
     render(){
-        const {board} = this.props;
+        const {board, authorId, openModal} = this.props;
+        const modal = {type: 'update', item: this.props.board}
         if (!board) return null;
 
         return(
             <div id="board-show"> 
                 <div id="board-show-top">
                     <h1 id="board-title">{board.title}
+                    {/* <Link to={`/${authorId}/${board.id}/edit`}> */}
                     <FontAwesomeIcon
                         icon={faPencilAlt}
                         className="edit-pen"
                         size="sm"
-                    /></h1>
+                        onClick={() => openModal(modal)}
+                    />
+                    {/* </Link> */}
+                    </h1>
                     <span id="board-description">{board.description}</span>
                 </div>
                 <div id="board-show-pins" className="pins-seeds-container">
