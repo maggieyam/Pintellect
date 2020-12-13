@@ -1,5 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../../actions/modal_actions';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
@@ -24,6 +26,7 @@ class EditBoardForm extends React.Component {
     }
 
     render(){
+      debugger
         return (
           <div id="board-edit-form">
             <div id="form-header">
@@ -65,7 +68,11 @@ class EditBoardForm extends React.Component {
                   <div id="settings">settings</div>
                 
                   <h3 id="secret-line">Keep this board screte</h3>
-                  <div>
+                   
+                  <div className="edit-form-btns">
+                    <button  type="button" id='delete-btn'
+                      onClick={() => this.props.deleteBoard(this.state.id).then(() => closeModal())}
+                      >Delete</button>
                     <button className="done-btn">Done</button>
                   </div>
                 </div>

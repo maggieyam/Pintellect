@@ -9,6 +9,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
+    "@webpack-cli/init": "^1.0.3",
     "babel-loader": "^8.2.1",
     "lodash": "^4.17.20",
     "react": "^17.0.1",
@@ -23,7 +24,6 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "uuid": "^8.3.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^4.2.0"
   },
@@ -41,12 +41,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
+    "start": "webpack --mode=development --watch",
     "postinstall": "webpack --mode=production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.12.1"
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "webpack-cli": "^4.2.0"
   }
 }

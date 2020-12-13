@@ -1,13 +1,9 @@
 import React from "react";
 // import FadeIn from 'react-fade-in';
 import { Link, NavLink, Redirect}from "react-router-dom";
-import { login } from "../../utils/session_api_util";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch,  faMapPin, faCommentDots, faChevronCircleDown, 
-  faRocket, faPlus, faSignOutAlt, faStroopwafel, faCircleNotch, faThumbtack} from '@fortawesome/free-solid-svg-icons';
+import {faSearch,  faMapPin, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import * as IMGUtil from '../../utils/image_util';
-import BoardIndexContainer from '../boards/index/board_index_container';
-import { closeModal } from "../../actions/modal_actions";
 import FadeIn from "react-fade-in";
 // import ReactCSSTransitionGroup from 'react-transition-group';
 // import { closeModal } from "../../actions/modal_actions";
@@ -25,7 +21,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
     const signup = {type: 'signup'};
     const login = ({type: 'login'});
     // let prev = 0;
-    // document.addEventListener('scroll', () => openModal(signup));
+    document.addEventListener('scroll', () => openModal(signup));
     // document.addEventListener('scroll', () => {
     // // document.addEventListener('scroll', () => openModal(signup));
     //   setTimeout(() => {

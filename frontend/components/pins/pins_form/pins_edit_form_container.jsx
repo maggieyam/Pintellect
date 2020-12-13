@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     updatePin: (pin) => dispatch(updatePin(pin)),
     fetchBoards: () => dispatch(fetchBoards()),
+    
     openModal: (modal) => dispatch(openModal(modal))
   };
 };

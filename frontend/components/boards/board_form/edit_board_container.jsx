@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 // import { fetchBoard, updateBoard } from '../../actions/boards_actions';
-import { requestBoard, updateBoard } from '../../../actions/boards_actions';
+import { requestBoard, updateBoard, deleteBoard } from '../../../actions/boards_actions';
 import EditBoardForm from './edit_board_form';
 import { openModal, closeModal } from "../../../actions/modal_actions";
 import React from 'react';
@@ -16,6 +16,7 @@ const mapStateToProps = ({ui}) => {
 const mapDispatchToProps = (dispatch) => ({
   requestBoard: (boardId) => dispatch(requestBoard(boardId)),
   updateBoard: (board) => dispatch(updateBoard(board)),
+  deleteBoard: (boardId) => dispatch(deleteBoard(boardId)),
   closeModal: () => dispatch(closeModal()),
   openModal: () => dispatch(openModal({type:'create'})),
   openModal: (modal) => dispatch(openModal(modal)),

@@ -298,7 +298,7 @@
 }
 
 #board-edit-form {
-    height: 897px;
+    height: 800px;
     width: 540px;
     // height: 100%;
     // position: relative;
@@ -362,17 +362,35 @@ input #input-name {
     margin-top: 25px;
 }
 
-.done-btn {
-    position: absolute; right: 42px; bottom: 70px;
-    background-color: #E60023;
+.done-btn, #delete-btn {
+    // position: absolute; right: 42px; bottom: 70px;
+   
     // justify-content: flex-end;
     height: 56px;
     width: 91.87px;
     box-sizing: border-box;
-    color: #767676;
-    background-color: #efefef;
+ 
     font-size: 16px;
     border-radius: 34px;
+}
+
+.done-btn {
+    background-color: #E60023;
+    color: #fff;
+}
+
+#delete-button {
+    background-color: #efefef;
+    color: #111111;
+    position: absolute; left: 42px; bottom: 70px;
+}
+
+.edit-form-btns {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 120px;
 }
 
 #initial-logo {
