@@ -21,7 +21,7 @@ const Greeting = ({ currentUser, logout, openModal, }) => {
     const signup = {type: 'signup'};
     const login = ({type: 'login'});
     // let prev = 0;
-    document.addEventListener('scroll', () => openModal(signup));
+    // document.addEventListener('scroll', () => openModal(signup));
     // document.addEventListener('scroll', () => {
     // // document.addEventListener('scroll', () => openModal(signup));
     //   setTimeout(() => {
