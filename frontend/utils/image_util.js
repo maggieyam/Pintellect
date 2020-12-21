@@ -116,3 +116,78 @@ export const space_img2 = 'https://cdn.mos.cms.futurecdn.net/M7fDTpDnJcZ4dt3myng
 export const space_img3 = 'https://cdn.mos.cms.futurecdn.net/4GPwm2nCYsSGf2paR4cxtL-1024-80.jpg';
 export const space_img4 = 'https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg';
 export const space_img5 = 'https://i.pinimg.com/originals/4a/7c/86/4a7c86eb4b3df5bfc0e1017fec76feae.jpg';
+
+const col1 = [
+  img1,
+  img24,
+  img9,
+  img16,
+  img3,
+  img23,
+  img26,
+  img49,
+  img37,  
+];
+
+const col2 = [
+  img4,
+  img28,
+  img43,
+  img30,
+  img39,
+  img38,
+  img6,
+];
+
+const col3 = [
+  img8,
+  img33,
+  img40,
+  img41,
+  img9,
+  img25,
+  img42,
+  img49
+    ]
+const col4 = [
+  img55,
+  img5,
+  img34,
+  img31,
+  img50,
+  img12,
+  img13
+]
+
+const col5 = [
+  img15, 
+  img29,
+  img36, 
+  img22, 
+  img44, 
+  img46, 
+  img45
+]
+
+const col6 = [
+  img14,
+  img17,
+  img35,
+  img51,
+  img52,
+  img39,
+  img32,
+  img47
+]
+
+const col7 = [
+  img54,
+  img19,
+  img53,
+  img27,
+  img2,
+  img21,
+  img24,
+  img18,
+]
+export const images = [col1, col2, col3, col4, col5, col6, col7];

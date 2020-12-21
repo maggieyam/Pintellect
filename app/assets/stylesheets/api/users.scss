@@ -205,22 +205,20 @@ img {
     max-height: 350px;
     position: relative;
     margin-bottom: 15px;
-
-
     
 }
 
 
-.placeholder1 {
-    width: 230px;
+.placeholder1,.placeholder5 {
+    // width: 230px;
     height: 130px;
 }
-.placeholder2 {
-    width: 230px;
+.placeholder2, .placeholder4 {
+    // width: 230px;
     height: 250px;
 }
-.placeholder3 {
-    width: 230px;
+.placeholder3{
+    // width: 230px;
     height: 400px;
 }
 
