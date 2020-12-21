@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch,  faMapPin, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import * as IMGUtil from '../../utils/image_util';
 import FadeIn from "react-fade-in";
-import {createIcon, createSpinIcon} from '../../utils/icon.util';
+import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics.util';
 // import ReactCSSTransitionGroup from 'react-transition-group';
 // import { closeModal } from "../../actions/modal_actions";
 // import { FaRegCircle } from "react-icons/fa";
@@ -17,29 +17,27 @@ class Greeting extends React.Component{
   
   leftNav() {
     return(
-      <>
-        <nav className="left-nav">
-          {createSpinIcon(faStroopwafel, "logo", "lg")}
-          <h3 id="board-nav-header">Pintellect</h3>
-        </nav>
-      </>
+      <nav className="left-nav">
+        {createSpinIcon(faStroopwafel, "logo", "lg")}
+        <h3 id="board-nav-header">Pintellect</h3>
+      </nav>
     )
   }
 
   rightNav() {
+    const signup = {type: 'signup'};
+    const login = ({type: 'login'});
     return(
-      <>
-        <nav className="right-nav">
-          <div className="login-signup">
-            <button onClick={() => this.props.openModal(login)} id="login">
-              Log in
-            </button>
-            <button onClick={() => this.props.openModal(signup)} id="signup">
-              Sign up
-            </button>
-          </div>
-        </nav>
-      </>
+      <nav className="right-nav">
+        <div className="login-signup">
+          <button onClick={() => this.props.openModal(login)} id="login">
+            Log in
+          </button>
+          <button onClick={() => this.props.openModal(signup)} id="signup">
+            Sign up
+          </button>
+        </div>
+      </nav>
     )
   }
 
@@ -57,9 +55,10 @@ class Greeting extends React.Component{
     )
   }
 
+  
+
   sessionLinks() {
-    const signup = {type: 'signup'};
-    const login = ({type: 'login'});
+    
     // let prev = 0;
     // document.addEventListener('scroll', () => openModal(signup));
     // document.addEventListener('scroll', () => {
@@ -77,6 +76,7 @@ class Greeting extends React.Component{
             {this.leftNav()}
             {this.rightNav()}           
           </div>
+          
           <div className="main-content">
             <div>Get Your Next</div><br />
             <p>Architecture idea</p>
@@ -99,85 +99,28 @@ class Greeting extends React.Component{
 
   
   personalGreeting() {
-    const create = {type: 'create'};
-    const update = {type: 'update', item: {title: 'Space', id:'64'}};
+    // const create = {type: 'create'};
+    // const update = {type: 'update', item: {title: 'Space', id:'64'}};
 
     return (
       <hgroup className="header-group">
-        {/* <section className="left-nav-index"> */}
         <div className="left-nav-icons">
-           <FontAwesomeIcon icon={faStroopwafel}  spin  className="board-logo" size="2x" />
-          <Link to="/" id="home-link">
-            <button className="board-nav-button" id="home-button">
-                Home
-            </button>
-          </Link>
-
-          <Link to="/" id="nav-link">
-            <button className="board-nav-button" id="today">
-                Today
-            </button>
-          </Link>
-
-          <Link to="/" id="nav-link">
-            <button className="board-nav-button" id="following">
-                Following
-            </button>
-          </Link>
+          {createSpinIcon(faStroopwafel, "board-logo", "2x")}
+          {createButtonLink("/", "home-link", "board-nav-button", "home-button", "Home")}
+          {createButtonLink("/", "nav-link", "board-nav-button", "today", "Today")}
+          {createButtonLink("/", "nav-link", "board-nav-button", "following", "Following")}
       </div>
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
         <input type="text" placeholder="Search" id="search" />
        <div className="right-nav-icons">
-          {/* <FontAwesomeIcon
-            icon={faBell}
-            id="bell"
-            className="icon"
-            size="2x"
-            // onClick={redirect}
-          /> */}
           <Link to="/pin-builder">
-          <FontAwesomeIcon
-            icon={faMapPin}
-            className="icon"
-            id="add-pin"
-            size="2x" 
-          />
-          </Link>
-          
-          <Link to={`/${this.props.currentUser.id}`}>
-            <button id="go-to-board" >
-                  {this.props.currentUser.username[0]}
-            </button>
-          </Link>
-
-          {/* <FontAwesomeIcon
-            icon={faChevronCircleDown}
-            className="drop-down-icon"
-            size="2x"
-          /> */}
-
-          
-          <FontAwesomeIcon
-            icon={faSignOutAlt}
-            id="log-out"
-            className="icon"
-            onClick={this.props.logout}
-            size="2x"
-          />
+            {createIcon(faMapPin, "icon", "2x", "add-pin")}
+          </Link>      
+          {createButtonLink(`/${this.props.currentUser.id}`, "", "", "go-to-board", this.props.currentUser.username[0])}
+          {createIcon(faSignOutAlt, "icon", "2x", "log-out", this.props.logout)}
         </div>
-        {/* </div> */}
-        {/* <div class="dropdown">
-        <button class="dropbtn"></button> */}
-        {/* <select class="dropdown-content">
-        <option></option>
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </select> */}
-        {/* </section> */}
-        {/* <BoardIndexItem /> */}
       </hgroup>
-    );};
+    )};
 
   render(){
     return (
