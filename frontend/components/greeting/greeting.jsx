@@ -29,7 +29,8 @@ class Greeting extends React.Component{
     const login = ({type: 'login'});
     return(
       <nav className="right-nav">
-        <div className="login-signup">
+        <div className="right-nav-items">
+          <Link to="/about" className="link-nav">About</Link>
           <button onClick={() => this.props.openModal(login)} id="login">
             Log in
           </button>
@@ -113,7 +114,7 @@ class Greeting extends React.Component{
         <div className="left-nav-icons">
           {createSpinIcon(faStroopwafel, "board-logo", "2x")}
           {createButtonLink("/", "home-link", "board-nav-button", "home-button", "Home")}
-          {createButtonLink("/about", "nav-link", "board-nav-button", "today", "About")}
+          {createButtonLink("/", "nav-link", "board-nav-button", "today", "Today")}
           {createButtonLink("/", "nav-link", "board-nav-button", "following", "Following")}
       </div>
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />

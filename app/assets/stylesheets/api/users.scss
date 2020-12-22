@@ -20,10 +20,10 @@
 }
 
 
-.right-nav > ul{
+.right-nav {
     justify-content: flex-end;;
     flex-direction: row;
-    width: 496.3px;
+    // width: 496.3px;
     height: 56px;
 
 }
@@ -50,7 +50,8 @@
     flex-direction: row;
 }
 
-.login-signup {
+.right-nav-items {
+    vertical-align: middle;
     padding: 20px 20px;
 }
 
@@ -65,7 +66,15 @@
     width: 88.13px;
 }
 
+.link-nav {
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 20px;
+}
 
+.link-nav:hover {
+    text-decoration: underline;   
+}
 button#modal-button{
     width: 320px;
     height: 40 px;
@@ -213,19 +222,17 @@ img {
 #board-nav-header {
     color: #E60023;
 }
+
 .about-wrapper {
-    height: 90vh;
+    height: 100vh;
 }
+
 .about {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://cdn.asiatatler.com/asiatatler/i/ph/2020/04/14145432-valdemaras-d-7vpfyhb-j8y-unsplash_cover_1920x1217.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.asiatatler.com/asiatatler/i/ph/2020/04/14145432-valdemaras-d-7vpfyhb-j8y-unsplash_cover_1920x1217.jpg");
     background-size: cover;
-    filter: blur(1px);
-  -webkit-filter: blur(1px);
-    height: 90vh;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
+    height: 100vh;
 }
 
 // img.background {
@@ -248,4 +255,20 @@ img {
     line-height: 1;
     margin: 0;
     top:37%;
+}
+
+.about-btn {
+    width: 157.2px;
+    height: 52px;
+    background-color: #e60023;
+    color: #fff;
+    border-radius: 4px;
+    z-index: 2;
+    position: absolute;
+    top: 57%;
+    left: 15%;
+    margin-left: 0;
+    font-family: "NeueHaasGrot-Pinterest-DispRound-75-Bold",sans-serif,helvetica;
+    font-weight: 400;
+    font-size: 20px;
 }

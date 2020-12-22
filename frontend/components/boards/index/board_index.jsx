@@ -4,7 +4,7 @@ import CreateBoardFormContainer from '../board_form/create_board_container';
 import BoardIndexItem from './board_index_item';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faPlus} from '@fortawesome/free-solid-svg-icons';
-// import { requestPins } from '../../../actions/pins_actions';
+
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
@@ -71,10 +71,12 @@ class BoardIndex extends React.Component {
                   pin
                 </button>
               </Link>
-              <button className="dropDown-text-board" onClick={() => {
-                this.hide('.dropDown-board');
-                openModal(create);
-                }}>
+              <button 
+                className="dropDown-text-board" 
+                onClick={() => {
+                  this.hide('.dropDown-board');
+                  openModal(create);
+                  }}>
                 board
               </button>
             </div>

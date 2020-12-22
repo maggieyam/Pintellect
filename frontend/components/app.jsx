@@ -21,7 +21,9 @@ const App = () => (
   <div>
     <ModalContainer />
     <header>
-      <GreetingContainer />
+      {/* <GreetingContainer /> */}
+      <Route exact path="/" component={GreetingContainer}/>
+      <Route exact path="/about" component={About}/>
     </header>
     <Switch>
       <ProtectedRoute exact path="/about" component={About}/>
