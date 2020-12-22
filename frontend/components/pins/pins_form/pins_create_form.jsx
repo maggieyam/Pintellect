@@ -55,15 +55,17 @@ class CreatePinForm extends React.Component {
     return () => this.setState(this.baseState);
   }
 
-  // search(boards) {
-  //   return e => {     
-  //     let res = boards.filter(board => 
-  //           !board.title.includes(e.currentTarget.value));
-             
-  //       this.select(res);
-    
-  //   }
-  // }
+  search(boards) {
+    return e => {     
+      boards.map(board => {
+        let option = document.querySelector(`#board${board.id}`);
+        if(!board.title.toLowerCase().includes(e.currentTarget.value.toLowerCase())){
+          option.style.display = 'none';
+        } else {
+          option.style.display = 'block';
+        }});                 
+    }
+  }
 
 
  addBoard(boardId) {
@@ -77,8 +79,7 @@ class CreatePinForm extends React.Component {
     
  }
 
- updateImg() {
-   
+ updateImg() {  
    if (this.state.link === "") return null;
    let img = document.createElement('img')
    let container = document.getElementById('create-pin-left').childNodes[0];
@@ -152,7 +153,7 @@ class CreatePinForm extends React.Component {
                     <div id="wrapper-dropdown">
                       <div id="top-pin-select">
                         <input
-                          // onChange={this.search(boards)}
+                          onChange={this.search(boards)}
                           id="search-pins"
                         />
                         <FontAwesomeIcon

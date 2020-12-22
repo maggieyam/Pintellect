@@ -263,22 +263,17 @@ border-bottom: 2px solid #efefef;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
-    // vertical-align: center;    
+    align-items: center;  
 }
 
-.dropDown-options {
-    
+.dropDown-options {   
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
     font-weight: 700;
     margin-top: 40px;
     max-height:280px;
-    overflow-y:auto;
-    
+    overflow-y:auto;   
 }
 
 .mini-img {
@@ -289,15 +284,11 @@ border-bottom: 2px solid #efefef;
 }
 
 .select-board {
-
     width: 272px;
     min-height:48px;
-    display: flex;
     text-align: left;
     padding: 10px;
-    justify-content: flex-start;
-    align-items: center;
-    vertical-align: center;
+    vertical-align: middle;
     margin: 4px 12px 4px 12px;
     font-size: 16px;
     cursor: pointer;
@@ -364,49 +355,21 @@ input#search-pins {
     position: relative;
     display: flex;
     flex-direction: row;
-    // margin-left: px;
     margin-top: 10px;
     width: 100%;
     justify-content: center;   
     align-items: start;
-    .column {
-        width: 235px;
-        margin-right: 17px;
-    }
-      .column1 {
-        width: 235px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-    }
-    // .column7{
-    //     margin-right: 0px;
-    //     .stretch {
-    //     width: 235px;
-    //     display: flex;
-    //     align-content: stretch;
-    //     }
-    // }
 
-    // .column {
-    //     width: 230px;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: flex-start;
-        // margin-left: 9px;
-        // margin-right: 9px;
-    // }
-    // .column7{
-    //     margin-right: 0px;
-    // }
+    .column {
+        position: relative;
+        margin-left: 8.5px;
+        margin-right: 8.5px;
+    }
 }
 
 .pins {
-    // width: 236px;
     position: relative;
     height: auto;
-    // max-height: 500px;
-
 }
 
 .pin-show-delete {
@@ -414,16 +377,7 @@ input#search-pins {
     top: 20px;
     right: 30px;
 }
-// .pin-columns {
-//     width: 235px;
-//     margin-left: 8px;
-//     margin-right: 8px;
-// }
 
-// .pins-div-wrapper {
-//     padding: 8px 6px 16px;
-//     height: auto;
-// }
 
 // Show CSS
 .main-container-pin-show {
@@ -444,15 +398,9 @@ input#search-pins {
 }
 
 .left-container-pin-show > img {
-    // display: flex;
-    // align-items: start;
-    // padding: 20px;
-    // width: 100%;
-    // height: auto;
-     width: 100%;
-     max-height: 100%;
-     display: block;
-    // display: flex;
+    width: 100%;
+    max-height: 100%;
+    display: block;
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
@@ -520,3 +468,6 @@ input#search-pins {
     height: auto;
 }
 
+#top-pin-select {
+
+}
