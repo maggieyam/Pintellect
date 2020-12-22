@@ -8,7 +8,6 @@ import {faPen, faPlus} from '@fortawesome/free-solid-svg-icons';
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
-        this.toggele = this.toggle.bind(this);
     }
     
     
