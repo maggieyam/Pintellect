@@ -1,19 +1,12 @@
 import React from "react";
-import { Link, Redirect}from "react-router-dom";
+import { Link }from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch,  faMapPin, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
+import {faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import * as IMGUtil from '../../utils/image_util';
 import FadeIn from "react-fade-in";
-import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics.util';
-// import ReactCSSTransitionGroup from 'react-transition-group';
-// import { closeModal } from "../../actions/modal_actions";
-// import { FaRegCircle } from "react-icons/fa";
-// import { space } from '../../../app/assets/images/arch/index'
+import { createSpinIcon } from '../../utils/graphics.util';
 
 class Greeting extends React.Component{
-  constructor(props) {
-    super(props);
-  }
   
   leftNav() {
     return(
@@ -56,28 +49,14 @@ class Greeting extends React.Component{
     )
   }
 
-  
-
-  sessionLinks() {
-    
-    // let prev = 0;
-    // document.addEventListener('scroll', () => openModal(signup));
-    // document.addEventListener('scroll', () => {
-    // // document.addEventListener('scroll', () => openModal(signup));
-    //   setTimeout(() => {
-    //     openModal(login);
-    // }, 500)
-      
-    // });
-    // if (window.scrollY > 0) {openModal(signup)}
-    
+  render() { 
+    if (this.props.currentUser) return null;
     return (
-        <header className="group">
-          <div className="main-nav">
-            {this.leftNav()}
-            {this.rightNav()}           
-          </div>
-          
+        <header className="group">  
+         <div className="main-nav">
+             {this.leftNav()}
+             {this.rightNav()}           
+          </div>       
           <div className="main-content">
             <div>Get Your Next</div><br />
             <p>Architecture idea</p>
@@ -103,40 +82,6 @@ class Greeting extends React.Component{
           </section>
         </header>
       )};
-
-  
-  personalGreeting() {
-    // const create = {type: 'create'};
-    // const update = {type: 'update', item: {title: 'Space', id:'64'}};
-
-    return (
-      <hgroup className="header-group">
-        <div className="left-nav-icons">
-          {createSpinIcon(faStroopwafel, "board-logo", "2x")}
-          {createButtonLink("/", "home-link", "board-nav-button", "home-button", "Home")}
-          {createButtonLink("/", "nav-link", "board-nav-button", "today", "Today")}
-          {createButtonLink("/", "nav-link", "board-nav-button", "following", "Following")}
-      </div>
-        <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
-        <input type="text" placeholder="Search" id="search" />
-       <div className="right-nav-icons">
-          <Link to="/pin-builder">
-            {createIcon(faMapPin, "icon", "2x", "add-pin")}
-          </Link>      
-          {createButtonLink(`/${this.props.currentUser.id}`, "", "", "go-to-board", this.props.currentUser.username[0])}
-          {createIcon(faSignOutAlt, "icon", "2x", "log-out", this.props.logout)}
-        </div>
-      </hgroup>
-    )};
-
-  render(){
-    return (
-      <>
-        {this.props.currentUser ? this.personalGreeting() : this.sessionLinks()}
-      </>
-    );
-  }
-
 };
 
 export default Greeting;

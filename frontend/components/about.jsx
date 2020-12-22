@@ -3,7 +3,6 @@ import {createButtonLink} from '../utils/graphics.util'
 const About = () => {
     return(
         <div className="about-wrapper">
-
             <div className="about">
             </div>
                 <h2 className="about-title">WELCOME TO VISUAL DISCOVERY</h2>

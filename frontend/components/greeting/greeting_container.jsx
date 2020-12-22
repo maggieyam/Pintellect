@@ -12,7 +12,6 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
   openModal: (modal) => dispatch(openModal(modal)),
   closeModal: () => dispatch(closeModal()),
-  // closeModal: (modal) => dispatch(closemodal())
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Greeting));
