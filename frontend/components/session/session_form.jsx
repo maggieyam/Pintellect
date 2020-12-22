@@ -12,10 +12,10 @@ class SessionForm extends React.Component {
       email: '',
       password: '',
       age: '',
+      errors: props.errors
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderAge = this.renderAge.bind(this);
-    //this.demoUser = this.demoUser.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
   }
 
@@ -39,12 +39,14 @@ class SessionForm extends React.Component {
   componentDidUpdate(prevProps){ 
   // Typical usage (don't forget to compare props): 
     if (this.props.userId !== prevProps.userId) {
-    this.fetchData(this.props.userId);
-    console.log(this.props);
+      this.fetchData(this.props.userId);
+      console.log(this.props);
+    }
   }
 
-  }
-
+  // componentWillUnmount(){
+  //   this.setState({errors: ""}) 
+  // }
   renderAge() {
     return (
       <input
@@ -108,8 +110,8 @@ class SessionForm extends React.Component {
           <button id="modal-button">{this.props.submitButton}</button>
           {/* <button id="modal-button">{this.props.submitButton}</button> */}
         </form>
-        {/* {this.props.submitButton === 'Log in' ? this.showDemoButton() : null} */}
-        {this.showDemoButton()}
+        {this.props.submitButton === 'Log in' ? this.showDemoButton() : null}
+        {/* {this.showDemoButton()} */}
         {this.showText()}
       </div>
     );
@@ -121,7 +123,6 @@ class SessionForm extends React.Component {
         <div className="demo-btns">
           {this.props.submitButton === 'Log in' ? <h3>OR</h3> : null}
           <button id="demo-button1" onClick={(e) => this.handleDemo(e, 1)}>
-            {/* <FontAwesomeIcon icon={faFacebook} id="facebook" size="lg" /> */}
             Demo Einsten
           </button>
           <button id="demo-button2" onClick={(e) => this.handleDemo(e, 2)}>
@@ -140,7 +141,10 @@ class SessionForm extends React.Component {
         <strong id="terms-of-service">Terms of Service, Privacypolicy.</strong>
       </span>
 
-      <div onClick={() => this.props.openModal()} id="session-link">
+      <div onClick={() => {
+        this.props.openModal();
+      } 
+      }id="session-link">
         {this.props.navLinkText}
       </div>
     </div>
@@ -161,6 +165,12 @@ class SessionForm extends React.Component {
       </div>
     );
   }
+
+  clearErrors() {
+    const error = document.getElementsByClassName("error-message");
+    error.innerHTML = "";
+  }
 }
+
 
 export default SessionForm;

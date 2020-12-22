@@ -125,8 +125,7 @@ const col1 = [
   img3,
   img23,
   img26,
-  img49,
-  img37,  
+  // img49, 
 ];
 
 const col2 = [
@@ -146,8 +145,7 @@ const col3 = [
   img41,
   img9,
   img25,
-  img42,
-  img49
+  img51,
     ]
 const col4 = [
   img55,
@@ -166,18 +164,16 @@ const col5 = [
   img22, 
   img44, 
   img46, 
-  img45
 ]
 
 const col6 = [
   img14,
   img17,
   img35,
-  img51,
+  img42,
   img52,
   img39,
   img32,
-  img47
 ]
 
 const col7 = [

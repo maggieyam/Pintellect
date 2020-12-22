@@ -17,7 +17,8 @@ const boardReducer = (state={}, action) => {
             return merge({}, state, newState)
         case REMOVE_BOARD:
             let nextState = merge({}, state);
-            delete nextState[action.board.id];
+            
+            delete nextState[action.boardId];
             return nextState;
         default:
             return state;

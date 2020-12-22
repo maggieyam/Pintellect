@@ -15,6 +15,7 @@ import BoardIndexContainer from "./boards/index/board_index_container";
 import PinIndexContainer from "./pins/pins_index/pins_index_container";
 import PinShowContainer from "./pins/pins_show/pin_show_container";
 import {AuthRoute, ProtectedRoute} from '../utils/route_util';
+import About from './about'
 
 const App = () => (
   <div>
@@ -22,10 +23,8 @@ const App = () => (
     <header>
       <GreetingContainer />
     </header>
-    {/* <Route path='/' component={}/> */}
     <Switch>
-      <AuthRoute exact path="/login" component={LogInFormContainer} />
-      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <ProtectedRoute exact path="/about" component={About}/>
       <ProtectedRoute exact path="/pin-builder" component={CreatePinContainer} />
       <ProtectedRoute exact path="/pin/:pinId/editor" component={EditPinContainer} />
       <ProtectedRoute exact path="/:authorId/create" component={CreateBoardContainer} />

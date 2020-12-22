@@ -5,7 +5,6 @@ import {
   faTrashAlt,
   faChevronDown,
   faPlusCircle,
-  faArrowAltCircleUp,
 } from '@fortawesome/free-solid-svg-icons';
 // import { initial } from 'lodash';
 // import { openModal } from "../../../actions/modal_actions";

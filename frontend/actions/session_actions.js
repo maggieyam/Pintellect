@@ -1,3 +1,4 @@
+import { Redirect } from 'react-router-dom';
 import * as APIUtil from '../utils/session_api_util'
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Redirect}from "react-router-dom";
+import { Link, Redirect}from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch,  faMapPin, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import * as IMGUtil from '../../utils/image_util';
@@ -44,9 +44,9 @@ class Greeting extends React.Component{
   drawColumns(images, className, col) {
     return (
       <div className={className} key={col}>
-        {col === 0 || col === 6 ? null : 
+        {col === 1 || col === 7 ? null : 
           <img src={IMGUtil.img7} 
-          alt="modern" className={`placeholder${col} column1 column`} />
+          alt="modern" className={`placeholder${col - 1} column`}/>
         }
         {images.map((image,idx) =>        
           <img src={image} alt="modern" key={idx}/>
@@ -80,16 +80,22 @@ class Greeting extends React.Component{
           <div className="main-content">
             <div>Get Your Next</div><br />
             <p>Architecture idea</p>
-            {['1','2','3'].map(num => 
-              createSpinIcon(faStroopwafel, `faStroopwafel${num}`, 'xs')
+            {['1','2','3'].map((num,idx) => 
+            <FontAwesomeIcon
+              icon={faStroopwafel}
+              spin
+              className={`faStroopwafel${num}`}
+              size="xs"
+              key={idx}
+            />
               )}
           </div>
 
           <section className="seeds-container"> 
-            {IMGUtil.images.map((col, idx) => {
+            {IMGUtil.images.map((colImages, idx) => {
               return(
-                <FadeIn delay={`${50 + idx * 300}`}>                  
-                  {this.drawColumns(col, `column${idx + 1} column`, idx)}
+                <FadeIn delay={`${50 + idx * 300}`} key={idx}>                  
+                  {this.drawColumns(colImages, `column`, idx + 1)}
                 </FadeIn>
               )              
             })}           
@@ -107,7 +113,7 @@ class Greeting extends React.Component{
         <div className="left-nav-icons">
           {createSpinIcon(faStroopwafel, "board-logo", "2x")}
           {createButtonLink("/", "home-link", "board-nav-button", "home-button", "Home")}
-          {createButtonLink("/", "nav-link", "board-nav-button", "today", "Today")}
+          {createButtonLink("/about", "nav-link", "board-nav-button", "today", "About")}
           {createButtonLink("/", "nav-link", "board-nav-button", "following", "Following")}
       </div>
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />

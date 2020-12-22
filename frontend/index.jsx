@@ -33,12 +33,6 @@ document.addEventListener ('DOMContentLoaded', () => {
   } else {
     store = configureStore ();
   }
-  window.signup = signup;
-  window.login = login;
-  window.logout = logout;
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.fetchBoards = fetchBoards;
 
   // now we can test our code from the console
 

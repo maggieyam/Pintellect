@@ -16,32 +16,27 @@ class BoardIndex extends React.Component {
         this.props.fetchBoards(); 
     }
 
-    toggle() {
-      let button = document.querySelector(".pin-board-create");
-      let dropDown = document.querySelector('.dropDown-board');
-      
-      button.addEventListener('click', () => {
-        if (dropDown.style.display === "none") {
-          dropDown.style.display = 'block';
-        } else {
-          dropDown.style.display = 'none';
-        }
-    })
+    reveal(name) {
+      let item = document.querySelector(name);
+      item.style.display = 'block';
+    }
+
+    hide(name) {
+      let item = document.querySelector(name);
+      item.style.display = 'none';
     }
 
     mapBoards() {
       return (
         <div className="wrapper">
-              <div className="board-item-container">
-      
-              {this.props.boards.map((board) =>          
-                <BoardIndexItem
-                  board={board}
-                  key={board.id}
-                  openModal={this.props.openModal}
-                  />
-                )}
-
+          <div className="board-item-container"> 
+            {this.props.boards.map((board) =>          
+              <BoardIndexItem
+                board={board}
+                key={board.id}
+                openModal={this.props.openModal}
+                />
+              )}
         </div>
       </div> 
       )
@@ -61,13 +56,13 @@ class BoardIndex extends React.Component {
             <p id="index-header">{user.first_name}  {user.last_name}</p>
          
             <p>0 followers * 0 following</p>
-            <div className="icon-row" onClick={this.toggle}>
-              <div className="icon pin-board-create">
+            <div className="icon-row">
+              <div className="icon pin-board-create" onClick={() => this.reveal('.dropDown-board')}>
                 <FontAwesomeIcon
                   icon={faPlus}           
                   id="modal-create"
-                  size="2x"
-                  onClick={this.toggle}
+                  size="2x"  
+                  onClick={() => this.reveal('.dropDown-board')}                
                 />
               </div>
             <div className="dropDown-board">
@@ -77,7 +72,10 @@ class BoardIndex extends React.Component {
                   pin
                 </button>
               </Link>
-              <button className="dropDown-text-board" onClick={() => openModal(create)}>
+              <button className="dropDown-text-board" onClick={() => {
+                this.hide('.dropDown-board');
+                openModal(create);
+                }}>
                 board
               </button>
             </div>

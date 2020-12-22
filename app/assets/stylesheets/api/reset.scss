@@ -3,7 +3,6 @@ html{
   display: fixed;
   max-width: 100%;
   margin: 0;
-  max-height: 200%;
   overflow-x: hidden;
   text-align: center;
 }
@@ -35,10 +34,37 @@ h1 {
   font-size: 36px;
 }
 
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+}
+
 p, span, h1, strong, h2, h3 {
   color: #111111;
 }
 
+button{   
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-left: 15px;
+    vertical-align: middle;
+    width: 77.66px;
+    height: 48px;
+    font-size: 12px;
+    height: 40px;
+    font-weight: 700;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+// .background {
+//   width: null;
+//   height: null;
+//   // background-image: url("../../images/arch/space.png");
+// }
 // ul {
 //   list-style: none;
 // }

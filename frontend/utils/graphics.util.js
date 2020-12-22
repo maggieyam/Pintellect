@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, NavLink, Redirect}from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch,  faMapPin, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 
 export const createIcon = (icon, className, size, id, fcn) => {
     return(
@@ -29,10 +28,7 @@ export const createSpinIcon = (icon, className, size) => {
 export const createButtonLink = (path, linkId, className, id, content) => {
     return(
         <Link to={path} id={linkId}>
-            <button 
-                className={className} 
-                id={id}
-            >
+            <button className={className} id={id}>
                 {content}
             </button>
         </Link>

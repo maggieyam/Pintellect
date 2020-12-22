@@ -498,9 +498,6 @@ input #input-name {
     height: 109px;
     border-radius: 16px;
     text-align: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
     align-items: flex-start;
     padding: 20px;
     text-indent: 4px;
@@ -520,7 +517,6 @@ input #input-name {
     .dropDown-text-board:hover {
         border-radius: 8px;
         width: 160px;
-    // margin-left: 0px;
         background-color: #efefef;
         
         

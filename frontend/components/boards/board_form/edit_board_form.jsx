@@ -1,32 +1,28 @@
 import React from 'react';
-import { closeModal } from '../../../actions/modal_actions';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 
 class EditBoardForm extends React.Component {
     constructor(props) {
-        super(props);
-        
+        super(props);       
         this.state = this.props.board;
-        // this.state = {title: "test1", description: "test2"}
         this.handleSubmit = this.handleSubmit.bind(this);
-        // But this.props is read-only; you cannot modify it.
-
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
-
     handleSubmit(e) {
-        e.preventDefault();      
-         
+        e.preventDefault();            
         this.props.updateBoard(this.state).then(() => this.props.closeModal());
+    }
+
+    handleDelete(e) {
+      e.preventDefault();
+      this.props.deleteBoard(this.state.id).then(() => this.props.closeModal());
     }
 
     update(field) {     
         return e => this.setState({ [field]: e.currentTarget.value });
     }
 
-    render(){
-      debugger
+    render(){     
         return (
           <div id="board-edit-form">
             <div id="form-header">
@@ -70,8 +66,8 @@ class EditBoardForm extends React.Component {
                   <h3 id="secret-line">Keep this board screte</h3>
                    
                   <div className="edit-form-btns">
-                    <button  type="button" id='delete-btn'
-                      onClick={() => this.props.deleteBoard(this.state.id).then(() => closeModal())}
+                    <button type="button" id='delete-btn'
+                      onClick={this.handleDelete}
                       >Delete</button>
                     <button className="done-btn">Done</button>
                   </div>
