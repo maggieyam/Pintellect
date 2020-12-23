@@ -13,7 +13,7 @@ import PinShowContainer from "./pins/pins_show/pin_show_container";
 import { ProtectedRoute } from '../utils/route_util';
 import About from './about'
 import NavbarContainer from './navbar/navbar_container';
-import SearchContainer from './search/search_container';
+// import SearchContainer from './search/search_container';
 
 const App = () => (
   <div>
@@ -25,7 +25,7 @@ const App = () => (
       <Route exact path="/about" component={About}/>
     </header>
     <Switch>
-      <ProtectedRoute exact path="/search" component={SearchContainer} />
+      {/* <ProtectedRoute exact path="/search" component={SearchContainer} /> */}
       <ProtectedRoute exact path="/pin-builder" component={CreatePinContainer} />
       <ProtectedRoute exact path="/pin/:pinId/editor" component={EditPinContainer} />
       <ProtectedRoute exact path="/:authorId/create" component={CreateBoardContainer} />

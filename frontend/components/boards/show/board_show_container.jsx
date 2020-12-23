@@ -5,7 +5,6 @@ import {requestPins} from '../../../actions/pins_actions'
 import { openModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = ({entities, session}, {match}) => {
-  
   return {
     // user: entities.users[match.params.authorId],
     board: entities.boards[match.params.boardId],

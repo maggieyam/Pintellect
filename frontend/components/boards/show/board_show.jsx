@@ -31,18 +31,18 @@ class BoardShow extends React.Component {
     }
 
     renderPins(){
-        let pins = this.props.board.allPins;
+        const {allPins, currentBoards} = this.props.board;
+        let pins = allPins;
         if (pins.length > 7) {
             pins = reorganizePins(pins, false);
-            return mapPinsToCols(pins)
+            return mapPinsToCols(pins, this.props.openModal, currentBoards)
         } else {
-            
             return this.mapSingleRowPins(pins)             
         }      
     }
 
     render(){
-        const {board, authorId, openModal} = this.props;
+        const {board, openModal} = this.props;
         const modal = {type: 'update', item: this.props.board}
         if (!board) return null;
 
@@ -61,7 +61,7 @@ class BoardShow extends React.Component {
                     </h1>
                     <span id="board-description">{board.description}</span>
                 </div>
-                <div id="board-show-pins" className="pins-seeds-container">
+                <div className="pins-seeds-container">
                     {this.renderPins()}
                 </div>
             </div>

@@ -10,7 +10,10 @@ import {savePin} from '../../utils/pins_api_util';
 
 const SearchBoard = ({boards, openModal, pin}) => {
     
-
+    const hide = (name) => {
+      let item = document.querySelector(name);
+      item.style.display = 'none';
+    }
     const search = (boards) => {
         return e =>    
         boards.map(board => {
@@ -83,7 +86,10 @@ const SearchBoard = ({boards, openModal, pin}) => {
                         icon={faPlusCircle}
                         size="2x"
                         id="svg-pin-create-board"
-                        onClick={() => openModal(modal)}
+                        onClick={() => {
+                            hide(`#dropDown-content${pin.id}`);
+                            openModal(modal)
+                        }}
                     />
                     <div id="text-create-board">Create a board</div>
                     </div>

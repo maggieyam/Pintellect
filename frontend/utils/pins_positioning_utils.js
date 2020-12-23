@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import SearchBoard from '../components/search/search'
+import SearchBoard from '../components/search/searchBoard'
 
 export const reorganizePins = (pins, shuffle) => {
     if (shuffle) {
@@ -35,16 +35,15 @@ const addItemsToCols = (num, newArr, original) => {
 }
 
 
-export const mapPinsToCols = (pins, openModal) => {
+export const mapPinsToCols = (pins, openModal, currentBoards) => {
     if (!pins) return null;
     return(             
         <div className="pins-seeds-container">               
-            {/* {addBoard(21, 95)} */}
               {pins.map((colPins, i) => 
                   <div key={i} className={`column column${i + 1} pin-columns`}>
                   {colPins.map((pin) => 
              
-                  <div className="pin-wrapper">
+                  <div className="pin-wrapper" key={pin.id}>
                     <Link to={`/pin/${pin.id}`}>
                       <img 
                       src={pin.link} 
@@ -54,12 +53,11 @@ export const mapPinsToCols = (pins, openModal) => {
                       />
                     </Link>
                       <SearchBoard 
-                        boards={pin.boards}
+                        boards={currentBoards}
                         openModal={openModal}
                         pin={pin}
                       />
-                 </div>
-                  
+                 </div>                
                     
                 )}
                 </div>

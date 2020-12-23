@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import PinIndex from './pins_index';
 import {requestPins} from '../../../actions/pins_actions';
 // import { fetchBoards } from '../../../actions/boards_actions';
-// / import {openModal} from '../../../actions/modal_actions';
+import {openModal} from '../../../actions/modal_actions';
 const mapStateToProps = ({ entities }) => {
   return {
     pins: Object.values(entities.pins),
