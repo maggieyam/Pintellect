@@ -4,8 +4,7 @@ import { reorganizePins, mapPinsToCols } from '../../../utils/pins_positioning_u
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPenCircle} from '@fortawesome/free-solid-svg-icons';
 import { Link, Redirect } from 'react-router-dom';
-import { openModal } from "../../../actions/modal_actions";
-
+import SearchBoard from '../../search/searchBoard';
 
 class BoardShow extends React.Component {
 
@@ -14,10 +13,13 @@ class BoardShow extends React.Component {
     }
 
     mapSingleRowPins() {
-        let pins = this.props.board.allPins;
+        const {allPins, currentBoards} = this.props.board;
+        let pins = allPins;
         return( 
-            pins.map((pin, i) => 
-            <div className={`column column${i} pin-columns`}>
+            // <div className={`column pin-columns`}>
+            <div className="board-show-wrapper">
+            {pins.map((pin, i) => 
+            <div className="pin-wrapper" key={pin.id}>
                 <Link to={`/pin/${pin.id}`}>
                     <img 
                     src={pin.link} 
@@ -26,9 +28,15 @@ class BoardShow extends React.Component {
                     id={`pin${pin.id}`} 
                     />
                 </Link>
+                <SearchBoard 
+                    boards={currentBoards}
+                    openModal={this.props.openModal}
+                    pin={pin}
+                />
             </div>
-        ))
-    }
+        )}
+        </div>
+        )}
 
     renderPins(){
         const {allPins, currentBoards} = this.props.board;
@@ -37,7 +45,7 @@ class BoardShow extends React.Component {
             pins = reorganizePins(pins, false);
             return mapPinsToCols(pins, this.props.openModal, currentBoards)
         } else {
-            return this.mapSingleRowPins(pins)             
+            return this.mapSingleRowPins()             
         }      
     }
 
@@ -61,9 +69,9 @@ class BoardShow extends React.Component {
                     </h1>
                     <span id="board-description">{board.description}</span>
                 </div>
-                <div className="pins-seeds-container">
+                {/* <div className="pins-seeds-container"> */}
                     {this.renderPins()}
-                </div>
+                {/* </div> */}
             </div>
         )
     }

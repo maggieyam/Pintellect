@@ -20,12 +20,11 @@ const App = () => (
     <ModalContainer />
     <header>
       <NavbarContainer />
-      {/* <GreetingContainer /> */}
+
       <Route exact path="/" component={GreetingContainer}/>
       <Route exact path="/about" component={About}/>
     </header>
     <Switch>
-      {/* <ProtectedRoute exact path="/search" component={SearchContainer} /> */}
       <ProtectedRoute exact path="/pin-builder" component={CreatePinContainer} />
       <ProtectedRoute exact path="/pin/:pinId/editor" component={EditPinContainer} />
       <ProtectedRoute exact path="/:authorId/create" component={CreateBoardContainer} />

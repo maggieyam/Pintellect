@@ -1,6 +1,5 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
-import SearchBoard from '../../search/searchBoard'
 import {reorganizePins, mapPinsToCols} from '../../../utils/pins_positioning_utils';
 class PinIndex extends React.Component {
     constructor(props){
@@ -16,10 +15,10 @@ class PinIndex extends React.Component {
 
     render() {       
         const pins = reorganizePins(this.props.pins, true);
-  
+        debugger
         return (
             <div className="pins-seeds-container">
-                {pins ? mapPinsToCols(pins, this.props.openModal, pins[0].boards) : null}           
+                {pins[0][0] ? mapPinsToCols(pins, this.props.openModal, pins[0][0].boards) : null}           
             </div>
         );
     }

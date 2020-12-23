@@ -39,26 +39,24 @@ export const mapPinsToCols = (pins, openModal, currentBoards) => {
     if (!pins) return null;
     return(             
         <div className="pins-seeds-container">               
-              {pins.map((colPins, i) => 
-                  <div key={i} className={`column column${i + 1} pin-columns`}>
-                  {colPins.map((pin) => 
-             
-                  <div className="pin-wrapper" key={pin.id}>
-                    <Link to={`/pin/${pin.id}`}>
-                      <img 
-                      src={pin.link} 
-                      alt="pins" 
-                      key={pin.id} 
-                      id={`pin${pin.id}`} 
-                      />
-                    </Link>
-                      <SearchBoard 
-                        boards={currentBoards}
-                        openModal={openModal}
-                        pin={pin}
-                      />
-                 </div>                
-                    
+            {pins.map((colPins, i) => 
+                <div key={i} className={`column pin-columns`}>
+                  {colPins.map((pin) =>      
+                    <div className="pin-wrapper" key={pin.id}>
+                        <Link to={`/pin/${pin.id}`}>
+                            <img 
+                            src={pin.link} 
+                            alt="pins" 
+                            key={pin.id} 
+                            id={`pin${pin.id}`} 
+                            />
+                        </Link>
+                        <SearchBoard 
+                            boards={currentBoards}
+                            openModal={openModal}
+                            pin={pin}
+                        />
+                    </div>                                  
                 )}
                 </div>
               )}
