@@ -17,10 +17,10 @@ class PinIndex extends React.Component {
     render() {       
         const pins = reorganizePins(this.props.pins, true);
         // if (!pins) return null;
-        
+  
         return (
             <div className="pins-seeds-container">
-                {pins[0][1] ? mapPinsToCols(pins, () => this.addBoard, this.props.openModal) : null}           
+                {pins ? mapPinsToCols(pins, () => this.addBoard, this.props.openModal) : null}           
                 {/* {pins.map((colPins, i) => 
                   <div key={i} className={`column column${i} pin-columns`}>
                   {colPins.map((pin) => 

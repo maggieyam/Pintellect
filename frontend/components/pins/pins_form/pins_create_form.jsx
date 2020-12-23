@@ -150,7 +150,7 @@ class CreatePinForm extends React.Component {
                       <div id="top-pin-select">
                         <input
                           onChange={this.search(boards)}
-                          id="search-pins"
+                          className="search-pins"
                         />
                         <FontAwesomeIcon
                           icon={faSearch}

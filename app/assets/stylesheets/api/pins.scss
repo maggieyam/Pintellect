@@ -70,19 +70,40 @@
 #nav-right-btns {
     display: flex;
     justify-content: space-between;
-    width: 236px;
+    width: 230px;
     margin-left: 30px;
-    // #svg-pin-drop-down{
 
-    // }
     #select{
         display: flex;
         justify-content: space-between;
         padding-right: 3px;
         cursor: pointer;
     }
-    
+}
 
+.pin-wrapper {
+    position: relative;
+    #nav-right-btns {
+        display: none;
+        width: 200px;
+        #svg-pin-drop-down{
+            position: absolute;
+            right: 75px;
+            // display: none;
+        }
+    }
+}
+
+.pin-wrapper:hover {
+    #nav-right-btns {
+        display: flex;
+    }
+}
+
+.feed-option {
+    position: absolute;
+    top: 20px;
+    right: 17.5px;
 }
 
 .save {
@@ -125,7 +146,7 @@
     width: 170.77px;
     height: 40px;
     color: #111111;
-    border-radius: 6px 6px 0px 0px;
+    border-radius: 6px 0px 0px 6px;
     // border-bottom-left-radius: 8px;
     // border-top-right-radius: 0px;
     // border-bottom-right-radius: 0px;
@@ -174,11 +195,12 @@
     color: #111111;
 }
 
+
 #all-boards {
     font-weight: 400;;
     font-size: 14px;
     position: absolute;
-    top: 130px;
+    top: 70px;
     margin-left: 15px;
     text-align: start;
 }
@@ -235,10 +257,11 @@ border-bottom: 2px solid #efefef;
 }
 
 .dropDown-content {
+    position: absolute;
+    top: 60px;
     width: 296px;
     height: 439px;
     display: none;
-    // visibility: none;
     text-align: center;
     padding-left: 12px;
     padding-right: 12px;
@@ -248,9 +271,20 @@ border-bottom: 2px solid #efefef;
     margin-top: 10px;
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: 10px 10px 8px 10px #888888;
-    
+    box-shadow: 10px 10px 8px 10px #888888; 
+    z-index: 2;  
+    #svg-pin-form-search {
+        position: absolute;
+        top: 25px;
+    }
 }
+
+.dropDown-feed {
+    box-shadow: none;
+    z-index: 2;
+}
+
+
 
 // #dropDown-content-on {
 //     display: block;
@@ -305,7 +339,7 @@ border-bottom: 2px solid #efefef;
     margin-top: 5px;
 }
 
-input#search-pins {
+input.search-pins {
     width: 272px;
     height: 48px;
     border-radius: 24px;
@@ -433,6 +467,8 @@ input#search-pins {
     font-size: 12px;
 }
 
+
+
 .main-content-pin  {
     color: #111111;
     padding: 20px; 
@@ -468,6 +504,7 @@ input#search-pins {
     height: auto;
 }
 
-#top-pin-select {
-
+.dropDown-wrapper {
+    display: flex;
+    justify-content: center;
 }

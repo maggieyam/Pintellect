@@ -51,6 +51,6 @@ export const updatePin = (pin) => (dispatch) => {
   // .then(() => closeModal());
 };
 
-export const savePin = (pinId, boardId) => {
-  return APIUtil.savePin(pinId, boardId)
-}
+// export const savePin = (pinId, boardId) => {
+//   return APIUtil.savePin(pinId, boardId)
+// }
