@@ -18,11 +18,11 @@ class Api::PinsController < ApplicationController
         render :index
     end
 
+    
+
     def show     
-        @pin = Pin.find_by(id: params[:id])
-        
-        render :show if @pin
-            
+        @pin = Pin.find_by(id: params[:id])       
+        render :show if @pin            
     end
 
      def update
@@ -36,8 +36,7 @@ class Api::PinsController < ApplicationController
     def destroy
         @pin = current_user.pins.find_by(id: params[:id])
         @pins = current_user.pins
-        if @pin
-            
+        if @pin          
             @pin.destroy
         end
         render :index

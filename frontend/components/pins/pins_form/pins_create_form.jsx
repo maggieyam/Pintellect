@@ -8,8 +8,6 @@ import {
   faArrowAltCircleUp,
   faEllipsisH,
 } from '@fortawesome/free-solid-svg-icons';
-import { initial } from 'lodash';
-import { openModal } from "../../../actions/modal_actions";
 import { dropDownBtns, toggle } from "../../../utils/drop_down_util"
 
 class CreatePinForm extends React.Component {
@@ -134,22 +132,20 @@ class CreatePinForm extends React.Component {
                 <div id="nav-right-pin-form">
                   <div id="nav-right-btns">
                     {/* {dropDownBtns(this.props.boards)} */}
-                    <div id="select" onClick={() => toggle('#dropDown-content')}>
-                      
-                         Select
-          
+                    <div id="select" onClick={() => toggle('.dropDown-content')}>                 
+                         Select         
                       <FontAwesomeIcon
                         icon={faChevronDown}
                         id="svg-pin-drop-down"
                         size="lg"
-                        onClick={() => toggle('#dropDown-content')}
+                        onClick={() => toggle('.dropDown-content')}
                       />
                     </div>
                     <button className="save" >Save</button>
 
                   </div>
 
-                  <div id="dropDown-content">
+                  <div className="dropDown-content">
                     <div id="wrapper-dropdown">
                       <div id="top-pin-select">
                         <input

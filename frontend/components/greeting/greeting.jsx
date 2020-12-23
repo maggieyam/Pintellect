@@ -7,7 +7,7 @@ import FadeIn from "react-fade-in";
 import { createSpinIcon } from '../../utils/graphics.util';
 
 class Greeting extends React.Component{
-  
+
   leftNav() {
     return(
       <nav className="left-nav">
@@ -57,6 +57,7 @@ class Greeting extends React.Component{
              {this.leftNav()}
              {this.rightNav()}           
           </div>       
+
           <div className="main-content">
             <div>Get Your Next</div><br />
             <p>Architecture idea</p>
@@ -71,7 +72,7 @@ class Greeting extends React.Component{
               )}
           </div>
 
-          <section className="seeds-container"> 
+          <div className="seeds-container"> 
             {IMGUtil.images.map((colImages, idx) => {
               return(
                 <FadeIn delay={`${50 + idx * 300}`} key={idx}>                  
@@ -79,7 +80,8 @@ class Greeting extends React.Component{
                 </FadeIn>
               )              
             })}           
-          </section>
+          </div>
+          
         </header>
       )};
 };

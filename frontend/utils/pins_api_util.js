@@ -36,3 +36,11 @@ export const createPin = (pin) => {
     data: {pin},
   });
 };
+
+export const savePin = (pinId, boardId) => {
+  return $.ajax({
+    url: `/api/board_pins`,
+    method: 'POST',
+    data: {pinId, boardId}
+  })
+}

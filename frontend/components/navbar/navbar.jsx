@@ -2,8 +2,6 @@ import React from "react";
 import { Link, Redirect}from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch,  faMapPin, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
-import * as IMGUtil from '../../utils/image_util';
-import FadeIn from "react-fade-in";
 import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics.util';
 
 

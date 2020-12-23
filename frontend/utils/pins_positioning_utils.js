@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import SearchBoard from '../components/search/search'
+import PinIndex from '../components/pins/pins_index/pins_index';
+import { openModal } from '../actions/modal_actions';
 const { shuffle } = require("lodash")
 
 export const reorganizePins = (pins, shuffle) => {
@@ -35,13 +38,16 @@ const addItemsToCols = (num, newArr, original) => {
 }
 
 
-export const mapPinsToCols = (pins) => {
+export const mapPinsToCols = (pins, addBoard, openModal) => {
     if (!pins) return null;
     return(             
         <div className="pins-seeds-container">               
+            {/* {addBoard(21, 95)} */}
               {pins.map((colPins, i) => 
                   <div key={i} className={`column column${i + 1} pin-columns`}>
                   {colPins.map((pin) => 
+             
+                  <div>
                     <Link to={`/pin/${pin.id}`}>
                       <img 
                       src={pin.link} 
@@ -50,6 +56,14 @@ export const mapPinsToCols = (pins) => {
                       id={`pin${pin.id}`} 
                       />
                     </Link>
+                      <SearchBoard 
+                        boards={pin.boards}
+                        openModal={openModal}
+                        pin={pin}
+                      />
+                 </div>
+                  
+                    
                 )}
                 </div>
               )}
