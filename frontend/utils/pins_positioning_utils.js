@@ -9,10 +9,11 @@ export const reorganizePins = (pins, shuffle) => {
 
     let newArr = [];
     const len = pins.length;
-
-    for (let i = 0; i < 7; i++) {
+    const col = Math.floor(window.screen.width / 243.5);
+    
+    for (let i = 0; i < col; i++) {
         let inner = [];
-        let rows = Math.floor(len / 7);
+        let rows = Math.floor(len / col);
         for (let j = 0; j < rows; j++){
             inner.push(pins[rows * i + j]);             
         }
