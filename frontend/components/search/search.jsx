@@ -5,7 +5,7 @@ import {
   faChevronDown,
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import { dropDownBtns, toggle } from "../../utils/drop_down_util";
+import { toggle } from "../../utils/drop_down_util";
 import {savePin} from '../../utils/pins_api_util';
 
 const SearchBoard = ({boards, openModal, pin}) => {
