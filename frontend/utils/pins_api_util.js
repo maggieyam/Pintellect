@@ -21,6 +21,7 @@ export const deletePin = (pinId) => {
   });
 };
 
+
 export const updatePin = (pin) => {
   return $.ajax({
     url: `/api/pins/${pin.id}`,
@@ -41,6 +42,14 @@ export const savePin = (pinId, boardId) => {
   return $.ajax({
     url: `/api/board_pins`,
     method: 'POST',
+    data: {pinId, boardId}
+  })
+}
+
+export const deletePinFromBoard = (pinId, boardId) => {
+  return $.ajax({
+    url: `/api/board_pins`,
+    method: 'DELETE',
     data: {pinId, boardId}
   })
 }

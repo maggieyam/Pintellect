@@ -3,6 +3,7 @@ import LoginFormContainer from "../session/login_container";
 import SignupFormContainer from "../session/signup_container";
 import CreateBoardFormContainer from '../boards/board_form/create_board_container';
 import EditBoardFormContainer from '../boards/board_form/edit_board_container';
+import EditPinFormContainer from '../pins/pins_form/pins_edit_form_container';
 
 export default function Modal({ modal, closeModal }) {
   // 
@@ -21,8 +22,11 @@ export default function Modal({ modal, closeModal }) {
     case 'create':
       component = <CreateBoardFormContainer />;
       break;
-    case 'update':
+    case 'updateBoard':
       component = <EditBoardFormContainer/>;
+      break;
+    case 'updatePin':
+      component = <EditPinFormContainer/>;
       break;
     // case 'createPin':
     //   component = <CreatePinFormContainer />;

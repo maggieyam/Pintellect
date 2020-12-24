@@ -451,25 +451,29 @@ input.search-pins {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    
-
 }
 
 .right-top-nav {
     position: relative;
+    display: flex;
+    flex-direction: row;
     width: 460px;
     height:40px;
     padding: 20px 20px 16px 28px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     font-size: 12px;
+    .dropDown-content {
+        position: absolute;
+        left: 230px;
+        box-shadow: 4px 4px 5px 4px #888888;
+    }
 }
 
 
 
-.main-content-pin  {
+.main-content-pin  {  
     color: #111111;
     padding: 20px; 
     margin-top: 0px;
@@ -477,6 +481,7 @@ input.search-pins {
     h3{
         font-size: 36px;
         margin-top: 0px;
+        text-align: center;
     } 
 
     span {

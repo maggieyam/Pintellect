@@ -13,7 +13,7 @@ class BoardShow extends React.Component {
     render(){
         const {board, openModal} = this.props;
         if (!board) return null;
-        const modal = {type: 'update', item: this.props.board}
+        const modal = {type: 'updateBoard', item: this.props.board}
         const pins = reorganizePins(board.allPins, false);
 
         return(

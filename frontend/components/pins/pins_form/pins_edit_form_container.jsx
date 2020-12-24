@@ -8,19 +8,19 @@ import { openModal } from '../../../actions/modal_actions';
 const mapStateToProps = ({entities, session}, {match}) => {
     
     const {boards} = entities;
-    const pinId = match.params.pinId;
-    const pin = {};
-    for (let i = 0; i < boards.length; i++) {
-      if (boards[i].pinIds.includes(pinId)) {
-        pin = boards[i].allPins[pinId];
-      }
+    // const pinId = match.params.pinId;
+    // const pin = {};
+    // for (let i = 0; i < boards.length; i++) {
+    //   if (boards[i].pinIds.includes(pinId)) {
+    //     pin = boards[i].allPins[pinId];
+    //   }
 
-    }
-    return {
-        user: entities.users[session.id],
-        boards: Object.values(entities.boards),
-        pinId: match.params.pinId
-    }
+    // }
+    // return {
+    //     user: entities.users[session.id],
+    //     boards: Object.values(entities.boards),
+    //     pinId: match.params.pinId
+    // }
 }
 
 const mapDispatchToProps = (dispatch) => {
