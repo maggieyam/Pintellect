@@ -33,9 +33,12 @@ class CreateBoardForm extends React.Component{
         const {title, startDate, endDate} = this.state;
         return (
           <div className="board-form">
+            <div id="form-header">
+              <h2 >Create board</h2>
+            </div >
             <form onSubmit={this.handleSubmit} className="input-create">
-              <h1 className="form-header">Create board</h1>
               {/* <div id="input-field"> */}
+              
               <label className="form-label">
                 Name
               </label>

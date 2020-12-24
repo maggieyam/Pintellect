@@ -363,7 +363,6 @@ input.search-pins {
 }
 
 .search-pins:focus {
-    // outline: 3px solid ;
     box-shadow: 0 0 4pt 4pt #4a8ad4;
 }
 
@@ -513,6 +512,11 @@ input.search-pins {
     display: flex;
     flex-direction: column;
 
+}
+
+#pin-edit-form {
+    height: 579px;
+    width: 900px;
 }
 
 .create-pin-img {

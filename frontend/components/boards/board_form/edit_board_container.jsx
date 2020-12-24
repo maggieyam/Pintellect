@@ -3,14 +3,12 @@ import { connect } from 'react-redux';
 import { requestBoard, updateBoard, deleteBoard } from '../../../actions/boards_actions';
 import EditBoardForm from './edit_board_form';
 import { openModal, closeModal } from "../../../actions/modal_actions";
-import React from 'react';
+
 
 const mapStateToProps = ({ui}) => {
   
     return {
-        // board: state.entities.boards,
-        board: ui.modal.item
-    // board: state.session.id,
+      board: ui.modal.item
 }};
 
 const mapDispatchToProps = (dispatch) => ({

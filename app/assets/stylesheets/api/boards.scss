@@ -9,40 +9,34 @@
     display: flex;
     border-radius: 34px;
     margin-bottom: 40px;
-    justify-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     width: 540px;
     background-color: white;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-.form-header {
-    margin-top: 0px;
-    margin-bottom: 30px;
-    font-size: 28px;
-    position: absolute; top: 30px; left: 170px;
-    font-weight: 700;
-    border-block-start: 2px;
-    border-block-end: 2px;
-    border-top-color: #d3d3d3;
-    border-left-color: #d3d3d3;
-    border-color: #d3d3d3;
 }
 
 #form-header  {
     margin-bottom: 4px;
+    text-align: center;
+    h2{
+        font-size: 28px;
+    }
 }
 
 .form-label {
     margin-bottom: 6px;
+    width: 100%;
+    text-align: start;
 }
 
 
 .input-create{
+    height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 32px;
     
 }
 
@@ -297,25 +291,23 @@
 //    object-position: 100%,;
 }
 
-#board-edit-form {
-    height: 800px;
-    width: 540px;
-    // height: 100%;
-    // position: relative;
+.edit-form {
     display: flex;
     border-radius: 34px;
-    // vertical-align: super;
     align-items: center;
-    // justify-content: space-around;
     margin-bottom: 40px;
-    // flex-direction: column;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
-    // width: 540px;
     background-color: white;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+#board-edit-form {
+    height: 750px;
+    width: 540px;   
+}
+
+
 
 #form-header {
     padding-top: 32px;
@@ -325,13 +317,13 @@
 }
 
 #form-body {
-
     flex-direction: column;
     justify-content: space-around;
-    height: 655px;
+    height: 555px;
     border: 1px;
     padding-left: 32px;
     padding-right: 32px;
+    margin-top: 30px;
 }
 
 // input 
@@ -390,7 +382,7 @@ input #input-name {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 120px;
+    margin-top: 80px;
 }
 
 #initial-logo {

@@ -24,7 +24,7 @@ class EditBoardForm extends React.Component {
 
     render(){     
         return (
-          <div id="board-edit-form">
+          <div className="edit-form" id="board-edit-form">
             <div id="form-header">
               <h2>Edit your board</h2>
             </div>

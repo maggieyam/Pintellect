@@ -46,7 +46,6 @@ class PinShow extends React.Component {
         const {pin, deletePin, id, openModal} = this.props;
         if (!pin) return null;
         const modal = {type: 'updatePin', item: this.props.pin}
-        // const boards = Object.values(fetchBoards());
         return(
             <div className="main-container-pin-show">
                 <div className="center-container-pin-show" >
