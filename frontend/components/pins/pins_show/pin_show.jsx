@@ -56,12 +56,14 @@ class PinShow extends React.Component {
 
                     <div className="right-container-pin-show">
                         <div className="right-top-nav">
-                            <FontAwesomeIcon
-                                icon={faPen}
-                                className="edit-pen"
-                                size="lg"
-                                onClick={() => openModal(modal)}
-                            />
+                            <div className="edit-pen-wrapper">
+                                <FontAwesomeIcon
+                                    icon={faPen}
+                                    className="edit-pen"
+                                    size="lg"
+                                    onClick={() => openModal(modal)}
+                                />
+                            </div>
                             <div className="pin-select-wrapper">
                                 <SearchBoard 
                                     boards={pin.boards}

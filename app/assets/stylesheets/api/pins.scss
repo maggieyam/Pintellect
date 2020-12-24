@@ -328,9 +328,22 @@ border-bottom: 2px solid #efefef;
     cursor: pointer;
 }
 
-.select-board:hover {
+.select-board:hover  {
     background: #efefef;
     border-radius: 16px;
+}
+
+.edit-pen-wrapper:hover {
+    background: #efefef;
+    border-radius: 50%;
+}
+
+.edit-pen-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #svg-pin-create-board {
