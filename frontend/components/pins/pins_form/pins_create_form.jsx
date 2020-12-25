@@ -3,38 +3,43 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faSearch,
   faTrashAlt,
-  faChevronDown,
-  faPlusCircle,
   faArrowAltCircleUp,
-  faEllipsisH,
+  faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
-import { dropDownBtns, toggle } from "../../../utils/drop_down_util"
+import { dropDownBtns, reveal, hide, createBtns } from "../../../utils/drop_down_util"
+
 
 class CreatePinForm extends React.Component {
   constructor(props) {
     super(props);
-    // boardId = () => props.boards.length > 0 ? 0 : -1;
-
     this.state = {
       title: '',
       description: '',
       link: '',
       boardId: 0,
-      // selectBoards: [],
-
     };
     this.baseState = this.state;
-    this.boards = this.state.boards
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.dropDown = this.dropDown.bind(this);
+    this.updateImg = this.updateImg.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault;
-    if (this.state.link === "" || !this.state.boardId) return null;
-    const pin = Object.assign({}, this.state);
-    
-    this.props.createPin(pin)
+    hide('.dropDown-content');
+    if (!this.state.boardId) return null;
+    if (this.state.link === '') {
+      const img = document.querySelector('#upload-img');
+      img.style.background = '#ffe6e6';
+      img.style.outline = "thin solid #FF0000"; 
+      document.querySelector('.error-img2').style.color = 'red';
+      hide('#svg-pin-form');
+      hide('.text-upload') 
+      reveal('#svg-pin-warning'); 
+      reveal('.error-img1');
+      return;
+    }
+    debugger
+    this.props.createPin(this.state)
         .then(this.props.history.push(`/`));   
   }
 
@@ -45,12 +50,16 @@ class CreatePinForm extends React.Component {
   update(field) {
     return (e) => {
       this.setState({[field]: e.currentTarget.value});
-      this.updateImg();
     }
   }
 
   reset() {
-    return () => this.setState(this.baseState);
+    return () => {
+      this.setState(this.baseState);
+      this.updateImg();
+      hide('#show-img');
+      reveal('#upload-img');
+    }
   }
 
   search(boards) {
@@ -71,31 +80,51 @@ class CreatePinForm extends React.Component {
       this.setState({boardId: boardId});    
       let option = document.querySelector(`#board${boardId}`).innerText;
       document.querySelector('#select').innerHTML = option;
-      document.querySelector('#dropDown-content').style.display = 'none';
+      document.querySelector('.dropDown-content').style.display = 'none';
 
     };
     
  }
 
- updateImg() {  
-   if (this.state.link === "") return null;
-   let img = document.createElement('img')
-   let container = document.getElementById('create-pin-left').childNodes[0];
-    img.src = this.state.link;
-    if (img) {
-      img.classList.add('create-pin-img')    
+updateImg() {  
+  let img = document.createElement('img')
+  let container = document.getElementById('show-img');
+
+  if (this.state.link === "" && !container) return null;
+  img.src = this.state.link; 
+  if (img.src === "") {
+    hide('#show-img');
+    reveal('#upload-img');
+    
+    container.removeChild(container.childNodes[0]);
+  } else {
+    hide('#upload-img')
+    reveal('#show-img');
+    img.classList.add('create-pin-img')     
+    if (container.childNodes[0]){
       container.replaceChild(img, container.childNodes[0]);
+    } else  {
+      container.appendChild(img);
     }
+    const background = document.querySelector('#upload-img');
+    background.style.background = '#efefef';
+    background.style.outline = "none"; 
+    document.querySelector('.error-img2').style.color = '#767676';
+    reveal('#svg-pin-form');
+    reveal('.text-upload') 
+    hide('#svg-pin-warning'); 
+    hide('.error-img1');
+    
+  }
  }
 
  select(boards) {
-// deb/ugger
     return boards.map((board) => {
         return (
           <div className="select-board"
           key={board.id}
           id={`board${board.id}`}
-          onClick={this.addBoard(board.id)}>
+          onClick={this.addBoard(board.id).bind(this)}>
 
             <img src={board.allUrls[0] ? board.allPins[0].link : null} className="mini-img"/>
             {board.title}
@@ -104,134 +133,145 @@ class CreatePinForm extends React.Component {
       })
  }
 
+ navLeft() {
+   return(
+     <div id="dots-pin-form">
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          size="lg"
+          id="svg-pin-form-reset"
+          onClick={this.reset()}
+        />
+    </div>
+   )
+  
+ }
 
+ navRight() {
+   const { boards, openModal } = this.props;
+   return(
+    <div id="nav-right-pin-form">
+      <div id="nav-right-btns">
+        {dropDownBtns('.dropDown-content', true)}
+      </div>
+
+      <div className="dropDown-content">
+        <div id="wrapper-dropdown">
+          <div id="top-pin-select">
+            <input
+              onChange={this.search(boards)}
+              className="search-pins"
+            />
+            <FontAwesomeIcon
+              icon={faSearch}
+              size="lg"
+              id="svg-pin-form-search"
+            />
+          </div>
+
+          <div className="dropDown-options">
+            <div id="all-boards">All boards</div>
+            {boards ? this.select(boards) : Null}
+          </div>
+          {createBtns(`.dropDown-content`, openModal)}
+        </div>
+      </div>
+    </div>
+   )
+ }
+
+ bodyLeft() {
+   return(
+     <div id="create-pin-left">
+       <div id="show-img">
+       </div>
+        <div id="upload-img">
+          <FontAwesomeIcon
+            icon={faArrowAltCircleUp}
+            id="svg-pin-form"
+            size="2x"
+          />
+          <FontAwesomeIcon
+            icon={faExclamationCircle}
+            id="svg-pin-warning"
+            size="2x"
+          />
+          <div>
+            <p className="text-upload">
+              Click to Upload
+            </p>
+            <p className="error-img1">
+              An image is required to <br/>
+              create a Pin.
+            </p>
+            <p className="error-img2">
+              Recommendation: use high-quality .jpg<br/>
+              files smaller than 20MB
+            </p>
+          </div>
+        </div>
+      </div>
+   )
+ }
+
+bodyRight() {
+  const { first_name, last_name } = this.props.user;
+  const { title, description, link } = this.state;
+  return(
+     <div id="create-pin-right">
+      <div id="add-title">
+        <input
+          type="text"
+          id="input-form-pins"
+          value={title}
+          placeholder={'Add your title'}
+          onChange={this.update('title')}
+        />
+        <div id="names">
+          <button className="user-initial">
+            {first_name[0]}
+          </button>
+          <div id="display-names">
+            <strong>
+              {first_name} {last_name}
+            </strong>
+          <p>0 follower</p>
+          </div>
+        </div>
+
+        <input
+          placeholder="Tell everyone what your pin is about"
+          id="input-pin"
+          value={description}
+          onChange={this.update('description')}
+        />
+      </div>
+      <input
+        placeholder="Add an image link"
+        id="choose-link"
+        value={link}
+        onChange={this.update('link')}
+      />
+      <button type="button" id="save-from-site" onClick={this.updateImg}>
+        Preview from link
+      </button>
+    </div>
+  )
+}
   render() {
-    const { title, description, link, } = this.state;
-    const { user, boards, openModal } = this.props;
-    const { first_name, last_name } = user;
-
-    const modal = {type: 'create'};
     return (
       <div id="body-container">
         <div id="body-section">
           <div>
-            <form
-              onSubmit={this.handleSubmit}
-              id="pin-create-form"
-            >
+            <form onSubmit= {this.handleSubmit} id="pin-create-form">
               <div id="top-bar">
-                <div id="dots-pin-form">
-                  <FontAwesomeIcon
-                    icon={faTrashAlt}
-                    size="lg"
-                    id="svg-pin-form-reset"
-                    onClick={this.reset()}
-                  />
-                </div>
-
-                <div id="nav-right-pin-form">
-                  <div id="nav-right-btns">
-                    {/* {dropDownBtns(this.props.boards)} */}
-                    <div id="select" onClick={() => toggle('.dropDown-content')}>                 
-                         Select         
-                      <FontAwesomeIcon
-                        icon={faChevronDown}
-                        id="svg-pin-drop-down"
-                        size="lg"
-                        onClick={() => toggle('.dropDown-content')}
-                      />
-                    </div>
-                    <button className="save" >Save</button>
-
-                  </div>
-
-                  <div className="dropDown-content">
-                    <div id="wrapper-dropdown">
-                      <div id="top-pin-select">
-                        <input
-                          onChange={this.search(boards)}
-                          className="search-pins"
-                        />
-                        <FontAwesomeIcon
-                          icon={faSearch}
-                          size="lg"
-                          id="svg-pin-form-search"
-                        />
-                      </div>
-
-                      <div className="dropDown-options">
-                        <div id="all-boards">All boards</div>
-                        {boards ? this.select(boards) : Null}
-                      </div>
-                      <div id="create-board-btn">
-                        <FontAwesomeIcon
-                          icon={faPlusCircle}
-                          size="2x"
-                          id="svg-pin-create-board"
-                          onClick={() => openModal(modal)}
-                        />
-                        <div id="text-create-board">Create a board</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {this.navLeft()}
+                {this.navRight()}  
               </div>
 
               <div id="pin-form-body">
-                <div id="create-pin-left">
-                  <div id="upload-img">
-                    <FontAwesomeIcon
-                      icon={faArrowAltCircleUp}
-                      id="svg-pin-form"
-                      margin-left="0"
-                      size="2x"
-                    />
-                  </div>
-
-                  <button type="button" id="save-from-site" onClick={this.updateImg()}>
-                    Save from Site
-                  </button>
-                </div>
-
-                <div id="create-pin-right">
-                  <div id="add-title">
-                    <input
-                      type="text"
-                      id="input-form-pins"
-                      value={title}
-                      placeholder={'Add your title'}
-                      onChange={this.update('title')}
-                    />
-                    <div id="names">
-                      <button className="user-initial">
-                        {first_name[0]}
-                      </button>
-                      <div id="display-names">
-                        <strong>
-                          {first_name} {last_name}
-                        </strong>
-                      <p>0 follower</p>
-                      </div>
-                    </div>
-
-                    <input
-                      placeholder="Tell everyone what your pin is about"
-                      id="input-pin"
-                      value={description}
-                      onChange={this.update('description')}
-                    />
-                    {/* <p>
-                          People will usually see the first 50 characters when
-                          they click on your pin
-                        </p> */}
-                  </div>
-                  <input
-                    placeholder="Add a desination link"
-                    id="choose-link"
-                    value={link}
-                    onChange={this.update('link')}
-                  />
-                </div>
+                {this.bodyLeft()}
+                {this.bodyRight()}              
               </div>
             </form>
           </div>

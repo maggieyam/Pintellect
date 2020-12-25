@@ -50,8 +50,7 @@
 
 #nav-right-pin-form {
     margin-right: 0px;
-    width: 296px;
-    
+    width: 296px;   
     position: relative; right: 1vw;
 }
 
@@ -61,13 +60,9 @@
     padding-left: 12px;
     padding-right: 12px;
     text-align: center;
-    // background-color: #E60023;
-
-    // vertical-align: center;
-    // justify-content: center;
 }
 
-#nav-right-btns {
+#nav-right-btns > div {
     display: flex;
     justify-content: space-between;
     width: 230px;
@@ -81,9 +76,22 @@
     }
 }
 
+#edit{
+    #select{
+        position: relative;
+        width: 378.66px;
+        border-radius: 8px;
+        font-weight: 700;
+        #svg-pin-drop-down {
+            position: absolute;
+            right: 20px;
+        }
+    }
+}
+
 .pin-wrapper {
     position: relative;
-    #nav-right-btns {
+    #nav-right-btns > div{
         display: none;
         width: 200px;
         #svg-pin-drop-down{
@@ -95,12 +103,12 @@
 }
 
 .pin-wrapper:hover {
-    #nav-right-btns {
+    #nav-right-btns > div{
         display: flex;
     }
 }
 
-.feed-option {
+.feed-option > div {
     position: absolute;
     top: 20px;
     right: 17.5px;
@@ -172,14 +180,27 @@
     
 }
 
-#upload-img {
+#upload-img, #show-img {
+    position: relative;
     width: 340px;
     height: 454px;
+    border-radius: 16px;
+}
+#upload-img {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #efefef;
-    border-radius: 16px;
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 160px;
+        position: absolute;
+        bottom: 40px;
+    }
 }
 
 #save-from-site {
@@ -206,10 +227,6 @@
 }
 
 #input-form-pins {
-    // padding-left: 0px;
-    // padding-right: 0px;
-    // padding-top: 0px;
-    // padding-bottom: 0px;
     border: none;
     border-bottom: 2px solid #efefef;
     width: 380px;
@@ -234,18 +251,21 @@
 }
 
 #choose-link, #input-pin {
- width: 380px;
- font-size: 18px;
- border: none;
-border-bottom: 2px solid #efefef;
- margin-top: 20px;
+    width: 380px;
+    font-size: 18px;
+    border: none;
+    border-bottom: 2px solid #efefef;
+}
+
+#input-pin {
+    padding-top: 30px;
 }
 
 #choose-link:focus, #input-pin:focus, #input-form-pins:focus{
     outline: none;
 }
 #choose-link {
-    margin-top: 140px;
+    margin-top: 100px;
 }
 
 #names{
@@ -259,7 +279,7 @@ border-bottom: 2px solid #efefef;
 .dropDown-content {
     position: absolute;
     top: 60px;
-    width: 296px;
+    width: 320px;
     height: 439px;
     display: none;
     text-align: center;
@@ -276,6 +296,7 @@ border-bottom: 2px solid #efefef;
     #svg-pin-form-search {
         position: absolute;
         top: 25px;
+        left: 40px;
     }
 }
 
@@ -284,14 +305,6 @@ border-bottom: 2px solid #efefef;
     z-index: 2;
 }
 
-
-
-// #dropDown-content-on {
-//     display: block;
-// }
-// #dropDown-content-off{
-//     display: none;
-// }
 
 #wrapper-dropdown {   
     display: flex;
@@ -362,6 +375,7 @@ input.search-pins {
     font-size: 18px;
 }
 
+
 .search-pins:focus {
     box-shadow: 0 0 4pt 4pt #4a8ad4;
 }
@@ -375,6 +389,9 @@ input.search-pins {
 }
 
 #top-pin-select {
+    position: absolute;
+    top: 3px;
+    left: 0px;
     width: 320px;
     height: 60px;
     padding: 12px;
@@ -508,15 +525,17 @@ input.search-pins {
     align-items: center;
 }
 
-#display-names {
+#display-names, .edit-pin-left {
     display: flex;
     flex-direction: column;
 
 }
 
 #pin-edit-form {
-    height: 579px;
+    height: 600px;
     width: 900px;
+    display: flex;
+    flex-direction: column;
 }
 
 .create-pin-img {
@@ -530,3 +549,47 @@ input.search-pins {
     display: flex;
     justify-content: center;
 }
+
+.edit-pin-body-content,  .pin-edit-form-btns{
+    display: flex;
+    justify-content: space-between;  
+}
+
+.edit-pin-body-content {
+    height: 378px;
+    .edit-pin-left{
+        margin-right: 25px;
+    }
+    .edit-pin-right{
+        margin-left: 25px;
+    }
+}
+
+.pin-edit-form-btns {  
+    height: 40px;  
+    padding: 32px;
+}
+
+#save {
+    background-color: #E60023;
+    color: white;
+}
+
+.error-img1, .error-img2 {
+    z-index: 2;
+    text-align: center;
+    color: #767676
+}
+
+.error-img1, #svg-pin-warning {
+    color: red;
+    display: none;
+}
+#show-img {
+    display: none;
+}
+#show-img:first-child {
+    width: 100;
+    height: auto;
+}
+
