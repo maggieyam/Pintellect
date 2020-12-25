@@ -76,7 +76,8 @@
     }
 }
 
-#edit{
+
+.edit {
     #select{
         position: relative;
         width: 378.66px;
@@ -87,6 +88,10 @@
             right: 20px;
         }
     }
+}
+
+.edit-field {
+    width: 378.66;
 }
 
 .pin-wrapper {
@@ -536,6 +541,7 @@ input.search-pins {
     width: 900px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .create-pin-img {
@@ -556,18 +562,29 @@ input.search-pins {
 }
 
 .edit-pin-body-content {
-    height: 378px;
+    height: 350px;
     .edit-pin-left{
         margin-right: 25px;
     }
     .edit-pin-right{
         margin-left: 25px;
+        overflow: hidden;
+        img {
+            max-height: 330px;
+        }
     }
+}
+
+.pin-note {
+    height: 80px;
 }
 
 .pin-edit-form-btns {  
     height: 40px;  
-    padding: 32px;
+    padding: 32px 0;
+    .delete {
+        margin-left: 0;
+    }
 }
 
 #save {
@@ -593,3 +610,28 @@ input.search-pins {
     height: auto;
 }
 
+.pin-edit-left-wrapper, .pin-edit-left-wrapper2 {
+   
+    width: 100%;
+    margin: 10px 0 10px 0;
+
+    input, textarea {
+        width: 360px;
+    }
+    div {
+        margin: 0px 0px 0px 20px;
+    }
+}
+
+.pin-edit-left-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.pin-edit-left-wrapper2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}

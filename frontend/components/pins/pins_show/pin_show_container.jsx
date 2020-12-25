@@ -6,7 +6,6 @@ import { deletePinFromBoard } from '../../../utils/pins_api_util';
 import {openModal} from '../../../actions/modal_actions';
 const mapStateToProps = ({ entities, session }, {match}) => {
   const id = match.params.pinId;
-  
   return {
     pin: entities.pins[id],
     id,

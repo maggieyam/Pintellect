@@ -42,8 +42,23 @@ class PinShow extends React.Component {
         )
     }
 
+    edit() {
+        return(
+            <div className="edit-pen-wrapper">
+                <FontAwesomeIcon
+                    icon={faPen}
+                    className="edit-pen"
+                    size="lg"
+                    onClick={() => openModal(modal)}
+                />
+            </div>
+        )
+
+    }
+
     render() {
-        const {pin, deletePin, id, openModal} = this.props;
+        const {pin, deletePin, id, openModal, user} = this.props;
+        debugger
         if (!pin) return null;
         const modal = {type: 'updatePin', item: this.props.pin}
         return(
@@ -55,14 +70,9 @@ class PinShow extends React.Component {
 
                     <div className="right-container-pin-show">
                         <div className="right-top-nav">
-                            <div className="edit-pen-wrapper">
-                                <FontAwesomeIcon
-                                    icon={faPen}
-                                    className="edit-pen"
-                                    size="lg"
-                                    onClick={() => openModal(modal)}
-                                />
-                            </div>
+
+                            {user.id === pin.author_id ? this.edit() : null}
+                            
                             <div className="pin-select-wrapper">
                                 <SearchBoard 
                                     boards={pin.boards}

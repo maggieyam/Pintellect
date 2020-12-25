@@ -47,31 +47,39 @@ class EditPinForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="edit-pin-body-content">
             <div className="edit-pin-left">
-              <label>Title</label>
-                <input 
-                  type="text" 
-                  className="input-form"
-                  placeholder={`Give a title to this pin`}
-                  onChange={this.update('title')}
-                  />
-              <label>Board
-              </label>
-              <div id="edit">
-                {dropDownBtns('#dropDown-content-edit', false)}
+              <div className="pin-edit-left-wrapper">
+                <label>Board
+                </label>
+                <div className="edit">
+                  {dropDownBtns('#dropDown-content-edit edit-field', false)}
+                </div>
               </div>
-              <label>Note</label>
-                <textarea
-                  placeholder={`Write a note about this pin...`}
-                  onChange={this.update('description')}
-                  className="textarea">
-                </textarea>
+
+              <div className="pin-edit-left-wrapper">
+                <label>Title</label>
+                  <input 
+                    type="text" 
+                    className="input-form edit-field"
+                    placeholder={`Give a title to this pin`}
+                    onChange={this.update('title')}
+                    />
+              </div>       
+
+              <div className="pin-edit-left-wrapper2">
+                  <label>Note</label>
+                  <textarea
+                    placeholder={`Write a note about this pin...`}
+                    onChange={this.update('description')}
+                    className="textarea pin-note edit-field">
+                  </textarea>
+              </div>
             </div>
             <div className="edit-pin-right">
               <img src={this.state.link}/>
             </div>
           </div>
           <div className="pin-edit-form-btns">
-            <button type="button" onClick={() => deletePinFromBoard() }>Delete</button>
+            <button type="button"className="delete" onClick={deletePinFromBoard()}>Delete</button>
             <div>
               <button type="button">Cancel</button>
               <button id="save">Save</button>
