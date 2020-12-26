@@ -46,21 +46,20 @@ class EditPinForm extends React.Component {
       this.boardId = boardId;    
       let option = document.querySelector(`#board${boardId}`).innerText;
       document.querySelector('#select').innerHTML = option;
-      document.querySelector('.dropDown-content').style.display = 'none';
+      document.querySelector('.dropDown-content2').style.display = 'none';
 
     };   
  }
 
  select(boards) {
     return boards.map((board) => {
-        debugger
         return (
           <div className="select-board"
           key={board.id}
           id={`board${board.id}`}
           onClick={this.addBoard(board.id).bind(this)}>
 
-            <img src={board.links[0] ? board.pins[0].link : null} className="mini-img"/>
+            <img src={board.links[0] ? board.links[0].url : null} className="mini-img"/>
             {board.title}
           </div>
         );
@@ -68,9 +67,9 @@ class EditPinForm extends React.Component {
  }
 
  navRight() {
-   const { boards } = this.props.pin;
+   let { boards, openModal } = this.props;
    if (!boards) return null;
-   
+   boards = Object.values(boards);
    return(
     <>
       {/* <div id="nav-right-btns"> */}
@@ -94,11 +93,10 @@ class EditPinForm extends React.Component {
           <div className="dropDown-options-wrapper">
             <div id="all-boards">All boards</div>
             <div className="dropDown-options">
-
               {boards ? this.select(boards) : null}
             </div >
           </div>
-          {createBtns(`.dropDown-content`, this.props.openModal)}
+          {createBtns(`.dropDown-content2`, openModal)}
         </div>
       </div>
     </>
@@ -111,12 +109,6 @@ class EditPinForm extends React.Component {
   }
 
   render() {
-    // const { title, description, link } = this.state;
-    // const pin  = this.state;
-    // const { first_name, last_name } = user;
-    // // if (!boards || boards.length === 0) return null;
-    // const pin = this.getPin(boards);
-    // const modal = {type: 'create'};
     return (
       <div className="edit-form" id="pin-edit-form">
         <div id="form-header" >

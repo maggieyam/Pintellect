@@ -7,7 +7,8 @@ import { closeModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = ({ui}) => {
     return {
-        pin: ui.modal.item,
+        pin: ui.modal.item.pin,
+        boards: ui.modal.item.boards
     }
 }
 

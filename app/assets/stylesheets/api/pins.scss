@@ -307,24 +307,7 @@
     }
 }
 
-.dropDown-content2 {
-    width: 390px;
-    position: absolute;
-    top: 40px;
-    left: 20px;
-    #top-pin-select {
-        position: absolute;
-        top: 25px;
-        left: 0px;
-        margin-left: 0px;
-    }
-    #all-boards {
-        position: absolute;
-        top: 90px;
-        left: 0px;
-        
-    }
-}
+
 
 .dropDown-feed {
     box-shadow: none;
@@ -668,4 +651,35 @@ input.search-pins {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+.dropDown-content2 {
+    width: 390px;
+    position: absolute;
+    box-shadow: 2px 1px 1px 2px #888888;
+    top: 40px;
+    left: 20px;
+    #top-pin-select {
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        margin-left: 0px;
+    }
+    #all-boards {
+        position: absolute;
+        top: 80px;
+        left: 0px;       
+    }
+    .dropDown-options {
+        position: absolute;
+        top: 80px;
+        left: 0px;
+        margin: 20px 0 0 0;
+    }
+    #create-board-btn {
+        display: flex;
+        justify-content: start;
+        margin-left: 0;
+        padding-left: 0;
+    }
 }

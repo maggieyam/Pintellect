@@ -11,14 +11,13 @@ class PinShow extends React.Component {
         super(props);
 
     }
-    componentDidMount() {
-        
+
+    componentDidMount() {    
         window.scrollTo(0, 0);
         this.props.requestPin(this.props.id);
     }
 
-    renderInfo() {
-        
+    renderInfo() {       
         if (!this.props.pin) return null;
         const { pin, user } = this.props;
         return(
@@ -43,26 +42,26 @@ class PinShow extends React.Component {
         )
     }
 
-    edit() {
-        const modal = {type: 'updatePin', item: this.props.pin}
-        return(
-            <div className="edit-pen-wrapper">
-                <FontAwesomeIcon
-                    icon={faPen}
-                    className="edit-pen"
-                    size="lg"
-                    onClick={() => this.props.openModal(modal)}
-                />
-            </div>
-        )
+    // edit() {
+    //     const modal = {type: 'updatePin', item: {pin: this.props.pin, boards: this.props.boards}
+    //     return(
+    //         <div className="edit-pen-wrapper">
+    //             <FontAwesomeIcon
+    //                 icon={faPen}
+    //                 className="edit-pen"
+    //                 size="lg"
+    //                 onClick={() => this.props.openModal(modal)}
+    //             />
+    //         </div>
+    //     )
 
-    }
+    // }
 
     render() {
         const {pin, deletePin, openModal, boards} = this.props;
         
         if (!pin) return null;
-        const modal = {type: 'updatePin', item: pin}
+        const modal = {type: 'updatePin', item: {pin: this.props.pin, boards: this.props.boards}}
         
         return(
             <div className="main-container-pin-show">

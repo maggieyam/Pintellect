@@ -120,7 +120,7 @@ updateImg() {
 
  select(boards) {
     return boards.map((board) => {
-      // debugger
+      // 
         return (
           <div className="select-board"
           key={board.id}
