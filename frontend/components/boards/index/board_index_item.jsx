@@ -22,7 +22,7 @@ class BoardIndexItem extends React.Component {
   render (){  // const create = {type: 'create', item: board}
     const modal = {type: 'updateBoard', item: this.props.board}
     const { board, openModal } = this.props;
-    const urls = board.allUrls.slice(0, 3);
+    const urls = board.links.slice(0, 3);
     if (!board) return null;
 // 
     return (

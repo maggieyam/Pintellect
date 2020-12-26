@@ -38,7 +38,7 @@ class CreatePinForm extends React.Component {
       reveal('.error-img1');
       return;
     }
-    debugger
+    
     this.props.createPin(this.state)
         .then(this.props.history.push(`/`));   
   }
@@ -120,13 +120,14 @@ updateImg() {
 
  select(boards) {
     return boards.map((board) => {
+      // debugger
         return (
           <div className="select-board"
           key={board.id}
           id={`board${board.id}`}
           onClick={this.addBoard(board.id).bind(this)}>
 
-            <img src={board.allUrls[0] ? board.allPins[0].link : null} className="mini-img"/>
+            <img src={board.links[0] ? board.links[0].url : null} className="mini-img"/>
             {board.title}
           </div>
         );
@@ -168,10 +169,11 @@ updateImg() {
               id="svg-pin-form-search"
             />
           </div>
-
-          <div className="dropDown-options">
+          <div className="dropDown-options-wrapper">
             <div id="all-boards">All boards</div>
-            {boards ? this.select(boards) : Null}
+            <div className="dropDown-options">
+              {boards ? this.select(boards) : null}
+            </div>
           </div>
           {createBtns(`.dropDown-content`, openModal)}
         </div>

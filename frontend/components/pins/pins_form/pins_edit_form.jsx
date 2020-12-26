@@ -2,11 +2,8 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faSearch,
-  faTrashAlt,
-  faChevronDown,
-  faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import { dropDownBtns } from "../../../utils/drop_down_util"
+import { dropDownBtns, createBtns } from "../../../utils/drop_down_util"
 import { deletePinFromBoard } from "../../../utils/pins_api_util";
 
 class EditPinForm extends React.Component {
@@ -20,7 +17,7 @@ class EditPinForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault;   
-    debugger
+    
     this.props.updatePin(this.state)
         .then(() => this.props.closeModal());   
   }
@@ -31,6 +28,87 @@ class EditPinForm extends React.Component {
     }
   }
 
+  search(boards) {
+    return e => {     
+      boards.map(board => {
+        let option = document.querySelector(`#board${board.id}`);
+        if(!board.title.toLowerCase().includes(e.currentTarget.value.toLowerCase())){
+          option.style.display = 'none';
+        } else {
+          option.style.display = 'block';
+        }});                 
+    }
+  }
+
+
+ addBoard(boardId) {
+    return () => {
+      this.boardId = boardId;    
+      let option = document.querySelector(`#board${boardId}`).innerText;
+      document.querySelector('#select').innerHTML = option;
+      document.querySelector('.dropDown-content').style.display = 'none';
+
+    };   
+ }
+
+ select(boards) {
+    return boards.map((board) => {
+        debugger
+        return (
+          <div className="select-board"
+          key={board.id}
+          id={`board${board.id}`}
+          onClick={this.addBoard(board.id).bind(this)}>
+
+            <img src={board.links[0] ? board.pins[0].link : null} className="mini-img"/>
+            {board.title}
+          </div>
+        );
+      })
+ }
+
+ navRight() {
+   const { boards } = this.props.pin;
+   if (!boards) return null;
+   
+   return(
+    <>
+      {/* <div id="nav-right-btns"> */}
+      {dropDownBtns('.dropDown-content2', false)}
+      {/* </div> */}
+
+      <div className="dropDown-content2">
+        <div id="wrapper-dropdown">
+          <div id="top-pin-select">
+            <input
+              onChange={this.search(boards)}
+              className="search-pins"
+            />
+            <FontAwesomeIcon
+              icon={faSearch}
+              size="lg"
+              id="svg-pin-form-search"
+            />
+          </div>
+
+          <div className="dropDown-options-wrapper">
+            <div id="all-boards">All boards</div>
+            <div className="dropDown-options">
+
+              {boards ? this.select(boards) : null}
+            </div >
+          </div>
+          {createBtns(`.dropDown-content`, this.props.openModal)}
+        </div>
+      </div>
+    </>
+   )
+ }
+
+
+  delete() {
+    // this.state.boards[0].author_id ===
+  }
 
   render() {
     // const { title, description, link } = this.state;
@@ -51,7 +129,8 @@ class EditPinForm extends React.Component {
                 <label>Board
                 </label>
                 <div className="edit">
-                  {dropDownBtns('#dropDown-content-edit edit-field', false)}
+                  {this.navRight()}
+                  {/* {dropDownBtns('#dropDown-content-edit edit-field', false)} */}
                 </div>
               </div>
 

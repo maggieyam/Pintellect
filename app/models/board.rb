@@ -20,6 +20,7 @@ class Board < ApplicationRecord
     belongs_to :author,
         class_name: :User
     has_many :board_pins
+        # dependent: :destroy
     has_many :pins,
         through: :board_pins,
         source: :pin

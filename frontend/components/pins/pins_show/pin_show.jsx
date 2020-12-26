@@ -12,6 +12,7 @@ class PinShow extends React.Component {
 
     }
     componentDidMount() {
+        
         window.scrollTo(0, 0);
         this.props.requestPin(this.props.id);
     }
@@ -43,13 +44,14 @@ class PinShow extends React.Component {
     }
 
     edit() {
+        const modal = {type: 'updatePin', item: this.props.pin}
         return(
             <div className="edit-pen-wrapper">
                 <FontAwesomeIcon
                     icon={faPen}
                     className="edit-pen"
                     size="lg"
-                    onClick={() => openModal(modal)}
+                    onClick={() => this.props.openModal(modal)}
                 />
             </div>
         )
@@ -57,10 +59,11 @@ class PinShow extends React.Component {
     }
 
     render() {
-        const {pin, deletePin, id, openModal, user} = this.props;
-        debugger
+        const {pin, deletePin, openModal, boards} = this.props;
+        
         if (!pin) return null;
-        const modal = {type: 'updatePin', item: this.props.pin}
+        const modal = {type: 'updatePin', item: pin}
+        
         return(
             <div className="main-container-pin-show">
                 <div className="center-container-pin-show" >
@@ -70,12 +73,19 @@ class PinShow extends React.Component {
 
                     <div className="right-container-pin-show">
                         <div className="right-top-nav">
-
-                            {user.id === pin.author_id ? this.edit() : null}
+                            <div className="edit-pen-wrapper">
+                                <FontAwesomeIcon
+                                    icon={faPen}
+                                    className="edit-pen"
+                                    size="lg"
+                                    onClick={() => openModal(modal)}
+                                />
+                            </div>
+                            {/* {user.id === pin.author_id ? this.edit() : null} */}
                             
                             <div className="pin-select-wrapper">
                                 <SearchBoard 
-                                    boards={pin.boards}
+                                    boards={Object.values(boards)}
                                     openModal={openModal}
                                     pin={pin}
                                 />

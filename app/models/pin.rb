@@ -15,6 +15,7 @@ class Pin < ApplicationRecord
     belongs_to :author,
         class_name: :User
     has_many :board_pins
+        # dependent: :destroy
     has_many :boards,
         through: :board_pins,
         source: :board

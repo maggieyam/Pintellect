@@ -7,15 +7,17 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 class BoardShow extends React.Component {
 
     componentDidMount() {
+        if(!this.props.board)
         this.props.requestBoard(this.props.match.params.boardId);
     }
 
     render(){
-        const {board, openModal} = this.props;
+        let {board, openModal} = this.props;
         if (!board) return null;
-        const modal = {type: 'updateBoard', item: this.props.board}
-        const pins = reorganizePins(board.allPins, false);
 
+        const modal = {type: 'updateBoard', item: this.props.board}
+        const pins = reorganizePins(board.pins, false);
+        
         return(
             <div id="board-show"> 
                 <div id="board-show-top">
@@ -29,7 +31,7 @@ class BoardShow extends React.Component {
                     </h1>
                     <span id="board-description">{board.description}</span>
                 </div>
-                {mapPinsToCols(pins, openModal, board.currentBoards)}
+                {mapPinsToCols(pins, openModal)}
             </div>
         )
     }

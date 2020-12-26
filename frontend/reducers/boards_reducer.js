@@ -13,7 +13,7 @@ const boardReducer = (state={}, action) => {
             return merge({}, action.boards);
         case RECEIVE_BOARD:
             
-            const newState = {[action.board.id]: action.board}           
+            const newState = {'board': action.board}           
             return merge({}, state, newState)
         case REMOVE_BOARD:
             let nextState = merge({}, state);

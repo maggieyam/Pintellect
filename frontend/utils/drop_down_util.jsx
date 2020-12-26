@@ -52,18 +52,18 @@ export const toggle = (selector) => {
         }});                        
 }
 
-export const select = (boards, pinId) => {    
-    return boards.map((board) => {
-        return (
-        <div className="select-board"
-        key={board.id}
-        id={`board${board.id}pin${pinId}`}
-        onClick={() => savePinToBoard(pinId, board.id)}>
-            <img src={board.link ? board.link : null} className="mini-img"/>
-            {board.title}
-        </div>
-        );
-    })
+export const select = (boards, pinId) => {   
+  return boards.map((board) => {
+      return (
+      <div className="select-board"
+      key={board.id}
+      id={`board${board.id}pin${pinId}`}
+      onClick={() => savePinToBoard(pinId, board.id)}>
+          <img src={board.links[0].url} className="mini-img"/>
+          {board.title}
+      </div>
+      );
+  })
 }
 
 export  const savePinToBoard = (pinId, boardId) => {
@@ -88,9 +88,11 @@ export const selectWrapper = (className, boards, pinId) => {
 
 export const dropDownOptions = (boards, pinId) => {
   return(
-    <div className="dropDown-options">
-        <div id="all-boards">All boards</div>
+    <div className="dropDown-options-wrapper">
+      <div id="all-boards">All boards</div>
+      <div className="dropDown-options">
         {boards ? select(boards, pinId) : null}
+      </div>
     </div>
   )
 }

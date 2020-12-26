@@ -10,11 +10,11 @@ const pinReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_PINS:
-      return merge({}, action.pins);
+      return merge({}, state, action.pins);
+      
     case RECEIVE_PIN:
-        
-      const newState = {[action.pin.id]: action.pin};
-      return merge({}, state, newState);
+      
+      return merge({}, action.pin);
     
       case REMOVE_PIN:
       let nextState = merge({}, state);

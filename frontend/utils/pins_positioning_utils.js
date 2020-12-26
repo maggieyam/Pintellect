@@ -3,6 +3,7 @@ import React from 'react';
 import SearchBoard from '../components/search/searchBoard'
 
 export const reorganizePins = (pins, shuffle) => {
+    
     if (shuffle) {
         pins = _.shuffle(pins);
     } 
@@ -36,7 +37,7 @@ const addItemsToCols = (num, newArr, original) => {
 }
 
 
-export const mapPinsToCols = (pins, openModal, currentBoards) => {
+export const mapPinsToCols = (pins, openModal, boards) => {
     if (!pins) return null;
     return(             
         <div className="pins-seeds-container">               
@@ -52,11 +53,12 @@ export const mapPinsToCols = (pins, openModal, currentBoards) => {
                             id={`pin${pin.id}`} 
                             />
                         </Link>
-                        <SearchBoard 
-                            boards={currentBoards}
+                        {boards ? <SearchBoard 
+                            boards={boards}
                             openModal={openModal}
                             pin={pin}
-                        />
+                        /> : null}
+                        
                     </div>                                  
                 )}
                 </div>

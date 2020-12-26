@@ -13,12 +13,18 @@ class PinIndex extends React.Component {
         this.props.requestPins();
     }
 
-    render() {       
-        const pins = reorganizePins(this.props.pins, true);
+    render() {  
+
+        let { openModal, boards, pins} = this.props;
+        if (!pins) return null;
+
+        boards = Object.values(this.props.boards);
+        pins = Object.values(this.props.pins);
+        pins = reorganizePins(pins, true);
         
         return (
             <div className="pins-seeds-container">
-                {pins[0][0] ? mapPinsToCols(pins, this.props.openModal, pins[0][0].boards) : null}           
+                {boards ? mapPinsToCols(pins, openModal, boards) : null}           
             </div>
         );
     }
