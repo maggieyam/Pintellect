@@ -46,7 +46,7 @@ class EditPinForm extends React.Component {
       this.boardId = boardId;  
       const {boards} = this.props;
       
-      debugger
+      
       let option = document.querySelector(`#board${boardId}`).innerText;
       document.querySelector('#select').innerHTML = option;
       document.querySelector('.dropDown-content2').style.display = 'none';
@@ -152,7 +152,7 @@ class EditPinForm extends React.Component {
 
   render() {
     const {user, pin, boards} = this.props;
-    debugger
+    
     return (
       <div className="edit-form" id="pin-edit-form">
         <div id="form-header" >

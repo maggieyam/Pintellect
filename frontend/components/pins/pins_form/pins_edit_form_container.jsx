@@ -5,7 +5,7 @@ import { closeModal } from '../../../actions/modal_actions';
 
 
 const mapStateToProps = ({entities, session, ui}) => {
-  debugger
+  
     return {
         pin: ui.modal.item.pin,
         boards: ui.modal.item.boards,
