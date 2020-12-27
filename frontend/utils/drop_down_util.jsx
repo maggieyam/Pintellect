@@ -29,7 +29,7 @@ export const toggle = (selector) => {
     return(
          <div onClick={() => toggle(selector)}>
           <div id="select" >                 
-              Select         
+              <p id="select-text">Select</p>        
               <FontAwesomeIcon
               icon={faChevronDown}
               id="svg-pin-drop-down"
@@ -58,7 +58,7 @@ export const select = (boards, pinId) => {
       <div className="select-board"
       key={board.id}
       id={`board${board.id}pin${pinId}`}
-      onClick={() => savePinToBoard(pinId, board.id)}>
+      onClick={() => savePinToBoard(pinId, board, board.id)}>
           <img src={board.links[0].url} className="mini-img"/>
           {board.title}
       </div>
@@ -66,8 +66,11 @@ export const select = (boards, pinId) => {
   })
 }
 
-export  const savePinToBoard = (pinId, boardId) => {
-    savePin(pinId, boardId).then(() => toggle(`#dropDown-content${pinId}`));
+export  const savePinToBoard = (pinId, board, boardId) => {
+    savePin(pinId, boardId).then(() => {
+      toggle(`#dropDown-content${pinId}`);
+      document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`
+    });
 }
 
 export const selectWrapper = (className, boards, pinId) => {
