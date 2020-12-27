@@ -136,7 +136,10 @@ class EditPinForm extends React.Component {
   }
 
   delete() {
-    this.props.boards[this.boardId] ? deletePinFromBoard(this.props.pin.id, this.boardId) : null;
+    if (this.props.boards[this.boardId]) {
+      deletePinFromBoard(this.props.pin.id, this.boardId);
+      this.props.closeModal();
+    }
   }
 
   deleteBtn() {
