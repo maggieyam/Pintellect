@@ -8,13 +8,14 @@ class BoardShow extends React.Component {
 
     componentDidMount() {
         if(!this.props.board)
-        this.props.requestBoard(this.props.match.params.boardId);
+        this.props.fetchBoards();
+        // this.props.requestBoard(this.props.match.params.boardId);
     }
 
     render(){
-        let {board, openModal} = this.props;
+        let {board, openModal, userBoards} = this.props;
         if (!board) return null;
-
+        debugger
         const modal = {type: 'updateBoard', item: this.props.board}
         const pins = reorganizePins(board.pins, false);
         
@@ -31,7 +32,7 @@ class BoardShow extends React.Component {
                     </h1>
                     <span id="board-description">{board.description}</span>
                 </div>
-                {mapPinsToCols(pins, openModal)}
+                {mapPinsToCols(pins, openModal, userBoards)}
             </div>
         )
     }

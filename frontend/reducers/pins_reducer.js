@@ -14,6 +14,7 @@ const pinReducer = (state = {}, action) => {
       return merge({}, state, action.pins);
       
     case RECEIVE_PIN:      
+      
       return merge({}, action.pin);   
     case REMOVE_PIN:
       let nextState = merge({}, state);

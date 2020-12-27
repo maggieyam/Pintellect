@@ -1,12 +1,14 @@
 import {connect} from 'react-redux';
 import BoardShow from './board_show';
-import {requestBoard} from '../../../actions/boards_actions'
+import {requestBoard, fetchBoards} from '../../../actions/boards_actions'
 import {requestPins} from '../../../actions/pins_actions'
 import { openModal } from '../../../actions/modal_actions';
 
-const mapStateToProps = ({entities, session}) => {
+const mapStateToProps = ({entities, session}, {match}) => {
+  debugger
   return {
-    board: entities.boards.board,
+    board: entities.boards[match.params.boardId],
+    userBoards: Object.values(entities.boards),
     authorId: session.id
   };
 };
@@ -14,8 +16,9 @@ const mapStateToProps = ({entities, session}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    requestBoard: (boardId) => dispatch(requestBoard(boardId)),
-    openModal: (modal) => dispatch(openModal(modal))
+    openModal: (modal) => dispatch(openModal(modal)),
+    fetchBoards: () => dispatch(fetchBoards()),
+    // requestBoard: (boardId) => dispatch(requestBoard(boardId)),
     // requestPins: () => dispatch(requestPins()),
   }
 }

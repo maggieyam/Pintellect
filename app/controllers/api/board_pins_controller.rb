@@ -3,9 +3,11 @@ class Api::BoardPinsController < ApplicationController
 
     def create
         @board_pin = BoardPin.new({board_id: params[:boardId], pin_id: params[:pinId]})
+        @pin = Pin.find(params[:pinId]);
         if !@board_pin.save
             render json: @board_pin.errors.full_messages, status: 422
         end
+        render 'api/pins/show'
     end   
 
     def destroy
@@ -23,6 +25,6 @@ class Api::BoardPinsController < ApplicationController
         if boards.empty?
             pin.destroy
         end
-        render "api/boards/show"
+        render "api/pins/show"
     end
 end

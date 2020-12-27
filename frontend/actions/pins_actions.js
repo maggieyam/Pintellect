@@ -63,6 +63,9 @@ export const deletePinFromBoard = (pinId, boardId) => dispatch => {
   return APIUtil.deletePinFromBoard(pinId, boardId)
   .then((pin) => dispatch(removeBoardPin(pin)))
 }
-// export const savePin = (pinId, boardId) => {
-//   return APIUtil.savePin(pinId, boardId)
-// }
+export const savePin = (pinId, boardId) => {
+  return APIUtil.savePin(pinId, boardId)
+  .then(() => {pin => { 
+    
+    return dispatch(receivePin(pin))}})
+}

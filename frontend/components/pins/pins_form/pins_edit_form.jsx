@@ -5,7 +5,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { dropDownBtns, createBtns } from "../../../utils/drop_down_util"
 // import { deletePinFromBoard, deletePin } from '../../../actions/pins_actions';
-import {deletePinFromBoard} from "../../../utils/pins_api_util";
+import {deletePinFromBoard} from "../../../actions/pins_actions";
 class EditPinForm extends React.Component {
   constructor(props) {
     super(props);

@@ -53,11 +53,11 @@ export const mapPinsToCols = (pins, openModal, boards) => {
                             id={`pin${pin.id}`} 
                             />
                         </Link>
-                        {boards ? <SearchBoard 
+                        <SearchBoard 
                             boards={boards}
                             openModal={openModal}
                             pin={pin}
-                        /> : null}
+                        /> 
                         
                     </div>                                  
                 )}

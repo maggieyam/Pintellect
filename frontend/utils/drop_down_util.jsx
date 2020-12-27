@@ -54,14 +54,16 @@ export const toggle = (selector) => {
 
 export const select = (boards, pinId) => {   
   return boards.map((board) => {
+    
       return (
-      <div className="select-board"
-      key={board.id}
-      id={`board${board.id}pin${pinId}`}
-      onClick={() => savePinToBoard(pinId, board, board.id)}>
-          <img src={board.links[0].url} className="mini-img"/>
+        <div className="select-board"
+          key={board.id}
+          id={`board${board.id}pin${pinId}`}
+          onClick={() => savePinToBoard(pinId, board, board.id)}
+        >
+          {board.links[0] ? <img src={board.links[0].url} className="mini-img"/> : null }
           {board.title}
-      </div>
+        </div>
       );
   })
 }
@@ -69,6 +71,7 @@ export const select = (boards, pinId) => {
 export  const savePinToBoard = (pinId, board, boardId) => {
     savePin(pinId, boardId).then(() => {
       toggle(`#dropDown-content${pinId}`);
+      location.reload();
       document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`
     });
 }
