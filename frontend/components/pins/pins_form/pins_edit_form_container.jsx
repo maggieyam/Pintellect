@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import EditPinForm from './pins_edit_form';
 import { updatePin } from '../../../actions/pins_actions';
-import { fetchBoards } from '../../../actions/boards_actions'
 import { closeModal } from '../../../actions/modal_actions';
 
 
-const mapStateToProps = ({ui}) => {
+const mapStateToProps = ({entities, session, ui}) => {
+  debugger
     return {
         pin: ui.modal.item.pin,
-        boards: ui.modal.item.boards
+        boards: ui.modal.item.boards,
+        user: entities.users[session.id]
     }
 }
 

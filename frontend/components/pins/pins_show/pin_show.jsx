@@ -3,13 +3,12 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import pin_show_container from './pin_show_container';
-import { deletePinFromBoard, deletePin } from '../../../utils/pins_api_util';
+// import { deletePinFromBoard, deletePin } from '../../../actions/pins_actions';
 import SearchBoard from '../../search/searchBoard';
 
 class PinShow extends React.Component {
     constructor(props){
         super(props);
-
     }
 
     componentDidMount() {    
@@ -30,11 +29,12 @@ class PinShow extends React.Component {
                     <button className="user-initial">
                         {user.first_name[0]}
                     </button>
+                    
                     <div id="display-names">
-                    <strong>
-                        {user.first_name} {user.last_name}
-                    </strong>
-                    <p>0 follower</p>
+                        <strong>
+                            {user.first_name} {user.last_name}
+                        </strong>
+                        <p>0 follower</p>
                     </div>
                 </div>
             </div>
@@ -42,27 +42,33 @@ class PinShow extends React.Component {
         )
     }
 
-    // edit() {
-    //     const modal = {type: 'updatePin', item: {pin: this.props.pin, boards: this.props.boards}
-    //     return(
-    //         <div className="edit-pen-wrapper">
-    //             <FontAwesomeIcon
-    //                 icon={faPen}
-    //                 className="edit-pen"
-    //                 size="lg"
-    //                 onClick={() => this.props.openModal(modal)}
-    //             />
-    //         </div>
-    //     )
+    rightNav() {
+        const {pin, openModal, boards} = this.props;
+        const modal = {type: 'updatePin', item: {pin: this.props.pin, boards: this.props.boards}}
+        return(
+            <div className="right-top-nav">
+                <div className="edit-pen-wrapper" onClick={() => openModal(modal)}>
+                    <FontAwesomeIcon
+                        icon={faPen}
+                        className="edit-pen"
+                        size="lg"
+                    />
+                </div>
 
-    // }
+                <div className="pin-select-wrapper">
+                    <SearchBoard 
+                        boards={Object.values(boards)}
+                        openModal={openModal}
+                        pin={pin}
+                    />
+                </div>
+            </div>
+        )
+    }
 
     render() {
-        const {pin, deletePin, openModal, boards} = this.props;
-        
+        const { pin } = this.props;       
         if (!pin) return null;
-        const modal = {type: 'updatePin', item: {pin: this.props.pin, boards: this.props.boards}}
-        
         return(
             <div className="main-container-pin-show">
                 <div className="center-container-pin-show" >
@@ -71,25 +77,7 @@ class PinShow extends React.Component {
                     </div>
 
                     <div className="right-container-pin-show">
-                        <div className="right-top-nav">
-                            <div className="edit-pen-wrapper">
-                                <FontAwesomeIcon
-                                    icon={faPen}
-                                    className="edit-pen"
-                                    size="lg"
-                                    onClick={() => openModal(modal)}
-                                />
-                            </div>
-                            {/* {user.id === pin.author_id ? this.edit() : null} */}
-                            
-                            <div className="pin-select-wrapper">
-                                <SearchBoard 
-                                    boards={Object.values(boards)}
-                                    openModal={openModal}
-                                    pin={pin}
-                                />
-                            </div>
-                        </div>
+                        {this.rightNav()}
                         {this.renderInfo()}                  
                     </div>
                 </div>

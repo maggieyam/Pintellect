@@ -47,6 +47,7 @@ export const savePin = (pinId, boardId) => {
 }
 
 export const deletePinFromBoard = (pinId, boardId) => {
+  debugger
   return $.ajax({
     url: `/api/board_pins`,
     method: 'DELETE',

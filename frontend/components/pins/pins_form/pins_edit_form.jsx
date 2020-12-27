@@ -4,8 +4,8 @@ import {
   faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import { dropDownBtns, createBtns } from "../../../utils/drop_down_util"
-import { deletePinFromBoard } from "../../../utils/pins_api_util";
-
+// import { deletePinFromBoard, deletePin } from '../../../actions/pins_actions';
+import {deletePinFromBoard} from "../../../utils/pins_api_util";
 class EditPinForm extends React.Component {
   constructor(props) {
     super(props);
@@ -43,10 +43,18 @@ class EditPinForm extends React.Component {
 
  addBoard(boardId) {
     return () => {
-      this.boardId = boardId;    
+      this.boardId = boardId;  
+      const {boards} = this.props;
+      
+      debugger
       let option = document.querySelector(`#board${boardId}`).innerText;
       document.querySelector('#select').innerHTML = option;
       document.querySelector('.dropDown-content2').style.display = 'none';
+      if (boards[this.boardId].pinIds.includes(this.state.id)) {
+        document.querySelector('.pin-delete').style.display = 'block';
+      } else {
+        document.querySelector('.pin-delete').style.display = 'none';
+      }
 
     };   
  }
@@ -72,9 +80,7 @@ class EditPinForm extends React.Component {
    boards = Object.values(boards);
    return(
     <>
-      {/* <div id="nav-right-btns"> */}
       {dropDownBtns('.dropDown-content2', false)}
-      {/* </div> */}
 
       <div className="dropDown-content2">
         <div id="wrapper-dropdown">
@@ -103,12 +109,50 @@ class EditPinForm extends React.Component {
    )
  }
 
+  editInfo() {
+    return (
+      <>
+        <div className="pin-edit-left-wrapper">
+          <label>Title</label>
+            <input 
+              type="text" 
+              className="input-form edit-field"
+              placeholder={`Give a title to this pin`}
+              onChange={this.update('title')}
+              />
+        </div>       
+
+        <div className="pin-edit-left-wrapper2">
+            <label>Note</label>
+            <textarea
+              placeholder={`Write a note about this pin...`}
+              onChange={this.update('description')}
+              className="textarea pin-note edit-field">
+            </textarea>
+        </div>
+      </>
+    )
+    
+  }
 
   delete() {
-    // this.state.boards[0].author_id ===
+    this.props.boards[this.boardId] ? deletePinFromBoard(this.props.pin.id, this.boardId) : null;
+  }
+
+  deleteBtn() {
+    return(
+      <button 
+        type="button" 
+        className="delete pin-delete" 
+        onClick={() => this.delete()}
+        >Delete
+      </button>
+    )
   }
 
   render() {
+    const {user, pin, boards} = this.props;
+    debugger
     return (
       <div className="edit-form" id="pin-edit-form">
         <div id="form-header" >
@@ -122,37 +166,25 @@ class EditPinForm extends React.Component {
                 </label>
                 <div className="edit">
                   {this.navRight()}
-                  {/* {dropDownBtns('#dropDown-content-edit edit-field', false)} */}
                 </div>
               </div>
 
-              <div className="pin-edit-left-wrapper">
-                <label>Title</label>
-                  <input 
-                    type="text" 
-                    className="input-form edit-field"
-                    placeholder={`Give a title to this pin`}
-                    onChange={this.update('title')}
-                    />
-              </div>       
-
-              <div className="pin-edit-left-wrapper2">
-                  <label>Note</label>
-                  <textarea
-                    placeholder={`Write a note about this pin...`}
-                    onChange={this.update('description')}
-                    className="textarea pin-note edit-field">
-                  </textarea>
-              </div>
+              {user.id === pin.author_id ? this.editInfo() : null}
             </div>
             <div className="edit-pin-right">
               <img src={this.state.link}/>
             </div>
           </div>
           <div className="pin-edit-form-btns">
-            <button type="button"className="delete" onClick={deletePinFromBoard()}>Delete</button>
+            {this.deleteBtn()}
+            
+
             <div>
-              <button type="button">Cancel</button>
+              <button 
+                type="button" 
+                onClick={() => this.props.closeModal()}
+                >Cancel
+              </button>
               <button id="save">Save</button>
             </div>
           </div>
