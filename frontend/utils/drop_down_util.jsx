@@ -72,11 +72,13 @@ export  const savePinToBoard = (pinId, board, boardId) => {
     return savePin(pinId, boardId).then(() => {
       
       toggle(`#dropDown-content${pinId}`);
+      const text = document.querySelector(`#save-message-${pinId}`);
       document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`;
-      // document.querySelector(`#save-message-${pinId}`).style.display = 'block';
+      if (text) text.style.display = 'block';
+
       setTimeout(() => {
         location.reload();
-      }, 3000);
+      }, 1500);
     });
 
 }

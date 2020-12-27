@@ -43,12 +43,12 @@ const deleteBtn = (pin, openModal, boards, board) => {
     const modal = {type: 'delete', item: {pinId: pin.id, boardId: board.id}};
     return(
         <div 
-            className="edit-pen-wrapper" 
+            className="trash-pen-wrapper" 
             onClick={() => openModal(modal)}
         >
             <FontAwesomeIcon
                 icon={faTrashAlt}
-                className="icon trash"
+                className="trash"
                 size="sm"
             />
         </div>
@@ -77,9 +77,10 @@ export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
                             openModal={openModal}
                             pin={pin}
                         /> 
-                        <div id='save-message'>
+                        <h2 id={`save-message-${pin.id}`} style={{display: 'none'}}>
                             Pin is Saved!
-                        </div>
+                        </h2>
+                       
                         {toDelete ? deleteBtn(pin, openModal, boards, board) : null}
                     </div>                                  
                 )}

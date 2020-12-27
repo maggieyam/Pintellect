@@ -112,7 +112,12 @@
     #nav-right-btns > div{
         display: flex;
     }
+    .trash-pen-wrapper {
+        display: flex;
+    }
 }
+
+
 
 .feed-option > div {
     position: absolute;
@@ -368,6 +373,21 @@
 .edit-pen-wrapper:hover {
     background: #efefef;
     border-radius: 50%;
+    
+}
+
+.trash-pen-wrapper {
+    background-color: #fff;
+    position: absolute;
+    bottom: 30px;
+    left:20px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 
 .edit-pen-wrapper {
@@ -685,8 +705,11 @@ input.search-pins {
     }
 }
 
-#save-message {
-    background-color: #fff;
-    display: none;
-    
+.pin-wrapper > h2 {
+    position: absolute;
+    top: 90px;
+    left: 20px;
+    color: white;
+    display: none; 
+    font-weight: 700;   
 }
