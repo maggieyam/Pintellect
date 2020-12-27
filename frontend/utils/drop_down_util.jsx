@@ -69,11 +69,16 @@ export const select = (boards, pinId) => {
 }
 
 export  const savePinToBoard = (pinId, board, boardId) => {
-    savePin(pinId, boardId).then(() => {
+    return savePin(pinId, boardId).then(() => {
+      
       toggle(`#dropDown-content${pinId}`);
-      location.reload();
-      document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`
+      document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`;
+      // document.querySelector(`#save-message-${pinId}`).style.display = 'block';
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
     });
+
 }
 
 export const selectWrapper = (className, boards, pinId) => {

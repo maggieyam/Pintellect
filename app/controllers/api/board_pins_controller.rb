@@ -25,6 +25,6 @@ class Api::BoardPinsController < ApplicationController
         if boards.empty?
             pin.destroy
         end
-        render "api/pins/show"
+        render "api/boards/show"
     end
 end

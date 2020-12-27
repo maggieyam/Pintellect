@@ -16,7 +16,7 @@ const mapStateToProps = ({ entities, session }, {match}) => {
 
 const mapDispatchToProps = (dispatch) => ({
   requestPin: (pinId) => dispatch(requestPin(pinId)),
-  deletePin: (pinId) => dispatch(deletePin(pinId)),
+  // deletePinFromBoard: (board) => dispatch(deletePin(board)),
   // deletePinFromBoard: (pinId, boardId) => dispatch(deletePinFromBoard(pinId)),
   openModal: (modal) => dispatch(openModal(modal)),
 });

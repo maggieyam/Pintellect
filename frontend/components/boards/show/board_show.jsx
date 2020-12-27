@@ -15,7 +15,7 @@ class BoardShow extends React.Component {
     render(){
         let {board, openModal, userBoards} = this.props;
         if (!board) return null;
-        debugger
+        
         const modal = {type: 'updateBoard', item: this.props.board}
         const pins = reorganizePins(board.pins, false);
         
@@ -32,7 +32,7 @@ class BoardShow extends React.Component {
                     </h1>
                     <span id="board-description">{board.description}</span>
                 </div>
-                {mapPinsToCols(pins, openModal, userBoards)}
+                {mapPinsToCols(pins, openModal, userBoards, board, true)}
             </div>
         )
     }

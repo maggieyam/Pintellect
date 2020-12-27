@@ -5,7 +5,7 @@ import {closeModal} from './modal_actions';
 export const RECEIVE_PINS = 'RECEIVE_PINS';
 export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const REMOVE_PIN = 'REMOVE_PIN';
-export const REMOVE_BOARD_PIN = 'REMOVE_BOARD_PIN';
+
 
 const receivePins = (pins) => ({
   type: RECEIVE_PINS,
@@ -22,10 +22,6 @@ const removePin = (pinId) => ({
   pinId,
 });
 
-const removeBoardPin = (pinId) => ({
-  type: REMOVE_BOARD_PIN,
-  pin,
-});
 
 export const createPin = (pin) => (dispatch) => {
     
@@ -58,14 +54,9 @@ export const updatePin = (pin) => (dispatch) => {
   // .then(() => closeModal());
 };
 
-export const deletePinFromBoard = (pinId, boardId) => dispatch => {
-  
-  return APIUtil.deletePinFromBoard(pinId, boardId)
-  .then((pin) => dispatch(removeBoardPin(pin)))
-}
+
 export const savePin = (pinId, boardId) => {
   return APIUtil.savePin(pinId, boardId)
-  .then(() => {pin => { 
-    
+  .then(() => {pin => {    
     return dispatch(receivePin(pin))}})
 }

@@ -1,7 +1,8 @@
 import { 
     RECEIVE_BOARD, 
     RECEIVE_BOARDS, 
-    REMOVE_BOARD 
+    REMOVE_BOARD,
+    REMOVE_BOARD_PIN 
 } from '../actions/boards_actions';
 import { merge } from "lodash";
 
@@ -12,7 +13,7 @@ const boardReducer = (state={}, action) => {
         case RECEIVE_BOARDS:   
             return merge({}, action.boards);
         case RECEIVE_BOARD:
-            debugger
+            
             const newState = {'board': action.board, 'userBoards': action.board.userBoards}           
             return merge({}, state, newState)
         case REMOVE_BOARD:
@@ -20,6 +21,10 @@ const boardReducer = (state={}, action) => {
             
             delete nextState[action.boardId];
             return nextState;
+        case REMOVE_BOARD_PIN:
+            
+      // let nextState = merge({}, state);
+        return state;
         default:
             return state;
     }

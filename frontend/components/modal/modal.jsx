@@ -4,6 +4,7 @@ import SignupFormContainer from "../session/signup_container";
 import CreateBoardFormContainer from '../boards/board_form/create_board_container';
 import EditBoardFormContainer from '../boards/board_form/edit_board_container';
 import EditPinFormContainer from '../pins/pins_form/pins_edit_form_container';
+import DeleteMessageFormContainer from './delete_container';
 
 export default function Modal({ modal, closeModal }) {
   // 
@@ -27,6 +28,9 @@ export default function Modal({ modal, closeModal }) {
       break;
     case 'updatePin':
       component = <EditPinFormContainer/>;
+      break;
+    case 'delete':
+      component = <DeleteMessageFormContainer/>;
       break;
     // case 'createPin':
     //   component = <CreatePinFormContainer />;

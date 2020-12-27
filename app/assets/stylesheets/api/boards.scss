@@ -594,3 +594,20 @@ h1 > .edit-pen {
     padding-right: 10px;
 }
 
+.delete-message-box {
+    height: 251px;
+    width: 540px;
+    background-color: #FFF;
+    border-radius: 16px;
+    h1 {
+        padding: 32px;
+        font-size: 28px;
+
+    }
+    p {
+        padding:16px
+    }
+    div {
+        padding: 32px;
+    }
+}

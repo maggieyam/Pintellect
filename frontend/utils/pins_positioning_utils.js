@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import SearchBoard from '../components/search/searchBoard'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const reorganizePins = (pins, shuffle) => {
     
@@ -37,7 +39,24 @@ const addItemsToCols = (num, newArr, original) => {
 }
 
 
-export const mapPinsToCols = (pins, openModal, boards) => {
+const deleteBtn = (pin, openModal, boards, board) => {
+    const modal = {type: 'delete', item: {pinId: pin.id, boardId: board.id}};
+    return(
+        <div 
+            className="edit-pen-wrapper" 
+            onClick={() => openModal(modal)}
+        >
+            <FontAwesomeIcon
+                icon={faTrashAlt}
+                className="icon trash"
+                size="sm"
+            />
+        </div>
+    )
+
+}
+
+export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
     if (!pins) return null;
     return(             
         <div className="pins-seeds-container">               
@@ -58,7 +77,10 @@ export const mapPinsToCols = (pins, openModal, boards) => {
                             openModal={openModal}
                             pin={pin}
                         /> 
-                        
+                        <div id='save-message'>
+                            Pin is Saved!
+                        </div>
+                        {toDelete ? deleteBtn(pin, openModal, boards, board) : null}
                     </div>                                  
                 )}
                 </div>

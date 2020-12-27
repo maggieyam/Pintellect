@@ -5,7 +5,7 @@ import {requestPins} from '../../../actions/pins_actions'
 import { openModal } from '../../../actions/modal_actions';
 
 const mapStateToProps = ({entities, session}, {match}) => {
-  debugger
+  
   return {
     board: entities.boards[match.params.boardId],
     userBoards: Object.values(entities.boards),
@@ -18,8 +18,6 @@ const mapDispatchToProps = dispatch => {
   return {
     openModal: (modal) => dispatch(openModal(modal)),
     fetchBoards: () => dispatch(fetchBoards()),
-    // requestBoard: (boardId) => dispatch(requestBoard(boardId)),
-    // requestPins: () => dispatch(requestPins()),
   }
 }
 

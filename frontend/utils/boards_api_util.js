@@ -35,3 +35,12 @@ export const createBoard = (board) => {
         data: {board}
     })
 }
+
+export const deletePinFromBoard = (pinId, boardId) => {
+  
+  return $.ajax({
+    url: `/api/board_pins`,
+    method: 'DELETE',
+    data: {pinId, boardId}
+  })
+}

@@ -21,10 +21,6 @@ const pinReducer = (state = {}, action) => {
       delete nextState[action.pinId];
       
       return nextState;
-    case REMOVE_BOARD_PIN:
-      
-      // let nextState = merge({}, state);
-      return state;
     default:
       return state;
   }
