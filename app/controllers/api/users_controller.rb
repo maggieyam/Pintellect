@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-    def create
+  def create
     @user = User.new(user_params)
     
     if @user.save
@@ -10,8 +10,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      render "api/boards/index"
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:email, :password, :age, :photo)
+    params.require(:user).permit(:email, :password, :age, :firstname, :lastname, :username, :photo)
   end
 end

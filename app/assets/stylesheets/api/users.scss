@@ -272,3 +272,63 @@ img {
     font-weight: 400;
     font-size: 20px;
 }
+
+// .profile-body {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+// }
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+.profile-wrapper > form {
+    display: flex;
+    flex-direction: column;
+    
+    align-content: flex-start;
+    width: 600px;
+    height: 797px;
+    h1 {
+        margin-bottom: 10px;
+    }
+    img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+    p {
+        padding-bottom: 8px;
+        }
+    input, textarea {
+        width: 564px;
+        padding: 8px, 16px;
+        margin-bottom: 20px;
+    }
+    .name-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        input {
+            width: 260px;
+        }
+        
+    }
+}
+
+.profile-img {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-header > p {
+    margin-bottom: 50px;
+}
+
+// .firstname > input, .lastname > input {
+//     width: 260px;
+//     margin: 0;
+// }

@@ -44,3 +44,5 @@ export const deletePinFromBoard = (pinId, boardId) => {
     data: {pinId, boardId}
   })
 }
+
+

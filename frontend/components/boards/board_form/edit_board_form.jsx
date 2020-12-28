@@ -43,7 +43,6 @@ class EditBoardForm extends React.Component {
                   type="text"
                   placeholder={`What's your board about?"`}
                   onChange={this.update('description')}
-                  className="textarea"
                 />
 
                 <div>Dates</div>

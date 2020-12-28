@@ -60,6 +60,25 @@ button{
     text-align: center;
 }
 
+input, textarea {
+  border-radius: 16px;
+  border: 2px solid #efefef;
+  padding: 8px 16px;
+  height: 32px;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: input;
+}
+
+textarea {
+  width: 444px;
+  height: 60px;
+}
+
+input:hover, textarea:hover {
+  border-color: #d0d0d0;
+}
+
 // .background {
 //   width: null;
 //   height: null;

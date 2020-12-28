@@ -127,7 +127,7 @@ class EditPinForm extends React.Component {
             <textarea
               placeholder={`Write a note about this pin...`}
               onChange={this.update('description')}
-              className="textarea pin-note edit-field">
+              className="pin-note edit-field">
             </textarea>
         </div>
       </>
