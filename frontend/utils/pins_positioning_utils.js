@@ -58,6 +58,7 @@ const deleteBtn = (pin, openModal, boards, board) => {
 
 export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
     if (!pins) return null;
+     
     return(             
         <div className="pins-seeds-container">               
             {pins.map((colPins, i) => 
@@ -72,16 +73,17 @@ export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
                             id={`pin${pin.id}`} 
                             />
                         </Link>
-                        <SearchBoard 
+                        {boards ? <SearchBoard 
                             boards={boards}
                             openModal={openModal}
                             pin={pin}
-                        /> 
+                        /> : null}
+                        
                         <h2 id={`save-message-${pin.id}`} style={{display: 'none'}}>
                             Pin is Saved!
                         </h2>
                        
-                        {toDelete ? deleteBtn(pin, openModal, boards, board) : null}
+                        {toDelete && boards && board ? deleteBtn(pin, openModal, boards, board) : null}
                     </div>                                  
                 )}
                 </div>

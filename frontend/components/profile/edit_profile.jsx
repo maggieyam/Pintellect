@@ -12,12 +12,11 @@ class EditProfileForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault;
-        updateUser(this.state)
-        .then(this.props.history.push('/'));  
+        updateUser(this.state);
+        location.reload();  
     }
 
-    update(field) {
-        
+    update(field) {   
         return e => 
             // 
             this.setState({[field]: e.currentTarget.value});
@@ -25,7 +24,7 @@ class EditProfileForm extends React.Component {
     }
 
     render() {
-        const { first_name, last_name, username } = this.state;
+        const { first_name, last_name, username, description, location, url } = this.state;
         return(
             <div className='profile-wrapper'>
                 <form onSubmit={this.handleSubmit}>
@@ -60,11 +59,23 @@ class EditProfileForm extends React.Component {
                         <p>Username</p>
                             <input type="text" value={username} onChange={this.update('username')}/>
                         <p>About your profile</p>
-                        <textarea placeholder="Write a little bit about yourself here"></textarea>
+                        <textarea 
+                            placeholder="Write a little bit about yourself here" 
+                            value={description} 
+                            onChange={this.update('description')}>
+                        </textarea>
                         <p>Website URL</p>
-                        <input type="text" />
+                        <input 
+                            type="text"  
+                            value={url}
+                            onChange={this.update('url')}/>
                         <p>Background</p>
-                        <input type="text" placeholder="Ex. San Francisco, CA"/>
+                        <input 
+                            type="text" 
+                            placeholder="Ex. San Francisco, CA"
+                            value={location}
+                            onChange={this.update('location')}
+                        />
                     </div>
                 </form>
             </div>

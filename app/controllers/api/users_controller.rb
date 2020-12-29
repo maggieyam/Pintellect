@@ -16,12 +16,13 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       @boards = current_user.boards
-      render "api/boards/index"
+      render "api/users/show"
     end
   end
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :age, :first_name, :last_name, :username, :photo)
+    params.require(:user)
+    .permit(:email, :password, :age, :first_name, :last_name, :username, :description, :url, :background, :location, :photo)
   end
 end

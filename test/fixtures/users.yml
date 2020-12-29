@@ -12,6 +12,10 @@
 #  age             :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  description     :text
+#  url             :string
+#  location        :string
+#  background      :string
 #
 
 # This model initially had no columns defined. If you add columns to the

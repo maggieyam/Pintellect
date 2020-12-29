@@ -33,14 +33,14 @@ class Api::PinsController < ApplicationController
         end
     end
 
-    # def destroy
-    #     @pin = current_user.pins.find_by(id: params[:id])
-    #     @pins = current_user.pins
-    #     if @pin          
-    #         @pin.destroy
-    #     end
-    #     render :index
-    # end
+    def destroy
+        @pin = current_user.pins.find_by(id: params[:id])
+        @pins = current_user.pins
+        if @pin          
+            @pin.destroy
+        end
+        render :index
+    end
 
      private
 

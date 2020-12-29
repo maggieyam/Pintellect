@@ -76,9 +76,10 @@ export  const savePinToBoard = (pinId, board, boardId) => {
       document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`;
       if (text) text.style.display = 'block';
 
-      setTimeout(() => {
+      // setTimeout((e) => {
+        e.preventDefault;
         location.reload();
-      }, 1500);
+      // }, 1500);
     });
 
 }

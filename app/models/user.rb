@@ -12,6 +12,10 @@
 #  age             :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  description     :text
+#  url             :string
+#  location        :string
+#  background      :string
 #
 class User < ApplicationRecord
     validates :email, :session_token, uniqueness: true, presence: true
