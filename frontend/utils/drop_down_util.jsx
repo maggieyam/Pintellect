@@ -52,7 +52,8 @@ export const toggle = (selector) => {
         }});                        
 }
 
-export const select = (boards, pinId) => {   
+export const select = (boards, pinId) => { 
+  if (!boards) return null;  
   return boards.map((board) => {
     
       return (
@@ -71,7 +72,7 @@ export const select = (boards, pinId) => {
 export  const savePinToBoard = (pinId, board, boardId) => {
     return savePin(pinId, boardId).then(() => {
       
-      toggle(`#dropDown-content${pinId}`);
+      toggle(`#dropDown-content-${pinId}`);
       const text = document.querySelector(`#save-message-${pinId}`);
       document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`;
       if (text) text.style.display = 'block';

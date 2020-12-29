@@ -73,11 +73,11 @@ export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
                             id={`pin${pin.id}`} 
                             />
                         </Link>
-                        {boards ? <SearchBoard 
+                        <SearchBoard 
                             boards={boards}
                             openModal={openModal}
                             pin={pin}
-                        /> : null}
+                        /> 
                         
                         <h2 id={`save-message-${pin.id}`} style={{display: 'none'}}>
                             Pin is Saved!
