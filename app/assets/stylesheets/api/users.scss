@@ -328,6 +328,25 @@ img {
     margin-bottom: 50px;
 }
 
+
+// .profile-header:first-child {
+//     width: 350px;
+// }
+
+.profile-edit-btns {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
 // .firstname > input, .lastname > input {
 //     width: 260px;
 //     margin: 0;

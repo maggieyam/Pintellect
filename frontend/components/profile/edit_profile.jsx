@@ -1,35 +1,45 @@
 import { update } from 'lodash';
+import {updateUser} from '../../utils/user_api_util';
 import React from 'react';
 
 class EditProfileForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = this.props;
+        this.update = this.update.bind(this);
+        this.state = this.props.user;
     }
 
     handleSubmit(e) {
         e.preventDefault;
-        this.props.updateUser(this.state)
-        .then(this.props.history('/'));  
+        updateUser(this.state)
+        .then(this.props.history.push('/'));  
     }
 
     update(field) {
-        return e => {
-            this.setState({[field]: e.currentTarget.value})
-        }
+        
+        return e => 
+            // 
+            this.setState({[field]: e.currentTarget.value});
+        
     }
 
     render() {
-        const { user } = this.state;
+        const { first_name, last_name, username } = this.state;
         return(
             <div className='profile-wrapper'>
-                <form submit={this.handleSubmit}>
-                    <div className='profile-header'>                   
-                        <h1>
-                            Edit profile
-                        </h1>
-                        <p>People on Pinterest will get to know you with the info below</p>
+                <form onSubmit={this.handleSubmit}>
+                    <div className='profile-header'>  
+                        <div>                       
+                            <h1>
+                                Edit profile
+                            </h1>
+                            <p>People on Pinterest will get to know you with the info below</p>
+                        </div>   
+                        <div className="profile-edit-btns">
+                            <button type="reset">Cancel</button>
+                            <button>Done</button>
+                        </div>              
                     </div>
                     <div className="profile-body">
                         <div className="profile-img">
@@ -39,16 +49,16 @@ class EditProfileForm extends React.Component {
                         <div className="name-wrapper">
                             <div>
                                 <p>First name</p>
-                                <input type="text" value={user.firstname} onChange={() => update()}/>
+                                <input type="text" value={first_name} onChange={this.update('first_name')}/>
                             </div>
                             <div>
                                 <p>Surname</p>
-                                <input type="text" value={user.lastname} onChange={() => update()}/>
+                                <input type="text" value={last_name} onChange={this.update('last_name')}/>
                             </div>
                         </div>
                         
                         <p>Username</p>
-                            <input type="text" value={user.username} onChange={() => update()}/>
+                            <input type="text" value={username} onChange={this.update('username')}/>
                         <p>About your profile</p>
                         <textarea placeholder="Write a little bit about yourself here"></textarea>
                         <p>Website URL</p>
