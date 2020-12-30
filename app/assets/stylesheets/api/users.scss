@@ -280,13 +280,14 @@ img {
 // }
 .profile-wrapper {
     display: flex;
-    justify-content: center;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 .profile-wrapper > form {
     display: flex;
     flex-direction: column;
-    
+    position: relative;
     align-content: flex-start;
     width: 600px;
     height: 797px;

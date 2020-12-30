@@ -79,6 +79,8 @@ input:hover, textarea:hover {
   border-color: #d0d0d0;
 }
 
+
+
 // .background {
 //   width: null;
 //   height: null;
@@ -112,6 +114,21 @@ button,
 input[type="submit"] {
   cursor: pointer;
   border-radius: 34px;
+}
+
+.saved {
+  position: absolute;
+  display: none;
+  bottom: 50px;
+  left: 150px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 250px;
+  height: 48px;
+  border-radius: 24px;
+  border: 2px solid #d0d0d0;
+  font-size: 20px;
 }
 
 // .group:after {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Redirect}from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch,  faMapPin, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
+import {faSearch,  faUserCog, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics.util';
 
 
@@ -20,10 +20,10 @@ class Navbar extends React.Component{
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
         <input type="text" placeholder="Search" id="search" />
        <div className="right-nav-icons">
-          <Link to="/pin-builder">
-            {createIcon(faMapPin, "icon", "2x", "add-pin")}
+          <Link to="/settings">
+            {createIcon(faUserCog, "icon", "2x", "add-pin")}
           </Link>      
-          {createButtonLink(`/${this.props.currentUser.id}`, "", "", "go-to-board", this.props.currentUser.username[0])}
+          {createButtonLink(`/boards/_saved`, "", "", "go-to-board", this.props.currentUser.username[0])}
           {createIcon(faSignOutAlt, "icon", "2x", "log-out", this.props.logout)}
         </div>
       </hgroup>

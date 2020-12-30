@@ -75,7 +75,7 @@ class EditPinForm extends React.Component {
  }
 
  navRight() {
-   let { boards, openModal } = this.props;
+   let { boards, pin, openModal } = this.props;
    if (!boards) return null;
    boards = Object.values(boards);
    return(

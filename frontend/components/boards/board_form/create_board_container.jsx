@@ -3,6 +3,12 @@ import CreateBoardForm from './create_board_form';
 import {createBoard } from '../../../actions/boards_actions';
 import {closeModal } from '../../../actions/modal_actions'
 
+const mapStateToProps = ({ui}) => {
+    
+    return {
+        pinId: ui.modal.item.pinId
+    }
+}
 const mapDispatchToProps = dispatch => {
     return{
     createBoard: board => dispatch(createBoard(board)),
@@ -10,4 +16,4 @@ const mapDispatchToProps = dispatch => {
 }};
 
 
-export default connect(null, mapDispatchToProps)(CreateBoardForm)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBoardForm)

@@ -60,7 +60,7 @@ export const select = (boards, pinId) => {
         <div className="select-board"
           key={board.id}
           id={`board${board.id}pin${pinId}`}
-          onClick={() => savePinToBoard(pinId, board, board.id)}
+          onClick={() => savePinToBoard(pinId, board)}
         >
           {board.links[0] ? <img src={board.links[0].url} className="mini-img"/> : null }
           {board.title}
@@ -69,18 +69,13 @@ export const select = (boards, pinId) => {
   })
 }
 
-export  const savePinToBoard = (pinId, board, boardId) => {
-    return savePin(pinId, boardId).then(() => {
-      
+export  const savePinToBoard = (pinId, board) => {
+    return savePin(pinId, board.id).then(() => {     
       toggle(`#dropDown-content-${pinId}`);
       const text = document.querySelector(`#save-message-${pinId}`);
       document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`;
       if (text) text.style.display = 'block';
-
-      // setTimeout((e) => {
-        e.preventDefault;
-        location.reload();
-      // }, 1500);
+        // location.reload();
     });
 
 }
@@ -112,8 +107,8 @@ export const dropDownOptions = (boards, pinId) => {
   )
 }
 
-export const createBtns = (selector, openModal) => {
-  const modal = {type: 'create'};
+export const createBtns = (selector, pinId, openModal) => {
+  const modal = {type: 'create', item: {pinId: pinId}};
   return (
     <div id="create-board-btn">
         <FontAwesomeIcon

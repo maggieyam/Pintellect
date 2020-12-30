@@ -16,7 +16,7 @@ class CreatePinForm extends React.Component {
       title: '',
       description: '',
       link: '',
-      boardId: 0,
+      pinId: 0,
     };
     this.baseState = this.state;
     this.handleSubmit = this.handleSubmit.bind(this);

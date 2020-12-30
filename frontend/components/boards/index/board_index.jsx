@@ -29,10 +29,10 @@ class BoardIndex extends React.Component {
       return (
         <div className="wrapper">
           <div className="board-item-container"> 
-            {this.props.boards.map((board) =>          
+            {this.props.boards.map((board, idx) => 
               <BoardIndexItem
                 board={board}
-                key={board.id}
+                key={idx}
                 openModal={this.props.openModal}
                 />
               )}
@@ -43,20 +43,22 @@ class BoardIndex extends React.Component {
     }
 
     render() {
-      const create = {type: 'create'};
+      const create = {type: 'create', item: {pinId: -1}};
       const { user, openModal } = this.props;
 
         return (
           <div className="board-index-main-container">
-  
-            <button id="initial-logo" >
-              {user.username[0]}
-            </button>
-            <p id="index-header">{user.first_name}  {user.last_name}</p>
-         
-            <p>0 followers * 0 following</p>
+            <div className="board-header-wrapper">
+              <button id="initial-logo" >
+                {user.username[0]}
+              </button>
+              <h1 id="index-header">{user.first_name}  {user.last_name}</h1>
+        <span>{user.location} &#8226; @{user.username} &#8226; {user.description}</span>
+              <strong>0 followers &#8226; 0 following</strong>
+            </div>
             <div className="icon-row">
-              <div className="icon pin-board-create" onClick={() => this.reveal('.dropDown-board')}>
+              <div className="icon pin-board-create" 
+                onClick={() => this.reveal('.dropDown-board')}>
                 <FontAwesomeIcon
                   icon={faPlus}           
                   id="modal-create"

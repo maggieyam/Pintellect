@@ -12,7 +12,7 @@ const SearchBoard = ({boards, openModal, pin}) => {
                 <div id="wrapper-dropdown">
                     {selectWrapper(`search-pins search-pin-${pin.id}`, boards, pin.id)}
                     {dropDownOptions(boards, pin.id)}
-                    {createBtns(`#dropDown-content-${pin.id}`, openModal)}                  
+                    {createBtns(`#dropDown-content-${pin.id}`, pin.id, openModal)}                  
                 </div>
             </div>
         </div> 

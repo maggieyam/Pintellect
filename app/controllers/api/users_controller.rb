@@ -11,11 +11,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def update
-    
+  def update  
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update!(user_params)
       @boards = current_user.boards
+      debugger
       render "api/users/show"
     end
   end

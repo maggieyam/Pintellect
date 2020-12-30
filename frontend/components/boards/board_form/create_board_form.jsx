@@ -7,10 +7,10 @@ class CreateBoardForm extends React.Component{
         super(props);
         this.state = {
             title: "",
-            private: false
+            private: false,
+            pinId: this.props.pinId
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     handleSubmit(e) {
@@ -19,10 +19,6 @@ class CreateBoardForm extends React.Component{
         const board = Object.assign({}, this.state);
         this.props.createBoard(board)
         .then(() => this.props.closeModal())
-        // .then(() => this.props.history(`/`))
-
-        // .then(this.props.history(`/${this.props.author_id}`));
-        // <BoardShowContainer />
     }
 
     update(field){
