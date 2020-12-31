@@ -12,7 +12,6 @@ class EditPinForm extends React.Component {
     this.state = this.props.pin;
     this.boardId = 0;
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.dropDown = this.dropDown.bind(this);
   }
 
   handleSubmit(e) {

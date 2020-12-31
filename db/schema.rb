@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_192521) do
+ActiveRecord::Schema.define(version: 2020_12_31_191529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_192521) do
 
   create_table "follows", force: :cascade do |t|
     t.integer "author_id", null: false
-    t.integer "follower_id"
+    t.integer "follower_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_follows_on_author_id"

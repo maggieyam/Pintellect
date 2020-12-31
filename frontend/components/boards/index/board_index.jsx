@@ -44,17 +44,29 @@ class BoardIndex extends React.Component {
 
     render() {
       const create = {type: 'create', item: {pinId: -1}};
-      const { user, openModal } = this.props;
+      const { user, boards, openModal } = this.props;
+      if (!boards.length) return null;
+      const follows = boards.shift();
+      let followers = 0;
+      let followings = 0;
+
+      if(follows.followers !== undefined){
+        followers = follows.followers.length;
+      } ;
+
+      if(follows.followings !== undefined){
+        followings = follows.followings.length;
+      } ;
 
         return (
           <div className="board-index-main-container">
             <div className="board-header-wrapper">
               <button id="initial-logo" >
-                {user.username[0]}
+                {user.photo ? user.photo : user.username[0]}
               </button>
               <h1 id="index-header">{user.first_name}  {user.last_name}</h1>
         <span>{user.location} &#8226; @{user.username} &#8226; {user.description}</span>
-              <strong>0 followers &#8226; 0 following</strong>
+              <strong>{followers} {followers === 1 ? 'follower' : 'followers'} &#8226; {followings} {followings === 1 ? 'following' : 'followings'}</strong>
             </div>
             <div className="icon-row">
               <div className="icon pin-board-create" 

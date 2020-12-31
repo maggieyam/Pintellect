@@ -4,6 +4,8 @@ import { fetchBoards } from '../../../actions/boards_actions';
 import { openModal } from '../../../actions/modal_actions';
 const mapStateToProps = ( {entities, session} ) => {
     const id = session.id;
+    debugger
+    // if(entitites.boards.)
     return {
       user: entities.users[id],
       boards: Object.values(entities.boards),
