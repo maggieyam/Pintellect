@@ -17,13 +17,18 @@ class PinShow extends React.Component {
     }
 
     renderInfo() {       
-        if (!this.props.pin) return null;
         const { pin, user } = this.props;
+        if (!this.props.pin) return null;
+        // debugger
+        const {followers, followings} = pin;
+        const followersNum = followers.length;
+        debugger
         return(
             <div className="main-content-pin">
                 <div>
-                   <h3>{pin.title}</h3>
-                   <span>{pin.description}</span> 
+                    <h3>{pin.title}</h3>
+                    <span>{user.url}</span>
+                    <span>{pin.description}</span> 
                 </div>
                 <div id="names">
                     <button className="user-initial">
@@ -34,8 +39,11 @@ class PinShow extends React.Component {
                         <strong>
                             {user.first_name} {user.last_name}
                         </strong>
-                        <p>0 follower</p>
+                        <p>{followersNum}  {followersNum === 1 ? 'follower' : 'followers'}</p>
                     </div>
+                    <button>
+                        {followers.includes(user.id) ? 'following' : 'follow'}
+                    </button>
                 </div>
             </div>
 

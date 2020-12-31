@@ -14,5 +14,3 @@ json.boards do
   end
 end
 
-json.followers current_user.followers
-json.followings current_user.followers
