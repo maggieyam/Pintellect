@@ -55,8 +55,20 @@ export const updatePin = (pin) => (dispatch) => {
 };
 
 
-export const savePin = (pinId, boardId) => {
+export const savePin = (pinId, boardId) => dispatch => {
   return APIUtil.savePin(pinId, boardId)
-  .then(() => {pin => {    
-    return dispatch(receivePin(pin))}})
+  .then(pin =>     
+    dispatch(receivePin(pin))
+  );
 }
+
+// export const createFollow = (authorId, followerId, pinId) => dispatch => {
+//   return APIUtil.createFollow(authorId, followerId, pinId)
+//   .then( pin => dispatch(receivePin(pin))
+//   )
+// }
+// export const deleteFollow = (authorId, followerId, pinId) => dispatch => {
+//   return APIUtil.createFollow(authorId, followerId, pinId)
+//   .then( pin => dispatch(receivePin(pin))
+//   )
+// }

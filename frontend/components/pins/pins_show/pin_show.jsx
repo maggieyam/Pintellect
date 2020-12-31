@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import pin_show_container from './pin_show_container';
 // import { deletePinFromBoard, deletePin } from '../../../actions/pins_actions';
+import {createFollow, deleteFollow} from '../../../utils/pins_api_util';
 import SearchBoard from '../../search/searchBoard';
 
 class PinShow extends React.Component {
@@ -16,32 +17,47 @@ class PinShow extends React.Component {
         this.props.requestPin(this.props.id);
     }
 
+    toggleFollow(e) {
+        e.preventDefault();
+        const { pin, user } = this.props;
+        if(!pin.followers.includes(user.id)) {
+            createFollow(pin.author_id, user.id, pin.id)
+            .then(() => {                              
+            })
+        } else {
+            deleteFollow(pin.author_id, user.id, pin.id).then(() => location.reload())
+        }
+        location.reload()
+    }
+
     renderInfo() {       
         const { pin, user } = this.props;
-        if (!this.props.pin) return null;
-        // debugger
+        if (!pin) return null;
+        // 
         const {followers, followings} = pin;
         const followersNum = followers.length;
-        debugger
+        
         return(
             <div className="main-content-pin">
-                <div>
+                <div id="pin-show-header">
                     <h3>{pin.title}</h3>
-                    <span>{user.url}</span>
-                    <span>{pin.description}</span> 
+                    <a href={`${pin.url}`}>{pin.url}</a>
+                    <div>{pin.description}</div> 
                 </div>
-                <div id="names">
-                    <button className="user-initial">
-                        {user.first_name[0]}
-                    </button>
-                    
-                    <div id="display-names">
-                        <strong>
-                            {user.first_name} {user.last_name}
-                        </strong>
-                        <p>{followersNum}  {followersNum === 1 ? 'follower' : 'followers'}</p>
+                <div id="name-wrapper">
+                    <div id="names">
+                        <button className="user-initial">
+                            {user.first_name[0]}
+                        </button>
+                        
+                        <div id="display-names">
+                            <strong>
+                                {user.first_name} {user.last_name}
+                            </strong>
+                            <p>{followersNum}  {followersNum === 1 ? 'follower' : 'followers'}</p>
+                        </div>
                     </div>
-                    <button>
+                    <button id="follow-btn" onClick={(e) => this.toggleFollow(e)}>
                         {followers.includes(user.id) ? 'following' : 'follow'}
                     </button>
                 </div>

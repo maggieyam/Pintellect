@@ -1,23 +1,23 @@
-class Api::FollowController < ApplicationController
+class Api::FollowsController < ApplicationController
+    before_action :logged_in?
     def create
-        follow = Follower.new({follower_id: params[:id], author_id:  params[:id]})
-        if follows.save
+        follow = Follow.new({follower_id: params[:follower_id], author_id:  params[:author_id]})          
+        if follow.save           
+            @pin = Pin.find(params[:pin_id])
             render "api/pins/show"
         else 
-            render 'failed'
+            render json: @follow.errors.full_messages, status: 422
         end
     end
 
     def destroy
-        follow = Follower.find({follower_id: params[:id], author_id:  params[:id]})
-        if follow
+        follow = Follow.find_by({follower_id: params[:follower_id], author_id:  params[:author_id]})
+        if follow           
+            @pin = Pin.find(params[:pin_id])
             follow.destroy
             render "api/pins/show"
+        else
+            render json: @follow.errors.full_messages, status: 422
         end
-    end
-
-    private
-    def follow_params
-        params.require(:follow).permit(:author_id, :follower_id)
     end
 end

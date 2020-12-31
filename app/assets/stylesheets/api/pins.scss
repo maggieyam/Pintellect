@@ -281,9 +281,9 @@
     margin-top: 100px;
 }
 
-#names{
-    flex-direction: row;
-}
+// #names{
+//     flex-direction: row;
+// }
 #pin-initial {
     width: 32px;
      height: 32px;
@@ -548,7 +548,7 @@ input.search-pins {
 .main-content-pin  {  
     color: #111111;
     padding: 20px; 
-    margin-top: 0px;
+    margin: 7.5px, 0;
     vertical-align: middle;
     h3{
         font-size: 36px;
@@ -556,15 +556,29 @@ input.search-pins {
         text-align: center;
     } 
 
-    span {
-        margin-bottom: 45px;
+    #pin-show-header {
+        margin: 25px;
     }
+}
+#follow-btn {
+    width: 100px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#follow-btn:hover {
+    background-color: #d3d3d3;
+}
+#name-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
     
 #names {
     display: flex;
-    justify-content: flex-starts;
     flex-direction: row;
+    justify-content: flex-starts;
     align-items: center;
 }
 

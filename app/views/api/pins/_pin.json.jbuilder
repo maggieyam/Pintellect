@@ -9,5 +9,5 @@ json.extract! pin, :id, :title, :description, :author_id, :link, :comments
 
 json.followings pin.author.following_ids
 json.followers pin.author.follower_ids
-
+json.url pin.author.url
 # json.photoUrls pin.photos.map { |image| url_for(image) }

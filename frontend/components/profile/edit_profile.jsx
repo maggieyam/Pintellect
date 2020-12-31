@@ -32,7 +32,7 @@ class EditProfileForm extends React.Component {
     //     const cancel = document.getElementById('cancel');
     //     const done = document.getElementById('done');
     //     if (!cancel || !done) return;
-    //     debugger
+    //     
     //     if (Object.values(this.state) === Object.values(this.props.user)) {
     //         cancel.disabled = true;
     //         done.disabled = true;
