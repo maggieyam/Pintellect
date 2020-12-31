@@ -2,7 +2,7 @@ class Api::FollowController < ApplicationController
     def create
         follow = Follower.new({follower_id: params[:id], author_id:  params[:id]})
         if follows.save
-            render "api/users/show"
+            render "api/pins/show"
         else 
             render 'failed'
         end
@@ -12,7 +12,7 @@ class Api::FollowController < ApplicationController
         follow = Follower.find({follower_id: params[:id], author_id:  params[:id]})
         if follow
             follow.destroy
-            render "api/users/show"
+            render "api/pins/show"
         end
     end
 
