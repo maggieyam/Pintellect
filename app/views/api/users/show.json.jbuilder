@@ -1,5 +1,5 @@
 json.partial! "api/users/user", user: @user
-# debugger
+# 
 # # json.extract! @user, :id, :email, :username, :age, :first_name, :last_name, :description, :location, :url, :background
 # json.errors do 
 #     json.extract! @user, :id, :email

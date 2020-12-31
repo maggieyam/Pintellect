@@ -30,6 +30,22 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     dependent: :destroy
 
+    has_many :users_followed,
+      foreign_key: :author_id,
+      class_name: :Follow
+
+    has_many :following_users,
+      foreign_key: :follower_id,
+      class_name: :Follow
+
+    has_many :followers,
+      through: :users_followed,
+      source: :follower
+    
+    has_many :followings,
+      through: :following_users,
+      source: :following
+
     has_one_attached :photo
 
     after_initialize :ensure_session_token, :set_username, :set_first_name, :set_last_name 

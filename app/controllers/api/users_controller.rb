@@ -12,11 +12,16 @@ class Api::UsersController < ApplicationController
   end
 
   def update  
-    @user = User.find(params[:id])
-    if @user.update!(user_params)
-      @boards = current_user.boards
-      debugger
-      render "api/users/show"
+    @user = User.find_by(id: params[:id])
+    if @user 
+      # if @user.update(user_params) 
+      #   puts 'success'
+      # else
+      #   puts @user.errors.full_messages 
+      # end
+      @user.update(user_params)  
+         
+      render :show
     end
   end
 

@@ -16,11 +16,13 @@ export const toggle = (selector) => {
 
  export const reveal = name => {
       let item = document.querySelector(name);
+      if (!item) return;
       item.style.display = 'flex';
     }
 
  export const hide = name => {
       let item = document.querySelector(name);
+      if (!item) return;
       item.style.display = 'none';
     }
 

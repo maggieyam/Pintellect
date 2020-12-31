@@ -14,13 +14,12 @@
 #
 class Board < ApplicationRecord
     validates :title, presence: true
-    # validate :valid_date_period, availability: true
-    # after_initialize : set_status, :
-    # def status
+    
     belongs_to :author,
         class_name: :User
+    
     has_many :board_pins
-        # dependent: :destroy
+
     has_many :pins,
         through: :board_pins,
         source: :pin

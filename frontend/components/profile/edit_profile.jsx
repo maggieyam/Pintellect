@@ -12,29 +12,46 @@ class EditProfileForm extends React.Component {
         this.state = this.props.user;
     }
 
-    handleSubmit() {
-        // e.presventDefault;
+    handleSubmit(e) {
+        e.presventDefault;
         updateUser(this.state).then(
-        () => {            
+        () => {           
             reveal('.saved');
             setTimeout(() => {
-                hide('.saved')}, 3000
+                hide('.saved');
+                location.reload();
+                }, 2000
             );
-            this.props.history.push('/boards/_csaved')
+
         }
         )  
         // })
     }
 
+    // enableBtns() {
+    //     const cancel = document.getElementById('cancel');
+    //     const done = document.getElementById('done');
+    //     if (!cancel || !done) return;
+    //     debugger
+    //     if (Object.values(this.state) === Object.values(this.props.user)) {
+    //         cancel.disabled = true;
+    //         done.disabled = true;
+    //     } else {
+            
+    //         cancel.disabled = false;
+    //         done.disabled = false;
+    //     }
+    // }
+
     update(field) {   
-        return e => 
-            this.setState({[field]: e.currentTarget.value});
-        
+        return e => {                      
+            this.setState({[field]: e.currentTarget.value});    
+        }    
     }
 
     render() {
         const { first_name, last_name, username, description, location, url } = this.state;
-        debugger
+        // const disable = this.state === this.props ? disabled : null ;
         return(
             <div className='profile-wrapper'>
                 <form onSubmit={this.handleSubmit}>
@@ -46,8 +63,9 @@ class EditProfileForm extends React.Component {
                             <p>People on Pinterest will get to know you with the info below</p>
                         </div>   
                         <div className="profile-edit-btns">
-                            <button type="reset">Cancel</button>
-                            <button>Done</button>
+                            <button type="reset" id ="cancel" >Cancel</button>
+                            <button  id="done" >Done</button>
+                            {/* {this.toggleDisabled()} */}
                         </div>              
                     </div>
                     <div className="profile-body">
@@ -79,7 +97,7 @@ class EditProfileForm extends React.Component {
                             type="text"  
                             value={url}
                             onChange={this.update('url')}/>
-                        <p>Background</p>
+                        <p>Location</p>
                         <input 
                             type="text" 
                             placeholder="Ex. San Francisco, CA"
@@ -88,9 +106,9 @@ class EditProfileForm extends React.Component {
                         />
                     </div>
                     
-                    {/* <FadeIn delay="300" className="fadeIn"> */}
+                    <FadeIn delay="300" className="fadeIn">
                         <div className="saved">Profile saved!</div>
-                    {/* </FadeIn> */}
+                    </FadeIn>
                 </form>
             </div>
         )
