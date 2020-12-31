@@ -8,5 +8,4 @@ json.links board.pins.each do |pin|
 end
 # json.userBoards current_user.boards
 json.pins board.pins
-# json.followings current_user.following_ids
-# json.followers current_user.follower_ids
+

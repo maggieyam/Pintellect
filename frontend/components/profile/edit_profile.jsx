@@ -50,7 +50,7 @@ class EditProfileForm extends React.Component {
     }
 
     render() {
-        const { first_name, last_name, username, description, location, url } = this.state;
+        const { first_name, last_name, username, description, location, url, photo } = this.state;
         // const disable = this.state === this.props ? disabled : null ;
         return(
             <div className='profile-wrapper'>
@@ -63,15 +63,15 @@ class EditProfileForm extends React.Component {
                             <p>People on Pinterest will get to know you with the info below</p>
                         </div>   
                         <div className="profile-edit-btns">
-                            <button type="reset" id ="cancel" >Cancel</button>
-                            <button  id="done" >Done</button>
+                            <button type="reset" id ="cancel">Cancel</button>
+                            <button  id="save" >Done</button>
                             {/* {this.toggleDisabled()} */}
                         </div>              
                     </div>
                     <div className="profile-body">
                         <div className="profile-img">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/8/86/Einstein_tongue.jpg"/>
-                            <button>Change</button>
+                            {photo ? <img src={photo}/> :  null} 
+                            {/* <button type="button">Change</button> */}
                         </div>
                         <div className="name-wrapper">
                             <div>

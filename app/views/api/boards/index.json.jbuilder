@@ -5,7 +5,7 @@
   end
 end
 
-  json.set! current_user.id do
+  json.follows do
     json.followers current_user.follower_ids
     json.followering current_user.following_ids
   end
