@@ -7,7 +7,6 @@ class PinIndex extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          boardId: 0,
           keywords: ''
         }
     }
@@ -18,17 +17,27 @@ class PinIndex extends React.Component {
   
 
   filter() {   
-    let allPins = Object.values(this.props.pins)
-    let pins = [];
-    for (let pin of allPins) {
+    let pins = Object.values(this.props.pins)
+    // let pins = [];
+    let count = 0;
+    const cols = Math.floor(window.screen.width / 243.5);
+    for (let pin of pins) {
       const description = pin.description.toLowerCase().split(' ');
       const title = pin.title.toLowerCase().split(' ');
       const keywords = this.state.keywords.toLowerCase().split(' ');
       for (let keyword of keywords) {
         let option = document.querySelector(`.pin-${pin.id}`);
         if (description.includes(keyword.toLowerCase()) || title.includes(keyword.toLowerCase())) {
-            pins.push(pin);
-            option.style.display = 'flex';       
+            // pins.push(pin);
+        
+            debugger
+            let oldCol = option.parentElement;
+            oldCol.removeChild(option);
+            let column = document.getElementById(`${count % cols}-columns`);
+            debugger
+            column.prepend(option);
+            option.style.display = 'flex';   
+            count += 1;    
         } else {
           option.style.display = 'none';
         }

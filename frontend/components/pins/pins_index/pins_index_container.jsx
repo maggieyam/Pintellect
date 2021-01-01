@@ -6,10 +6,10 @@ import {openModal} from '../../../actions/modal_actions';
 
 const mapStateToProps = ({ entities }) => {
   
-  const payload = entities.pins;
+  // const payload = entities.pins;
   return {
-    pins: payload.pins,
-    boards: payload.boards,
+    pins: entities.pins.pins,
+    boards: entities.pins.boards,
     user: entities.users
   };
 };

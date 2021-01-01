@@ -27,6 +27,7 @@ class CreateBoardForm extends React.Component{
     
     render(){
         const {title, startDate, endDate} = this.state;
+        debugger
         return (
           <div className="board-form">
             <div id="form-header">

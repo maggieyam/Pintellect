@@ -11,7 +11,7 @@ export const reorganizePins = (pins, shuffle) => {
     let newArr = [];
     const len = pins.length;
     const col = Math.floor(window.screen.width / 243.5);
-    if (pins.length <= col) return addToSingleRow(pins);
+    // if (pins.length <= col) return addToSingleRow(pins);
 
     for (let i = 0; i < col; i++) {
         let inner = [];
@@ -30,15 +30,15 @@ export const reorganizePins = (pins, shuffle) => {
     return newArr;
 }
 
-const addToSingleRow = (pins) => {
-    let row = [];
-    for (let pin of pins) {
-        row.push([pin]);
+// const addToSingleRow = (pins) => {
+//     let row = [];
+//     for (let pin of pins) {
+//         row.push([pin]);
 
-    }
+//     }
  
-    return row;
-}
+//     return row;
+// }
 
 const addItemsToCols = (num, newArr, original) => {
     for (let i = 0; i < num; i++) {
@@ -71,7 +71,7 @@ export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
     return(             
         <div className="pins-seeds-container">               
             {pins.map((colPins, i) => 
-                <div key={i} className={`column pin-columns`}>
+                <div key={i} id={`${i}-columns`} className={`column`} >
                   {colPins.map((pin) =>      
                     <div className={`pin-wrapper pin-${pin.id}`} key={pin.id}>
                         <Link to={`/pin/${pin.id}`}>
