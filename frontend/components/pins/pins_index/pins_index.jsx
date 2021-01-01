@@ -72,12 +72,12 @@ class PinIndex extends React.Component {
 
         return (
             <div>
-                <div>
+                {/* <div>
                     <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg"/>
                     <div onKeyPress={this.onKeyEnter()}>
                     <input type="text" placeholder="Search" id="search" onChange={this.update()}/>
                     </div>
-                </div>
+                </div> */}
                 <div className="pins-seeds-container">
                     {mapPinsToCols(pins, openModal, boards)}           
                 </div>
