@@ -1,19 +1,18 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import SearchBoard from '../components/search/searchBoard'
+import SearchBoard from '../components/search/search_board'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const reorganizePins = (pins, shuffle) => {
-    
     if (shuffle) {
         pins = _.shuffle(pins);
     } 
-
     let newArr = [];
     const len = pins.length;
     const col = Math.floor(window.screen.width / 243.5);
-    
+    if (pins.length <= col) return addToSingleRow(pins);
+
     for (let i = 0; i < col; i++) {
         let inner = [];
         let rows = Math.floor(len / col);
@@ -28,8 +27,17 @@ export const reorganizePins = (pins, shuffle) => {
     if (newLen < len ) {
         addItemsToCols(len - newLen, newArr, pins.slice(newLen));
     }
-    // 
     return newArr;
+}
+
+const addToSingleRow = (pins) => {
+    let row = [];
+    for (let pin of pins) {
+        row.push([pin]);
+
+    }
+ 
+    return row;
 }
 
 const addItemsToCols = (num, newArr, original) => {
@@ -57,14 +65,15 @@ const deleteBtn = (pin, openModal, boards, board) => {
 }
 
 export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
+
     if (!pins) return null;
-     
+
     return(             
         <div className="pins-seeds-container">               
             {pins.map((colPins, i) => 
                 <div key={i} className={`column pin-columns`}>
                   {colPins.map((pin) =>      
-                    <div className="pin-wrapper" key={pin.id}>
+                    <div className={`pin-wrapper pin-${pin.id}`} key={pin.id}>
                         <Link to={`/pin/${pin.id}`}>
                             <img 
                             src={pin.link} 

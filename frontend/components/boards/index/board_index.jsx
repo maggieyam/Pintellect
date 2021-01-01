@@ -8,8 +8,7 @@ import {faPen, faPlus} from '@fortawesome/free-solid-svg-icons';
 class BoardIndex extends React.Component {
     constructor(props){
         super(props);
-    }
-    
+    }   
     
     componentDidMount() {
         this.props.fetchBoards(); 
@@ -25,8 +24,7 @@ class BoardIndex extends React.Component {
       item.style.display = 'none';
     }
 
-    mapBoards() {
-      debugger
+    mapBoards() {    
       return (
         <div className="wrapper">
           <div className="board-item-container"> 

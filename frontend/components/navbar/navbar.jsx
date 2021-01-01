@@ -3,9 +3,46 @@ import { Link, Redirect}from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch,  faUserCog, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics.util';
+// import PinIndexContainer from "../pins/pins_index/pins_index_container";
 
 
 class Navbar extends React.Component{
+  // componentDidMount() {
+  //   this.props.requestPins();
+  //   this.state = {
+  //     keywords: ''
+  //   }
+  // }
+
+  // filter() {   
+  //   let allPins = Object.values(this.props.pins)
+  //   for (let pin of allPins) {
+  //     const description = pin.description.toLowerCase().split(' ');
+  //     const title = pin.title.toLowerCase().split(' ');
+  //     const keywords = this.state.keywords.toLowerCase().split(' ');
+  //     for (let keyword of keywords) {
+  //       let option = document.querySelector(`.pin-${pin.id}`);
+  //       if (description.includes(keyword.toLowerCase()) || title.includes(keyword.toLowerCase())) {
+  //         option.style.display = 'flex';       
+  //       } else {
+  //         option.style.display = 'none';
+  //       }
+  //     }     
+  //   }   
+  // }
+
+  // update() {
+  //   return e => {
+  //       e.preventDefault();
+  //       this.setState({keywords: e.currentTarget.value})
+  //   }
+  // }
+
+  // onKeyEnter() {
+  //   debugger
+  //   return e => 
+  //     e.key === 'Enter' ? this.filter() : null;
+  // }
 
   render() {
     if (!this.props.currentUser) return null;
@@ -17,8 +54,7 @@ class Navbar extends React.Component{
           {createButtonLink("/about", "nav-link", "board-nav-button", "today", "today")}
           {createButtonLink("/", "nav-link", "board-nav-button", "following", "Following")}
       </div>
-        <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg" />
-        <input type="text" placeholder="Search" id="search" />
+        
        <div className="right-nav-icons">
           <Link to="/settings">
             {createIcon(faUserCog, "icon", "2x", "add-pin")}

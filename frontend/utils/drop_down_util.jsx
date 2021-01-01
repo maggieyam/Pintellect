@@ -56,7 +56,7 @@ export const toggle = (selector) => {
 
 export const select = (boards, pinId) => { 
   if (!boards) return null;  
-  debugger
+  
   return boards.map((board) => {
       return (
         <div className="select-board"

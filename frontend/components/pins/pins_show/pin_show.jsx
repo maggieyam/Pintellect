@@ -5,7 +5,7 @@ import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome
 import pin_show_container from './pin_show_container';
 // import { deletePinFromBoard, deletePin } from '../../../actions/pins_actions';
 import {createFollow, deleteFollow} from '../../../utils/pins_api_util';
-import SearchBoard from '../../search/searchBoard';
+import SearchBoard from '../../search/search_board';
 
 class PinShow extends React.Component {
     constructor(props){
