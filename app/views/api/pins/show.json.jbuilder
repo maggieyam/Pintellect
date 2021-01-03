@@ -14,3 +14,6 @@ json.boards do
   end
 end
 
+json.user do
+  json.partial! '/api/users/user', user: @pin.author
+end

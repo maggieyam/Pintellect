@@ -47,17 +47,15 @@ class BoardIndex extends React.Component {
       const { user, boards, openModal } = this.props;
       if (!boards.length) return null;
 
-      const follows = boards.pop();
-      let followers = 0;
-      let followings = 0;
+      const follows = Object.values(boards.pop());
+      let followers = follows[0] || [];
+      let followings = follows[1] || [];
+      let followersNum = followers.length;
+      debugger
 
-      if(follows.followers !== undefined){
-        followers = follows.followers.length;
-      } ;
-
-      if(follows.followings !== undefined){
-        followings = follows.followings.length;
-      } ;
+      // if(follows.followings !== undefined){
+      let followingsNum = followings.length;
+      // } ;
         return (
           <div className="board-index-main-container">
             <div className="board-header-wrapper">
@@ -66,7 +64,7 @@ class BoardIndex extends React.Component {
               </button>
               <h1 id="index-header">{user.first_name}  {user.last_name}</h1>
               <span>{user.location} &#8226; @{user.username} &#8226; {user.description}</span>
-              <strong>{followers} {followers === 1 ? 'follower' : 'followers'} &#8226; {followings} {followings === 1 ? 'following' : 'followings'}</strong>
+              <strong>{followersNum} {followersNum === 1 ? 'follower' : 'followers'} &#8226; {followingsNum} {followingsNum === 1 ? 'following' : 'followings'}</strong>
             </div>
 
             <div className="icon-row">

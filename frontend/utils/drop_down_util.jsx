@@ -73,7 +73,7 @@ export const select = (boards, pinId) => {
 
 export  const savePinToBoard = (pinId, board) => {
     return savePin(pinId, board.id).then((err) => {  
-      debugger
+      
       toggle(`#dropDown-content-${pinId}`);
       const text = document.querySelector(`#save-message-${pinId}`);
       document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`;

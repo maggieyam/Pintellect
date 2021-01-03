@@ -10,6 +10,7 @@ import SearchBoard from '../../search/search_board';
 class PinShow extends React.Component {
     constructor(props){
         super(props);
+   
     }
 
     componentDidMount() {    
@@ -17,24 +18,25 @@ class PinShow extends React.Component {
         this.props.requestPin(this.props.id);
     }
 
-    toggleFollow(e) {
+    toggleFollow(e, followers) {
         e.preventDefault();
-        const { pin, user } = this.props;
-        if(!pin.followers.includes(user.id)) {
-            createFollow(pin.author_id, user.id, pin.id)
+        const {pin, currentUser} = this.props;
+        
+        if(!followers.includes(currentUser.id)) {
+            createFollow(pin.author_id, currentUser.id, pin.id)
             .then(() => location.reload())
         } else {
-            deleteFollow(pin.author_id, user.id, pin.id)
+            deleteFollow(pin.author_id, currentUser.id, pin.id)
             .then(() => location.reload())
         }
         
     }
 
     renderInfo() {       
-        const { pin, user } = this.props;
+        const { pin, currentUser, user } = this.props;
         if (!pin) return null;
-        // 
-        const {followers, followings} = pin;
+
+        const followers = user.followers || [];
         const followersNum = followers.length;
         
         return(
@@ -57,8 +59,8 @@ class PinShow extends React.Component {
                             <p>{followersNum}  {followersNum === 1 ? 'follower' : 'followers'}</p>
                         </div>
                     </div>
-                    <button id="follow-btn" onClick={(e) => this.toggleFollow(e)}>
-                        {followers.includes(user.id) ? 'following' : 'follow'}
+                    <button id="follow-btn" onClick={(e) => this.toggleFollow(e, followers)}>
+                        {followers.includes(currentUser.id) ? 'following' : 'follow'}
                     </button>
                 </div>
             </div>
