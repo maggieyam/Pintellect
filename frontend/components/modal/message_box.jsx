@@ -19,11 +19,11 @@ export const DeleteMessageForm = (props) => {
     return(
         <div className="delete-message-box">
             
-            <h2>Are you sure?</h2>
+            <h1>Are you sure?</h1>
             <p> Once you delete a Pin, you can't undo it.</p>
             <div>
                 <button onClick={() => props.closeModal()}>Cancel</button>
-                <button onClick={deletePin(pinId, boardId, closeModal)}>
+                <button onClick={deletePin(pinId, boardId, closeModal)} id="delete-pin">
                     Delete Pin
                 </button>
             </div>

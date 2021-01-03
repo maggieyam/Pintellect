@@ -730,3 +730,15 @@ input.search-pins {
     font-weight: 700;   
 }
 
+.delete-message-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-pin{
+    background-color: #E60023;
+    width: auto;
+    color: white;
+}
