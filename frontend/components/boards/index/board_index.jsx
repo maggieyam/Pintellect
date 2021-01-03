@@ -24,7 +24,8 @@ class BoardIndex extends React.Component {
       item.style.display = 'none';
     }
 
-    mapBoards() {    
+    mapBoards() {  
+        
       return (
         <div className="wrapper">
           <div className="board-item-container"> 
@@ -45,6 +46,7 @@ class BoardIndex extends React.Component {
       const create = {type: 'create', item: {pinId: -1}};
       const { user, boards, openModal } = this.props;
       if (!boards.length) return null;
+
       const follows = boards.pop();
       let followers = 0;
       let followings = 0;
@@ -93,7 +95,8 @@ class BoardIndex extends React.Component {
               </button>
             </div>
             </div>
-               {this.mapBoards()}   
+               {this.mapBoards()} 
+               {boards.push(follows)}  
           </div>
         );
     }
