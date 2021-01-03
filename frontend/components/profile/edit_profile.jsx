@@ -77,11 +77,11 @@ class EditProfileForm extends React.Component {
                         <div className="name-wrapper">
                             <div>
                                 <p>First name</p>
-                                <input type="text" value={first_name} onChange={this.update('first_name')}/>
+                                <input type="text" value={first_name} placeholder="e.g. Jo" onChange={this.update('first_name')}/>
                             </div>
                             <div>
                                 <p>Surname</p>
-                                <input type="text" value={last_name} onChange={this.update('last_name')}/>
+                                <input type="text" value={last_name} placeholder="e.g. Smith" onChange={this.update('last_name')}/>
                             </div>
                         </div>
                         

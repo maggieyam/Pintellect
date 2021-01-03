@@ -59,9 +59,10 @@ class PinShow extends React.Component {
                             <p>{followersNum}  {followersNum === 1 ? 'follower' : 'followers'}</p>
                         </div>
                     </div>
-                    <button id="follow-btn" onClick={(e) => this.toggleFollow(e, followers)}>
+                    {currentUser.id !== user.id ? <button id="follow-btn" onClick={(e) => this.toggleFollow(e, followers)}>
                         {followers.includes(currentUser.id) ? 'following' : 'follow'}
-                    </button>
+                    </button> : null}
+                    
                 </div>
             </div>
 

@@ -125,6 +125,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 33.67%;
     span, h1, p {
         margin-bottom: 10px;
     }
@@ -270,15 +271,9 @@ hgroup.header-group {
 
 }
 
-// #bell:hover {
-//     // background-color: #efefef;
-//     // color: #767676;
-//     margin-left: 20px;
-// }
-#bell, #log-out, #comment{
+#log-out, #comment{
     margin-left: 20px;
     color: #767676;
-    // cursor: pointer;
 }
 
 #initial {
@@ -288,8 +283,6 @@ hgroup.header-group {
     height: 30px;
     padding: 20px, 20px;
 }
-
-
 
 #initial-link {
     text-decoration: none;

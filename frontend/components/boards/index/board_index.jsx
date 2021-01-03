@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useDebugValue } from 'react';
 import { Link } from 'react-router-dom';
 import CreateBoardFormContainer from '../board_form/create_board_container';
 import BoardIndexItem from './board_index_item';
@@ -45,11 +45,12 @@ class BoardIndex extends React.Component {
     render() {
       const create = {type: 'create', item: {pinId: -1}};
       const { user, boards, openModal } = this.props;
-      if (!boards.length) return null;
-      let followers = user.followers || [];
-      let followings = user.followings || [];
+      const {followers, followings, location, username, description} = user;
+      if (!boards) return null;
+
       let followersNum = followers.length;
       let followingsNum = followings.length;
+      debugger
 
         return (
           <div className="board-index-main-container">
@@ -58,7 +59,9 @@ class BoardIndex extends React.Component {
                 {user.photo ? user.photo : user.username[0]}
               </button>
               <h1 id="index-header">{user.first_name}  {user.last_name}</h1>
-              <span>{user.location} &#8226; @{user.username} &#8226; {user.description}</span>
+              <span>{user.location}</span>
+              
+              <span id="description">  @{user.username} {(username && description) ? <span>&#8226;</span> : null } {user.description}</span>
               <strong>{followersNum} {followersNum === 1 ? 'follower' : 'followers'} &#8226; {followingsNum} {followingsNum === 1 ? 'following' : 'followings'}</strong>
             </div>
 
