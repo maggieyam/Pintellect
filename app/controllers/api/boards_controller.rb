@@ -5,10 +5,7 @@ class Api::BoardsController < ApplicationController
         @board = Board.new(board_params)
         @board.author_id = current_user.id
         has_pin = params[:board][:pinId] != -1
-            #     true
-            # else
-            #     false
-            # end
+
         if @board.save 
             if has_pin
                 BoardPin.create({board_id: @board.id, pin_id: params[:board][:pinId]})

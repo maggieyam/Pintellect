@@ -2,12 +2,16 @@ class Api::BoardPinsController < ApplicationController
     before_action :logged_in?
 
     def create
-        @board_pin = BoardPin.new({board_id: params[:boardId], pin_id: params[:pinId]})
-        @pin = Pin.find(params[:pinId]);
-        if !@board_pin.save
-            render json: @board_pin.errors.full_messages, status: 422
+        if (BoardPin.find_by({board_id: params[:boardId], pin_id: params[:pinId]}))
+            render json: "Pin is saved to this board!"
+        else 
+            @board_pin = BoardPin.new({board_id: params[:boardId], pin_id: params[:pinId]})
+            @pin = Pin.find(params[:pinId]);
+            if !@board_pin.save
+                render json: @board_pin.errors.full_messages, status: 422
+            end
+            render 'api/pins/show'
         end
-        render 'api/pins/show'
     end   
 
     def destroy

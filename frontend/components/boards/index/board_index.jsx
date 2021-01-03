@@ -65,9 +65,10 @@ class BoardIndex extends React.Component {
                 {user.photo ? user.photo : user.username[0]}
               </button>
               <h1 id="index-header">{user.first_name}  {user.last_name}</h1>
-        <span>{user.location} &#8226; @{user.username} &#8226; {user.description}</span>
+              <span>{user.location} &#8226; @{user.username} &#8226; {user.description}</span>
               <strong>{followers} {followers === 1 ? 'follower' : 'followers'} &#8226; {followings} {followings === 1 ? 'following' : 'followings'}</strong>
             </div>
+
             <div className="icon-row">
               <div className="icon pin-board-create" 
                 onClick={() => this.reveal('.dropDown-board')}>
@@ -76,15 +77,16 @@ class BoardIndex extends React.Component {
                   id="modal-create"
                   size="2x"  
                   onClick={() => this.reveal('.dropDown-board')}                
-                />
-              </div>
+              />
+             </div>
+
             <div className="dropDown-board">
               <div id="create-board-index">Create</div>
-              <Link to={'/pin-builder' } >
-                <button className="dropDown-text-board">
-                  pin
-                </button>
-              </Link>
+                <Link to={'/pin-builder' } >
+                  <button className="dropDown-text-board">
+                    pin
+                  </button>
+                </Link>
               <button 
                 className="dropDown-text-board" 
                 onClick={() => {
