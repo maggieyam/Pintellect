@@ -124,19 +124,23 @@ button#demo-button1 {
     }
 }
 
+#search-container {
+    width: 70%;
+}
+
 #search:focus{
-    box-shadow: 0 0 4pt 4pt #4a8ad4;
+    box-shadow: 0 0 3pt 3pt #4a8ad4;
     border-radius: 34px;
 }
 
 #search {
-    height: 48px;
+    height: 36px;
     text-indent: 50px;
     border: none;
     border-radius: 44px;
     background-color: #efefef;
     font-size: 16px;
-    width: 70%;
+    width: 95%;
     margin-left: 10px;
     color: #333;
     

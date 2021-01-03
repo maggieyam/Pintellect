@@ -7,7 +7,9 @@ import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics
 import {filter} from '../search/search_pin'
 
 class Navbar extends React.Component{
-
+  componentDidMount() {
+    this.props.requestPins();
+  }
   update() {
     return e => {
         e.preventDefault();
@@ -24,8 +26,8 @@ class Navbar extends React.Component{
     return(
       <>
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg"/>
-        <div onKeyPress={this.onKeyEnter()} id="search">
-          <input type="text" placeholder="Search"  onChange={this.update()} id="search-input"/>
+        <div onKeyPress={this.onKeyEnter()} id="search-container">
+          <input type="text" placeholder="Search"  onChange={this.update()} id="search"/>
         </div>
       </>
     )

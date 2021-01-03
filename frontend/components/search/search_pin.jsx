@@ -1,4 +1,5 @@
-export const filter = (allPins, keywordStr) => {   
+export const filter = (allPins, keywordStr) => { 
+  debugger  
     let pins = Object.values(allPins)
     let count = 0;
     const cols = Math.floor(window.screen.width / 243.5);
