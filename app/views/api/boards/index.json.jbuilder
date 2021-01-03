@@ -5,9 +5,9 @@
   end
 end
 
-  json.follows do
-    json.followers current_user.follower_ids
-    json.followering current_user.following_ids
-  end
+  # json.follows do
+  #   json.followers current_user.follower_ids
+  #   json.followering current_user.following_ids
+  # end
 
 

@@ -46,16 +46,11 @@ class BoardIndex extends React.Component {
       const create = {type: 'create', item: {pinId: -1}};
       const { user, boards, openModal } = this.props;
       if (!boards.length) return null;
-
-      const follows = Object.values(boards.pop());
-      let followers = follows[0] || [];
-      let followings = follows[1] || [];
+      let followers = user.followers || [];
+      let followings = user.followings || [];
       let followersNum = followers.length;
-      debugger
-
-      // if(follows.followings !== undefined){
       let followingsNum = followings.length;
-      // } ;
+
         return (
           <div className="board-index-main-container">
             <div className="board-header-wrapper">
@@ -96,7 +91,6 @@ class BoardIndex extends React.Component {
             </div>
             </div>
                {this.mapBoards()} 
-               {boards.push(follows)}  
           </div>
         );
     }
