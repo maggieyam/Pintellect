@@ -33,6 +33,7 @@ class Navbar extends React.Component{
 
   render() {
     if (!this.props.currentUser) return null;
+
     return (
       <hgroup className="header-group">
         <div className="left-nav-icons">
@@ -41,13 +42,19 @@ class Navbar extends React.Component{
           {createButtonLink("https://www.linkedin.com/in/maggie-yan-0a32056a/", "nav-link", "board-nav-button", "today", "Resume")}
           {createButtonLink("/", "nav-link", "board-nav-button", "following", "LinkedIn")}
       </div>
+
       {this.props.location.pathname === '/' ? this.searchBar() : null}
         
        <div className="right-nav-icons">
           <Link to="/settings">
             {createIcon(faUserCog, "icon", "2x", "add-pin")}
           </Link>      
-          {createButtonLink(`/boards/_saved`, "", "", "go-to-board", this.props.currentUser.username[0])}
+          {/* {createButtonLink(`/${this.props.currentUser.username}/_saved`, "", "", "go-to-board", this.props.currentUser.username[0])} */}
+          <Link to={`/${this.props.currentUser.username}/_saved`} >
+            <button id='go-to-board'>
+                {this.props.currentUser.username[0]}
+            </button>
+        </Link>
           {createIcon(faSignOutAlt, "icon", "2x", "log-out", this.props.logout)}
         </div>
       </hgroup>

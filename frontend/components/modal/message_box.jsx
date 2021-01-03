@@ -2,7 +2,7 @@ import React from 'react';
 import { deletePinFromBoard } from '../../utils/boards_api_util';
 
 const deletePin = (pinId, boardId, closeModal) => {
-    // 
+    debugger
     return e => {
         deletePinFromBoard(pinId, boardId)
         .then(() => {

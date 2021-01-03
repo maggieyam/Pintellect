@@ -30,11 +30,11 @@ class PinIndex extends React.Component {
         if (description.includes(keyword.toLowerCase()) || title.includes(keyword.toLowerCase())) {
             // pins.push(pin);
         
-            debugger
+            
             let oldCol = option.parentElement;
             oldCol.removeChild(option);
             let column = document.getElementById(`${count % cols}-columns`);
-            debugger
+            
             column.prepend(option);
             option.style.display = 'flex';   
             count += 1;    

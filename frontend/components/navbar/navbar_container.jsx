@@ -6,9 +6,11 @@ import { withRouter } from 'react-router';
 
 import Navbar from './navbar'
 const mapStateToProps = ({ session, entities}) => {
+  
   return {
     currentUser: entities.users[session.id],
-    pins: entities.pins.pins
+    pins: entities.boards.pins,
+    boards: entities.boards
   }};
 
 const mapDispatchToProps = (dispatch) => ({

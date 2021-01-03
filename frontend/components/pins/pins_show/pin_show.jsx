@@ -22,12 +22,12 @@ class PinShow extends React.Component {
         const { pin, user } = this.props;
         if(!pin.followers.includes(user.id)) {
             createFollow(pin.author_id, user.id, pin.id)
-            .then(() => {                              
-            })
+            .then(() => location.reload())
         } else {
-            deleteFollow(pin.author_id, user.id, pin.id).then(() => location.reload())
+            deleteFollow(pin.author_id, user.id, pin.id)
+            .then(() => location.reload())
         }
-        location.reload()
+        
     }
 
     renderInfo() {       

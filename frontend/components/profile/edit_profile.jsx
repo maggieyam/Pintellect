@@ -50,7 +50,8 @@ class EditProfileForm extends React.Component {
     }
 
     render() {
-        const { first_name, last_name, username, description, location, url, photo } = this.state;
+        const { first_name, last_name, background, description, location, url, photo } = this.state;
+        // 
         // const disable = this.state === this.props ? disabled : null ;
         return(
             <div className='profile-wrapper'>
@@ -84,8 +85,8 @@ class EditProfileForm extends React.Component {
                             </div>
                         </div>
                         
-                        <p>Username</p>
-                            <input type="text" value={username} onChange={this.update('username')}/>
+                        <p>Background image URL</p>
+                            <input type="text" value={background} onChange={this.update('background')} />
                         <p>About your profile</p>
                         <textarea 
                             placeholder="Write a little bit about yourself here" 
@@ -106,9 +107,9 @@ class EditProfileForm extends React.Component {
                         />
                     </div>
                     
-                    <FadeIn delay="300" className="fadeIn">
-                        <div className="saved">Profile saved!</div>
-                    </FadeIn>
+                    {/* <FadeIn delay="300" className="fadeIn"> */}
+                    <div className="saved">Profile saved!</div>
+                    {/* </FadeIn> */}
                 </form>
             </div>
         )
