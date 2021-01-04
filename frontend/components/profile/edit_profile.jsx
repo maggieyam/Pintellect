@@ -13,7 +13,7 @@ class EditProfileForm extends React.Component {
     }
 
     handleSubmit(e) {
-        e.presventDefault;
+        e.preventDefault();
         updateUser(this.state).then(
         () => {           
             reveal('.saved');
@@ -25,23 +25,7 @@ class EditProfileForm extends React.Component {
 
         }
         )  
-        // })
     }
-
-    // enableBtns() {
-    //     const cancel = document.getElementById('cancel');
-    //     const done = document.getElementById('done');
-    //     if (!cancel || !done) return;
-    //     
-    //     if (Object.values(this.state) === Object.values(this.props.user)) {
-    //         cancel.disabled = true;
-    //         done.disabled = true;
-    //     } else {
-            
-    //         cancel.disabled = false;
-    //         done.disabled = false;
-    //     }
-    // }
 
     update(field) {   
         return e => {                      
@@ -51,8 +35,7 @@ class EditProfileForm extends React.Component {
 
     render() {
         const { first_name, last_name, background, description, location, url, photo } = this.state;
-        // 
-        // const disable = this.state === this.props ? disabled : null ;
+
         return(
             <div className='profile-wrapper'>
                 <form onSubmit={this.handleSubmit}>
@@ -77,16 +60,29 @@ class EditProfileForm extends React.Component {
                         <div className="name-wrapper">
                             <div>
                                 <p>First name</p>
-                                <input type="text" value={first_name} placeholder="e.g. Jo" onChange={this.update('first_name')}/>
+                                <input 
+                                    type="text" 
+                                    value={first_name} 
+                                    placeholder="e.g. Jo" 
+                                    onChange={this.update('first_name')}
+                                />
                             </div>
                             <div>
                                 <p>Surname</p>
-                                <input type="text" value={last_name} placeholder="e.g. Smith" onChange={this.update('last_name')}/>
+                                <input 
+                                    type="text" 
+                                    value={last_name} 
+                                    placeholder="e.g. Smith" 
+                                    onChange={this.update('last_name')}
+                                />
                             </div>
                         </div>
                         
                         <p>Background image URL</p>
-                            <input type="text" value={background} onChange={this.update('background')} />
+                            <input 
+                                type="text" 
+                                value={background}
+                                onChange={this.update('background')} />
                         <p>About your profile</p>
                         <textarea 
                             placeholder="Write a little bit about yourself here" 
@@ -107,9 +103,7 @@ class EditProfileForm extends React.Component {
                         />
                     </div>
                     
-                    {/* <FadeIn delay="300" className="fadeIn"> */}
                     <div className="saved">Profile saved!</div>
-                    {/* </FadeIn> */}
                 </form>
             </div>
         )
