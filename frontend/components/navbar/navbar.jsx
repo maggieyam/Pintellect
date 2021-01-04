@@ -70,7 +70,7 @@ class Navbar extends React.Component{
           {/* {createButtonLink("/", "nav-link", "board-nav-button", "following", "LinkedIn")} */}
       </div>
 
-      {this.props.location.pathname === '/' ? this.searchBar() : null}
+      {/* {this.props.location.pathname === '/' ? this.searchBar() : null} */}
         
        <div className="right-nav-icons">
                
