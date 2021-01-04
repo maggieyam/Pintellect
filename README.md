@@ -38,7 +38,10 @@ Pintellect is a website modeled off of Pinterest, where you can discover your ne
   * Click on the pin you are interested in. On that pin's show page, click the "follow" button to follow and click "following" to unfollow.
   
 
-
+* Coming: 
+ * AWS for pictures
+ * Search bar for finding pins
+ * Sugguested pins
 
 * Ruby 2.5.1p57
 
