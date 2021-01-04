@@ -8,10 +8,10 @@ export const reorganizePins = (pins, shuffle) => {
     if (shuffle) {
         pins = _.shuffle(pins);
     } 
+    
     let newArr = [];
     const len = pins.length;
-    const col = Math.floor(window.screen.width / 243.5);
-    // if (pins.length <= col) return addToSingleRow(pins);
+    const col = Math.floor(window.innerWidth / 243.5);
 
     for (let i = 0; i < col; i++) {
         let inner = [];

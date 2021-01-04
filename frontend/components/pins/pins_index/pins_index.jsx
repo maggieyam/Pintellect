@@ -5,22 +5,32 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import {reorganizePins, mapPinsToCols} from '../../../utils/pins_positioning_utils';
 class PinIndex extends React.Component {
     constructor(props){
-        super(props);
-        this.state = {
-          keywords: ''
-        }
+      super(props);
+      this.state = {
+        keywords: '',
+        cols: 0
+      }
+      this.getCols = this.getCols.bind(this);
     }
 
-    componentDidMount() {
-        this.props.requestPins();
-    }
+  componentDidMount() {
+    this.props.requestPins();
+    window.addEventListener('resize', this.getCols);
+  }
   
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.getCols);
+  }
+
+  getCols() {
+    const cols = Math.floor(window.innerWidth / 243.5);
+    this.setState({cols: cols})
+  }
 
   filter() {   
     let pins = Object.values(this.props.pins)
-    // let pins = [];
     let count = 0;
-    const cols = Math.floor(window.screen.width / 243.5);
+    
     for (let pin of pins) {
       const description = pin.description.toLowerCase().split(' ');
       const title = pin.title.toLowerCase().split(' ');
@@ -28,12 +38,9 @@ class PinIndex extends React.Component {
       for (let keyword of keywords) {
         let option = document.querySelector(`.pin-${pin.id}`);
         if (description.includes(keyword.toLowerCase()) || title.includes(keyword.toLowerCase())) {
-            // pins.push(pin);
-        
-            
             let oldCol = option.parentElement;
             oldCol.removeChild(option);
-            let column = document.getElementById(`${count % cols}-columns`);
+            let column = document.getElementById(`${count % this.state.cols}-columns`);
             
             column.prepend(option);
             option.style.display = 'flex';   
@@ -43,7 +50,6 @@ class PinIndex extends React.Component {
         }
       }     
     }  
-
     pins = reorganizePins(pins, false);
     mapPinsToCols(pins, this.props.openModal, this.props.boards)
   }
@@ -68,7 +74,9 @@ class PinIndex extends React.Component {
         if (!pins) return null;
         if(boards) {boards = Object.values(boards)};
         pins = Object.values(pins);
-        pins = reorganizePins(pins, false);
+        debugger
+        const {cols} = this.state.cols;
+        pins = reorganizePins(pins, cols, false);
 
         return (
             <div>

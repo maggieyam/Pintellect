@@ -2,7 +2,8 @@ export const filter = (allPins, keywordStr) => {
     
     let pins = Object.values(allPins)
     let count = 0;
-    const cols = Math.floor(window.screen.width / 243.5);
+
+    const cols = Math.floor(innerWidth / 243.5);
     
     for (let pin of pins) {
       const description = pin.description.toLowerCase().split(' ');

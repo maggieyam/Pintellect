@@ -5,11 +5,26 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
 class BoardShow extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            cols: 0
+        }
+        this.getCols = this.getCols.bind(this);
+    }
     componentDidMount() {
         if(!this.props.board)
         this.props.fetchBoards();
-        // this.props.requestBoard(this.props.match.params.boardId);
+        window.addEventListener('resize', this.getCols);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.getCols);
+    }
+
+    getCols() {
+        const cols = Math.floor(window.innerWidth / 243.5);
+        this.setState({cols: cols})
     }
 
     render(){

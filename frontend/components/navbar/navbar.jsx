@@ -55,23 +55,34 @@ class Navbar extends React.Component{
             <button className="board-nav-button" id="home-button" onClick={() => this.reset()}>
                 Home
             </button>
-          </Link>       
-          {createButtonLink("https://www.linkedin.com/in/maggie-yan-0a32056a/", "nav-link", "board-nav-button", "today", "Resume")}
-          {createButtonLink("/", "nav-link", "board-nav-button", "following", "LinkedIn")}
+          </Link>      
+          <a href="https://docs.google.com/document/d/1mXrwXsINH_csdULet5zCpTn5lCkAeROYRiZhb_k1qzQ/edit?usp=sharing" target="_blank" id="nav-link">
+            <button className="board-nav-button" id="today">
+              Resume
+            </button> 
+          </a> 
+          <a href="https://www.linkedin.com/in/maggie-yan-0a32056a/" target="_blank" id="nav-link">
+            <button className="board-nav-button" id="following">
+              LinkedIn
+            </button> 
+          </a> 
+          {/* {createButtonLink("https://www.linkedin.com/in/maggie-yan-0a32056a/", "nav-link", "board-nav-button", "today", "Resume")} */}
+          {/* {createButtonLink("/", "nav-link", "board-nav-button", "following", "LinkedIn")} */}
       </div>
 
       {this.props.location.pathname === '/' ? this.searchBar() : null}
         
        <div className="right-nav-icons">
-          <Link to="/settings">
-            {createIcon(faUserCog, "icon", "2x", "add-pin")}
-          </Link>      
+               
           {/* {createButtonLink(`/${this.props.currentUser.username}/_saved`, "", "", "go-to-board", this.props.currentUser.username[0])} */}
           <Link to={`/${this.props.currentUser.username}/_saved`} >
             <button id='go-to-board'>
                 {this.props.currentUser.username[0]}
             </button>
           </Link>
+          <Link to="/settings">
+            {createIcon(faUserCog, "icon", "2x", "add-pin")}
+          </Link> 
           {createIcon(faSignOutAlt, "icon", "2x", "log-out", this.props.logout)}
         </div>
       </hgroup>
