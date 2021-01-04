@@ -3,13 +3,14 @@ Pintellect is a website modeled off of Pinterest, where you can discover your ne
 ## Features:
 
 ### Auth
-* Users can choose sign up if not already having an account or sign in if already have one.
+* Users can choose to sign up if they don't have an account
+* Users can sign in if they already have one.
 * Users can login as demo user by choosing one of the demo users.
 
 ### Pins
-* When you are signed in, you can view all pins index page with similar images as below: 
+* When the user is signed in, the user can view all pins on the index page with similar images as below: 
 
-* To view you pin:
+* To view your pin:
   * Click Home button to pin's index page.
   * On the home page or the board's show page, click on any picture will lead you to the pin's show page.
   
