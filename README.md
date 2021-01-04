@@ -43,18 +43,3 @@ Pintellect is a website modeled off of Pinterest, where you can discover your ne
   * Search bar for finding pins
   * Sugguested pins
 
-* Ruby 2.5.1p57
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
