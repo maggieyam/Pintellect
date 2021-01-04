@@ -79,9 +79,9 @@ class EditPinForm extends React.Component {
    boards = Object.values(boards);
    return(
     <>
-      {dropDownBtns('.dropDown-content', false)}
+      {dropDownBtns('.dropDown-content2', false)}
 
-      <div className="dropDown-content">
+      <div className="dropDown-content2">
         <div id="wrapper-dropdown">
           <div id="top-pin-select">
             <input
@@ -101,7 +101,7 @@ class EditPinForm extends React.Component {
               {boards ? this.select(boards) : null}
             </div >
           </div>
-          {createBtns(`.dropDown-content2`, openModal)}
+          {createBtns(`.dropDown-content`, openModal)}
         </div>
       </div>
     </>

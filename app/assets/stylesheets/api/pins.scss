@@ -289,7 +289,7 @@
      height: 32px;
 }
 
-.dropDown-content, .dropDown-content2 {
+.dropDown-content, .dropDown-content2{
     position: absolute;
     top: 60px;
     width: 320px;
@@ -300,6 +300,7 @@
     padding-right: 12px;
     box-sizing: border-box;
     stroke: rgb(239, 239, 239);
+    border: 1px solid #d3d3d3;
     display: none;
     margin-top: 10px;
     background-color: #fff;
@@ -313,7 +314,37 @@
     }
 }
 
-
+.dropDown-content2 {
+    width: 390px;
+    position: absolute;
+    box-shadow: none;
+    border: 1px solid #d3d3d3;
+    top: 40px;
+    left: 20px;
+    #top-pin-select {
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        margin-left: 0px;
+    }
+    #all-boards {
+        position: absolute;
+        top: 80px;
+        left: 0px;       
+    }
+    .dropDown-options {
+        position: absolute;
+        top: 80px;
+        left: 0px;
+        margin: 20px 0 0 0;
+    }
+    #create-board-btn {
+        display: flex;
+        justify-content: start;
+        margin-left: 0;
+        padding-left: 0;
+    }
+}
 
 .dropDown-feed {
     box-shadow: none;
