@@ -8,7 +8,7 @@ Pintellect is a website modeled off of Pinterest, where you can discover your ne
 * Users can login as demo user by choosing one of the demo users.
 
 ### Pins
-* When the user is signed in, the user can view all pins on the index page with similar images as below: 
+When the user is signed in, the user can view all pins on the index page with similar images as below: 
 
 * To view your pin:
   * Click Home button to pin's index page.
