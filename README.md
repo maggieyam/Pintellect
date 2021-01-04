@@ -39,9 +39,9 @@ Pintellect is a website modeled off of Pinterest, where you can discover your ne
   
 
 * Coming: 
- * AWS for pictures
- * Search bar for finding pins
- * Sugguested pins
+  * AWS for pictures
+  * Search bar for finding pins
+  * Sugguested pins
 
 * Ruby 2.5.1p57
 
