@@ -7,6 +7,12 @@ import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics
 import {filter} from '../search/search_pin'
 
 class Navbar extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      keywords: "",
+    }
+  }
   componentDidMount() {
     this.props.requestPins();
   }
@@ -27,10 +33,15 @@ class Navbar extends React.Component{
       <>
         <FontAwesomeIcon icon={faSearch} className="search-icon" size="lg"/>
         <div onKeyPress={this.onKeyEnter()} id="search-container">
-          <input type="text" placeholder="Search"  onChange={this.update()} id="search"/>
+          <input type="text" placeholder="Search"  value={this.state.keywords} onChange={this.update()} id="search"/>
         </div>
       </>
     )
+  }
+
+  reset() {
+    filter(this.props.pins, "");
+    this.setState({keywords: ""});
   }
 
   render() {
@@ -40,7 +51,11 @@ class Navbar extends React.Component{
       <hgroup className="header-group">
         <div className="left-nav-icons">
           {createSpinIcon(faStroopwafel, "board-logo", "2x")}
-          {createButtonLink("/", "home-link", "board-nav-button", "home-button", "Home")}        
+           <Link to='/' id="home-link" onClick={() => this.reset()}>
+            <button type="reset" className="board-nav-button" id="home-button">
+                Home
+            </button>
+        </Link>       
           {createButtonLink("https://www.linkedin.com/in/maggie-yan-0a32056a/", "nav-link", "board-nav-button", "today", "Resume")}
           {createButtonLink("/", "nav-link", "board-nav-button", "following", "LinkedIn")}
       </div>
@@ -56,7 +71,7 @@ class Navbar extends React.Component{
             <button id='go-to-board'>
                 {this.props.currentUser.username[0]}
             </button>
-        </Link>
+          </Link>
           {createIcon(faSignOutAlt, "icon", "2x", "log-out", this.props.logout)}
         </div>
       </hgroup>

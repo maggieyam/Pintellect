@@ -50,7 +50,7 @@ class BoardIndex extends React.Component {
 
       let followersNum = followers.length;
       let followingsNum = followings.length;
-      debugger
+      
 
         return (
           <div className="board-index-main-container">
