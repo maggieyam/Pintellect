@@ -51,11 +51,11 @@ class Navbar extends React.Component{
       <hgroup className="header-group">
         <div className="left-nav-icons">
           {createSpinIcon(faStroopwafel, "board-logo", "2x")}
-           <Link to='/' id="home-link" onClick={() => this.reset()}>
-            <button type="reset" className="board-nav-button" id="home-button">
+           <Link to='/' id="home-link" >
+            <button className="board-nav-button" id="home-button" onClick={() => this.reset()}>
                 Home
             </button>
-        </Link>       
+          </Link>       
           {createButtonLink("https://www.linkedin.com/in/maggie-yan-0a32056a/", "nav-link", "board-nav-button", "today", "Resume")}
           {createButtonLink("/", "nav-link", "board-nav-button", "following", "LinkedIn")}
       </div>
