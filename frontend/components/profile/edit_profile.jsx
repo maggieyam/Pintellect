@@ -1,7 +1,4 @@
-import { update } from 'lodash';
-import {updateUser} from '../../utils/user_api_util';
 import React from 'react';
-import FadeIn from "react-fade-in";
 import {hide, reveal} from "../../utils/drop_down_util";
 
 class EditProfileForm extends React.Component {
@@ -14,17 +11,11 @@ class EditProfileForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        updateUser(this.state).then(
-        () => {           
+        this.props.updateUser(this.state).then(
+        () => {          
             reveal('.saved');
-            setTimeout(() => {
-                hide('.saved');
-                location.reload();
-                }, 2000
-            );
-
-        }
-        )  
+            setTimeout(() => hide('.saved'), 2000);
+        })  
     }
 
     update(field) {   
@@ -35,7 +26,6 @@ class EditProfileForm extends React.Component {
 
     render() {
         const { first_name, last_name, background, description, location, url, photo } = this.state;
-
         return(
             <div className='profile-wrapper'>
                 <form onSubmit={this.handleSubmit}>

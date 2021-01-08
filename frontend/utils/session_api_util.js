@@ -14,6 +14,15 @@ export const login = user => {
     })
 }
 
+export const updateUser = (user) => { 
+    
+  return $.ajax({
+    url: `/api/users/${user.id}`,
+    method: 'PATCH',
+    data: { user }
+  })
+}
+
 export const logout = () => {
     return $.ajax({
         url: '/api/session',

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import EditProfileForm from './edit_profile';
+import {updateUser} from '../../actions/session_actions';
 
 const mapStateToProps = ({entities, session}) => {
     return {
@@ -9,7 +10,7 @@ const mapStateToProps = ({entities, session}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateUserInfo: () => dispatch(updateUserInfo())
+    updateUser: (user) => dispatch(updateUser(user))
   };
 };
 
