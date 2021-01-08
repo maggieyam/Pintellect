@@ -6,6 +6,7 @@ import SessionForm from "./session_form";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { withRouter } from 'react-router';
 const mapStateToProps = ({ errors, session }) => {
+  
   return {
     session,
     errors: errors.session,

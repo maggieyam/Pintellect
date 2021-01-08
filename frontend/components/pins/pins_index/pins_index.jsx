@@ -8,7 +8,8 @@ class PinIndex extends React.Component {
       super(props);
       this.state = {
         keywords: '',
-        cols: 0
+        cols: 0,
+        pins: null
       }
       this.getCols = this.getCols.bind(this);
     }
@@ -28,30 +29,35 @@ class PinIndex extends React.Component {
   }
 
   filter() {   
-    let pins = Object.values(this.props.pins)
-    let count = 0;
-    
-    for (let pin of pins) {
+    // let pins = Object.values(this.props.pins)
+    // let count = 0;
+    let pins = [];
+    let allPins =  Object.values(this.props.pins);
+    for (let pin of allPins) {
       const description = pin.description.toLowerCase().split(' ');
       const title = pin.title.toLowerCase().split(' ');
       const keywords = this.state.keywords.toLowerCase().split(' ');
       for (let keyword of keywords) {
-        let option = document.querySelector(`.pin-${pin.id}`);
+        // let option = document.querySelector(`.pin-${pin.id}`);
         if (description.includes(keyword.toLowerCase()) || title.includes(keyword.toLowerCase())) {
-            let oldCol = option.parentElement;
-            oldCol.removeChild(option);
-            let column = document.getElementById(`${count % this.state.cols}-columns`);
+            // let oldCol = option.parentElement;
+            // oldCol.removeChild(option);
+            // let column = document.getElementById(`${count % this.state.cols}-columns`);
             
-            column.prepend(option);
-            option.style.display = 'flex';   
-            count += 1;    
-        } else {
-          option.style.display = 'none';
+            // column.prepend(option);
+            // option.style.display = 'flex';   
+            // count += 1;   
+            pins.push(pin); 
+            
+        // } else {
+        //   // option.style.display = 'none';
         }
       }     
     }  
-    pins = reorganizePins(pins, false);
-    mapPinsToCols(pins, this.props.openModal, this.props.boards)
+    
+    this.setState({pins: pins});
+    // pins = reorganizePins(pins, false);
+    // mapPinsToCols(pins, this.props.openModal, this.props.boards)
   }
 
   update() {
@@ -73,10 +79,12 @@ class PinIndex extends React.Component {
         let { openModal, boards, pins} = this.props;
         if (!pins) return null;
         if(boards) {boards = Object.values(boards)};
-        pins = Object.values(pins);
-        debugger
+        let allPins = this.state.pins;
+
+        if (!this.state.pins) allPins = Object.values(this.props.pins);
+        
         const {cols} = this.state.cols;
-        pins = reorganizePins(pins, cols, false);
+        pins = reorganizePins(allPins, cols, false);
 
         return (
             <div>

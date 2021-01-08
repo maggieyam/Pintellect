@@ -4,14 +4,15 @@ import SearchBoard from '../components/search/search_board'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-export const reorganizePins = (pins, shuffle) => {
+export const reorganizePins = (pins, cols, shuffle) => {
     if (shuffle) {
         pins = _.shuffle(pins);
     } 
     
     let newArr = [];
     const len = pins.length;
-    const col = Math.floor(window.innerWidth / 243.5);
+    
+    const col = cols || Math.floor(window.innerWidth / 243.5);
 
     for (let i = 0; i < col; i++) {
         let inner = [];

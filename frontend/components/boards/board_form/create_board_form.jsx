@@ -14,7 +14,7 @@ class CreateBoardForm extends React.Component{
     }
 
     handleSubmit(e) {
-        e.preventDefault;
+        e.preventDefault();
         // this.props.createBoard(this.state);
         const board = Object.assign({}, this.state);
         this.props.createBoard(board)

@@ -123,7 +123,7 @@ class SessionForm extends React.Component {
         <div className="demo-btns">
           {this.props.submitButton === 'Log in' ? <h3>OR</h3> : null}
           <button id="demo-button1" onClick={(e) => this.handleDemo(e, 1)}>
-            Demo Einsten
+            Demo Einstein
           </button>
           <button id="demo-button2" onClick={(e) => this.handleDemo(e, 2)}>
             Demo Picasso
@@ -138,7 +138,7 @@ class SessionForm extends React.Component {
     <div id="session-form-text">
       <span>
         <p id="agreement">By continuing, you agree to Pinterest's</p>
-        <strong id="terms-of-service">Terms of Service, Privacypolicy.</strong>
+        <strong id="terms-of-service">Terms of Service, Privacy policy.</strong>
       </span>
 
       <div onClick={() => {

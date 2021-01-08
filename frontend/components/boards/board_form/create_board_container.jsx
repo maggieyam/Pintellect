@@ -3,10 +3,10 @@ import CreateBoardForm from './create_board_form';
 import {createBoard } from '../../../actions/boards_actions';
 import {closeModal } from '../../../actions/modal_actions'
 
-const mapStateToProps = ({ui}) => {
-    
+const mapStateToProps = ({entities, session, ui}) => {
     return {
-        pinId: ui.modal.item.pinId
+        pinId: ui.modal.item.pinId,
+        user: entities.users[session.id]
     }
 }
 const mapDispatchToProps = dispatch => {
