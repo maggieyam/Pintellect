@@ -25,17 +25,11 @@ export const toggle = (selector) => {
       item.style.display = 'none';
     }
 
-const hideAll = (selector) => {
-  debugger
-  let dropDown = document.getElementsByClassName(selector);
-  dropDown.style.display = 'none';
-}
 
 const show = (selector) => { 
   let dropDown = document.querySelector(selector);
-
   window.addEventListener('click', e => {
-    debugger
+
   if (e.target.parentElement 
      && e.target.parentElement.parentElement 
      && e.target.parentElement 
@@ -94,11 +88,11 @@ export const select = (boards, pinId) => {
 export  const savePinToBoard = (pinId, board) => {
     return savePin(pinId, board.id).then((err) => {  
       
-      toggle(`#dropDown-content-${pinId}`);
-      const text = document.querySelector(`#save-message-${pinId}`);
-      document.querySelector(`#select-text`).innerHTML = `Saved to ${board.title}`;
+      hide(`#dropDown-content-${pinId}`);
+      let text = document.querySelector(`#save-message-${pinId}`);
+      let select = document.querySelector(`#select-text`)
+      if(select) select.innerHTML = `Saved to ${board.title}`;
       if (text) text.style.display = 'block';
-        // location.reload();
     });
 
 }
