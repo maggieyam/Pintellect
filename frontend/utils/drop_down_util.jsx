@@ -6,6 +6,7 @@ import React from 'react';
 let dropDown = 0;
 export const toggle = (selector) => {
       let dropDown = document.querySelector(`${selector}`);
+      if (!dropDown) return;
         if (dropDown.style.display === "none") {
           dropDown.style.display = 'flex';
         } else {
@@ -29,7 +30,6 @@ export const toggle = (selector) => {
 const show = (selector) => { 
   let dropDown = document.querySelector(selector);
   window.addEventListener('click', e => {
-
   if (e.target.parentElement 
      && e.target.parentElement.parentElement 
      && e.target.parentElement 
@@ -43,6 +43,7 @@ const show = (selector) => {
 }
 
  export const dropDownBtns = (selector, save) => {
+
     return(
          <div onClick={() => show(selector)} >
           <div id="select" > Select                    
