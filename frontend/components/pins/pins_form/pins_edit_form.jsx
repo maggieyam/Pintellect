@@ -163,13 +163,13 @@ class EditPinForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="edit-pin-body-content">
             <div className="edit-pin-left">
-              <div className="pin-edit-left-wrapper">
+              {/* <div className="pin-edit-left-wrapper">
                 <label>Board
                 </label>
                 <div className="edit">
                   {this.navRight()}
                 </div>
-              </div>
+              </div> */}
 
               {user.id === pin.author_id ? this.editInfo() : null}
             </div>

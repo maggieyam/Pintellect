@@ -620,6 +620,12 @@ input.search-pins {
 
 }
 
+.edit-pin-left {
+    label {
+        margin-right: 15px;
+    }
+}
+
 #pin-edit-form {
     height: 600px;
     width: 900px;
@@ -649,6 +655,7 @@ input.search-pins {
     height: 350px;
     .edit-pin-left{
         margin-right: 25px;
+        
     }
     .edit-pin-right{
         margin-left: 25px;
@@ -658,6 +665,10 @@ input.search-pins {
         }
     }
 }
+
+.input-form-field {
+            margin-left: 15px;
+        }
 
 .pin-note {
     height: 80px;

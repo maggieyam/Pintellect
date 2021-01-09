@@ -71,14 +71,17 @@ class PinShow extends React.Component {
         const {pin, openModal, boards} = this.props;
         const modal = {type: 'updatePin', item: {pin: this.props.pin, boards: this.props.boards}}
         return(
+            
             <div className="right-top-nav">
+                {pin.author_id === this.props.currentUser.id ? 
                 <div className="edit-pen-wrapper" onClick={() => openModal(modal)}>
                     <FontAwesomeIcon
                         icon={faPen}
                         className="edit-pen"
                         size="lg"
                     />
-                </div>
+                </div> : null}
+                
 
                 <div className="pin-select-wrapper">
                     <SearchBoard 
