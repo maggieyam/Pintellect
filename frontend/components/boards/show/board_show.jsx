@@ -37,14 +37,7 @@ class BoardShow extends React.Component {
         return(
             <div id="board-show"> 
                 <div id="board-show-top">
-                    <h1 id="board-title">{board.title}
-                    <FontAwesomeIcon
-                        icon={faPencilAlt}
-                        className="edit-pen"
-                        size="sm"
-                        onClick={() => openModal(modal)}
-                    />
-                    </h1>
+                    <h1 id="board-title">{board.title}</h1>
                     <span id="board-description">{board.description}</span>
                 </div>
                 {mapPinsToCols(pins, openModal, userBoards, board, true)}
