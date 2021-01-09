@@ -3,10 +3,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronDown, faSearch, faPlusCircle,} from '@fortawesome/free-solid-svg-icons';
 import {savePin} from './pins_api_util';
 import React from 'react';
-
+let dropDown = 0;
 export const toggle = (selector) => {
       let dropDown = document.querySelector(`${selector}`);
-
         if (dropDown.style.display === "none") {
           dropDown.style.display = 'flex';
         } else {
@@ -26,12 +25,33 @@ export const toggle = (selector) => {
       item.style.display = 'none';
     }
 
+const hideAll = (selector) => {
+  debugger
+  let dropDown = document.getElementsByClassName(selector);
+  dropDown.style.display = 'none';
+}
+
+const show = (selector) => { 
+  let dropDown = document.querySelector(selector);
+
+  window.addEventListener('click', e => {
+    debugger
+  if (e.target.parentElement 
+     && e.target.parentElement.parentElement 
+     && e.target.parentElement 
+     && (e.target.parentElement.parentElement.parentElement === dropDown.parentElement
+     || e.target === dropDown.childNodes[0].childNodes[0].childNodes[0])){
+     reveal(selector);
+  } else {
+    hide(selector);
+  }
+})
+}
 
  export const dropDownBtns = (selector, save) => {
     return(
-         <div onClick={() => toggle(selector)}>
-          <div id="select" >                 
-              <p id="select-text">Select</p>        
+         <div onClick={() => show(selector)} >
+          <div id="select" > Select                    
               <FontAwesomeIcon
               icon={faChevronDown}
               id="svg-pin-drop-down"

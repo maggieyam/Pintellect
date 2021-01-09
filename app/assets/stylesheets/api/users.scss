@@ -30,7 +30,8 @@
 
 .right-nav-icons{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
     // width:168px;
     height: 48px;
     position: relative;
@@ -207,7 +208,7 @@ img {
     border-radius: 50%;
     width: 35px;
     height: 35px;
-    margin-bottom: 15px;
+    margin-left: 25px;
     border: 2px solid #111111;
 }
 
