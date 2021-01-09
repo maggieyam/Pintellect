@@ -28,50 +28,50 @@ class PinIndex extends React.Component {
     this.setState({cols: cols})
   }
 
-  filter() {   
-    // let pins = Object.values(this.props.pins)
-    // let count = 0;
-    let pins = [];
-    let allPins =  Object.values(this.props.pins);
-    for (let pin of allPins) {
-      const description = pin.description.toLowerCase().split(' ');
-      const title = pin.title.toLowerCase().split(' ');
-      const keywords = this.state.keywords.toLowerCase().split(' ');
-      for (let keyword of keywords) {
-        // let option = document.querySelector(`.pin-${pin.id}`);
-        if (description.includes(keyword.toLowerCase()) || title.includes(keyword.toLowerCase())) {
-            // let oldCol = option.parentElement;
-            // oldCol.removeChild(option);
-            // let column = document.getElementById(`${count % this.state.cols}-columns`);
+  // filter() {   
+  //   // let pins = Object.values(this.props.pins)
+  //   // let count = 0;
+  //   let pins = [];
+  //   let allPins =  Object.values(this.props.pins);
+  //   for (let pin of allPins) {
+  //     const description = pin.description.toLowerCase().split(' ');
+  //     const title = pin.title.toLowerCase().split(' ');
+  //     const keywords = this.state.keywords.toLowerCase().split(' ');
+  //     for (let keyword of keywords) {
+  //       // let option = document.querySelector(`.pin-${pin.id}`);
+  //       if (description.includes(keyword.toLowerCase()) || title.includes(keyword.toLowerCase())) {
+  //           // let oldCol = option.parentElement;
+  //           // oldCol.removeChild(option);
+  //           // let column = document.getElementById(`${count % this.state.cols}-columns`);
             
-            // column.prepend(option);
-            // option.style.display = 'flex';   
-            // count += 1;   
-            pins.push(pin); 
+  //           // column.prepend(option);
+  //           // option.style.display = 'flex';   
+  //           // count += 1;   
+  //           pins.push(pin); 
             
-        // } else {
-        //   // option.style.display = 'none';
-        }
-      }     
-    }  
+  //       // } else {
+  //       //   // option.style.display = 'none';
+  //       }
+  //     }     
+  //   }  
     
-    this.setState({pins: pins});
-    // pins = reorganizePins(pins, false);
-    // mapPinsToCols(pins, this.props.openModal, this.props.boards)
-  }
+  //   this.setState({pins: pins});
+  //   // pins = reorganizePins(pins, false);
+  //   // mapPinsToCols(pins, this.props.openModal, this.props.boards)
+  // }
 
-  update() {
-    return e => {
-        e.preventDefault();
-        this.setState({keywords: e.currentTarget.value});
+  // update() {
+  //   return e => {
+  //       e.preventDefault();
+  //       this.setState({keywords: e.currentTarget.value});
         
-    }
-  }
+  //   }
+  // }
 
-  onKeyEnter() {
-    return e => 
-      e.key === 'Enter' ? this.filter() : null;
-  }
+  // onKeyEnter() {
+  //   return e => 
+  //     e.key === 'Enter' ? this.filter() : null;
+  // }
 
 
     render() {  
