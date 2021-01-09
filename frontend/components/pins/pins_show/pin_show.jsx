@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import pin_show_container from './pin_show_container';
 // import { deletePinFromBoard, deletePin } from '../../../actions/pins_actions';
-import {createFollow, deleteFollow} from '../../../utils/pins_api_util';
+// import {createFollow, deleteFollow} from '../../../utils/pins_api_util';
 import SearchBoard from '../../search/search_board';
 
 class PinShow extends React.Component {
@@ -23,11 +23,9 @@ class PinShow extends React.Component {
         const {pin, currentUser} = this.props;
         
         if(!followers.includes(currentUser.id)) {
-            createFollow(pin.author_id, currentUser.id, pin.id)
-            .then(() => location.reload())
+            this.props.createFollow(pin.author_id, currentUser.id, pin.id);
         } else {
-            deleteFollow(pin.author_id, currentUser.id, pin.id)
-            .then(() => location.reload())
+            this.props.deleteFollow(pin.author_id, currentUser.id, pin.id);
         }
         
     }

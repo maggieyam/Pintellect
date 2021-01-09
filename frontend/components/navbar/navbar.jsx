@@ -75,6 +75,7 @@ class Navbar extends React.Component{
        <div className="right-nav-icons">
                
           {/* {createButtonLink(`/${this.props.currentUser.username}/_saved`, "", "", "go-to-board", this.props.currentUser.username[0])} */}
+          {/* <a src=""><img src=""/></a> */}
           <Link to={`/${this.props.currentUser.username}/_saved`} >
             <button id='go-to-board'>
                 {this.props.currentUser.username[0]}
