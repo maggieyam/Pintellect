@@ -25,9 +25,9 @@ const removeBoard = (boardId) => ({
 export const createBoard = board => dispatch =>{
       
    return APIUtil.createBoard(board)
-    .then(board => { 
+    .then(boards => { 
       // 
-      return dispatch(receiveBoard(board))
+      return dispatch(receiveBoards(boards))
     });
 }
 export const deleteBoard = (boardId) => dispatch =>
@@ -63,8 +63,8 @@ export const requestBoard = (boardId) => dispatch => {
 }
 
 export const updateBoard = (board) => (dispatch) => {
-  return APIUtil.updateBoard(board).then((board) =>
-    dispatch(receiveBoard(board)))
+  return APIUtil.updateBoard(board).then((boards) =>
+    dispatch(receiveBoards(boards)))
     // .then(() => closeModal());
 }
 

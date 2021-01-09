@@ -12,14 +12,18 @@ const boardReducer = (state={}, action) => {
     switch (action.type) {
         case RECEIVE_BOARDS:   
             return merge({}, action.boards);
-        case RECEIVE_BOARD:            
-            const newState = {'board': action.board, 'userBoards': action.board.userBoards}           
+        
+            case RECEIVE_BOARD:            
+            const newState = {'board': action.board, 
+                              'userBoards': action.board.userBoards}           
             return merge({}, state, newState)
-        case REMOVE_BOARD:
+        
+            case REMOVE_BOARD:
             let nextState = merge({}, state);           
             delete nextState[action.boardId];
             return nextState;
-        case REMOVE_BOARD_PIN:
+        
+            case REMOVE_BOARD_PIN:
         return state;
         default:
             return state;
