@@ -5,6 +5,7 @@ import {faSearch,  faUserCog, faSignOutAlt, faStroopwafel} from '@fortawesome/fr
 import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics.util';
 // import PinIndexContainer from "../pins/pins_index/pins_index_container";
 import SearchPin from '../search/search_pin'
+import { faAngellist, faLinkedin, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 class Navbar extends React.Component{
   // constructor(props) {
@@ -61,9 +62,9 @@ class Navbar extends React.Component{
               Resume
             </button> 
           </a> 
-          <a href="https://www.linkedin.com/in/maggie-yan-0a32056a/" target="_blank" id="nav-link">
+          <a href="https://maggieyam.github.io" target="_blank" id="nav-link">
             <button className="board-nav-button" id="following">
-              LinkedIn
+              Portfolio
             </button> 
           </a> 
           {/* {createButtonLink("https://www.linkedin.com/in/maggie-yan-0a32056a/", "nav-link", "board-nav-button", "today", "Resume")} */}
@@ -76,6 +77,8 @@ class Navbar extends React.Component{
                
           {/* {createButtonLink(`/${this.props.currentUser.username}/_saved`, "", "", "go-to-board", this.props.currentUser.username[0])} */}
           {/* <a src=""><img src=""/></a> */}
+          <a href="https://www.linkedin.com/in/maggie-yan-0a32056a/" target="_blank">{createIcon(faLinkedin, "icon", "2x", "linkedIn")}</a>
+          <a href="https://angel.co/u/maggie-yan" target="_blank">{createIcon(faAngellist, "icon", "2x", "")}</a>
           <Link to={`/${this.props.currentUser.username}/_saved`} >
             <button id='go-to-board'>
                 {this.props.currentUser.username[0]}
