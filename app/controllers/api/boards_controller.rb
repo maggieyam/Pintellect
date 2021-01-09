@@ -10,7 +10,7 @@ class Api::BoardsController < ApplicationController
             if has_pin
                 BoardPin.create({board_id: @board.id, pin_id: params[:board][:pinId]})
             end
-            @boards = current_user.boards
+            @boards = current_user.boards.includes(:pins)
             render :index
         else
             render json: @board.errors.full_messages, status: 422
@@ -34,7 +34,7 @@ class Api::BoardsController < ApplicationController
            
         if board # && @board.valid_date_period
             board.update(board_params)
-            @boards = current_user.boards
+            @boards = current_user.boards.includes(:pins)
             render :index
         end
     end
