@@ -28,7 +28,6 @@ export const toggle = (selector) => {
 
 
 const show = (selector) => { 
-  
   let dropDown = document.querySelector(selector);
   window.addEventListener('click', e => {
   if (e.target.parentElement 

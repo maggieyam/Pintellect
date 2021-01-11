@@ -81,8 +81,9 @@ class SessionForm extends React.Component {
             value={email}
             placeholder="Email"
             onChange={this.handleInput('email')}
-            className="input-session"
+            className="input-session email"
           />
+          {/* <div id="error">{this.props.errors ? this.renderErrors() : null}</div> */}
           <br />
 
           <input
@@ -90,15 +91,15 @@ class SessionForm extends React.Component {
             value={password}
             placeholder="Password"
             onChange={this.handleInput('password')}
-            className="input-session"
+            className="input-session password"
           />
-          <br/>
-
-          <div id="error">{this.props.errors ? this.renderErrors() : null}</div>
 
           <div >
             {this.props.submitButton === 'Continue' ? this.renderAge() : null}
           </div>
+          <br/>
+          
+          <div id="error">{this.props.errors ? this.renderErrors() : null}</div>
           <button id="modal-button">{this.props.submitButton}</button>
         </form>
         {this.props.submitButton === 'Log in' ? this.showDemoButton() : null}
@@ -142,15 +143,21 @@ class SessionForm extends React.Component {
     )
   }
 
+
   renderErrors() {
+    const email = document.getElementsByClassName('email');
+    const password = document.getElementsByClassName('password');
+    
     return (
       <div>
         {this.props.errors.map((error, i) => (
-          <div>
-            <li key={i} className="error-message">
+          <div key={i}>
+            <li className="error-message" id={`error-${i}`}>
               {error}
+              {/* {error[0] === 'email' ? password.after(`#error-${i}`) : error} */}
             </li>
-            <br />
+              {/* {error[0] === 'password' ? password.appendChild(`#error-${i}`) : null} */}
+            <br/>
           </div>
         ))}
       </div>

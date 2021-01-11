@@ -25,20 +25,12 @@
 }
 
 .logo {
-    // padding: 25px;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    margin-left: 25px;
-    margin-right: 15px;
-    // margin: 20px, 15px, 15px, 25px;
+    margin: 20px 15px 15px 25px;
     color: #e60023;
 }
 
 .session-forms{
-    height: 579px;
-    width:  484px;
     background-color: white;
-    min-height: 400px;
     padding: 20px 10px 24px;
     vertical-align: middle;
     border-radius: 8px;
@@ -84,7 +76,8 @@
 
 #error {
     color: red;
-    margin-top: 0;
+    text-align: start;
+    margin-left: 100px;
 }
 
 
@@ -97,7 +90,7 @@ span {
 }
 
 #session-form-text {
-    margin-top: 15px;
+    margin: 15px 0;
     text-align: center;
 }
 
@@ -123,6 +116,6 @@ span {
 }
 
 #session-link {
-    margin-top: 25px;
+    margin: 25px 0;
 }
 
