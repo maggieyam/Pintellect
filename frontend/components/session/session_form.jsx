@@ -26,27 +26,23 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-  
+    e.preventDefault(); 
     const user = Object.assign({}, this.state);
     const props = this.props;
+
     this.props.processForm(user)
       .then(() => this.props.closeModal())
       .then(() => {        
         props.history.push(`/`)});
   }
 
-  componentDidUpdate(prevProps){ 
-  // Typical usage (don't forget to compare props): 
+  componentDidUpdate(prevProps){  
     if (this.props.userId !== prevProps.userId) {
       this.fetchData(this.props.userId);
       console.log(this.props);
     }
   }
 
-  // componentWillUnmount(){
-  //   this.setState({errors: ""}) 
-  // }
   renderAge() {
     return (
       <input
@@ -59,8 +55,6 @@ class SessionForm extends React.Component {
     );
   }
 
-
-
   handleDemo(e, num) {
     e.preventDefault();
     let user = {};
@@ -71,8 +65,6 @@ class SessionForm extends React.Component {
     }    
     this.props.login(user)
     .then(() => this.props.closeModal())
-    // .then(this.componentDidUpdate())
-    // .then(() => this.props.history.push('/'));
   }
 
   render() {
@@ -100,7 +92,7 @@ class SessionForm extends React.Component {
             onChange={this.handleInput('password')}
             className="input-session"
           />
-          <br />
+          <br/>
 
           <div id="error">{this.props.errors ? this.renderErrors() : null}</div>
 
@@ -108,10 +100,8 @@ class SessionForm extends React.Component {
             {this.props.submitButton === 'Continue' ? this.renderAge() : null}
           </div>
           <button id="modal-button">{this.props.submitButton}</button>
-          {/* <button id="modal-button">{this.props.submitButton}</button> */}
         </form>
         {this.props.submitButton === 'Log in' ? this.showDemoButton() : null}
-        {/* {this.showDemoButton()} */}
         {this.showText()}
       </div>
     );
@@ -142,6 +132,7 @@ class SessionForm extends React.Component {
       </span>
 
       <div onClick={() => {
+        this.props.closeModal();
         this.props.openModal();
       } 
       }id="session-link">
@@ -156,9 +147,9 @@ class SessionForm extends React.Component {
       <div>
         {this.props.errors.map((error, i) => (
           <div>
-            <span key={`error-${i}`} className="error-message">
+            <li key={i} className="error-message">
               {error}
-            </span>
+            </li>
             <br />
           </div>
         ))}
