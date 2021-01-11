@@ -5,8 +5,10 @@ import {faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import * as IMGUtil from '../../utils/image_util';
 import FadeIn from "react-fade-in";
 import { createSpinIcon } from '../../utils/graphics.util';
+import { openModal } from "../../actions/modal_actions";
 
 class Greeting extends React.Component{
+
 
   leftNav() {
     return(
@@ -19,7 +21,7 @@ class Greeting extends React.Component{
 
   rightNav() {
     const signup = {type: 'signup'};
-    const login = ({type: 'login'});
+    const login = {type: 'login'};
     return(
       <nav className="right-nav">
         <div className="right-nav-items">
@@ -51,6 +53,7 @@ class Greeting extends React.Component{
 
   render() { 
     if (this.props.currentUser) return null;
+
     return (
         <header className="group">  
          <div className="main-nav">
