@@ -77,7 +77,10 @@ export const select = (boards, pinId) => {
         <div className="select-board"
           key={board.id}
           id={`board${board.id}pin${pinId}`}
-          onClick={() => savePinToBoard(pinId, board)}
+          onClick={() => savePinToBoard(pinId, board).then(() => {
+            const select = document.querySelector('#select');
+            select.innerHTML = `saved to ${board.title}`;
+          })}
         >
           {board.links[0] ? <img src={board.links[0].url} className="mini-img"/> : null }
           {board.title}
