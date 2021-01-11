@@ -173,7 +173,7 @@ const col6 = [
   img42,
   img52,
   img39,
-  img25,
+  img18,
 ]
 
 const col7 = [
@@ -184,6 +184,6 @@ const col7 = [
   img2,
   img21,
   img24,
-  img18,
+  img51,
 ]
 export const images = [col1, col2, col3, col4, col5, col6, col7];

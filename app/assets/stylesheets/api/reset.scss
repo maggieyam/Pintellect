@@ -1,5 +1,4 @@
 html{
-  // height: 200%;
   display: fixed;
   max-width: 100%;
   margin: 0;
@@ -78,37 +77,6 @@ textarea {
 input:hover, textarea:hover {
   border-color: #d0d0d0;
 }
-
-
-
-// .background {
-//   width: null;
-//   height: null;
-//   // background-image: url("../../images/arch/space.png");
-// }
-// ul {
-//   list-style: none;
-// }
-
-// img {
-//   display: block;
-//   width: 100%;
-//   height: auto;
-// }
-
-// nput[type="password"],
-// input[type="email"],
-// input[type="text"],
-// textarea,
-// button {
-//   /*
-//   Get rid of native styling. Read more here:
-//   http://css-tricks.com/almanac/properties/a/appearance/
-//   */
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-//   appearance: none;
-// }
 
 button,
 input[type="submit"] {
