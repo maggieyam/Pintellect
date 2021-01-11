@@ -75,14 +75,17 @@ class User < ApplicationRecord
   end
 	
   def set_username
-      self.username = self.email.split("@")[0].capitalize()
+    return if self.email == ""
+    self.username = self.email.split("@")[0].capitalize()
   end
   
   def set_first_name
+    return if !self.username 
     self.first_name ||= self.username.split("_")[0];
   end
 
   def set_last_name
+    return if !self.username 
     name = self.username.split("_")[1];
     if name 
       self.last_name = name.capitalize();

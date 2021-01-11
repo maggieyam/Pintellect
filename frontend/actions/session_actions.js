@@ -23,21 +23,23 @@ export const receiveErrors = errors => ({
   errors,
 });
 
-export const clearErrors = () => ({
+export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS,
 });
 
-export const signup = user => dispatch =>    
-    APIUtil.signup(user).then(
-    user => dispatch(receiveCurrentUser(user)),
-    err => dispatch(receiveErrors(err.responseJSON)));
+export const signup = user => dispatch => {
+  return APIUtil.signup(user).then(
+  user => dispatch(receiveCurrentUser(user)),
+  err => dispatch(receiveErrors(err.responseJSON)),
+  );
+}  
 
 
 export const login = user => dispatch => {    
     return APIUtil.login(user).then(
     user => dispatch(receiveCurrentUser(user)),
     err => dispatch(receiveErrors(err.responseJSON))
-  )};
+    )};
 
 export const updateUser = user => dispatch => {
   return APIUtil.updateUser(user).then(
