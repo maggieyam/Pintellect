@@ -84,7 +84,7 @@ class PinIndex extends React.Component {
         if (!this.state.pins) allPins = Object.values(this.props.pins);
         
         const {cols} = this.state.cols;
-        pins = reorganizePins(allPins, cols, false);
+        pins = reorganizePins(allPins, cols, true);
 
         return (
             <div>
