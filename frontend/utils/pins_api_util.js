@@ -21,7 +21,6 @@ export const deletePin = (pinId) => {
   });
 };
 
-
 export const updatePin = (pin) => {
   return $.ajax({
     url: `/api/pins/${pin.id}`,

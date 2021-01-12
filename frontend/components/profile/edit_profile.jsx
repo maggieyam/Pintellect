@@ -25,7 +25,7 @@ class EditProfileForm extends React.Component {
     }
 
     render() {
-        const { first_name, last_name, background, description, location, url, photo } = this.state;
+        const { first_name, last_name, username, description, location, url, photo } = this.state;
         return(
             <div className='profile-wrapper'>
                 <form onSubmit={this.handleSubmit}>
@@ -68,11 +68,11 @@ class EditProfileForm extends React.Component {
                             </div>
                         </div>
                         
-                        <p>Background image URL</p>
+                        <p>Username</p>
                             <input 
                                 type="text" 
-                                value={background}
-                                onChange={this.update('background')} />
+                                value={username}
+                                onChange={this.update('username')} />
                         <p>About your profile</p>
                         <textarea 
                             placeholder="Write a little bit about yourself here" 
