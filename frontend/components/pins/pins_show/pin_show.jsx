@@ -1,7 +1,7 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPen, faPlusCircle, faChevronCircleDown, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import pin_show_container from './pin_show_container';
 // import { deletePinFromBoard, deletePin } from '../../../actions/pins_actions';
 // import {createFollow, deleteFollow} from '../../../utils/pins_api_util';

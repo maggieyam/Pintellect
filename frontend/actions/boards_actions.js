@@ -1,5 +1,6 @@
 import * as APIUtil from "../utils/boards_api_util";
 import { closeModal } from "./modal_actions";
+import { RECEIVE_PIN } from "./pins_actions";
 
 export const RECEIVE_BOARDS = "RECEIVE_BOARDS";
 export const RECEIVE_BOARD = "RECEIVE_BOARD";
@@ -20,6 +21,12 @@ const removeBoard = (boardId) => ({
   type: REMOVE_BOARD,
   boardId,
 });
+
+const deletePin = (board) => ({
+  type: REMOVE_BOARD_PIN,
+  board,
+
+})
 
 
 export const createBoard = board => dispatch =>{
@@ -51,10 +58,6 @@ export const fetchBoards = () => dispatch =>
 //     })
 // };
 
-const removeBoardPin = (board) => ({
-  type: REMOVE_BOARD_PIN,
-  board,
-});
 
 export const requestBoard = (boardId) => dispatch => {
   
@@ -71,8 +74,8 @@ export const updateBoard = (board) => (dispatch) => {
 export const deletePinFromBoard = (pinId, boardId) => dispatch => { 
   return APIUtil.deletePinFromBoard(pinId, boardId)
   .then(board => {
-    
-    return dispatch(removeBoardPin(board))
+    debugger
+    return dispatch(deletePin(board))
   })
 }
 

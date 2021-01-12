@@ -1,21 +1,7 @@
 import React from 'react';
-import { deletePinFromBoard } from '../../utils/boards_api_util';
-
-const deletePin = (pinId, boardId, closeModal) => {
-    
-    return e => {
-        deletePinFromBoard(pinId, boardId)
-        .then(() => {
-            e.preventDefault;
-            closeModal();
-            location.reload();
-        })
-    }
-    
-}
 
 export const DeleteMessageForm = (props) => {
-    const { pinId, boardId, closeModal } = props;
+    const { pinId, boardId, closeModal, deletePin } = props;
     return(
         <div className="delete-message-box">
             
@@ -23,7 +9,10 @@ export const DeleteMessageForm = (props) => {
             <p> Once you delete a Pin, you can't undo it.</p>
             <div>
                 <button onClick={() => props.closeModal()}>Cancel</button>
-                <button onClick={deletePin(pinId, boardId, closeModal)} id="delete-pin">
+                <button onClick={()=> {
+                    deletePin(pinId, boardId)
+                    .then(() => closeModal()) 
+                    }} id="delete-pin">
                     Delete Pin
                 </button>
             </div>

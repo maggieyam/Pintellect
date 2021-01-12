@@ -9,7 +9,7 @@ import { RECEIVE_PINS, RECEIVE_PIN } from '../actions/pins_actions';
 
 const boardReducer = (state={}, action) => {
     Object.freeze(state);
-    
+    let nextState;
     switch (action.type) {
         case RECEIVE_PINS:
             return action.payload.boards;
@@ -20,18 +20,20 @@ const boardReducer = (state={}, action) => {
         case RECEIVE_BOARDS:   
             return merge({}, action.boards);
         
-        case RECEIVE_BOARD:            
-        const newState = {'board': action.board, 
+        case RECEIVE_BOARD:          
+            const newState = {'board': action.board, 
                             'userBoards': action.board.userBoards}           
-        return merge({}, state, newState)
+            return merge({}, state, newState)
     
         case REMOVE_BOARD:
-        let nextState = merge({}, state);           
-        delete nextState[action.boardId];
-        return nextState;
+            nextState = merge({}, state);           
+            delete nextState[action.boardId];
+            return nextState;
     
         case REMOVE_BOARD_PIN:
-        return state;
+            nextState = merge({}, state);
+            delete nextState[action.board.id]
+            return merge(nextState, {[action.board.id]: action.board});
         default:
             return state;
     }

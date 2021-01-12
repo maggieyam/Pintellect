@@ -31,15 +31,6 @@ export const reorganizePins = (pins, cols, shuffle) => {
     return newArr;
 }
 
-// const addToSingleRow = (pins) => {
-//     let row = [];
-//     for (let pin of pins) {
-//         row.push([pin]);
-
-//     }
- 
-//     return row;
-// }
 
 const addItemsToCols = (num, newArr, original) => {
     for (let i = 0; i < num; i++) {

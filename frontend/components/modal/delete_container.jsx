@@ -1,6 +1,7 @@
 import DeleteMessageForm from './message_box';
 import { closeModal } from "../../actions/modal_actions";
 import { connect } from 'react-redux';
+import { deletePinFromBoard } from '../../actions/boards_actions';
 
 const mapStateToProps = ({ui}) => {
     return {
@@ -12,6 +13,7 @@ const mapStateToProps = ({ui}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch(closeModal()),
+    deletePin: (pinId, boardId) => dispatch(deletePinFromBoard(pinId, boardId))
   };
 };
 
