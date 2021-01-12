@@ -32,8 +32,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   } else {
     store = configureStore ();
   }
-  window.getState = store.getState;
-  // now we can test our code from the console
+ 
 
 
   
@@ -41,11 +40,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   ReactDOM.render (<Root store={store}/>, root);
 });
 
-// this.store = store;
 
-// window.postUser = postUser;
-// window.postSession = postSession;
-// window.deleteSession = deleteSession;
 
 
 
