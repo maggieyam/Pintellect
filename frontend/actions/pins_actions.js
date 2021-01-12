@@ -7,9 +7,9 @@ export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const REMOVE_PIN = 'REMOVE_PIN';
 export const UNFOLLOW = 'UNFOLLOW';
 
-const receivePins = (pins) => ({
+const receivePins = (payload) => ({
   type: RECEIVE_PINS,
-  pins,
+  payload,
 });
 
 const receivePin = (pin) => ({
@@ -36,9 +36,8 @@ export const deletePin = (pinId) => (dispatch) =>
      return dispatch(removePin(pinId))});
 
 export const requestPins = () => (dispatch) =>
-  APIUtil.fetchPins().then((pins) => {
-    
-    return dispatch(receivePins(pins));
+  APIUtil.fetchPins().then((payload) => {  
+    return dispatch(receivePins(payload));
   });
 
 export const requestPin = (pinId) => (dispatch) => {

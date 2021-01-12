@@ -77,8 +77,13 @@ class PinIndex extends React.Component {
     render() {  
 
         let { openModal, boards, pins} = this.props;
+        debugger
         if (!pins) return null;
-        if(boards) {boards = Object.values(boards)};
+        if(boards) {
+          boards = Object.values(boards)
+        } else {
+          boards = [];
+        };
         let allPins = this.state.pins;
 
         if (!this.state.pins) allPins = Object.values(this.props.pins);

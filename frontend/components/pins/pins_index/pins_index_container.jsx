@@ -4,13 +4,12 @@ import {requestPins} from '../../../actions/pins_actions';
 // import { fetchBoards } from '../../../actions/boards_actions';
 import {openModal} from '../../../actions/modal_actions';
 
-const mapStateToProps = ({ entities }) => {
-  
+const mapStateToProps = ({ entities, session }) => {
   // const payload = entities.pins;
   return {
-    pins: entities.pins.pins,
-    boards: entities.pins.boards,
-    user: entities.users
+    pins: entities.pins,
+    boards: entities.boards,
+    user: entities.users[session.id]
   };
 };
 

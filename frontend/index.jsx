@@ -7,7 +7,6 @@ import {fetchBoards} from './actions/boards_actions'
 
 document.addEventListener ('DOMContentLoaded', () => {
   let store;
-
   if (window.currentUser) {
     
     let userBoards = {}
@@ -33,7 +32,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   } else {
     store = configureStore ();
   }
-
+  window.getState = store.getState;
   // now we can test our code from the console
 
 

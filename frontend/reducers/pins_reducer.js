@@ -12,7 +12,7 @@ const pinReducer = (state = {}, action) => {
   let nextState;
   switch (action.type) {
     case RECEIVE_PINS:
-      return merge({}, state, action.pins);
+      return action.payload.pins;
       
     case RECEIVE_PIN:         
       return merge({}, state, action.pin); 

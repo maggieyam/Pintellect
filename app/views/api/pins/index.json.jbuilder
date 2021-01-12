@@ -7,6 +7,7 @@ json.pins do
 end
 
 json.boards do
+  
   current_user.boards.includes(:author).each do |board|
     json.set! board.id do
       json.pins board.pins
