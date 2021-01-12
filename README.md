@@ -62,11 +62,41 @@ When the user is signed in, the user can view all pins on the index page with si
   *  Recalculates column numbers for responsive design.
   *  Positions images of different sizes such that the white spade between images is equally distributed.
 
-![](code3.png)
-
-* Because this is used in multiple components, I made it reuseable.
-
-![](code1.png)
+```
+const {cols} = this.state.cols;
+   pins = reorganizePins(allPins, cols, true);
+   return (
+       <div>
+           <div className="pins-seeds-container">
+               {mapPinsToCols(pins, openModal, boards)}           
+           </div>
+       </div>
+   );
+```
+```
+export const reorganizePins = (pins, cols, shuffle) => {
+    if (shuffle) {
+        pins = _.shuffle(pins);
+    } 
+    
+    let newArr = [];
+    const len = pins.length;
+    const col = cols || Math.floor(window.innerWidth / 243.5);
+    for (let i = 0; i < col; i++) {
+        let inner = [];
+        let rows = Math.floor(len / col);
+        for (let j = 0; j < rows; j++){
+            inner.push(pins[rows * i + j]);             
+        }
+        newArr.push(inner);
+    }
+    const newLen = newArr.length * newArr[0].length;
+    if (newLen < len ) {
+        addItemsToCols(len - newLen, newArr, pins.slice(newLen));
+    }
+    return newArr;
+}
+```
 
 * 
 
