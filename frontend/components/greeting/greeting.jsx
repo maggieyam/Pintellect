@@ -10,6 +10,7 @@ import { openModal } from "../../actions/modal_actions";
 class Greeting extends React.Component{
 
 
+
   leftNav() {
     return(
       <nav className="left-nav">
@@ -25,7 +26,7 @@ class Greeting extends React.Component{
     return(
       <nav className="right-nav">
         <div className="right-nav-items">
-          <Link to="/about" className="link-nav">About</Link>
+          <Link to="/about" className="link-nav" target="_blank">About</Link>
           <button onClick={() => this.props.openModal(login)} id="login">
             Log in
           </button>
