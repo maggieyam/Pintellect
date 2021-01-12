@@ -62,7 +62,7 @@ When the user is signed in, the user can view all pins on the index page with si
   *  Recalculates column numbers for responsive design.
   *  Allow images with different height to be nicely organized in columns.
 
-![](code.png)
+![](code3.png)
 
 * Because this is used in multiple components, I made it reuseable.
 
