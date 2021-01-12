@@ -10,6 +10,8 @@ Pintellect is a website modeled off of Pinterest, where you can discover your ne
 ### Pins
 When the user is signed in, the user can view all pins on the index page with similar images as below: 
 
+![](pin_index.gif)
+
 * To view your pin:
   * Click Home button to pin's index page.
   * On the home page or the board's show page, click on any picture will lead you to the pin's show page.
@@ -26,8 +28,11 @@ When the user is signed in, the user can view all pins on the index page with si
   
 * To create new pins:
   * On board's index page, click the plus icon and choose to create a pin from the drop-down list.
-  
+   
+![](board_index.gif)
+
 ### Boards
+
 * To view your board: 
   * Press the icon with your initial button on the right of the navbar. 
   * You will see your profile infomation as well as your boards.
@@ -38,6 +43,10 @@ When the user is signed in, the user can view all pins on the index page with si
 
 * To Edit or delete boards:
   * On board's index page, hover over any board and click on the edit icon.
+   
+### Follows
+* To follow or unfollow a user:
+   * Click on the pin you are interested in. On that pin's show page, click the "follow" button to follow and click "following" to unfollow.
  
  ### Profile
 * To Edit user profile:
@@ -45,9 +54,7 @@ When the user is signed in, the user can view all pins on the index page with si
   * Click Done after you edited personal info. 
   * To view the updated profile, click the icon with user's initial.
 
-### Follows
-* To follow or unfollow a user:
-   * Click on the pin you are interested in. On that pin's show page, click the "follow" button to follow and click "following" to unfollow.
+
   
 
 * Coming: 
