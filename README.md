@@ -55,7 +55,20 @@ When the user is signed in, the user can view all pins on the index page with si
   * To view the updated profile, click the icon with user's initial.
 
 
-  
+## Code Snippet
+
+* I have created an algorithm to organize and style pins.
+  *  It randomizes the position of pins on the page.
+  *  Recalculates column numbers for responsive design.
+  *  Allow images with different height to be nicely organized in columns.
+
+![](code.png)
+
+* Because this is used in multiple components, I made it reuseable.
+
+![](code1.png)
+
+* 
 
 * Coming: 
   * AWS for pictures
