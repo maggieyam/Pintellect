@@ -73,7 +73,7 @@ const {cols} = this.state.cols;
        </div>
    );
 ```
-*  Reusable for multiple components.
+*  Reusable code for multiple components.
 
 ```
 export const reorganizePins = (pins, cols, shuffle) => {
@@ -99,8 +99,6 @@ export const reorganizePins = (pins, cols, shuffle) => {
     return newArr;
 }
 ```
-
-* 
 
 * Coming: 
   * AWS for pictures
