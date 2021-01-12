@@ -73,6 +73,8 @@ const {cols} = this.state.cols;
        </div>
    );
 ```
+*  Reusable for multiple components.
+
 ```
 export const reorganizePins = (pins, cols, shuffle) => {
     if (shuffle) {
