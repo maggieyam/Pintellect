@@ -90,7 +90,6 @@ class PinIndex extends React.Component {
         
         const {cols} = this.state.cols;
         pins = reorganizePins(allPins, cols, true);
-
         return (
             <div>
                 <div className="pins-seeds-container">

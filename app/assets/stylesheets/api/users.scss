@@ -2,14 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.header-group{
-    padding-top: 20px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    font-weight: 700px;
-}
 
 .main-nav {
     display:flex;
@@ -284,7 +276,7 @@ img {
 //     justify-content: space-around;
 // }
 .profile-wrapper {
-    margin-top: 20px;
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

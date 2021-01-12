@@ -11,7 +11,6 @@ export const reorganizePins = (pins, cols, shuffle) => {
     
     let newArr = [];
     const len = pins.length;
-    
     const col = cols || Math.floor(window.innerWidth / 243.5);
 
     for (let i = 0; i < col; i++) {
@@ -20,7 +19,6 @@ export const reorganizePins = (pins, cols, shuffle) => {
         for (let j = 0; j < rows; j++){
             inner.push(pins[rows * i + j]);             
         }
-        // 
         newArr.push(inner);
     }
 
@@ -39,7 +37,7 @@ const addItemsToCols = (num, newArr, original) => {
 }
 
 
-const deleteBtn = (pin, openModal, boards, board) => {
+const deleteBtn = (pin, openModal, board) => {
     const modal = {type: 'delete', item: {pinId: pin.id, boardId: board.id}};
     return(
         <div 
@@ -59,7 +57,6 @@ const deleteBtn = (pin, openModal, boards, board) => {
 export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
 
     if (!pins) return null;
-
     return(             
         <div className="pins-seeds-container">               
             {pins.map((colPins, i) => 
@@ -84,7 +81,7 @@ export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
                             Pin is Saved!
                         </h2>
                        
-                        {toDelete && boards && board ? deleteBtn(pin, openModal, boards, board) : null}
+                        {toDelete && boards && board ? deleteBtn(pin, openModal, board) : null}
                     </div>                                  
                 )}
                 </div>
