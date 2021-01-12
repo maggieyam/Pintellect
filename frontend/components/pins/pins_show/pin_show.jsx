@@ -34,7 +34,7 @@ class PinShow extends React.Component {
         const { pin, currentUser, users } = this.props;
         if (!pin) return null;
         const author = users[pin.author_id];
-        
+        if (!author) return null;
         const followers = author.followers || [];
         const followersNum = followers.length;
         
