@@ -5,16 +5,16 @@ import {closeModal} from './modal_actions';
 export const RECEIVE_PINS = 'RECEIVE_PINS';
 export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const REMOVE_PIN = 'REMOVE_PIN';
-export const UNFOLLOW = 'UNFOLLOW';
+
 
 const receivePins = (payload) => ({
   type: RECEIVE_PINS,
   payload,
 });
 
-const receivePin = (pin) => ({
+const receivePin = (payload) => ({
   type: RECEIVE_PIN,
-  pin,
+  payload,
 });
 
 const removePin = (pinId) => ({
@@ -41,8 +41,8 @@ export const requestPins = () => (dispatch) =>
   });
 
 export const requestPin = (pinId) => (dispatch) => {
-  return APIUtil.fetchPin(pinId).then((pin) =>
-    dispatch(receivePin(pin))
+  return APIUtil.fetchPin(pinId).then((payload) =>
+    dispatch(receivePin(payload))
   );
 };
 
@@ -61,15 +61,3 @@ export const savePin = (pinId, boardId) => dispatch => {
   );
 }
 
-export const createFollow = (authorId, followerId, pinId) => dispatch => {
-  return APIUtil.createFollow(authorId, followerId, pinId)
-  // .then( pin => dispatch(receivePin(pin))
-  .then( pin => dispatch(receivePin(pin)) )
-}
-
-export const deleteFollow = (authorId, followerId, pinId) => dispatch => {
-  
-  return APIUtil.deleteFollow(authorId, followerId, pinId)
-  .then( pin => dispatch({type: UNFOLLOW, pin,})
-  )
-}

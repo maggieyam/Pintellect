@@ -31,10 +31,11 @@ class PinShow extends React.Component {
     }
 
     renderInfo() {       
-        const { pin, currentUser, user } = this.props;
+        const { pin, currentUser, users } = this.props;
         if (!pin) return null;
-
-        const followers = user.followers || [];
+        const author = users[pin.author_id];
+        
+        const followers = author.followers || [];
         const followersNum = followers.length;
         
         return(
@@ -47,17 +48,17 @@ class PinShow extends React.Component {
                 <div id="name-wrapper">
                     <div id="names">
                         <button className="user-initial">
-                            {user.first_name[0]}
+                            {author.first_name[0]}
                         </button>
                         
                         <div id="display-names">
                             <strong>
-                                {user.first_name} {user.last_name}
+                                {author.first_name} {author.last_name}
                             </strong>
                             <p>{followersNum}  {followersNum === 1 ? 'follower' : 'followers'}</p>
                         </div>
                     </div>
-                    {currentUser.id !== user.id ? <button id="follow-btn" onClick={(e) => this.toggleFollow(e, followers)}>
+                    {currentUser.id !== author.id ? <button id="follow-btn" onClick={(e) => this.toggleFollow(e, followers)}>
                         {followers.includes(currentUser.id) ? 'following' : 'follow'}
                     </button> : null}
                     

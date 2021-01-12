@@ -5,13 +5,16 @@ import {
     REMOVE_BOARD_PIN 
 } from '../actions/boards_actions';
 import { merge } from "lodash";
-import { RECEIVE_PINS } from '../actions/pins_actions';
+import { RECEIVE_PINS, RECEIVE_PIN } from '../actions/pins_actions';
 
 const boardReducer = (state={}, action) => {
     Object.freeze(state);
     
     switch (action.type) {
         case RECEIVE_PINS:
+            return action.payload.boards;
+        
+        case RECEIVE_PIN:
             return action.payload.boards;
 
         case RECEIVE_BOARDS:   

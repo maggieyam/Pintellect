@@ -1,17 +1,17 @@
 import {connect} from 'react-redux';
 import PinShow from './pin_show';
-import {requestPin, deletePin, createFollow, deleteFollow} from '../../../actions/pins_actions';
+import {requestPin, deletePin } from '../../../actions/pins_actions';
 import { deletePinFromBoard } from '../../../utils/pins_api_util';
+import { createFollow, deleteFollow } from '../../../actions/follow_actions';
 import {openModal} from '../../../actions/modal_actions';
 
 const mapStateToProps = ({ entities, session }, {match}) => {
   const id = match.params.pinId;
-  const boards = entities.pins.boards || {};
-
+  
   return {
-    pin: entities.pins.pin,
-    boards: boards,
-    user: entities.pins.user,
+    pin: entities.pins[id],
+    boards: entities.boards,
+    users: entities.users,
     id,
     currentUser: entities.users[session.id]
   };

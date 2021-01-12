@@ -15,12 +15,7 @@ const pinReducer = (state = {}, action) => {
       return action.payload.pins;
       
     case RECEIVE_PIN:         
-      return merge({}, state, action.pin); 
-    
-    case UNFOLLOW:
-      nextState = merge({}, state);
-      delete nextState.user;
-      return merge({}, nextState, action.pin);
+      return merge({}, state, action.payload.pin); 
 
     case REMOVE_PIN:
       nextState = merge({}, state);
