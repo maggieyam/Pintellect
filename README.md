@@ -52,6 +52,6 @@ When the user is signed in, the user can view all pins on the index page with si
 
 * Coming: 
   * AWS for pictures
-  * Search bar for finding pins
+  * Search bar to find pins
   * Sugguested pins
 
