@@ -62,11 +62,18 @@ When the user is signed in, the user can view all pins on the index page with si
   *  Recalculates column numbers for responsive design.
   *  Allow images with different height to be nicely organized in columns.
 
-![](code3.png)
+`const {cols} = this.state.cols;
+        pins = reorganizePins(allPins, cols, true);
+        return (
+            <div>
+                <div className="pins-seeds-container">
+                    {mapPinsToCols(pins, openModal, boards)}           
+                </div>
+            </div>
+        );`
 
 * Because this is used in multiple components, I made it reuseable.
 
-![](code1.png)
 
 * 
 
