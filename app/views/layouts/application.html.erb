@@ -5,8 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag asset_path('favicon.ico') %>
-    <script type="text/javascript">
-  
+    <meta property="og:title" content="Pintellect" />
+     <meta property='og:image' content="<%= asset_path('pintellect_linkedIn.png') %>"/>
+     <meta property="og:description" content="A video sharing platform that allows users 
+     to plan their meals based on nutrition needs, diet preference and ingredients on hand."/>
+     <meta property="og:url" content="http://pintellect.herokuapp.com/"/>
+    <script type="text/javascript"> 
     </script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
