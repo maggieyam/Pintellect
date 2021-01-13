@@ -3,11 +3,13 @@
   <head>
     <title>Pintellect</title>
     <%= favicon_link_tag asset_path('favicon.ico') %>
-    
+
     <meta property="og:title" content="Pintellect" />
-    <meta property='og:image' content="<%= asset_path('pintellect_linkedIn.png') %>"/>
+    <meta property='og:image' content="<%= image_url('pintellect_linkedIn.png') %>"/>
     <meta property="og:description" content="An online visual discovery engine inspired by Pinterest and my love of art and science."/>
     <meta property="og:url" content="http://pintellect.herokuapp.com/"/>
+    <meta property="og:type" content="website" />
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
