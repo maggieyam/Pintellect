@@ -6,7 +6,7 @@ import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics
 // import PinIndexContainer from "../pins/pins_index/pins_index_container";
 import SearchPin from '../search/search_pin'
 import { faAngellist, faLinkedin, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-
+// import Pdf from '../../../app/assets/pdf/Maggie_Yan_Resume.pdf';
 class Navbar extends React.Component{
   // constructor(props) {
   //   super(props);

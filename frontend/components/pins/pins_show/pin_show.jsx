@@ -85,10 +85,12 @@ class PinShow extends React.Component {
                 
 
                 <div className="pin-select-wrapper">
+                    {/* <p id="pin-error-msg2">Please select or create a board!</p> */}
                     <SearchBoard 
                         boards={Object.values(boards)}
                         openModal={openModal}
                         pin={pin}
+                        msg={true}
                     />
                 </div>
             </div>

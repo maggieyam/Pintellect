@@ -1,7 +1,7 @@
 import React from 'react';
 import { dropDownBtns, selectWrapper, dropDownOptions, createBtns } from '../../utils/drop_down_util';
 
-const SearchBoard = ({boards, openModal, pin}) => {
+const SearchBoard = ({boards, openModal, pin, msg}) => {
     return (
         <div className="dropDown-wrapper">
             <div id="nav-right-btns" className="feed-option">
@@ -11,7 +11,7 @@ const SearchBoard = ({boards, openModal, pin}) => {
             <div id={`dropDown-content-${pin.id}`} className="dropDown-content dropDown-feed">
                 <div id="wrapper-dropdown">
                     {selectWrapper(`search-pins search-pin-${pin.id}`, boards, pin.id)}
-                    {dropDownOptions(boards, pin.id)}
+                    {dropDownOptions(boards, pin.id, msg)}
                     {createBtns(`#dropDown-content-${pin.id}`, pin.id, openModal)}                  
                 </div>
             </div>

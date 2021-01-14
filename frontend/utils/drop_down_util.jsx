@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronDown, faSearch, faPlusCircle,} from '@fortawesome/free-solid-svg-icons';
 import {savePin} from './pins_api_util';
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 export const toggle = (selector) => {
       let dropDown = document.querySelector(`${selector}`);
@@ -69,7 +70,7 @@ const show = (selector) => {
         }});                        
 }
 
-export const select = (boards, pinId) => { 
+export const select = (boards, pinId, msg) => { 
   if (!boards) return null;  
   
   return boards.map((board) => {
@@ -78,8 +79,10 @@ export const select = (boards, pinId) => {
           key={board.id}
           id={`board${board.id}pin${pinId}`}
           onClick={() => savePinToBoard(pinId, board).then(() => {
-            const select = document.querySelector('#select');
-            select.innerHTML = `saved to ${board.title}`;
+           if (msg) {
+             const select = document.querySelector('#select');
+             select.innerHTML = `saved to ${board.title}`;
+           } 
           })}
         >
           {board.links[0] ? <img src={board.links[0].url} className="mini-img"/> : null }
@@ -117,12 +120,13 @@ export const selectWrapper = (className, boards, pinId) => {
   )
 }
 
-export const dropDownOptions = (boards, pinId) => {
+export const dropDownOptions = (boards, pinId, msg) => {
   return(
     <div className="dropDown-options-wrapper">
       <div id="all-boards">All boards</div>
       <div className="dropDown-options">
-        {boards ? select(boards, pinId) : null}
+        {!boards || boards.length === 0 ? <p id="pin-error-msg2">Create a board! <br/>(click the Plus icon below)</p> : null}
+        {boards ? select(boards, pinId, msg) : null}
       </div>
     </div>
   )
