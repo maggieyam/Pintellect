@@ -59,11 +59,7 @@ class EditBoardForm extends React.Component {
                     reminders about <br />
                     planning
                   </p>
-                <div>
-                  <div id="settings">settings</div>
-                
-                  <h3 id="secret-line">Keep this board screte</h3>
-                   
+                <div>                 
                   <div className="edit-form-btns">
                     <button type="button" id='delete-btn'
                       onClick={this.handleDelete}

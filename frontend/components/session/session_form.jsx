@@ -28,12 +28,9 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault(); 
     const user = Object.assign({}, this.state);
-    const props = this.props;
 
     this.props.processForm(user)
       .then(() => this.props.closeModal())
-      .then(() => {        
-        props.history.push(`/`)});
   }
 
   componentDidUpdate(prevProps){  
@@ -83,7 +80,6 @@ class SessionForm extends React.Component {
             onChange={this.handleInput('email')}
             className="input-session email"
           />
-          {/* <div id="error">{this.props.errors ? this.renderErrors() : null}</div> */}
           <br />
 
           <input
@@ -127,11 +123,6 @@ class SessionForm extends React.Component {
   showText() {
     return( 
     <div id="session-form-text">
-      <span>
-        <p id="agreement">By continuing, you agree to Pinterest's</p>
-        <strong id="terms-of-service">Terms of Service, Privacy policy.</strong>
-      </span>
-
       <div onClick={() => {
         this.props.closeModal();
         this.props.openModal();
@@ -144,19 +135,14 @@ class SessionForm extends React.Component {
   }
 
 
-  renderErrors() {
-    const email = document.getElementsByClassName('email');
-    const password = document.getElementsByClassName('password');
-    
+  renderErrors() {  
     return (
       <div>
         {this.props.errors.map((error, i) => (
           <div key={i}>
             <li className="error-message" id={`error-${i}`}>
               {error}
-              {/* {error[0] === 'email' ? password.after(`#error-${i}`) : error} */}
             </li>
-              {/* {error[0] === 'password' ? password.appendChild(`#error-${i}`) : null} */}
             <br/>
           </div>
         ))}

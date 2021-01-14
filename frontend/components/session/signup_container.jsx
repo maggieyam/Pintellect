@@ -6,7 +6,6 @@ import SessionForm from './session_form';
 import { openModal, closeModal } from '../../actions/modal_actions'
 
 const mSTP = ({errors}) => {
-
   return {
     errors: errors.session,
     submitButton: "Continue",
