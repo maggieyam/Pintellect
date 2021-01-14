@@ -3,8 +3,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronDown, faSearch, faPlusCircle,} from '@fortawesome/free-solid-svg-icons';
 import {savePin} from './pins_api_util';
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-
+import { Redirect, withRouter } from 'react-router-dom';
+import {connect} from 'react-redux';
 export const toggle = (selector) => {
       let dropDown = document.querySelector(`${selector}`);
       if (!dropDown) return;
@@ -31,15 +31,16 @@ export const toggle = (selector) => {
 const show = (selector) => { 
   let dropDown = document.querySelector(selector);
   window.addEventListener('click', e => {
-  if (e.target.parentElement 
-     && e.target.parentElement.parentElement 
-     && e.target.parentElement 
-     && (e.target.parentElement.parentElement.parentElement === dropDown.parentElement
-     || e.target === dropDown.childNodes[0].childNodes[0].childNodes[0])){
-     reveal(selector);
-  } else {
-    hide(selector);
-  }
+    if (e.target.parentElement 
+      && e.target.parentElement.parentElement 
+      && e.target.parentElement .parentElement.parentElement
+      && (e.target.parentElement.parentElement.parentElement === dropDown.parentElement
+      || e.target === dropDown.childNodes[0].childNodes[0].childNodes[0])
+      || e.target.parentElement.parentElement.parentElement.parentElement === dropDown.parentElement){
+      reveal(selector);
+    } else {
+      hide(selector);
+    }
 })
 }
 
@@ -92,24 +93,24 @@ export const select = (boards, pinId, msg) => {
   })
 }
 
-export  const savePinToBoard = (pinId, board) => {
-    return savePin(pinId, board.id).then((err) => {  
-      
+const savePinToBoard = (pinId, board) => {
+  savePin(pinId, board.id)
+    .then(() => {     
       hide(`#dropDown-content-${pinId}`);
       let text = document.querySelector(`#save-message-${pinId}`);
       let select = document.querySelector(`#select-text`)
       if(select) select.innerHTML = `Saved to ${board.title}`;
       if (text) text.style.display = 'block';
     });
-
 }
 
 export const selectWrapper = (className, boards, pinId) => {
   return(
      <div id="top-pin-select">
       <input
-          onChange={search(boards, pinId)}
-          className={className}
+        placeholder="a board is required!"
+        onChange={search(boards, pinId)}
+        className={className}
       />
       <FontAwesomeIcon
           icon={faSearch}
@@ -125,7 +126,10 @@ export const dropDownOptions = (boards, pinId, msg) => {
     <div className="dropDown-options-wrapper">
       <div id="all-boards">All boards</div>
       <div className="dropDown-options">
-        {!boards || boards.length === 0 ? <p id="pin-error-msg2">Create a board! <br/>(click the Plus icon below)</p> : null}
+        {!boards || boards.length === 0 ? 
+        <p id="pin-error-msg2">Create a board! 
+        <br/>(click the Plus icon below)</p> 
+        : null}
         {boards ? select(boards, pinId, msg) : null}
       </div>
     </div>

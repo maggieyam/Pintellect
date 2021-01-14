@@ -54,7 +54,7 @@ const deleteBtn = (pin, openModal, board) => {
 
 }
 
-export const mapPinsToCols = (pins, openModal, boards, board, toDelete) => {
+export const mapPinsToCols = (pins, openModal, boards, board, toDelete, history) => {
 
     if (!pins) return null;
     return(             

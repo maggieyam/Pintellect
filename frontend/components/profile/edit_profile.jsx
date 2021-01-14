@@ -11,10 +11,14 @@ class EditProfileForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.updateUser(this.state).then(
+        this.props.updateUser(this.state)
+        .then(
         () => {          
             reveal('.saved');
-            setTimeout(() => hide('.saved'), 2000);
+            setTimeout(() => 
+                this.props.history.push(`/${this.state.username}/_saved`)
+                , 1500);
+            
         })  
     }
 

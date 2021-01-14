@@ -74,7 +74,7 @@ export const updateBoard = (board) => (dispatch) => {
 export const deletePinFromBoard = (pinId, boardId) => dispatch => { 
   return APIUtil.deletePinFromBoard(pinId, boardId)
   .then(board => {
-    debugger
+    
     return dispatch(deletePin(board))
   })
 }

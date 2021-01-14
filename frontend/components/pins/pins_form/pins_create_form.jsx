@@ -155,7 +155,7 @@ updateImg() {
 
  navRight() {
    const { boards } = this.props;
-   debugger
+   
    return(
     <div id="nav-right-pin-form">
       <div id="nav-right-btns">
