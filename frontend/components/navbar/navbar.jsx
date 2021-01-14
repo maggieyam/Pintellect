@@ -3,7 +3,6 @@ import { Link, Redirect}from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch,  faUserCog, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
 import {createIcon, createSpinIcon, createButtonLink} from '../../utils/graphics.util';
-// import PinIndexContainer from "../pins/pins_index/pins_index_container";
 import SearchPin from '../search/search_pin'
 import { faAngellist, faLinkedin, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 // import Pdf from '../../../app/assets/pdf/Maggie_Yan_Resume.pdf';
@@ -57,11 +56,11 @@ class Navbar extends React.Component{
                 Home
             </button>
           </Link>      
-          <a href="https://docs.google.com/document/d/1mXrwXsINH_csdULet5zCpTn5lCkAeROYRiZhb_k1qzQ/edit?usp=sharing" target="_blank" id="nav-link">
+          {/* <a href="https://docs.google.com/document/d/1mXrwXsINH_csdULet5zCpTn5lCkAeROYRiZhb_k1qzQ/edit?usp=sharing" target="_blank" id="nav-link">
             <button className="board-nav-button" id="today">
               Resume
             </button> 
-          </a> 
+          </a>  */}
           <a href="https://maggieyam.github.io" target="_blank" id="nav-link">
             <button className="board-nav-button" id="following">
               Portfolio
