@@ -61,7 +61,7 @@ class BoardIndex extends React.Component {
               <h1 id="index-header">{user.first_name}  {user.last_name}</h1>
               <span>{user.location}</span>
               
-              <span id="description">  @{user.username} {(username && description) ? <span>&#8226;</span> : null } {user.description}</span>
+              <span id="description">  {user.username} {(username && description) ? <span>&#8226;</span> : null } {user.description}</span>
               <strong>{followersNum} {followersNum === 1 ? 'follower' : 'followers'} &#8226; {followingsNum} {followingsNum === 1 ? 'following' : 'followings'}</strong>
             </div>
 

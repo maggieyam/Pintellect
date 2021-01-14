@@ -26,7 +26,13 @@ class CreatePinForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault;
     hide('.dropDown-content');
-    if (!this.state.boardId) return null;
+    if (!this.state.boardId) {
+      reveal('#pin-error-msg');
+      setTimeout(() => hide('#pin-error-msg'), 1000);
+      return null;
+
+    };
+
     if (this.state.link === '') {
       const img = document.querySelector('#upload-img');
       img.style.background = '#ffe6e6';
@@ -120,7 +126,6 @@ updateImg() {
 
  select(boards) {
     return boards.map((board) => {
-      // 
         return (
           <div className="select-board"
           key={board.id}
@@ -149,11 +154,13 @@ updateImg() {
  }
 
  navRight() {
-   const { boards, openModal } = this.props;
+   const { boards } = this.props;
+   debugger
    return(
     <div id="nav-right-pin-form">
       <div id="nav-right-btns">
         {dropDownBtns('.dropDown-content', true)}
+        <p id="pin-error-msg">Please select or create a board!</p>
       </div>
 
       <div className="dropDown-content">
@@ -175,7 +182,7 @@ updateImg() {
               {boards ? this.select(boards) : null}
             </div>
           </div>
-          {createBtns(`.dropDown-content`, openModal)}
+          {createBtns(`.dropDown-content`, null, this.props.openModal)}
         </div>
       </div>
     </div>
@@ -188,7 +195,7 @@ updateImg() {
        <div id="show-img">
        </div>
         <div id="upload-img">
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={faArrowAltCircleUp}
             id="svg-pin-form"
             size="2x"
@@ -197,10 +204,11 @@ updateImg() {
             icon={faExclamationCircle}
             id="svg-pin-warning"
             size="2x"
-          />
+          /> */}
           <div>
             <p className="text-upload">
-              Click to Upload
+              {/* Click to Upload */}
+              Add an image link 
             </p>
             <p className="error-img1">
               An image is required to <br/>

@@ -43,7 +43,6 @@ class EditProfileForm extends React.Component {
                         <div className="profile-edit-btns">
                             <button type="reset" id ="cancel" onClick={() => this.reset()}>Cancel</button>
                             <button  id="save" >Done</button>
-                            {/* {this.toggleDisabled()} */}
                         </div>              
                     </div>
                     <div className="profile-body">

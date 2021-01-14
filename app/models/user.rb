@@ -20,6 +20,7 @@
 class User < ApplicationRecord
     validates :email, :session_token, uniqueness: true, presence: true
     validates :password_digest, :age, presence: true
+    validates :username, uniqueness: true
     validates :password, length: { minimum: 6 }, allow_nil: true
 
     has_many :boards, 
@@ -75,18 +76,20 @@ class User < ApplicationRecord
   end
 	
   def set_username
-    return if self.email == ""
-    self.username = self.email.split("@")[0].capitalize()
+    return if self.email == ""    
+    self.username = self.email
   end
   
   def set_first_name
-    return "" if !self.username 
-    self.first_name ||= self.username.split("_")[0];
+    return "" if !self.email
+    temp = self.email.split("@")[0].capitalize()
+    self.first_name ||= temp.split("_")[0];
   end
 
   def set_last_name
-    return "" if !self.username 
-    name = self.username.split("_")[1];
+    return "" if !self.email
+    temp = self.email.split("@")[0].capitalize()
+    name = temp.split("_")[1];
     if name 
       self.last_name = name.capitalize();
     end

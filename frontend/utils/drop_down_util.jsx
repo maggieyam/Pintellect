@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faChevronDown, faSearch, faPlusCircle,} from '@fortawesome/free-solid-svg-icons';
 import {savePin} from './pins_api_util';
 import React from 'react';
-let dropDown = 0;
+
 export const toggle = (selector) => {
       let dropDown = document.querySelector(`${selector}`);
       if (!dropDown) return;
