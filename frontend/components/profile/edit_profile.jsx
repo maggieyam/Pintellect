@@ -24,6 +24,10 @@ class EditProfileForm extends React.Component {
         }    
     }
 
+    reset() {
+        this.setState(this.props.user);
+    }
+
     render() {
         const { first_name, last_name, username, description, location, url, photo } = this.state;
         return(
@@ -37,7 +41,7 @@ class EditProfileForm extends React.Component {
                             <p>People on Pinterest will get to know you with the info below</p>
                         </div>   
                         <div className="profile-edit-btns">
-                            <button type="reset" id ="cancel">Cancel</button>
+                            <button type="reset" id ="cancel" onClick={() => this.reset()}>Cancel</button>
                             <button  id="save" >Done</button>
                             {/* {this.toggleDisabled()} */}
                         </div>              

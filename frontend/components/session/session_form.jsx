@@ -1,9 +1,7 @@
 import React from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSearch, faPen, faBell, faCommentDots, faChevronCircleDown, 
-  faRocket, faPlusCircle, faSignOutAlt, faStroopwafel} from '@fortawesome/free-solid-svg-icons';
-import { Redirect } from "react-router-dom";
-import { fetchBoards } from "../../utils/boards_api_util";
+import {faStroopwafel} from '@fortawesome/free-solid-svg-icons';
+
 
 class SessionForm extends React.Component {
   constructor(props) {
