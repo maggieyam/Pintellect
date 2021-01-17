@@ -79,12 +79,13 @@ export const select = (boards, pinId, msg) => {
         <div className="select-board"
           key={board.id}
           id={`board${board.id}pin${pinId}`}
-          onClick={() => savePinToBoard(pinId, board).then(() => {
-           if (msg) {
-             const select = document.querySelector('#select');
-             select.innerHTML = `saved to ${board.title}`;
-           } 
-          })}
+          onClick={() => {
+            savePinToBoard(pinId, board);           
+              if (msg) {
+                const select = document.querySelector('#select');
+                select.innerHTML = `saved to ${board.title}`;
+              } 
+            }}
         >
           {board.links[0] ? <img src={board.links[0].url} className="mini-img"/> : null }
           {board.title}
