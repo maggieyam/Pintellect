@@ -564,11 +564,14 @@ board-columns {
 }
 
 #board-show-top {
+    margin-top: 150px;
     min-height: 149px;
     padding: 20px;
     justify-content: center;
     align-items: center;
-
+    h1 {
+        margin: 25px;
+    }
 }
 
 #board-show-pins {

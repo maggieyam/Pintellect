@@ -38,7 +38,7 @@ class BoardShow extends React.Component {
             <div id="board-show"> 
                 <div id="board-show-top">
                     <h1 id="board-title">{board.title}</h1>
-                    <span id="board-description">{board.description}</span>
+                    <p id="board-description">{board.description}</p>
                 </div>
                 {mapPinsToCols(pins, openModal, userBoards, board, true)}
             </div>
